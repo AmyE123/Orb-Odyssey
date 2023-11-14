@@ -1,4 +1,4 @@
-# Checklist for ALL changes
++title+ Checklist for ALL changes
 +comment+ Please ensure you've gone through this checklist before merging into main.
 +task+ Changes will cause no conflicts. (Asset Tracker: https://ccixr-tech.atlassian.net/wiki/spaces/CTD/pages/10190849/Asset+Tracking)
 +task+ Changes have been tested. (Testing process here: https://ccixr-tech.atlassian.net/wiki/spaces/CTD/pages/9666562/Merge+Testing)
@@ -6,7 +6,7 @@
 +task+ Changes follow the correct naming conventions.
 +task+ Changes don't add unnecessary files.
 
-# Checklist for CODE changes
++title+ Checklist for CODE changes
 +comment+ Please ensure you've gone through this checklist before merging into main.
 +task+ Code follows the style guidelines of the project. (Microsoft C# Coding Conventions)
 +task+ Code has been documented correctly using XML documentation.
