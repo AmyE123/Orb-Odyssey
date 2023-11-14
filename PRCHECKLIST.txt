@@ -1,0 +1,15 @@
++comment+ Please ensure you've gone through this checklist before merging into main.
+
++comment+ For all changes:
++task+ Changes will cause no conflicts. (Asset Tracker: https://ccixr-tech.atlassian.net/wiki/spaces/CTD/pages/10190849/Asset+Tracking)
++task+ Changes have been tested. (Testing process here: https://ccixr-tech.atlassian.net/wiki/spaces/CTD/pages/9666562/Merge+Testing)
++task+ Changes generate no new warnings/errors.
++task+ Changes follow the correct naming conventions.
++task+ Changes don't add unnecessary files.
+
++comment+ For any code changes:
++task+ Code follows the style guidelines of the project. (Microsoft C# Coding Conventions)
++task+ Code has been documented correctly using XML documentation.
++task+ Code has been formatted. (In Visual Studio, Edit -> Advanced -> Format Document, or press Ctrl+K, Ctrl+D)
++task+ Code has no leftover debug logs.
+
