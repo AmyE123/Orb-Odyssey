@@ -20,9 +20,9 @@ Read this documentation if you're stuck on any area here: https://ccixr-tech.atl
 - [ ] Changes don't add unnecessary files.
 
 ## Code Changes
-- [ ] Code follows the style guidelines of the project. (Microsoft C# Coding Conventions)
+- [ ] Code follows the style guidelines of the project.
 - [ ] Code has been documented correctly using XML documentation.
-- [ ] Code has been formatted. (In Visual Studio, Edit -> Advanced -> Format Document, or press Ctrl+K, Ctrl+D)
+- [ ] Code has been formatted.
 - [ ] Code has no leftover debug logs.
 
 ## Quality Assurance
