@@ -57,7 +57,7 @@ namespace CT6RIGPR
             //if (_cockpitEulers.z < -19.8) { _cockpitEulers.z = -19.8f; }
             //else if (_cockpitEulers.z > 19.2) { _cockpitEulers.z = 19.2f; }
         }
-        
+
         private void ApplyRotation(Vector3 rotation)
         {
             transform.rotation = Quaternion.Euler(rotation);

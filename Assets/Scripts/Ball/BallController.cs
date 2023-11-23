@@ -20,7 +20,7 @@ namespace CT6RIGPR
         {
             _yRotation = 0;
         }
-      
+
         private void FixedUpdate()
         {
             UpdateControllerInput();

@@ -8,7 +8,7 @@ namespace CT6RIGPR
     public class CameraController : MonoBehaviour
     {
         [SerializeField] private GameObject _playerGameObject;
-        
+
         private Vector3 _offset;
 
         void Start()
