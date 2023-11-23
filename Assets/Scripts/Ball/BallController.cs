@@ -10,6 +10,8 @@ namespace CT6RIGPR
         [SerializeField] private float _maxForce = 500;
         [SerializeField] private float _yRotation = 0;
 
+        public float YRotation => _yRotation;
+
         private Vector3 _lastPosition;
 
         void Start()
