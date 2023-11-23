@@ -1,8 +1,8 @@
 namespace CT6RIGPR
 {
     using System.Collections.Generic;
-    using Unity.VisualScripting;
     using UnityEngine;
+    using UnityEngine.XR;
 
     public class BallController : MonoBehaviour
     {
@@ -31,14 +31,14 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            var leftHandedControllers = new List<UnityEngine.XR.InputDevice>();
-            var desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left | UnityEngine.XR.InputDeviceCharacteristics.Controller;
-            UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+            var leftHandedControllers = new List<InputDevice>();
+            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+            InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
 
             foreach (var device in leftHandedControllers)
             {
                 Vector2 thumbstick;
-                if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out thumbstick))
+                if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
                 {
                     Debug.Log(thumbstick.x);
                     _yRotation += thumbstick.x;
