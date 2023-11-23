@@ -11,8 +11,9 @@ namespace CT6RIGPR
     {
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] private float _yRotation = 0;
+		[SerializeField] private bool _debugInput;
 
-        public float YRotation => _yRotation;
+		public float YRotation => _yRotation;
 
         private Vector3 _lastPosition;
 
@@ -23,7 +24,7 @@ namespace CT6RIGPR
 
         private void FixedUpdate()
         {
-            UpdateControllerInput();
+            UpdateControllerInput(); 
             Vector3 movement = CalculateMovement();
             ApplyForce(movement);
             NormalizeRotation();
@@ -35,20 +36,28 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            var leftHandedControllers = new List<InputDevice>();
-            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-            InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
-
-            foreach (var device in leftHandedControllers)
+            if (_debugInput)
             {
-                Vector2 thumbstick;
-                if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
-                {
-                    Debug.Log(thumbstick.x);
-                    _yRotation += thumbstick.x;
-                }
+                if (Input.GetKey(KeyCode.RightControl)) { _yRotation--; }
+                if (Input.GetKey(KeyCode.RightShift)) { _yRotation++; }
             }
-        }
+            else
+            {
+				var leftHandedControllers = new List<InputDevice>();
+				var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+				InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+				foreach (var device in leftHandedControllers)
+				{
+					Vector2 thumbstick;
+					if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
+					{
+						Debug.Log(thumbstick.x);
+						_yRotation += thumbstick.x;
+					}
+				}
+			}
+		}
 
         /// <summary>
         /// Calculate and return the movement vector.
@@ -58,14 +67,27 @@ namespace CT6RIGPR
         private Vector3 CalculateMovement()
         {
             // Calculate and return the movement vector
-            float moveHorizontal = Input.GetAxis("HotasX");
-            float moveVertical = Input.GetAxis("HotasY");
-            Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+            float moveHorizontal = 0.0f;
+            float moveVertical = 0.0f;
+            if (_debugInput)
+            {
+				if (Input.GetKey(KeyCode.LeftArrow)) { moveHorizontal--; }
+				if (Input.GetKey(KeyCode.RightArrow)) { moveHorizontal++; }
+				if (Input.GetKey(KeyCode.UpArrow)) { moveVertical++; }
+				if (Input.GetKey(KeyCode.DownArrow)) { moveVertical--; }
+			}
+			else
+            {
+                moveHorizontal = Input.GetAxis("HotasX");
+				moveVertical = Input.GetAxis("HotasY");
 
-            //TODO: Need to store rotation and transform movement by that rotation.
-            //Easier alternative: rebuild this. Figure out the facing vector 3 from the rotation. Create the vectors for forward and horizontal movement then combine them.
+			}
+			Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
-            movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
+			//TODO: Need to store rotation and transform movement by that rotation.
+			//Easier alternative: rebuild this. Figure out the facing vector 3 from the rotation. Create the vectors for forward and horizontal movement then combine them.
+
+			movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
             return movement;
         }
 

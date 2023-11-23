@@ -7,63 +7,71 @@ namespace CT6RIGPR
     /// </summary>
     public class BallCockpit : MonoBehaviour
     {
-        [SerializeField] private GameObject _playerGameObject;
-        private Vector3 _lastBallEulers;
-        private Vector3 _cockpitEulers;
-        private Vector3 _ballEulers;
+		[SerializeField] private GameObject _playerGameObject;
+		[SerializeField] private bool _debugInput;
+		//private Vector3 _lastBallEulers;
+		//private Vector3 _cockpitEulers;
+		//private Vector3 _ballEulers;
+		private float _roll;
+        private float _pitch;
 
-        void LateUpdate()
+        void FixedUpdate()
         {
             UpdatePosition();
-            _ballEulers = _playerGameObject.transform.rotation.eulerAngles;
-            _cockpitEulers = CalculateCockpitRotation();
-            _cockpitEulers = ClampRotation(_cockpitEulers);
-            ApplyRotation(_cockpitEulers);
-            _lastBallEulers = _ballEulers;
+            CalculateCockpitRotation();
+            ClampRotation();
+            ApplyRotation();
             DrawDebugRay();
         }
 
+        /// <summary>
+        /// Sets cockpit GameObject position to be the same as the ball.
+        /// </summary>
         private void UpdatePosition()
         {
             transform.position = _playerGameObject.transform.position;
-
-            //Optionally: cause cockpit spin here.
-            _ballEulers = _playerGameObject.transform.rotation.eulerAngles;
         }
 
-        private Vector3 CalculateCockpitRotation()
+        private void CalculateCockpitRotation()
         {
             float moveHorizontal = Input.GetAxis("HotasX");
             float moveVertical = Input.GetAxis("HotasY");
 
-            _cockpitEulers = new Vector3(moveVertical * 25, _playerGameObject.GetComponent<BallController>().YRotation, -moveHorizontal * 25);
+            //Use arrow keys for input if testing with the PC rather than joysticks.
+            if (_debugInput)
+            {
+				if (Input.GetKey(KeyCode.LeftArrow)) { _roll--; }
+				if (Input.GetKey(KeyCode.RightArrow)) { _roll++; }
+				if (Input.GetKey(KeyCode.UpArrow)) { _pitch++; }
+				if (Input.GetKey(KeyCode.DownArrow)) { _pitch--; }
+			}
+            else
+            {
+				_roll += moveHorizontal;
+				_pitch += moveVertical;
+			}
 
-
-            //Lerp back to 0,0,0 (if accelerating over cap, this should still leave the player above cap)
-            _cockpitEulers = Vector3.Lerp(_cockpitEulers, Vector3.zero, Time.deltaTime / 6); //Takes 6 seconds of inactivity to return to a stable plane.
-
-            return _cockpitEulers;
+			//Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.
+			_roll = Mathf.Lerp(_roll, 0, Time.deltaTime);
+			_pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
         }
 
-        private Vector3 ClampRotation(Vector3 rotation)
+        private void ClampRotation()
         {
-            rotation.x = Mathf.Clamp(rotation.x, -16.8f, 16.8f);
-            rotation.z = Mathf.Clamp(rotation.z, -19.8f, 19.2f);
-            return rotation;
-
-            // Old code
-            //if (_cockpitEulers.x < -16.8) { _cockpitEulers.x = -16.8f; }
-            //else if (_cockpitEulers.x > 16.8) { _cockpitEulers.x = 16.8f; }
-            //if (_cockpitEulers.z < -19.8) { _cockpitEulers.z = -19.8f; }
-            //else if (_cockpitEulers.z > 19.2) { _cockpitEulers.z = 19.2f; }
+            _roll = Mathf.Clamp(_roll, -16.8f, 16.8f);
+            _pitch = Mathf.Clamp(_pitch, -19.8f, 19.2f);
         }
 
-        private void ApplyRotation(Vector3 rotation)
+        private void ApplyRotation()
         {
-            transform.rotation = Quaternion.Euler(rotation);
-        }
+			Quaternion yawRotation = Quaternion.AngleAxis(_playerGameObject.GetComponent<BallController>().YRotation, Vector3.up);
+			Quaternion rollRotation = Quaternion.AngleAxis(-_roll, Vector3.forward);
+			Quaternion pitchRotation = Quaternion.AngleAxis(-_pitch, Vector3.left);
 
-        private void DrawDebugRay()
+			transform.rotation = yawRotation * pitchRotation * rollRotation;
+		}
+
+		private void DrawDebugRay()
         {
             Debug.DrawRay(transform.position, transform.forward * 100, Color.blue);
         }
