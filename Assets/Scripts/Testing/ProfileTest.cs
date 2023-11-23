@@ -33,8 +33,7 @@ namespace CT6RIGPR
             {
                 _initialisedProfile = true;
 
-                // TODO: Const string for profiles
-                SendLoadProfile("rigpr2023default");
+                SendLoadProfile(Constants.DOF_DEFAULT_PROFILE);
             }
         }
 
@@ -45,13 +44,11 @@ namespace CT6RIGPR
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                // TODO: Const string for profiles
-                SendLoadProfile("rigpr2023soft"); // Test placeholder.
+                SendLoadProfile(Constants.DOF_SOFT_PROFILE); // Test placeholder.
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                // TODO: Const string for profiles
-                SendLoadProfile("rigpr2023hard"); // Test placeholder.
+                SendLoadProfile(Constants.DOF_HARD_PROFILE); // Test placeholder.
             }
         }
     }

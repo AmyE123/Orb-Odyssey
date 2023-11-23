@@ -2,6 +2,9 @@ namespace CT6RIGPR
 {
     using UnityEngine;
 
+    /// <summary>
+    /// Manages the cockpit's position, rotation and other values
+    /// </summary>
     public class BallCockpit : MonoBehaviour
     {
         [SerializeField] private GameObject _playerGameObject;

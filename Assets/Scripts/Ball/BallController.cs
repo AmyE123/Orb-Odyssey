@@ -4,10 +4,12 @@ namespace CT6RIGPR
     using UnityEngine;
     using UnityEngine.XR;
 
+    /// <summary>
+    /// The main controller for the ball
+    /// </summary>
     public class BallController : MonoBehaviour
     {
-        // TODO: Make a const file to access this magic number
-        [SerializeField] private float _maxForce = 500;
+        [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] private float _yRotation = 0;
 
         public float YRotation => _yRotation;
@@ -77,6 +79,7 @@ namespace CT6RIGPR
             // Apply force to the Rigidbody
             Vector3 position = gameObject.transform.position;
 
+            // TODO: Update these values to not include magic numbers (consts plz!)
             float speed = Mathf.Clamp((_lastPosition - position).magnitude * 2.0f, 0, 1);
             float force = (_maxForce * -(speed - 1));
             GetComponent<Rigidbody>().AddForce(movement * force * Time.deltaTime);
