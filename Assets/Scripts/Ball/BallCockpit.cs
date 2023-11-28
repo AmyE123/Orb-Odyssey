@@ -7,12 +7,10 @@ namespace CT6RIGPR
     /// </summary>
     public class BallCockpit : MonoBehaviour
     {
-		[SerializeField] private GameObject _playerGameObject;
-		[SerializeField] private bool _debugInput;
-		//private Vector3 _lastBallEulers;
-		//private Vector3 _cockpitEulers;
-		//private Vector3 _ballEulers;
-		private float _roll;
+        [SerializeField] private GameObject _playerGameObject;
+        [SerializeField] private bool _debugInput;
+
+        private float _roll;
         private float _pitch;
 
         void FixedUpdate()
@@ -40,38 +38,38 @@ namespace CT6RIGPR
             //Use arrow keys for input if testing with the PC rather than joysticks.
             if (_debugInput)
             {
-				if (Input.GetKey(KeyCode.LeftArrow)) { _roll--; }
-				if (Input.GetKey(KeyCode.RightArrow)) { _roll++; }
-				if (Input.GetKey(KeyCode.UpArrow)) { _pitch++; }
-				if (Input.GetKey(KeyCode.DownArrow)) { _pitch--; }
-			}
+                if (Input.GetKey(KeyCode.LeftArrow)) { _roll--; }
+                if (Input.GetKey(KeyCode.RightArrow)) { _roll++; }
+                if (Input.GetKey(KeyCode.UpArrow)) { _pitch++; }
+                if (Input.GetKey(KeyCode.DownArrow)) { _pitch--; }
+            }
             else
             {
-				_roll += moveHorizontal;
-				_pitch += moveVertical;
-			}
+                _roll += moveHorizontal;
+                _pitch += moveVertical;
+            }
 
-			//Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.
-			_roll = Mathf.Lerp(_roll, 0, Time.deltaTime);
-			_pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
+            //Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.
+            _roll = Mathf.Lerp(_roll, 0, Time.deltaTime);
+            _pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
         }
 
         private void ClampRotation()
         {
-            _roll = Mathf.Clamp(_roll, -16.8f, 16.8f);
-            _pitch = Mathf.Clamp(_pitch, -19.8f, 19.2f);
+            _roll = Mathf.Clamp(_roll, -Constants.ROLL_CLAMP, Constants.ROLL_CLAMP);
+            _pitch = Mathf.Clamp(_pitch, Constants.PITCH_CLAMP_NEG, Constants.PITCH_CLAMP_POS);
         }
 
         private void ApplyRotation()
         {
-			Quaternion yawRotation = Quaternion.AngleAxis(_playerGameObject.GetComponent<BallController>().YRotation, Vector3.up);
-			Quaternion rollRotation = Quaternion.AngleAxis(-_roll, Vector3.forward);
-			Quaternion pitchRotation = Quaternion.AngleAxis(-_pitch, Vector3.left);
+            Quaternion yawRotation = Quaternion.AngleAxis(_playerGameObject.GetComponent<BallController>().YRotation, Vector3.up);
+            Quaternion rollRotation = Quaternion.AngleAxis(-_roll, Vector3.forward);
+            Quaternion pitchRotation = Quaternion.AngleAxis(-_pitch, Vector3.left);
 
-			transform.rotation = yawRotation * pitchRotation * rollRotation;
-		}
+            transform.rotation = yawRotation * pitchRotation * rollRotation;
+        }
 
-		private void DrawDebugRay()
+        private void DrawDebugRay()
         {
             Debug.DrawRay(transform.position, transform.forward * 100, Color.blue);
         }
