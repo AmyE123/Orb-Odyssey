@@ -7,10 +7,8 @@ namespace CT6RIGPR
     /// </summary>
     public class BallCockpit : MonoBehaviour
     {
-        [SerializeField] private GameObject _playerGameObject;
-        [SerializeField] private bool _debugInput;
-
-        private float _roll;
+		[SerializeField] private GameObject _playerGameObject;
+		private float _roll;
         private float _pitch;
 
         void FixedUpdate()
@@ -35,8 +33,10 @@ namespace CT6RIGPR
             float moveHorizontal = Input.GetAxis("HotasX");
             float moveVertical = Input.GetAxis("HotasY");
 
+//            Debug.Log("X: " + moveHorizontal + " Y: " + moveVertical);
+
             //Use arrow keys for input if testing with the PC rather than joysticks.
-            if (_debugInput)
+            if (_playerGameObject.GetComponent<BallController>().DebugInput)
             {
                 if (Input.GetKey(KeyCode.LeftArrow)) { _roll--; }
                 if (Input.GetKey(KeyCode.RightArrow)) { _roll++; }

@@ -13,7 +13,8 @@ namespace CT6RIGPR
         [SerializeField] private float _yRotation = 0;
         [SerializeField] private bool _debugInput;
 
-        public float YRotation => _yRotation;
+		public float YRotation => _yRotation;
+        public bool DebugInput => _debugInput;
 
         private Vector3 _lastPosition;
 
