@@ -19,5 +19,18 @@ namespace CT6RIGPR
         public const float PITCH_CLAMP_NEG = -19.8f;
 
         #endregion // Ball Constants
+
+        #region Input Constants
+
+        public const string HOTAS_X = "HotasX";
+        public const string HOTAS_Y = "HotasY";
+
+        #endregion // Input Constants
+
+        #region Game Constants
+
+        public const float CAMERA_Y_OFFSET = 0.2f;
+
+        #endregion // Game Constants
     }
 }

@@ -15,15 +15,5 @@ namespace CT6RIGPR
         {
             _actuateAgent.SetMotionSource(this.gameObject);
         }
-
-        void FixedUpdate()
-        {
-//            UpdateBallPosition();
-        }
-
-        private void UpdateBallPosition()
-        {
-            transform.position = _ballGameObject.transform.position;
-        }
     }
 }

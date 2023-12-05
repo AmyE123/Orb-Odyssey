@@ -13,7 +13,7 @@ namespace CT6RIGPR
         [SerializeField] private float _yRotation = 0;
         [SerializeField] private bool _debugInput;
 
-		public float YRotation => _yRotation;
+        public float YRotation => _yRotation;
         public bool DebugInput => _debugInput;
 
         private Vector3 _lastPosition;
@@ -39,8 +39,15 @@ namespace CT6RIGPR
         {
             if (_debugInput)
             {
-                if (Input.GetKey(KeyCode.RightControl)) { _yRotation--; }
-                if (Input.GetKey(KeyCode.RightShift)) { _yRotation++; }
+                if (Input.GetKey(KeyCode.RightControl))
+                {
+                    _yRotation--;
+                }
+
+                if (Input.GetKey(KeyCode.RightShift))
+                {
+                    _yRotation++;
+                }
             }
             else
             {
@@ -70,15 +77,30 @@ namespace CT6RIGPR
             float moveVertical = 0.0f;
             if (_debugInput)
             {
-                if (Input.GetKey(KeyCode.LeftArrow)) { moveHorizontal--; }
-                if (Input.GetKey(KeyCode.RightArrow)) { moveHorizontal++; }
-                if (Input.GetKey(KeyCode.UpArrow)) { moveVertical++; }
-                if (Input.GetKey(KeyCode.DownArrow)) { moveVertical--; }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    moveHorizontal--;
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    moveHorizontal++;
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    moveVertical++;
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    moveVertical--;
+                }
             }
             else
             {
-                moveHorizontal = Input.GetAxis("HotasX");
-                moveVertical = Input.GetAxis("HotasY");
+                moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
+                moveVertical = Input.GetAxis(Constants.HOTAS_Y);
 
             }
             Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);

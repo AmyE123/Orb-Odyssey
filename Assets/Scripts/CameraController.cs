@@ -23,9 +23,8 @@ namespace CT6RIGPR
 
         private void UpdateCameraPosition()
         {
-//            transform.position = _playerGameObject.transform.position + _offset;
             Vector3 targetPosition = _playerGameObject.transform.position + _offset;
-            targetPosition.y = targetPosition.y - 0.2f;
+            targetPosition.y = targetPosition.y - Constants.CAMERA_Y_OFFSET;
             transform.position = targetPosition;
         }
     }

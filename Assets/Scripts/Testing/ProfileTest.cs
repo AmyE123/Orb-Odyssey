@@ -42,13 +42,14 @@ namespace CT6RIGPR
         /// </summary>
         private void HandleSettingProfile()
         {
+            // Test placeholders for updating the profile.
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                SendLoadProfile(Constants.DOF_SOFT_PROFILE); // Test placeholder.
+                SendLoadProfile(Constants.DOF_SOFT_PROFILE);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                SendLoadProfile(Constants.DOF_HARD_PROFILE); // Test placeholder.
+                SendLoadProfile(Constants.DOF_HARD_PROFILE);
             }
         }
     }
