@@ -3,7 +3,7 @@ namespace CT6RIGPR
     using UnityEngine;
 
     /// <summary>
-    /// The camera controller sets values for the camera
+    /// The camera controller places the XR origin at the position of the ball.
     /// </summary>
     public class CameraController : MonoBehaviour
     {
