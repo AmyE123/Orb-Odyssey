@@ -61,7 +61,6 @@ namespace CT6RIGPR
 
         /// <summary>
         /// Calculate and return the movement vector.
-        /// Currently copied from the Actuate example (?)
         /// </summary>
         /// <returns>The movement vector</returns>
         private Vector3 CalculateMovement()
@@ -83,10 +82,6 @@ namespace CT6RIGPR
 
             }
             Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-
-            //TODO: Need to store rotation and transform movement by that rotation.
-            //Easier alternative: rebuild this. Figure out the facing vector 3 from the rotation. Create the vectors for forward and horizontal movement then combine them.
-
             movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
             return movement;
         }

@@ -28,6 +28,9 @@ namespace CT6RIGPR
             transform.position = _playerGameObject.transform.position;
         }
 
+        /// <summary>
+        /// Calculate the cockpit's rotation.
+        /// </summary>
         private void CalculateCockpitRotation()
         {
             float moveHorizontal = Input.GetAxis("HotasX");
@@ -52,12 +55,19 @@ namespace CT6RIGPR
             _pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
         }
 
+        /// <summary>
+        /// Normalise _roll to be within -16.8 to 16.8 degrees.
+        /// Normalise _pitch to be within -19.8 to 19.2 degrees. 
+        /// </summary>
         private void ClampRotation()
         {
             _roll = Mathf.Clamp(_roll, -Constants.ROLL_CLAMP, Constants.ROLL_CLAMP);
             _pitch = Mathf.Clamp(_pitch, Constants.PITCH_CLAMP_NEG, Constants.PITCH_CLAMP_POS);
         }
 
+        /// <summary>
+        /// Apply the rotation to the transform.
+        /// </summary>
         private void ApplyRotation()
         {
             Quaternion yawRotation = Quaternion.AngleAxis(_playerGameObject.GetComponent<BallController>().YRotation, Vector3.up);
