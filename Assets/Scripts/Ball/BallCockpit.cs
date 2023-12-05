@@ -33,8 +33,6 @@ namespace CT6RIGPR
             float moveHorizontal = Input.GetAxis("HotasX");
             float moveVertical = Input.GetAxis("HotasY");
 
-//            Debug.Log("X: " + moveHorizontal + " Y: " + moveVertical);
-
             //Use arrow keys for input if testing with the PC rather than joysticks.
             if (_playerGameObject.GetComponent<BallController>().DebugInput)
             {

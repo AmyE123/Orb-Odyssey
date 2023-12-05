@@ -53,7 +53,6 @@ namespace CT6RIGPR
                     Vector2 thumbstick;
                     if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
                     {
-                        Debug.Log(thumbstick.x);
                         _yRotation += thumbstick.x;
                     }
                 }

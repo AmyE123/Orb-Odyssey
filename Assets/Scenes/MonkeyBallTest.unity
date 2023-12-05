@@ -518,7 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxForce: 500
   _yRotation: 0
-  _debugInput: 1
+  _debugInput: 0
 --- !u!1 &230576611
 GameObject:
   m_ObjectHideFlags: 0
