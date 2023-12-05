@@ -46,8 +46,8 @@ namespace CT6RIGPR
             }
             else
             {
-                _roll += moveHorizontal;
-                _pitch += moveVertical;
+                _roll += moveHorizontal/2.0f;
+                _pitch += moveVertical/2.0f;
             }
 
             //Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.

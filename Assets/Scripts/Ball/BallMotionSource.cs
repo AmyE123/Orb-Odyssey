@@ -18,7 +18,7 @@ namespace CT6RIGPR
 
         void FixedUpdate()
         {
-            UpdateBallPosition();
+//            UpdateBallPosition();
         }
 
         private void UpdateBallPosition()
