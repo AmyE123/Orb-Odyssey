@@ -88,7 +88,7 @@ namespace CT6RIGPR
 
         /// <summary>
         /// Apply force to the Rigidbody.
-        /// Currently copied from the Actuate example (?)
+        /// Currently copied from the Actuate example
         /// </summary>
         /// <param name="movement">The movement vector to apply force to.</param>
         private void ApplyForce(Vector3 movement)
