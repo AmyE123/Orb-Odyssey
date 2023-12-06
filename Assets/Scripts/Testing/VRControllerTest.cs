@@ -58,7 +58,7 @@ namespace CT6RIGPR
                     InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, controllers);
                     break;
             }
-            
+
             return controllers;
         }
 

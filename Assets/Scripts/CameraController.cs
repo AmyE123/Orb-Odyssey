@@ -3,12 +3,12 @@ namespace CT6RIGPR
     using UnityEngine;
 
     /// <summary>
-    /// The camera controller sets values for the camera
+    /// The camera controller places the XR origin at the position of the ball.
     /// </summary>
     public class CameraController : MonoBehaviour
     {
         [SerializeField] private GameObject _playerGameObject;
-        
+
         private Vector3 _offset;
 
         void Start()
@@ -23,7 +23,9 @@ namespace CT6RIGPR
 
         private void UpdateCameraPosition()
         {
-            transform.position = _playerGameObject.transform.position + _offset;
+            Vector3 targetPosition = _playerGameObject.transform.position + _offset;
+            targetPosition.y = targetPosition.y - Constants.CAMERA_Y_OFFSET;
+            transform.position = targetPosition;
         }
     }
 }
