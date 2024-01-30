@@ -9,26 +9,57 @@ namespace CT6RIGPR
     /// </summary>
     public class BallController : MonoBehaviour
     {
+        private Vector3 _lastPosition;
+
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] private float _yRotation = 0;
         [SerializeField] private bool _debugInput;
+        [SerializeField] private bool _disableInput;
 
+        /// <summary>
+        /// The Y rotation of the ball.
+        /// </summary>
         public float YRotation => _yRotation;
+
+        /// <summary>
+        /// A getter for whether we have debug input enabled.
+        /// </summary>
         public bool DebugInput => _debugInput;
 
-        private Vector3 _lastPosition;
+        /// <summary>
+        /// Whether the input for the ball has been disabled or not.
+        /// </summary>
+        public bool HasDisabledInput => _disableInput;        
 
-        void Start()
+        /// <summary>
+        /// Disables the players input.
+        /// </summary>
+        public void DisableInput()
+        {
+            _disableInput = true;
+        }
+
+        /// <summary>
+        /// Enables the players input.
+        /// </summary>
+        public void EnableInput()
+        {
+            _disableInput = false;
+        }
+        private void Start()
         {
             _yRotation = 0;
         }
 
         private void FixedUpdate()
         {
-            UpdateControllerInput();
-            Vector3 movement = CalculateMovement();
-            ApplyForce(movement);
-            NormalizeRotation();
+            if (!_disableInput)
+            {
+                UpdateControllerInput();
+                Vector3 movement = CalculateMovement();
+                ApplyForce(movement);
+                NormalizeRotation();
+            }
         }
 
         /// <summary>
