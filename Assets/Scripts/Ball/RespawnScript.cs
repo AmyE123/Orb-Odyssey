@@ -17,10 +17,12 @@ public class RespawnScript : MonoBehaviour
     //triggers the respawn sequence when that happens.
 
 
-    [SerializeField] Vector3 spawnPosition;
     [SerializeField] GameObject blackSquare;
     [SerializeField] private float respawnTime; //Make this a define
-    
+
+    [SerializeField] private float fadeInTime; //Percentage of time spent fading in
+    [SerializeField] private float fadeWaitTime; //Percentage of time waiting.
+    [SerializeField] private float fadeOutTime;  //Percentage of time fading out.
 
     IEnumerator fadeOut()
     {
@@ -28,9 +30,8 @@ public class RespawnScript : MonoBehaviour
         float fadeAmount = 0.0f;
         while (fadeAmount <= 1.0f)
         {
-            UnityEngine.Debug.Log(fadeAmount);
             //reduce fade amount
-            fadeAmount += Time.deltaTime / (respawnTime * 0.4f);
+            fadeAmount += Time.deltaTime / (respawnTime * fadeOutTime);
             colour = new Color(colour.r, colour.g, colour.b, fadeAmount);            
             //set that colour
             blackSquare.GetComponent<RawImage>().color = colour;
@@ -45,9 +46,8 @@ public class RespawnScript : MonoBehaviour
         float fadeAmount = 1.0f;
         while (fadeAmount >=  0.0f)
         {
-            UnityEngine.Debug.Log(fadeAmount);
             //reduce fade amount
-            fadeAmount -= Time.deltaTime / (respawnTime * 0.4f);
+            fadeAmount -= Time.deltaTime / (respawnTime * fadeInTime);
             colour = new Color(colour.r, colour.g, colour.b, fadeAmount);
             //set that colour
             blackSquare.GetComponent<RawImage>().color = colour;
@@ -57,27 +57,37 @@ public class RespawnScript : MonoBehaviour
 
     }
 
+    GameObject findCheckpoint()
+    {
+        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        GameObject closestCheckpoint = null;
+        float distanceSqrToPoint = 100000.0f; //High value that will be beat by the first checkpoint.
+        foreach (GameObject checkpoint in checkpoints)
+        {
+            float distanceSqr = Vector3.SqrMagnitude(checkpoint.transform.position - transform.position);
+            if (distanceSqr < distanceSqrToPoint)
+            {
+                closestCheckpoint = checkpoint;
+                distanceSqrToPoint = distanceSqr;
+            }
+        }
+        return closestCheckpoint;
+    }
+
     IEnumerator respawn()
     {
         //DisableMovement (placeholder until the PR from the tube system is merged as that includes a ready made function.)
 
         //https://turbofuture.com/graphic-design-video/How-to-Fade-to-Black-in-Unity (for bibliography)
         StartCoroutine(fadeOut());
-        yield return new WaitForSeconds(respawnTime * 0.55f);
-        transform.position = spawnPosition;
+        yield return new WaitForSeconds(respawnTime * (fadeOutTime + fadeWaitTime / 2 ));
+        transform.position = findCheckpoint().transform.position;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        yield return new WaitForSeconds(respawnTime * 0.05f);
+        yield return new WaitForSeconds(respawnTime * (fadeWaitTime / 2) );
         StartCoroutine(fadeIn());
-        yield return new WaitForSeconds(respawnTime * 0.4f);
+        yield return new WaitForSeconds(respawnTime * fadeInTime);
         blackSquare.GetComponent<RawImage>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
         //reenable movement.
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawnPosition = new Vector3(0, 4, 0);
-//        StartCoroutine(respawn());
     }
     private void OnTriggerExit(Collider collider)
     {
