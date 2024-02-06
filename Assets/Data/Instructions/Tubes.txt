@@ -1,0 +1,8 @@
+Here are some main points to remember:
+
+- The SPLINE child object HAS to stay at (0, 0, 0). You can adjust each point in the spline to be where it needs to be. If the spline child object is not at (0,0,0) the ball will be offset when riding the tube.
+
+- The GameManager must be set within the Parent object of the 'TUBE' on the 'SplineFollower.cs' component which has just been instantiated into the hierarchy. Here you can also set other values.
+
+See the full tubes documentation below.
+[https://ccixr-tech.atlassian.net/wiki/spaces/CTD/pages/32899073/How+To+Create+A+Tube]
