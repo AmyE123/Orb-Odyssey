@@ -12,7 +12,7 @@ namespace CT6RIGPR
         private Vector3 _lastPosition;
 
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
-        [SerializeField] private float _yRotation = 0;
+        [SerializeField] public float _yRotation = 0;
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
 

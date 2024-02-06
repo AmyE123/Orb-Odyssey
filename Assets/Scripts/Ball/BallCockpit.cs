@@ -7,14 +7,46 @@ namespace CT6RIGPR
     /// </summary>
     public class BallCockpit : MonoBehaviour
     {
-		[SerializeField] private GameObject _playerGameObject;
-		private float _roll;
+        private float _roll;
         private float _pitch;
+
+        [SerializeField] private GameObject _playerGameObject;
+
+        /// <summary>
+        /// The roll value for the cockpit
+        /// </summary>
+        public float Roll => _roll;
+
+        /// <summary>
+        /// The roll value for the cockpit
+        /// </summary>
+        public float Pitch => _pitch;
+
+        /// <summary>
+        /// Sets the roll value for the cockpit
+        /// </summary>
+        /// <param name="value">The value to set the roll to</param>
+        public void SetRoll(float value)
+        {
+            _roll = value;
+        }
+
+        /// <summary>
+        /// Sets the pitch value for the cockpit
+        /// </summary>
+        /// <param name="value">The value to set the pitch to</param>
+        public void SetPitch(float value)
+        {
+            _pitch = value;
+        }
 
         void FixedUpdate()
         {
             UpdatePosition();
-            CalculateCockpitRotation();
+            if (!_playerGameObject.GetComponent<BallController>().HasDisabledInput)
+            {
+                CalculateCockpitRotation();
+            }
             ClampRotation();
             ApplyRotation();
             DrawDebugRay();
@@ -46,13 +78,14 @@ namespace CT6RIGPR
             }
             else
             {
-                _roll += moveHorizontal/2.0f;
-                _pitch += moveVertical/2.0f;
+                _roll += moveHorizontal / 2.0f;
+                _pitch += moveVertical / 2.0f;               
             }
 
             //Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.
             _roll = Mathf.Lerp(_roll, 0, Time.deltaTime);
             _pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
+            
         }
 
         /// <summary>
@@ -74,7 +107,7 @@ namespace CT6RIGPR
             Quaternion rollRotation = Quaternion.AngleAxis(-_roll, Vector3.forward);
             Quaternion pitchRotation = Quaternion.AngleAxis(-_pitch, Vector3.left);
 
-            transform.rotation = yawRotation * pitchRotation * rollRotation;
+            transform.rotation = yawRotation * pitchRotation * rollRotation;          
         }
 
         private void DrawDebugRay()

@@ -1,6 +1,8 @@
 namespace CT6RIGPR
 {
     using UnityEngine;
+    using UnityEngine.Rendering;
+    using DG.Tweening;
 
     /// <summary>
     /// Used for the tube mechanic to move the player along a spline and disable their movement controls.
@@ -52,9 +54,19 @@ namespace CT6RIGPR
                 TubeSpline spline = _spline.GetComponent<TubeSpline>();
 
                 Transform playerTransform = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).transform;
+                Transform cockpitTransform = GameObject.FindGameObjectWithTag(Constants.COCKPIT_TAG).transform;
+                BallController ballScript = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).GetComponent<BallController>();
+                BallCockpit cockpitScript = GameObject.FindGameObjectWithTag(Constants.COCKPIT_TAG).GetComponent<BallCockpit>();
+
                 Vector3 newPosition = spline.GetPointAt(_splineProgress);
-                playerTransform.position = newPosition;
-                playerTransform.rotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
+
+                playerTransform.DOMove(newPosition, 1f);
+                cockpitTransform.DOMove(newPosition, 1f);
+
+                Vector3 splineEulers = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress)).eulerAngles;
+                ballScript._yRotation = splineEulers.y;
+                cockpitScript.SetRoll(splineEulers.x);
+                cockpitScript.SetPitch(splineEulers.z);
             }
         }
 

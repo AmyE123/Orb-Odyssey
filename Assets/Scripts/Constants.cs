@@ -72,6 +72,11 @@ namespace CT6RIGPR
         /// </summary>
         public const string PLAYER_TAG = "Player";
 
+        /// <summary>
+        /// This is the tag for the cockpit object.
+        /// </summary>
+        public const string COCKPIT_TAG = "Cockpit";
+
         #endregion // Game Constants
 
         #region Editor Paths

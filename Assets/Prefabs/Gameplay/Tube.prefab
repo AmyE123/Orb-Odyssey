@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc69bf11c8428d84aafa2a2bb390c857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineContainer: {fileID: 8546281163292606901}
+  _splineContainer: {fileID: 8546281163292606901}
 --- !u!1 &7767990203318791915
 GameObject:
   m_ObjectHideFlags: 0
