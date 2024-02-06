@@ -26,7 +26,7 @@ Read this documentation if you're stuck on any area here: https://ccixr-tech.atl
 - [ ] Code has no leftover debug logs.
 
 ## Quality Assurance
-- [ ] My pull request has been reviewed by at least 2 other developers.
+- [ ] My pull request has been reviewed by another developer (code).
 - [ ] Builds generate no new warnings/errors. 
 - [ ] Changes have been tested on all hardware.
   - [ ] 4DoF Motion Simulator
