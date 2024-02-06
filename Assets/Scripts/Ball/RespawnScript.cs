@@ -1,3 +1,4 @@
+using CT6RIGPR;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,12 @@ public class RespawnScript : MonoBehaviour
     [SerializeField] private float fadeWaitTime; //Percentage of time waiting.
     [SerializeField] private float fadeOutTime;  //Percentage of time fading out.
 
+    private BallController ballscript;
+    private void Start()
+    {
+        ballScript = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).GetComponent<BallController>();
+
+    }
     IEnumerator fadeOut()
     {
         Color colour = Color.black;
@@ -77,6 +84,7 @@ public class RespawnScript : MonoBehaviour
     IEnumerator respawn()
     {
         //DisableMovement (placeholder until the PR from the tube system is merged as that includes a ready made function.)
+        ballscript.DisableInput()
 
         //https://turbofuture.com/graphic-design-video/How-to-Fade-to-Black-in-Unity (for bibliography)
         StartCoroutine(fadeOut());
@@ -87,7 +95,10 @@ public class RespawnScript : MonoBehaviour
         StartCoroutine(fadeIn());
         yield return new WaitForSeconds(respawnTime * fadeInTime);
         blackSquare.GetComponent<RawImage>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
         //reenable movement.
+        ballscript.EnableInput()
+
     }
     private void OnTriggerExit(Collider collider)
     {
