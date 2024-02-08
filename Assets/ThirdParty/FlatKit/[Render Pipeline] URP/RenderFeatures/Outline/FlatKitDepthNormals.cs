@@ -51,7 +51,8 @@ public class FlatKitDepthNormals : ScriptableRendererFeature {
                 ref CameraData cameraData = ref renderingData.cameraData;
                 Camera camera = cameraData.camera;
 #pragma warning disable 618
-                if (cameraData.isStereoEnabled)
+                // CT6RIGPR EDIT (deprecated) - if (cameraData.isStereoEnabled)
+                if (XRGraphics.enabled)
 #pragma warning restore 618
                 {
                     context.StartMultiEye(camera);
@@ -68,21 +69,29 @@ public class FlatKitDepthNormals : ScriptableRendererFeature {
             CommandBufferPool.Release(cmd);
         }
 
+#pragma warning disable 0618
         // public override void OnCameraCleanup(CommandBuffer cmd) {
         public override void FrameCleanup(CommandBuffer cmd) {
             if (_depthAttachmentHandle == RenderTargetHandle.CameraTarget) return;
             cmd.ReleaseTemporaryRT(_depthAttachmentHandle.id);
             _depthAttachmentHandle = RenderTargetHandle.CameraTarget;
         }
+#pragma warning restore
     }
 
     DepthNormalsPass _depthNormalsPass;
+
+#pragma warning disable 0618
     RenderTargetHandle _depthNormalsTexture;
+#pragma warning restore
+
     Material _depthNormalsMaterial;
 
+#pragma warning disable 0618
     public FlatKitDepthNormals(RenderTargetHandle depthNormalsTexture) {
         _depthNormalsTexture = depthNormalsTexture;
     }
+#pragma warning restore
 
     public override void Create() {
         _depthNormalsMaterial = CoreUtils.CreateEngineMaterial("Hidden/Internal-DepthNormalsTexture");
