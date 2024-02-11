@@ -79669,9 +79669,19 @@ PrefabInstance:
       objectReference: {fileID: 115430221}
     - target: {fileID: 5401196234293449611, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
+      propertyPath: _threshold
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401196234293449611, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
+    - target: {fileID: 5401196234293449611, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: _stopDampingDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6154786919409885688, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
       propertyPath: m_Enabled

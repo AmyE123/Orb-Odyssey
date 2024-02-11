@@ -11,12 +11,16 @@ namespace CT6RIGPR
     public class BallController : MonoBehaviour
     {
         private Vector3 _lastPosition;
+        private Rigidbody _rigidBody;
+        private bool _isInputActive = false;
 
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] public float _yRotation = 0;
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
         [SerializeField] private GameManager _gameManager;
+        [SerializeField] private float _stopDampingDuration = 1.0f;
+        [SerializeField] private float _threshold = 3f;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -50,18 +54,52 @@ namespace CT6RIGPR
         }
         private void Start()
         {
+            _rigidBody = GetComponent<Rigidbody>();
             _yRotation = 0;
         }
 
         private void FixedUpdate()
         {
             Vector3 movement = CalculateMovement();
+            _isInputActive = movement != Vector3.zero;
 
             if (!_disableInput)
             {
-                UpdateControllerInput();                
-                ApplyForce(movement);
+                UpdateControllerInput();
+                if (_isInputActive)
+                {
+                    ApplyForce(movement);
+                }
+                else
+                {
+                    ApplyDamping();
+                }
                 NormalizeRotation();
+            }
+        }
+
+        /// <summary>
+        /// Apply damping to the players movement.
+        /// </summary>
+        private void ApplyDamping()
+        {
+            if (_rigidBody.velocity.magnitude > 0)
+            {
+                float dampingFactor = Mathf.Clamp01(Time.fixedDeltaTime * _stopDampingDuration);
+                Vector3 newVelocity = Vector3.Lerp(_rigidBody.velocity, Vector3.zero, dampingFactor);
+
+                Vector3 newAngularVelocity = Vector3.Lerp(_rigidBody.angularVelocity, Vector3.zero, dampingFactor);
+
+                if (newVelocity.magnitude < _threshold)
+                {
+                    _rigidBody.velocity = Vector3.zero;
+                    _rigidBody.angularVelocity = Vector3.zero;
+                }
+                else
+                {
+                    _rigidBody.velocity = newVelocity;
+                    _rigidBody.angularVelocity = newAngularVelocity;
+                }
             }
         }
 
@@ -104,7 +142,7 @@ namespace CT6RIGPR
         /// Calculate and return the movement vector.
         /// </summary>
         /// <returns>The movement vector</returns>
-        public Vector3 CalculateMovement()
+        private Vector3 CalculateMovement()
         {
             // Calculate and return the movement vector
             float moveHorizontal = 0.0f;
@@ -163,7 +201,7 @@ namespace CT6RIGPR
         /// Currently copied from the Actuate example
         /// </summary>
         /// <param name="movement">The movement vector to apply force to.</param>
-        public void ApplyForce(Vector3 movement)
+        private void ApplyForce(Vector3 movement)
         {
             // Apply force to the Rigidbody
             Vector3 position = gameObject.transform.position;
@@ -175,25 +213,6 @@ namespace CT6RIGPR
 
             _lastPosition = position;
         }
-
-        public void MoveBall(Vector3 targetPosition)
-        {
-            DOTween.Kill(gameObject.transform);
-
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-
-                rb.MovePosition(targetPosition);
-            }
-            else
-            {
-                transform.position = targetPosition;
-            }
-        }
-
 
         /// <summary>
         /// Normalize _yRotation to be within -180 to 180 degrees

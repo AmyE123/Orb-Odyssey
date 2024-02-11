@@ -153,6 +153,8 @@ MonoBehaviour:
   _debugInput: 1
   _disableInput: 0
   _gameManager: {fileID: 0}
+  _stopDampingDuration: 1
+  _threshold: 3
 --- !u!114 &7049926200131099503
 MonoBehaviour:
   m_ObjectHideFlags: 0
