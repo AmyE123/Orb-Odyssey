@@ -44,8 +44,6 @@ namespace CT6RIGPR
 
                 Vector3 newPosition = spline.GetPointAt(_splineProgress);
                 Quaternion newRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
-
-                // Directly set player's position and rotation based on spline progress
                 Transform playerTransform = _ballController.gameObject.transform;
                 playerTransform.position = newPosition;
                 playerTransform.rotation = newRotation;

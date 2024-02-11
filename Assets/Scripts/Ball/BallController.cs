@@ -149,17 +149,13 @@ namespace CT6RIGPR
                 }
             }
 
-            // Assuming the camera's forward direction dictates movement direction
             Transform cameraTransform = Camera.main.transform;
-            // Remove any y-component to keep movement horizontal
             Vector3 forward = cameraTransform.forward;
             forward.y = 0;
             Vector3 right = cameraTransform.right;
-
-            // Calculate movement direction relative to the camera's orientation
             Vector3 adjustedMovement = (forward * moveVertical + right * moveHorizontal).normalized;
 
-            return adjustedMovement * _maxForce; // Apply any scaling factor as needed
+            return adjustedMovement * _maxForce;
         }
 
         /// <summary>
