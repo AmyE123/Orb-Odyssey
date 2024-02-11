@@ -40,6 +40,13 @@ namespace CT6RIGPR
         {
             if (_isFollowing)
             {
+                TubeSpline spline = _spline.GetComponent<TubeSpline>();
+
+                Transform playerTransform = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).transform;
+                Transform cockpitTransform = GameObject.FindGameObjectWithTag(Constants.COCKPIT_TAG).transform;
+                BallController ballScript = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).GetComponent<BallController>();
+                BallCockpit cockpitScript = GameObject.FindGameObjectWithTag(Constants.COCKPIT_TAG).GetComponent<BallCockpit>();
+
                 _splineProgress += _speed * Time.deltaTime;
 
                 if (_splineProgress >= 1.0f)
@@ -48,15 +55,21 @@ namespace CT6RIGPR
                     _splineProgress = 1.0f;
 
                     _ballController.EnableInput();
+
+                    // Assuming you use the last point on the spline as the exit point.
+                    Vector3 exitPosition = spline.GetPointAt(1.0f); // Get the final point on the spline.
+                    Quaternion exitRotation = Quaternion.LookRotation(spline.GetDirectionAt(1.0f));
+
+                    // Move the player and cockpit to the exit position and adjust orientation.
+                    playerTransform.position = exitPosition; // For an instant move, or use DOMove for a smooth transition.
+                    playerTransform.rotation = exitRotation;
+
+                    cockpitTransform.position = exitPosition;
+                    cockpitTransform.rotation = exitRotation;
+
+                    // Reset spline progress for next use.
                     _splineProgress = 0;
                 }
-
-                TubeSpline spline = _spline.GetComponent<TubeSpline>();
-
-                Transform playerTransform = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).transform;
-                Transform cockpitTransform = GameObject.FindGameObjectWithTag(Constants.COCKPIT_TAG).transform;
-                BallController ballScript = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).GetComponent<BallController>();
-                BallCockpit cockpitScript = GameObject.FindGameObjectWithTag(Constants.COCKPIT_TAG).GetComponent<BallCockpit>();
 
                 Vector3 newPosition = spline.GetPointAt(_splineProgress);
 

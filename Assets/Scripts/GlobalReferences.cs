@@ -6,10 +6,17 @@ namespace CT6RIGPR
     {
         [SerializeField] private BallController _ballController;
 
+        [SerializeField] private CameraController _cameraController;
+
         /// <summary>
         /// The ball controller. For all player inputs.
         /// </summary>
         public BallController BallController => _ballController;
+
+        /// <summary>
+        /// The main camera controller.
+        /// </summary>
+        public CameraController CameraController => _cameraController;
 
         private void Start()
         {
@@ -21,6 +28,11 @@ namespace CT6RIGPR
             if (_ballController == null)
             {
                 LogNullRef(typeof(BallController).Name, LogType.Error);
+            }
+
+            if (_cameraController == null)
+            {
+                LogNullRef(typeof(CameraController).Name, LogType.Error);
             }
         }
 

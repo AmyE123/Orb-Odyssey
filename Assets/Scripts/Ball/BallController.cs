@@ -15,6 +15,7 @@ namespace CT6RIGPR
         [SerializeField] public float _yRotation = 0;
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
+        [SerializeField] private GameManager _gameManager;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -68,7 +69,7 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            if (_debugInput)
+            if (_debugInput && !_gameManager.GlobalReferences.CameraController.DebugMouseLook)
             {
                 if (Input.GetKey(KeyCode.RightControl))
                 {
@@ -108,22 +109,22 @@ namespace CT6RIGPR
             float moveVertical = 0.0f;
             if (_debugInput)
             {
-                if (Input.GetKey(KeyCode.LeftArrow))
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 {
                     moveHorizontal--;
                 }
 
-                if (Input.GetKey(KeyCode.RightArrow))
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                 {
                     moveHorizontal++;
                 }
 
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
                 {
                     moveVertical++;
                 }
 
-                if (Input.GetKey(KeyCode.DownArrow))
+                if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
                 {
                     moveVertical--;
                 }
@@ -135,8 +136,20 @@ namespace CT6RIGPR
 
             }
             Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-            movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
-            return movement;
+            //movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
+            //return movement;
+
+            // Assuming the camera's forward direction dictates movement direction
+            Transform cameraTransform = Camera.main.transform;
+            // Remove any y-component to keep movement horizontal
+            Vector3 forward = cameraTransform.forward;
+            forward.y = 0;
+            Vector3 right = cameraTransform.right;
+
+            // Calculate movement direction relative to the camera's orientation
+            Vector3 adjustedMovement = (forward * moveVertical + right * moveHorizontal).normalized;
+
+            return adjustedMovement * _maxForce; // Apply any scaling factor as needed
         }
 
         /// <summary>

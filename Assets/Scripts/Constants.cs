@@ -89,7 +89,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the tube asset for loading it in in-editor.
         /// </summary>
-        public const string TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/Tube.prefab";
+        public const string TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Tube.prefab";
 
         /// <summary>
         /// A string to the tube instructions text files for loading it in in-editor.
@@ -99,7 +99,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the jump pad asset for loading it in in-editor.
         /// </summary>
-        public const string JUMPPAD_PREFAB_PATH = "Assets/Prefabs/Gameplay/JumpPad.prefab";
+        public const string JUMPPAD_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/JumpPad.prefab";
 
         #endregion // Editor Paths
     }
