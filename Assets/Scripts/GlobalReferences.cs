@@ -8,6 +8,8 @@ namespace CT6RIGPR
 
         [SerializeField] private CameraController _cameraController;
 
+        [SerializeField] private UIManager _uiManager;
+
         /// <summary>
         /// The ball controller. For all player inputs.
         /// </summary>
@@ -17,6 +19,8 @@ namespace CT6RIGPR
         /// The main camera controller.
         /// </summary>
         public CameraController CameraController => _cameraController;
+
+        public UIManager UIManager => _uiManager;
 
         private void Start()
         {

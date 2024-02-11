@@ -7,12 +7,14 @@ namespace CT6RIGPR
     {
         private bool _hasBeenPickedUp = false;
         private AudioSource _audioSource;
+        private GameManager _gameManager;
 
         [SerializeField] private PickupData _pickupData;
 
         private void Start()
         {
             _audioSource = GetComponent<AudioSource>();
+            _gameManager = FindObjectOfType<GameManager>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -27,6 +29,7 @@ namespace CT6RIGPR
 
         private void PickupObject()
         {
+            _gameManager.IncrementPickupCount();
             _audioSource.PlayOneShot(_pickupData.PickupClip);
 
             transform.DOScale(Vector3.zero, _pickupData.ShrinkDuration)
