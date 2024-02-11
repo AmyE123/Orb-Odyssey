@@ -101,6 +101,11 @@ namespace CT6RIGPR
         /// </summary>
         public const string JUMPPAD_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/JumpPad.prefab";
 
+        /// <summary>
+        /// A string to the pickup asset for loading it in in-editor.
+        /// </summary>
+        public const string PICKUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
+
         #endregion // Editor Paths
     }
 }
