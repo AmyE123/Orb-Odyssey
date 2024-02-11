@@ -1,5 +1,6 @@
 namespace CT6RIGPR
 {
+    using DG.Tweening;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.XR;
@@ -54,10 +55,11 @@ namespace CT6RIGPR
 
         private void FixedUpdate()
         {
+            Vector3 movement = CalculateMovement();
+
             if (!_disableInput)
             {
-                UpdateControllerInput();
-                Vector3 movement = CalculateMovement();
+                UpdateControllerInput();                
                 ApplyForce(movement);
                 NormalizeRotation();
             }
@@ -102,42 +104,50 @@ namespace CT6RIGPR
         /// Calculate and return the movement vector.
         /// </summary>
         /// <returns>The movement vector</returns>
-        private Vector3 CalculateMovement()
+        public Vector3 CalculateMovement()
         {
             // Calculate and return the movement vector
             float moveHorizontal = 0.0f;
             float moveVertical = 0.0f;
-            if (_debugInput)
+
+            if (!_disableInput)
             {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                if (_debugInput)
                 {
-                    moveHorizontal--;
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                    {
+                        moveHorizontal--;
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                    {
+                        moveHorizontal++;
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+                    {
+                        moveVertical++;
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+                    {
+                        moveVertical--;
+                    }
+                }
+                else
+                {
+                    moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
+                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+
                 }
 
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
                 {
-                    moveHorizontal++;
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-                {
-                    moveVertical++;
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-                {
-                    moveVertical--;
+                    Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+                    movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
+                    return movement;
                 }
             }
-            else
-            {
-                moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
-                moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-
-            }
-            Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-            //movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
-            //return movement;
 
             // Assuming the camera's forward direction dictates movement direction
             Transform cameraTransform = Camera.main.transform;
@@ -157,7 +167,7 @@ namespace CT6RIGPR
         /// Currently copied from the Actuate example
         /// </summary>
         /// <param name="movement">The movement vector to apply force to.</param>
-        private void ApplyForce(Vector3 movement)
+        public void ApplyForce(Vector3 movement)
         {
             // Apply force to the Rigidbody
             Vector3 position = gameObject.transform.position;
@@ -168,6 +178,27 @@ namespace CT6RIGPR
             GetComponent<Rigidbody>().AddForce(movement * force * Time.deltaTime);
 
             _lastPosition = position;
+        }
+
+        public void MoveBall(Vector3 targetPosition)
+        {
+            DOTween.Kill(gameObject.transform);
+
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                // Reset the Rigidbody's velocity to prevent it from continuing to move due to previous forces
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+
+                // Use MovePosition to respect physics
+                rb.MovePosition(targetPosition);
+            }
+            else
+            {
+                // Directly set the transform's position as a fallback (not recommended for physics-based movement)
+                transform.position = targetPosition;
+            }
         }
 
 

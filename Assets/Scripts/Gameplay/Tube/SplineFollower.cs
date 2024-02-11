@@ -52,22 +52,19 @@ namespace CT6RIGPR
                 if (_splineProgress >= 1.0f)
                 {
                     _isFollowing = false;
-                    _splineProgress = 1.0f;
-
                     _ballController.EnableInput();
 
-                    // Assuming you use the last point on the spline as the exit point.
-                    Vector3 exitPosition = spline.GetPointAt(1.0f); // Get the final point on the spline.
-                    Quaternion exitRotation = Quaternion.LookRotation(spline.GetDirectionAt(1.0f));
+                    // Get the final position at the end of the tube
+                    Vector3 exitPosition = spline.GetPointAt(1.0f);
 
-                    // Move the player and cockpit to the exit position and adjust orientation.
-                    playerTransform.position = exitPosition; // For an instant move, or use DOMove for a smooth transition.
-                    playerTransform.rotation = exitRotation;
+                    // Kill any DOTween animations on player and cockpit transform to prevent them from moving back
+                    DOTween.Kill(playerTransform);
+                    DOTween.Kill(cockpitTransform);
 
-                    cockpitTransform.position = exitPosition;
-                    cockpitTransform.rotation = exitRotation;
+                    // Move the ball to the exit position
+                    _ballController.MoveBall(exitPosition);
 
-                    // Reset spline progress for next use.
+                    // Reset spline progress for next use
                     _splineProgress = 0;
                 }
 
