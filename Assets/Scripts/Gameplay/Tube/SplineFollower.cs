@@ -1,7 +1,6 @@
 namespace CT6RIGPR
 {
     using UnityEngine;
-    using UnityEngine.Rendering;
     using DG.Tweening;
 
     /// <summary>
@@ -10,12 +9,12 @@ namespace CT6RIGPR
     public class SplineFollower : MonoBehaviour
     {
         private BallController _ballController;
+        private float _splineProgress = 0f;
+        private bool _isFollowing = false;
 
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private Transform _spline;
-        [SerializeField] private float _speed = 5.0f;
-        [SerializeField] private float _splineProgress = 0f;
-        [SerializeField] private bool _isFollowing = false;
+        [SerializeField] private float _speed = 0.1f;
 
         /// <summary>
         /// Start following the spline. This is called when the trigger is activated.
@@ -31,8 +30,9 @@ namespace CT6RIGPR
             if (_gameManager == null)
             {
                 _gameManager = FindObjectOfType<GameManager>();
+                Debug.LogWarning("[CT6RIGPR] GameManager reference in Tube not set. Please set this in the inspector.");
             }
-            
+
             _ballController = _gameManager.GlobalReferences.BallController;
         }
 
@@ -69,7 +69,5 @@ namespace CT6RIGPR
                 cockpitScript.SetPitch(splineEulers.z);
             }
         }
-
-
     }
 }

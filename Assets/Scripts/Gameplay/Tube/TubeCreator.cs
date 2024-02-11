@@ -9,7 +9,7 @@ namespace CT6RIGPR
     /// </summary>
     public class TubeCreator : MonoBehaviour
     {
-        [MenuItem("Tools/CT6RIGPR/CreateTube")]
+        [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Tube")]
         private static void CreateTube()
         {
             string instructionsPath = Constants.TUBE_INSTRUCTIONS_PATH;
