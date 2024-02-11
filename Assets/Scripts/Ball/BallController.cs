@@ -187,16 +187,13 @@ namespace CT6RIGPR
             Rigidbody rb = GetComponent<Rigidbody>();
             if (rb != null)
             {
-                // Reset the Rigidbody's velocity to prevent it from continuing to move due to previous forces
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
 
-                // Use MovePosition to respect physics
                 rb.MovePosition(targetPosition);
             }
             else
             {
-                // Directly set the transform's position as a fallback (not recommended for physics-based movement)
                 transform.position = targetPosition;
             }
         }
