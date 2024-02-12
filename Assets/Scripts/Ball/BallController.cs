@@ -26,8 +26,11 @@ namespace CT6RIGPR
 
         [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
 
-        [SerializeField] private float gravityModifier = 3f;
+        [SerializeField] private float _gravityModifier = 3f;
 
+        [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
+
+        [SerializeField] private float _currentSpeed;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -42,7 +45,12 @@ namespace CT6RIGPR
         /// <summary>
         /// Whether the input for the ball has been disabled or not.
         /// </summary>
-        public bool HasDisabledInput => _disableInput;        
+        public bool HasDisabledInput => _disableInput;
+
+        /// <summary>
+        /// Gets the current speed of the ball.
+        /// </summary>
+        public float CurrentSpeed => _currentSpeed;
 
         /// <summary>
         /// Disables the players input.
@@ -68,9 +76,9 @@ namespace CT6RIGPR
         private void FixedUpdate()
         {
             // Apply additional gravity (if needed)
-            if (!Mathf.Approximately(gravityModifier, 1f)) // Check if the gravity modifier is not the default value
+            if (!Mathf.Approximately(_gravityModifier, 1f)) // Check if the gravity modifier is not the default value
             {
-                Vector3 extraGravityForce = (Physics.gravity * gravityModifier) - Physics.gravity;
+                Vector3 extraGravityForce = (Physics.gravity * _gravityModifier) - Physics.gravity;
                 _rigidBody.AddForce(extraGravityForce, ForceMode.Acceleration);
             }
 
@@ -90,9 +98,15 @@ namespace CT6RIGPR
                 }
 
                 // WIP Gravity fix with falling. Don't want to adjust this for now.
-                //AdjustRigidbodyDrag();
+                AdjustRigidbodyDrag();
 
                 NormalizeRotation();
+            }
+
+            if (_debugInput) // Use this condition if you want the log to appear only when debug input is enabled
+            {
+                _currentSpeed = _rigidBody.velocity.magnitude;
+                Debug.Log($"Current Speed: {_currentSpeed}");
             }
         }
 
@@ -233,17 +247,20 @@ namespace CT6RIGPR
             float targetSpeed = movement.magnitude * _maxForce;
             float speedDifference = targetSpeed - currentSpeed;
 
+            // Ensure acceleration factor is effectively used
             float forceMultiplier;
             if (currentSpeed > targetSpeed)
             {
-                forceMultiplier = Mathf.Lerp(_maxForce, 0, currentSpeed / targetSpeed);
+                // Optionally, apply deceleration logic here
+                forceMultiplier = 0;
             }
             else
             {
-                forceMultiplier = Mathf.Lerp(0, _maxForce, speedDifference / _maxForce);
+                // Scale force application more directly with _accelerationFactor
+                float normalizedSpeedDifference = speedDifference / targetSpeed;
+                forceMultiplier = _maxForce * Mathf.Clamp(normalizedSpeedDifference * _accelerationFactor, 0, 1);
             }
 
-            // Apply scaled force
             _rigidBody.AddForce(movement.normalized * forceMultiplier, ForceMode.Acceleration);
         }
 
