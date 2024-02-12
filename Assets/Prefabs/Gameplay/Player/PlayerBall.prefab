@@ -125,11 +125,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OuterBall
       objectReference: {fileID: 0}
-    - target: {fileID: 4446039965040703664, guid: 2b1f574e91154ae4f8e038941b310763,
-        type: 3}
-      propertyPath: gravityModifier
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5261480439909761204, guid: 2b1f574e91154ae4f8e038941b310763,
         type: 3}
       propertyPath: m_LocalPosition.x
