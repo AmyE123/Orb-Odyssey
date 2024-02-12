@@ -13,6 +13,7 @@ namespace CT6RIGPR
 
         [Header("Debug UI Components")]
         [SerializeField] private TMP_Text _speedValue;
+        [SerializeField] private TMP_Text _groundedValue;
 
         /// <summary>
         /// Sets the total pickups once it has been set in Game Manager
@@ -27,6 +28,7 @@ namespace CT6RIGPR
         {
             _pickupCount.text = _gameManager.PickupCount.ToString();
             _speedValue.text = _gameManager.GlobalReferences.BallController.CurrentSpeed.ToString("F1");
+            _groundedValue.text = _gameManager.GlobalReferences.BallController.Grounded.ToString();
         }
     }
 }
