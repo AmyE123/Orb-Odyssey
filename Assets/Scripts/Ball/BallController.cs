@@ -12,31 +12,38 @@ namespace CT6RIGPR
         private Rigidbody _rigidBody;
         private bool _isInputActive = false;
 
+        [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] public float _yRotation = 0;
+        [SerializeField] private float _stopDampingDuration = 1.0f;
+        [SerializeField] private float _threshold = 3f;
+        [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
+
+        [Header("Drag Settings")]
+        [SerializeField] private float _dragMin = 0.5f;
+        [SerializeField] private float _dragMax = 5f;
+
+        [Header("Gravity Settings")]
+        [SerializeField] private float _gravityModifier = 3f;
+        [SerializeField] private float _additionalAirborneGravity = 2f;
+        [SerializeField] private float _airborneDrag = 0.1f;
+
+        [Header("Velocity Settings")]
+        [SerializeField] private float _minimalVelocity = 0f;
+        [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
+
+
+        [Header("Debug and Input Settings")]
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
         [SerializeField] private GameManager _gameManager;
-        [SerializeField] private float _stopDampingDuration = 1.0f;
-        [SerializeField] private float _threshold = 3f;
 
-        [SerializeField] private float _dragMin = 0.5f;
-        [SerializeField] private float _dragMax = 5f;
-        [SerializeField] private float _minimalVelocity = 0f;
-
-        [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
-
-        [SerializeField] private float _gravityModifier = 3f;
-
-        [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
-
-        [SerializeField] private float _currentSpeed;
-
+        [Header("Ground Check Settings")]
         [SerializeField] private bool _grounded;
+        [SerializeField] private float _groundCheckDistance = 1f;
 
-        [SerializeField] private float _additionalAirborneGravity = 2f;
-        [SerializeField] private float _airborneDrag = 0.1f;
-        [SerializeField] private float _groundCheckDistance = 0.1f;
+        [Header("Runtime Values")]
+        [SerializeField] private float _currentSpeed;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -58,6 +65,9 @@ namespace CT6RIGPR
         /// </summary>
         public float CurrentSpeed => _currentSpeed;
 
+        /// <summary>
+        /// Whether the ball is grounded or not.
+        /// </summary>
         public bool Grounded => _grounded;
 
         /// <summary>
