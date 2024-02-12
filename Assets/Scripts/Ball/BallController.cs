@@ -1,6 +1,5 @@
 namespace CT6RIGPR
 {
-    using DG.Tweening;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.XR;
@@ -10,7 +9,6 @@ namespace CT6RIGPR
     /// </summary>
     public class BallController : MonoBehaviour
     {
-        private Vector3 _lastPosition;
         private Rigidbody _rigidBody;
         private bool _isInputActive = false;
 
@@ -21,6 +19,12 @@ namespace CT6RIGPR
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private float _stopDampingDuration = 1.0f;
         [SerializeField] private float _threshold = 3f;
+
+        [SerializeField] private float _dragMin = 0.5f;
+        [SerializeField] private float _dragMax = 5f;
+        [SerializeField] private float _minimalVelocity = 0f;
+
+        [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -74,8 +78,18 @@ namespace CT6RIGPR
                 {
                     ApplyDamping();
                 }
+                AdjustRigidbodyDrag();
                 NormalizeRotation();
             }
+        }
+
+        private void AdjustRigidbodyDrag()
+        {
+            Vector3 velocityDirection = _rigidBody.velocity.normalized;
+            Vector3 inputDirection = CalculateMovement().normalized;
+
+            float alignment = Vector3.Dot(velocityDirection, inputDirection);
+            _rigidBody.drag = Mathf.Lerp(_dragMin, _dragMax, 1 - Mathf.Abs(alignment));
         }
 
         /// <summary>
@@ -83,7 +97,7 @@ namespace CT6RIGPR
         /// </summary>
         private void ApplyDamping()
         {
-            if (_rigidBody.velocity.magnitude > 0)
+            if (_rigidBody.velocity.magnitude > _minimalVelocity)
             {
                 float dampingFactor = Mathf.Clamp01(Time.fixedDeltaTime * _stopDampingDuration);
                 Vector3 newVelocity = Vector3.Lerp(_rigidBody.velocity, Vector3.zero, dampingFactor);
@@ -92,8 +106,8 @@ namespace CT6RIGPR
 
                 if (newVelocity.magnitude < _threshold)
                 {
-                    _rigidBody.velocity = Vector3.zero;
-                    _rigidBody.angularVelocity = Vector3.zero;
+                    _rigidBody.velocity = _stopVelocity;
+                    _rigidBody.angularVelocity = _stopVelocity;
                 }
                 else
                 {
@@ -198,20 +212,26 @@ namespace CT6RIGPR
 
         /// <summary>
         /// Apply force to the Rigidbody.
-        /// Currently copied from the Actuate example
         /// </summary>
         /// <param name="movement">The movement vector to apply force to.</param>
         private void ApplyForce(Vector3 movement)
         {
-            // Apply force to the Rigidbody
-            Vector3 position = gameObject.transform.position;
+            float currentSpeed = _rigidBody.velocity.magnitude;
+            float targetSpeed = movement.magnitude * _maxForce;
+            float speedDifference = targetSpeed - currentSpeed;
 
-            // TODO: Update these values to not include magic numbers (consts plz!)
-            float speed = Mathf.Clamp((_lastPosition - position).magnitude * 2.0f, 0, 1);
-            float force = (_maxForce * -(speed - 1));
-            GetComponent<Rigidbody>().AddForce(movement * force * Time.deltaTime);
+            float forceMultiplier;
+            if (currentSpeed > targetSpeed)
+            {
+                forceMultiplier = Mathf.Lerp(_maxForce, 0, currentSpeed / targetSpeed);
+            }
+            else
+            {
+                forceMultiplier = Mathf.Lerp(0, _maxForce, speedDifference / _maxForce);
+            }
 
-            _lastPosition = position;
+            // Apply scaled force
+            _rigidBody.AddForce(movement.normalized * forceMultiplier, ForceMode.Acceleration);
         }
 
         /// <summary>
