@@ -28,7 +28,7 @@ namespace CT6RIGPR
 
         [SerializeField] private float _gravityModifier = 3f;
 
-        [SerializeField, Range(0.1f, 1f)] private float _accelerationFactor = 1f;
+        [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
 
         [SerializeField] private float _currentSpeed;
 
