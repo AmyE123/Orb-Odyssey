@@ -90,7 +90,7 @@ namespace CT6RIGPR
                 }
 
                 // WIP Gravity fix with falling. Don't want to adjust this for now.
-                //AdjustRigidbodyDrag();
+                AdjustRigidbodyDrag();
 
                 NormalizeRotation();
             }
