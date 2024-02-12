@@ -26,6 +26,9 @@ namespace CT6RIGPR
 
         [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
 
+        [SerializeField] private float gravityModifier = 3f;
+
+
         /// <summary>
         /// The Y rotation of the ball.
         /// </summary>
@@ -64,6 +67,13 @@ namespace CT6RIGPR
 
         private void FixedUpdate()
         {
+            // Apply additional gravity (if needed)
+            if (!Mathf.Approximately(gravityModifier, 1f)) // Check if the gravity modifier is not the default value
+            {
+                Vector3 extraGravityForce = (Physics.gravity * gravityModifier) - Physics.gravity;
+                _rigidBody.AddForce(extraGravityForce, ForceMode.Acceleration);
+            }
+
             Vector3 movement = CalculateMovement();
             _isInputActive = movement != Vector3.zero;
 
@@ -78,7 +88,10 @@ namespace CT6RIGPR
                 {
                     ApplyDamping();
                 }
-                AdjustRigidbodyDrag();
+
+                // WIP Gravity fix with falling. Don't want to adjust this for now.
+                //AdjustRigidbodyDrag();
+
                 NormalizeRotation();
             }
         }

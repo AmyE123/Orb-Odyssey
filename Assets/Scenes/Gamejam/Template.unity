@@ -78927,36 +78927,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBall
       objectReference: {fileID: 0}
-    - target: {fileID: 1240893874344834615, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3406352415944604185, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
       propertyPath: _actuateAgent
       value: 
       objectReference: {fileID: 201493271}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Id
-      value: c5667a53-f818-4dc2-b7cd-52d94d73e575
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Id
-      value: 20877c17-6af1-4438-98b9-7599a6e514c5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation Input
-      objectReference: {fileID: 0}
     - target: {fileID: 5401196234293449611, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
       propertyPath: _gameManager
