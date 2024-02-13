@@ -62,6 +62,11 @@ namespace CT6RIGPR
         #region Game Constants
 
         /// <summary>
+        /// The direction for tube reference.
+        /// </summary>
+        public enum Direction { Forward, Backward }
+
+        /// <summary>
         /// This is the Y offset for the camera used for the camera controller.
         /// </summary>
         public const float CAMERA_Y_OFFSET = 0.2f;
@@ -75,7 +80,7 @@ namespace CT6RIGPR
         /// <summary>
         /// This is the tag for the cockpit object.
         /// </summary>
-        public const string COCKPIT_TAG = "Cockpit";
+        public const string COCKPIT_TAG = "Cockpit";       
 
         #endregion // Game Constants
 

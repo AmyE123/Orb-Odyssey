@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4231275202063645110}
   - component: {fileID: 2772098643459569667}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: Start
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1a5903867c8f0a4a8a94c3fe36dad11, type: 2}
+  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -659,5 +659,3 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _spline: {fileID: 6516714479072268571}
   _speed: 0.1
-  _splineProgress: 0
-  _isFollowing: 0

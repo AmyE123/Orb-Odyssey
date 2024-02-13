@@ -8,6 +8,7 @@ namespace CT6RIGPR
     public class TubeTrigger : MonoBehaviour
     {
         [SerializeField] private SplineFollower _splineFollower;
+        [SerializeField] private Constants.Direction _triggerDirection;
 
         private void Start()
         {
@@ -22,7 +23,7 @@ namespace CT6RIGPR
         {
             if (other.CompareTag(Constants.PLAYER_TAG))
             {
-                _splineFollower.StartFollowing();
+                _splineFollower.ActivateTrigger(_triggerDirection);
             }
         }
     }
