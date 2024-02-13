@@ -9,19 +9,44 @@ namespace CT6RIGPR
     /// </summary>
     public class TubeCreator : MonoBehaviour
     {
-        [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Tube")]
-        private static void CreateTube()
+        [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Tube/One-Way Tube")]
+        private static void CreateOneWayTube()
         {
             string instructionsPath = Constants.TUBE_INSTRUCTIONS_PATH;
             string instructions = File.ReadAllText(instructionsPath);
 
             InstructionsPopup.ShowWindow(instructions);
 
-            GameObject tubePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Constants.TUBE_PREFAB_PATH);
+            GameObject tubePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Constants.ONE_WAY_TUBE_PREFAB_PATH);
 
             if (tubePrefab == null)
             {
-                Debug.LogError("[CT6RIGPR] Prefab not found at path: " + Constants.TUBE_PREFAB_PATH);
+                Debug.LogError("[CT6RIGPR] Prefab not found at path: " + Constants.ONE_WAY_TUBE_PREFAB_PATH);
+                return;
+            }
+
+            GameObject instance = PrefabUtility.InstantiatePrefab(tubePrefab) as GameObject;
+            Selection.activeObject = instance;
+
+            if (instance != null)
+            {
+                SceneView.lastActiveSceneView.FrameSelected();
+            }
+        }
+
+        [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Tube/Two-Way Tube")]
+        private static void CreateTwoWayTube()
+        {
+            string instructionsPath = Constants.TUBE_INSTRUCTIONS_PATH;
+            string instructions = File.ReadAllText(instructionsPath);
+
+            InstructionsPopup.ShowWindow(instructions);
+
+            GameObject tubePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Constants.TWO_WAY_TUBE_PREFAB_PATH);
+
+            if (tubePrefab == null)
+            {
+                Debug.LogError("[CT6RIGPR] Prefab not found at path: " + Constants.TWO_WAY_TUBE_PREFAB_PATH);
                 return;
             }
 
