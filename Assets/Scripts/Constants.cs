@@ -77,6 +77,11 @@ namespace CT6RIGPR
         /// </summary>
         public const string COCKPIT_TAG = "Cockpit";
 
+        /// <summary>
+        /// This is the time that the player takes to respawn when they exit the island boundary.
+        /// </summary>
+        public const float RESPAWN_TIME = 5;
+
         #endregion // Game Constants
 
         #region Editor Paths
