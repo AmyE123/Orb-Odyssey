@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6889449, g: 0.29220134, b: 0.17016158, a: 1}
+  m_IndirectSpecularColor: {r: 0.6889449, g: 0.29220134, b: 0.17016156, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -57085,97 +57085,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bd08d819020fd40d2953ce9123e21cb9, type: 3}
---- !u!1001 &1634429952
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1734473584}
-    m_Modifications:
-    - target: {fileID: 100000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_Name
-      value: Plain02 (29)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_RootOrder
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.68218
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.68218
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.9276966
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 37.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.985
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -42.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7026233
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7026233
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.079501696
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.079501696
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 12.911
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 00bbd5d7ce71b4a11b3bad521fd850b6, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2068120556}
-  m_SourcePrefab: {fileID: 100100000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
---- !u!4 &1634429953 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec,
-    type: 3}
-  m_PrefabInstance: {fileID: 1634429952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1635188351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 2d82a5e123ee0408992b22e6eef93939,
@@ -61004,7 +60913,6 @@ Transform:
   - {fileID: 610808102}
   - {fileID: 1532153078}
   - {fileID: 1677072148}
-  - {fileID: 1634429953}
   - {fileID: 337472282}
   - {fileID: 176575316}
   - {fileID: 1213814999}
@@ -65308,6 +65216,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 550b4684798314bd2a1ec4e33fa3f248, type: 3}
       propertyPath: m_Name
       value: Pillar02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 550b4684798314bd2a1ec4e33fa3f248, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 550b4684798314bd2a1ec4e33fa3f248, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -76521,34 +76433,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1605444098}
   m_SourcePrefab: {fileID: 100100000, guid: e99b4c16419dd47c892e2e2a8df5ef72, type: 3}
---- !u!1 &2068120553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec,
-    type: 3}
-  m_PrefabInstance: {fileID: 1634429952}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2068120556
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068120553}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b1195319650fb4c9e83f1e8dc6e7c6ec, type: 3}
 --- !u!1001 &2070678009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78954,11 +78838,21 @@ PrefabInstance:
       propertyPath: _groundCheckDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5738987482314166013, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6154786919409885688, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
+    - target: {fileID: 6174037603394175682, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: _sticky
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8249625513411246782, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -25,6 +25,7 @@ namespace CT6RIGPR
 
         [Header("Gravity Settings")]
         [SerializeField] private float _gravityModifier = 3f;
+        public Vector3 _ballGravity = Physics.gravity;
         [SerializeField] private float _additionalAirborneGravity = 2f;
         [SerializeField] private float _airborneDrag = 0.1f;
 
@@ -102,7 +103,7 @@ namespace CT6RIGPR
             _grounded = IsGrounded();
 
             // Apply normal gravity when grounded or increased gravity when in the air
-            Vector3 gravityForce = Physics.gravity * (_gravityModifier + (_grounded ? 0 : _additionalAirborneGravity));
+            Vector3 gravityForce = _ballGravity * (_gravityModifier + (_grounded ? 0 : _additionalAirborneGravity));
             _rigidBody.AddForce(gravityForce, ForceMode.Acceleration);
 
             Vector3 movement = CalculateMovement();

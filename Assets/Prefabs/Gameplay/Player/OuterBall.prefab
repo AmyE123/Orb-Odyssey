@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4446039965040703664}
   - component: {fileID: 7049926200131099503}
   - component: {fileID: 4797717909770284703}
+  - component: {fileID: 2515806764784101881}
   m_Layer: 0
   m_Name: OuterBall
   m_TagString: Player
@@ -150,16 +151,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxForce: 30
   _yRotation: 0
+  _stopDampingDuration: 5
+  _threshold: 2
+  _accelerationFactor: 1
+  _dragMin: 0.5
+  _dragMax: 5
+  _gravityModifier: 3
+  _additionalAirborneGravity: 2
+  _airborneDrag: 0.1
+  _minimalVelocity: 0
+  _stopVelocity: {x: 0, y: 0, z: 0}
   _debugInput: 1
   _disableInput: 0
   _gameManager: {fileID: 0}
-  _stopDampingDuration: 5
-  _threshold: 2
-  _dragMin: 0.5
-  _dragMax: 5
-  _minimalVelocity: 0
-  _stopVelocity: {x: 0, y: 0, z: 0}
-  gravityModifier: 10
+  _grounded: 0
+  _groundCheckDistance: 1
+  _currentSpeed: 0
 --- !u!114 &7049926200131099503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +191,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfba1dc18a60a8a4f931127223a1a2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2515806764784101881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700130092045808953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sticky: 0
+  _speed: 0
+  _freeze: 0
+  _slow: 0
