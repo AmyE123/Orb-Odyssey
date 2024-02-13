@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class BridgeButton : MonoBehaviour
 {
-    [SerializeField] private Animator buttonAnimator;
+    [SerializeField] private Animator section1Animator;
     [SerializeField] private AudioSource buttonSource;
-    private bool isRaised;
+    public bool section3IsRaised;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isRaised == false)
+        if (collision.gameObject.CompareTag("Player") && section3IsRaised == false)
         {
-            buttonAnimator.SetTrigger("RaiseSection");
-            isRaised = true;
+            //Section1
+            section1Animator.SetTrigger("RaiseSection");
+            section3IsRaised = true;
             buttonSource.Play();
         }
 
-        else if (collision.gameObject.CompareTag("Player") && isRaised == true)
+        else if (collision.gameObject.CompareTag("Player") && section3IsRaised == true)
         {
-            buttonAnimator.SetTrigger("LowerSection");
-            isRaised = false;
+            //Section1
+            section1Animator.SetTrigger("LowerSection");
+            section3IsRaised = false;
             buttonSource.Play();
         }
     }

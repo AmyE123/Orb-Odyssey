@@ -26,7 +26,7 @@ namespace CT6RIGPR
         private void Update()
         {
             _pickupCount.text = _gameManager.PickupCount.ToString();
-            _speedValue.text = _gameManager.GlobalReferences.BallController.CurrentSpeed.ToString("F1");
+          //  _speedValue.text = _gameManager.GlobalReferences.BallController.CurrentSpeed.ToString("F1");
         }
     }
 }

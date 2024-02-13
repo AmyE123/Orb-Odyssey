@@ -106,7 +106,7 @@ namespace CT6RIGPR
             if (_debugInput) // Use this condition if you want the log to appear only when debug input is enabled
             {
                 _currentSpeed = _rigidBody.velocity.magnitude;
-                Debug.Log($"Current Speed: {_currentSpeed}");
+                //Debug.Log($"Current Speed: {_currentSpeed}");
             }
         }
 
