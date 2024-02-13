@@ -6,7 +6,7 @@ namespace CT6RIGPR
     /// <summary>
     /// Used for the tube mechanic to move the player along a spline and disable their movement controls.
     /// </summary>
-    public class SplineFollower : MonoBehaviour
+    public class TubeFollower : MonoBehaviour
     {
         private BallController _ballController;
         private float _splineProgress = 0f;
@@ -60,7 +60,7 @@ namespace CT6RIGPR
 
         private void UpdateMovement()
         {
-            TubeSpline spline = _spline.GetComponent<TubeSpline>();
+            RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
 
             if (_activeMovingDirection == Direction.Forward)
             {
@@ -93,7 +93,7 @@ namespace CT6RIGPR
             _isFollowing = false;
             _ballController.EnableInput();
 
-            TubeSpline spline = _spline.GetComponent<TubeSpline>();
+            RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
             if (_activeMovingDirection == Direction.Forward)
             {
                 _splineProgress = 1f;

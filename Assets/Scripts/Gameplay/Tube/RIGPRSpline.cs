@@ -7,7 +7,7 @@ namespace CT6RIGPR
     /// <summary>
     /// Additional functionalities for splines to help with Tube functionality.
     /// </summary>
-    public class TubeSpline : MonoBehaviour
+    public class RIGPRSpline : MonoBehaviour
     {
         private Spline _spline;
 
