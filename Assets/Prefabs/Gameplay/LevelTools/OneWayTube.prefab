@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 7574915708578399444}
   - component: {fileID: 978906821667688830}
   m_Layer: 0
-  m_Name: Tube
+  m_Name: OneWayTube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

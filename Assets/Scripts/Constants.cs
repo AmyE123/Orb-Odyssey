@@ -94,7 +94,12 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the tube asset for loading it in in-editor.
         /// </summary>
-        public const string TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Tube.prefab";
+        public const string TWO_WAY_TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TwoWayTube.prefab";
+
+        /// <summary>
+        /// A string to the tube asset for loading it in in-editor.
+        /// </summary>
+        public const string ONE_WAY_TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/OneWayTube.prefab";
 
         /// <summary>
         /// A string to the tube instructions text files for loading it in in-editor.
