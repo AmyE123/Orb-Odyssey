@@ -20,13 +20,13 @@ namespace CT6RIGPR
         /// </summary>
         public void SetPickupTotal()
         {
-            _pickupTotal.text = _gameManager.PickupTotal.ToString();
+            _pickupTotal.text = _gameManager.CollectableTotal.ToString();
         }
 
         // Update is called once per frame
         private void Update()
         {
-            _pickupCount.text = _gameManager.PickupCount.ToString();
+            _pickupCount.text = _gameManager.CollectableCount.ToString();
             _speedValue.text = _gameManager.GlobalReferences.BallController.CurrentSpeed.ToString("F1");
             _groundedValue.text = _gameManager.GlobalReferences.BallController.Grounded.ToString();
         }

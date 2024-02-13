@@ -6,16 +6,16 @@ namespace CT6RIGPR
     /// <summary>
     /// A tool for creating new pickups in the game.
     /// </summary>
-    public class PickupCreator : MonoBehaviour
+    public class CollectableCreator : MonoBehaviour
     {
-        [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Pickup")]
+        [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Collectable")]
         private static void CreatePickup()
         {
-            GameObject pickupPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Constants.PICKUP_PREFAB_PATH);
+            GameObject pickupPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Constants.COLLECTABLE_PREFAB_PATH);
 
             if (pickupPrefab == null)
             {
-                Debug.LogError("[CT6RIGPR] Prefab not found at path: " + Constants.PICKUP_PREFAB_PATH);
+                Debug.LogError("[CT6RIGPR] Prefab not found at path: " + Constants.COLLECTABLE_PREFAB_PATH);
                 return;
             }
 

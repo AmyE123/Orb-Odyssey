@@ -129,7 +129,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the pickup asset for loading it in in-editor.
         /// </summary>
-        public const string PICKUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
+        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Collectable.prefab";
 
         #endregion // Editor Paths
     }
