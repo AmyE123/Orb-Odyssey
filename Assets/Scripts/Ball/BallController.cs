@@ -215,6 +215,7 @@ namespace CT6RIGPR
             // Calculate and return the movement vector
             float moveHorizontal = 0.0f;
             float moveVertical = 0.0f;
+            float moveAltitude = 0.0f;
 
             if (!_disableInput)
             {
@@ -239,17 +240,28 @@ namespace CT6RIGPR
                     {
                         moveVertical--;
                     }
+					//if (Input.mouseScrollDelta.y > 0)
+					if (Input.GetKey(KeyCode.LeftShift))
+					{
+						moveAltitude++;
+                    }
+                    //if (Input.mouseScrollDelta.y < 0)
+					if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        moveAltitude--;
+                    }
                 }
                 else
                 {
                     moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
                     moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+                    //Write input to use the VR controller joystick for altitude changes.
 
                 }
 
                 if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
                 {
-                    Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+                    Vector3 movement = new Vector3(moveHorizontal, moveAltitude, moveVertical);
                     movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
                     return movement;
                 }
@@ -259,7 +271,7 @@ namespace CT6RIGPR
             Vector3 forward = cameraTransform.forward;
             forward.y = 0;
             Vector3 right = cameraTransform.right;
-            Vector3 adjustedMovement = (forward * moveVertical + right * moveHorizontal).normalized;
+            Vector3 adjustedMovement = (forward * moveVertical + Vector3.up * moveAltitude + right * moveHorizontal).normalized;
 
             return adjustedMovement * _maxForce;
         }
