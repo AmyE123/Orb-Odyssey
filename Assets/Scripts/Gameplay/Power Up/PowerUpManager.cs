@@ -16,7 +16,7 @@ public class PowerUpManager: MonoBehaviour
     private bool _slowEnabled;
 
     private bool isSticking;
-    GameObject stuckObject;
+//    GameObject stuckObject;
 
     private IEnumerator disableStickyCoroutine;
 
@@ -55,11 +55,15 @@ public class PowerUpManager: MonoBehaviour
             useSticky();
         }
 
-        if (isSticking && !Physics.Raycast(transform.position, transform.position - stuckObject.transform.position, 1.5f))
-        {
-            Debug.DrawLine(transform.position, transform.position - stuckObject.transform.position, Color.red);
+		if (isSticking && !Physics.Linecast(transform.position, transform.position + (_ballController._ballGravity * 1.1f)))
+		{
+//			Debug.DrawLine(transform.position, transform.position - stuckObject.transform.position, Color.red);
             _ballController._ballGravity = Physics.gravity;
             GetComponent<Rigidbody>().useGravity = true;
+
+
+//            Vector3 lineDirection = transform.position - stuckObject.transform.position;
+//            Debug.Log(lineDirection.x + " " + lineDirection.y + " " + lineDirection.z);
             Debug.Log("Raycast not coliding");
         }
     }
@@ -73,7 +77,7 @@ public class PowerUpManager: MonoBehaviour
 
             GetComponent<Rigidbody>().useGravity = false;
             isSticking = true;
-            stuckObject = collision.gameObject;
+//            stuckObject = collision.gameObject;
         }
     }
 
