@@ -13,7 +13,7 @@ namespace CT6RIGPR
         private bool _isInputActive = false;
 
         [Header("Movement Settings")]
-        [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
+        [SerializeField] public float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] public float _yRotation = 0;
         [SerializeField] private float _stopDampingDuration = 1.0f;
         [SerializeField] private float _threshold = 3f;
@@ -240,12 +240,10 @@ namespace CT6RIGPR
                     {
                         moveVertical--;
                     }
-					//if (Input.mouseScrollDelta.y > 0)
 					if (Input.GetKey(KeyCode.LeftShift))
 					{
 						moveAltitude++;
                     }
-                    //if (Input.mouseScrollDelta.y < 0)
 					if (Input.GetKey(KeyCode.LeftControl))
                     {
                         moveAltitude--;

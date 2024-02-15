@@ -26,12 +26,17 @@ namespace CT6RIGPR
         /// <summary>
         /// The default max force for the monkey ball.
         /// </summary>
-        public const int BALL_DEFAULT_MAX_FORCE = 500;
+        public const int BALL_DEFAULT_MAX_FORCE = 20;
 
-        /// <summary>
-        /// The roll clamp for the cockpit.
-        /// </summary>
-        public const float ROLL_CLAMP = 16.8f;
+		/// <summary>
+		/// The default max sped up force for the monkey ball.
+		/// </summary>
+		public const int BALL_DEFAULT_MAX_BUFFED_FORCE = 40;
+
+		/// <summary>
+		/// The roll clamp for the cockpit.
+		/// </summary>
+		public const float ROLL_CLAMP = 16.8f;
 
         /// <summary>
         /// The pitch positive clamp for the cockpit.
