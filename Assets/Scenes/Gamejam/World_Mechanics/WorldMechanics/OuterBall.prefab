@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 498105d2a288aa346af312e94eef61a5, type: 2}
+  - {fileID: 2100000, guid: df84df0bc8128c646beb3d3398ced0ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   _disableInput: 0
   _gameManager: {fileID: 0}
   _grounded: 0
-  _groundCheckDistance: 1
+  _groundCheckDistance: 0.1
   _currentSpeed: 0
 --- !u!114 &7049926200131099503
 MonoBehaviour:

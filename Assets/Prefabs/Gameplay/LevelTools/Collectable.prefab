@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab7ad07c9a7c9f40a9e9bbd5522b044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickupData: {fileID: 11400000, guid: 2199cb9728c3b464c9a8f2f12fd3a459, type: 2}
+  _collectableData: {fileID: 11400000, guid: 2199cb9728c3b464c9a8f2f12fd3a459, type: 2}
 --- !u!82 &9211842386389488402
 AudioSource:
   m_ObjectHideFlags: 0

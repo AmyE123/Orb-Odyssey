@@ -225,11 +225,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OuterBall
       objectReference: {fileID: 0}
-    - target: {fileID: 4446039965040703664, guid: c53256e1bd70dba42a42f864ee9c9125,
-        type: 3}
-      propertyPath: _groundCheckDistance
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 5261480439909761204, guid: c53256e1bd70dba42a42f864ee9c9125,
         type: 3}
       propertyPath: m_LocalPosition.x
