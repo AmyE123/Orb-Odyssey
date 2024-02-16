@@ -12,24 +12,37 @@ namespace CT6RIGPR
         private Rigidbody _rigidBody;
         private bool _isInputActive = false;
 
+        [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
         [SerializeField] public float _yRotation = 0;
+        [SerializeField] private float _stopDampingDuration = 1.0f;
+        [SerializeField] private float _threshold = 3f;
+        [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
+
+        [Header("Drag Settings")]
+        [SerializeField] private float _dragMin = 0.5f;
+        [SerializeField] private float _dragMax = 5f;
+
+        [Header("Gravity Settings")]
+        [SerializeField] private float _gravityModifier = 3f;
+        [SerializeField] private float _additionalAirborneGravity = 2f;
+        [SerializeField] private float _airborneDrag = 0.1f;
+
+        [Header("Velocity Settings")]
+        [SerializeField] private float _minimalVelocity = 0f;
+        [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
+
+
+        [Header("Debug and Input Settings")]
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
         [SerializeField] private GameManager _gameManager;
-        [SerializeField] private float _stopDampingDuration = 1.0f;
-        [SerializeField] private float _threshold = 3f;
 
-        [SerializeField] private float _dragMin = 0.5f;
-        [SerializeField] private float _dragMax = 5f;
-        [SerializeField] private float _minimalVelocity = 0f;
+        [Header("Ground Check Settings")]
+        [SerializeField] private bool _grounded;
+        [SerializeField] private float _groundCheckDistance = 1f;
 
-        [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
-
-        [SerializeField] private float _gravityModifier = 3f;
-
-        [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
-
+        [Header("Runtime Values")]
         [SerializeField] private float _currentSpeed;
 
         /// <summary>
@@ -53,6 +66,11 @@ namespace CT6RIGPR
         public float CurrentSpeed => _currentSpeed;
 
         /// <summary>
+        /// Whether the ball is grounded or not.
+        /// </summary>
+        public bool Grounded => _grounded;
+
+        /// <summary>
         /// Disables the players input.
         /// </summary>
         public void DisableInput()
@@ -73,14 +91,19 @@ namespace CT6RIGPR
             _yRotation = 0;
         }
 
+        private bool IsGrounded()
+        {
+            Debug.DrawLine(transform.position, -Vector3.up * _groundCheckDistance, Color.red);
+            return Physics.Raycast(transform.position, -Vector3.up, _groundCheckDistance);
+        }
+
         private void FixedUpdate()
         {
-            // Apply additional gravity (if needed)
-            if (!Mathf.Approximately(_gravityModifier, 1f)) // Check if the gravity modifier is not the default value
-            {
-                Vector3 extraGravityForce = (Physics.gravity * _gravityModifier) - Physics.gravity;
-                _rigidBody.AddForce(extraGravityForce, ForceMode.Acceleration);
-            }
+            _grounded = IsGrounded();
+
+            // Apply normal gravity when grounded or increased gravity when in the air
+            Vector3 gravityForce = Physics.gravity * (_gravityModifier + (_grounded ? 0 : _additionalAirborneGravity));
+            _rigidBody.AddForce(gravityForce, ForceMode.Acceleration);
 
             Vector3 movement = CalculateMovement();
             _isInputActive = movement != Vector3.zero;
@@ -92,21 +115,24 @@ namespace CT6RIGPR
                 {
                     ApplyForce(movement);
                 }
+                else if (!_grounded)
+                {
+                    // Optionally adjust drag here for airborne state
+                    _rigidBody.drag = _airborneDrag; // Set _airborneDrag to a desired value
+                }
                 else
                 {
                     ApplyDamping();
                 }
 
-                // WIP Gravity fix with falling. Don't want to adjust this for now.
                 AdjustRigidbodyDrag();
 
                 NormalizeRotation();
             }
 
-            if (_debugInput) // Use this condition if you want the log to appear only when debug input is enabled
+            if (_debugInput)
             {
                 _currentSpeed = _rigidBody.velocity.magnitude;
-                //Debug.Log($"Current Speed: {_currentSpeed}");
             }
         }
 

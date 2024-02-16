@@ -62,6 +62,11 @@ namespace CT6RIGPR
         #region Game Constants
 
         /// <summary>
+        /// The direction for tube reference.
+        /// </summary>
+        public enum Direction { Forward, Backward }
+
+        /// <summary>
         /// This is the Y offset for the camera used for the camera controller.
         /// </summary>
         public const float CAMERA_Y_OFFSET = 0.2f;
@@ -75,7 +80,7 @@ namespace CT6RIGPR
         /// <summary>
         /// This is the tag for the cockpit object.
         /// </summary>
-        public const string COCKPIT_TAG = "Cockpit";
+        public const string COCKPIT_TAG = "Cockpit";       
 
         #endregion // Game Constants
 
@@ -89,7 +94,12 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the tube asset for loading it in in-editor.
         /// </summary>
-        public const string TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Tube.prefab";
+        public const string TWO_WAY_TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TwoWayTube.prefab";
+
+        /// <summary>
+        /// A string to the tube asset for loading it in in-editor.
+        /// </summary>
+        public const string ONE_WAY_TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/OneWayTube.prefab";
 
         /// <summary>
         /// A string to the tube instructions text files for loading it in in-editor.
@@ -102,9 +112,24 @@ namespace CT6RIGPR
         public const string JUMPPAD_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/JumpPad.prefab";
 
         /// <summary>
+        /// A string to the impact wall asset for loading it in in-editor.
+        /// </summary>
+        public const string IMPACT_WALL_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/ImpactWall.prefab";
+
+        /// <summary>
+        /// A string to the moving platform asset for loading it in in-editor.
+        /// </summary>
+        public const string MOVING_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/MovingPlatform.prefab";
+
+        /// <summary>
+        /// A string to the button moving platform asset for loading it in in-editor.
+        /// </summary>
+        public const string BUTTON_MOVING_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/ButtonMovingPlatform.prefab";
+
+        /// <summary>
         /// A string to the pickup asset for loading it in in-editor.
         /// </summary>
-        public const string PICKUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
+        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Collectable.prefab";
 
         #endregion // Editor Paths
     }
