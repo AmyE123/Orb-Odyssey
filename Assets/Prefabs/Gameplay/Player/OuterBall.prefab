@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4531203671024143753}
   - component: {fileID: 4099291764604675526}
   - component: {fileID: 4446039965040703664}
+  - component: {fileID: 2515806764784101881}
   - component: {fileID: 7049926200131099503}
   - component: {fileID: 4797717909770284703}
-  - component: {fileID: 2515806764784101881}
   m_Layer: 0
   m_Name: OuterBall
   m_TagString: Player
@@ -157,8 +157,9 @@ MonoBehaviour:
   _dragMin: 0.5
   _dragMax: 5
   _gravityModifier: 3
+  _ballGravity: {x: 0, y: -9, z: 0}
   _additionalAirborneGravity: 2
-  _airborneDrag: 0.1
+  _airborneDrag: 10
   _minimalVelocity: 0
   _stopVelocity: {x: 0, y: 0, z: 0}
   _debugInput: 1
@@ -167,6 +168,22 @@ MonoBehaviour:
   _grounded: 0
   _groundCheckDistance: 1
   _currentSpeed: 0
+--- !u!114 &2515806764784101881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700130092045808953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sticky: 1
+  _speed: 0
+  _freeze: 0
+  _slow: 0
 --- !u!114 &7049926200131099503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,19 +208,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfba1dc18a60a8a4f931127223a1a2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2515806764784101881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700130092045808953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sticky: 0
-  _speed: 0
-  _freeze: 0
-  _slow: 0

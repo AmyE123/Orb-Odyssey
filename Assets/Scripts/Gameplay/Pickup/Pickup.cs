@@ -19,7 +19,7 @@ namespace CT6RIGPR
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") && !_hasBeenPickedUp)
+            if (other.CompareTag(Constants.PLAYER_TAG) && !_hasBeenPickedUp)
             {
                 _hasBeenPickedUp = true;
                 PickupObject();

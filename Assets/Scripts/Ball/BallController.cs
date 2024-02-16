@@ -13,8 +13,8 @@ namespace CT6RIGPR
         private bool _isInputActive = false;
 
         [Header("Movement Settings")]
-        [SerializeField] public float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
-        [SerializeField] public float _yRotation = 0;
+        [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
+        [SerializeField] private float _yRotation = 0;
         [SerializeField] private float _stopDampingDuration = 1.0f;
         [SerializeField] private float _threshold = 3f;
         [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
@@ -86,6 +86,19 @@ namespace CT6RIGPR
         {
             _disableInput = false;
         }
+
+        /// <summary>
+        /// A function to change the max force of the ball.
+        /// </summary>
+        /// <param name="newMaxForce">The new value of the max force.</param>
+        public void ChangeMaxForce(int newMaxForce)
+        {
+            if (newMaxForce != _maxForce)
+            { 
+                _maxForce = newMaxForce;
+            }
+        }
+
         private void Start()
         {
             _rigidBody = GetComponent<Rigidbody>();

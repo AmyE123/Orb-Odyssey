@@ -44,42 +44,42 @@ PrefabInstance:
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_PositionInput.m_Action.m_Id
-      value: e35db8d6-450c-433f-837b-1a9fb1e4baf8
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_RotationInput.m_Action.m_Id
-      value: c5dc9b31-9c88-4b1d-8a7f-c4da11c9debe
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_PositionInput.m_Action.m_ExpectedControlType
-      value: Vector3
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_RotationInput.m_Action.m_ExpectedControlType
-      value: Quaternion
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
       propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 658955109693883137, guid: cddbaa42ee78a3943a6084d847bffb46,
         type: 3}
@@ -229,6 +229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _groundCheckDistance
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678112305940813917, guid: c53256e1bd70dba42a42f864ee9c9125,
+        type: 3}
+      propertyPath: _sticky
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5261480439909761204, guid: c53256e1bd70dba42a42f864ee9c9125,
         type: 3}

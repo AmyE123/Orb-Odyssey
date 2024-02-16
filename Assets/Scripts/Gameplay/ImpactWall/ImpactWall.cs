@@ -21,7 +21,7 @@ namespace CT6RIGPR
         private void OnTriggerEnter(Collider other)
         {
             // Check if the collider belongs to the player
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(Constants.PLAYER_TAG))
             {
                 PlayParticles();
                 BreakWall();
