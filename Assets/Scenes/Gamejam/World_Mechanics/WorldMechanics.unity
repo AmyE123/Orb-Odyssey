@@ -52685,6 +52685,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 33f8ea52c4c7a6743be89ae4dd5ac8e9, type: 3}
+--- !u!4 &1488890021 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3047080411317297696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1490348230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55295,6 +55301,7 @@ Transform:
   - {fileID: 54679487}
   - {fileID: 2819857330959172157}
   - {fileID: 1224276120}
+  - {fileID: 1488890021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1538349413
@@ -80155,6 +80162,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7911260650595424026}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3047080411317297696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1538167106}
+    m_Modifications:
+    - target: {fileID: 3418113904911073497, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_Name
+      value: Powerup_Sticky
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.676194
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2752976
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5048258
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151426447300189259, guid: 449eb85606227cc47ac5b82d6103e2fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 449eb85606227cc47ac5b82d6103e2fc, type: 3}
 --- !u!1001 &3847228530500373751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80178,21 +80253,6 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
-    - target: {fileID: 5401196234293449611, guid: 4503f426b1b684b45bd661293ca8fe43,
-        type: 3}
-      propertyPath: _airborneDrag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 4503f426b1b684b45bd661293ca8fe43,
-        type: 3}
-      propertyPath: _accelerationFactor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 4503f426b1b684b45bd661293ca8fe43,
-        type: 3}
-      propertyPath: _groundCheckDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6154786919409885688, guid: 4503f426b1b684b45bd661293ca8fe43,
         type: 3}
       propertyPath: _gameManager

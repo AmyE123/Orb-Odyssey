@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cockpit
   - Pickup
+  - Wall
   layers:
   - Default
   - TransparentFX

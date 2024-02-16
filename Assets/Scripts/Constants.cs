@@ -26,12 +26,17 @@ namespace CT6RIGPR
         /// <summary>
         /// The default max force for the monkey ball.
         /// </summary>
-        public const int BALL_DEFAULT_MAX_FORCE = 500;
+        public const int BALL_DEFAULT_MAX_FORCE = 20;
 
-        /// <summary>
-        /// The roll clamp for the cockpit.
-        /// </summary>
-        public const float ROLL_CLAMP = 16.8f;
+		/// <summary>
+		/// The default max sped up force for the monkey ball.
+		/// </summary>
+		public const int BALL_DEFAULT_MAX_BUFFED_FORCE = 40;
+
+		/// <summary>
+		/// The roll clamp for the cockpit.
+		/// </summary>
+		public const float ROLL_CLAMP = 16.8f;
 
         /// <summary>
         /// The pitch positive clamp for the cockpit.
@@ -62,6 +67,11 @@ namespace CT6RIGPR
         #region Game Constants
 
         /// <summary>
+        /// The different powerups which we have.
+        /// </summary>
+        public enum PowerupType { Sticky, Fast, Slow, Freeze }
+
+        /// <summary>
         /// The direction for tube reference.
         /// </summary>
         public enum Direction { Forward, Backward }
@@ -80,7 +90,17 @@ namespace CT6RIGPR
         /// <summary>
         /// This is the tag for the cockpit object.
         /// </summary>
-        public const string COCKPIT_TAG = "Cockpit";       
+        public const string COCKPIT_TAG = "Cockpit";
+
+        /// <summary>
+        /// The default duration of a powerup.
+        /// </summary>
+        public const float POWERUP_DEFAULT_DURATION = 10f;
+
+        /// <summary>
+        /// The default amount of charges a powerup has.
+        /// </summary>
+        public const int DEFAULT_POWERUP_CHARGES = 10;
 
         #endregion // Game Constants
 
@@ -90,6 +110,11 @@ namespace CT6RIGPR
         /// A string of the menu item path for level tools
         /// </summary>
         public const string LEVEL_TOOLS_MENU_ITEM_PATH = "Tools/CT6RIGPR/Level Tools/";
+
+        /// <summary>
+        /// A string of the menu item path for powerups
+        /// </summary>
+        public const string POWERUP_TOOLS_MENU_ITEM_PATH = "Tools/CT6RIGPR/Powerups/";
 
         /// <summary>
         /// A string to the tube asset for loading it in in-editor.
@@ -129,7 +154,22 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the pickup asset for loading it in in-editor.
         /// </summary>
-        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Collectable.prefab";
+        public const string PICKUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
+
+        /// <summary>
+        /// A string to the sticky powerup asset for loading it in in-editor.
+        /// </summary>
+        public const string STICKY_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Sticky.prefab";
+
+        /// <summary>
+        /// A string to the slow powerup asset for loading it in in-editor.
+        /// </summary>
+        public const string SLOW_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Slow.prefab";
+
+        /// <summary>
+        /// A string to the fast powerup asset for loading it in in-editor.
+        /// </summary>
+        public const string FAST_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Fast.prefab";
 
         #endregion // Editor Paths
     }

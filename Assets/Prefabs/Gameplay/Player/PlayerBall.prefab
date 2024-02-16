@@ -41,6 +41,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8249625513411246782}
     m_Modifications:
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Id
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Id
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_PositionInput.m_Action.m_ExpectedControlType
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_RotationInput.m_Action.m_ExpectedControlType
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658955109693883137, guid: 48ffad2c5681ac543bc99463ab916648,
+        type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3432738762391516127, guid: 48ffad2c5681ac543bc99463ab916648,
         type: 3}
       propertyPath: m_Name
