@@ -152,9 +152,9 @@ namespace CT6RIGPR
         public const string BUTTON_MOVING_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/ButtonMovingPlatform.prefab";
 
         /// <summary>
-        /// A string to the pickup asset for loading it in in-editor.
+        /// A string to the collectable asset for loading it in in-editor.
         /// </summary>
-        public const string PICKUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
+        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
 
         /// <summary>
         /// A string to the sticky powerup asset for loading it in in-editor.

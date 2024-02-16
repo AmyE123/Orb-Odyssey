@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db4456dfb38b4014f8c676bc943e4efa, type: 3}
-  m_Name: Pickup Data
+  m_Name: Collectable Data
   m_EditorClassIdentifier: 
   ShrinkDuration: 0.5
   DestroyDelay: 3

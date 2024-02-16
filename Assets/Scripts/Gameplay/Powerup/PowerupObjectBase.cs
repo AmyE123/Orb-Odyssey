@@ -6,14 +6,22 @@ namespace CT6RIGPR
     public abstract class PowerupObjectBase : MonoBehaviour
     {
         bool _hasBeenPickedUp = false;
-        [SerializeField] private PickupData _pickupData;
+        private AudioSource _audioSource;
+        [SerializeField] private CollectableData _collectableData;
+
+        private void Start()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
 
         protected virtual void PickUpPowerup(Collider player)
         {
-            transform.DOScale(Vector3.zero, _pickupData.ShrinkDuration)
+            _audioSource.PlayOneShot(_collectableData.CollectableClip);
+
+            transform.DOScale(Vector3.zero, _collectableData.ShrinkDuration)
             .OnComplete(() => {
-                Destroy(gameObject, _pickupData.DestroyDelay);
-            }).SetEase(_pickupData.ShrinkEase);
+                Destroy(gameObject, _collectableData.DestroyDelay);
+            }).SetEase(_collectableData.ShrinkEase);
         }
 
         protected virtual void OnTriggerEnter(Collider other)

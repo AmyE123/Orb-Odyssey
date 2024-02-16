@@ -3,13 +3,13 @@ namespace CT6RIGPR
     using UnityEngine;
     using DG.Tweening;
 
-    public class Pickup : MonoBehaviour
+    public class Collectable : MonoBehaviour
     {
         private bool _hasBeenPickedUp = false;
         private AudioSource _audioSource;
         private GameManager _gameManager;
 
-        [SerializeField] private PickupData _pickupData;
+        [SerializeField] private CollectableData _collectableData;
 
         private void Start()
         {
@@ -29,13 +29,13 @@ namespace CT6RIGPR
 
         private void PickupObject()
         {
-            _gameManager.IncrementPickupCount();
-            _audioSource.PlayOneShot(_pickupData.PickupClip);
+            _gameManager.IncrementCollectableCount();
+            _audioSource.PlayOneShot(_collectableData.CollectableClip);
 
-            transform.DOScale(Vector3.zero, _pickupData.ShrinkDuration)
+            transform.DOScale(Vector3.zero, _collectableData.ShrinkDuration)
                 .OnComplete(() => {
-                    Destroy(gameObject, _pickupData.DestroyDelay);
-                }).SetEase(_pickupData.ShrinkEase);
+                    Destroy(gameObject, _collectableData.DestroyDelay);
+                }).SetEase(_collectableData.ShrinkEase);
         }
     }
 }
