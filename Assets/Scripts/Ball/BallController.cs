@@ -71,6 +71,12 @@ namespace CT6RIGPR
         /// </summary>
         public bool Grounded => _grounded;
 
+		/// <summary>
+		/// The max force of the ball.
+		/// </summary>
+		public float MaxForce => _maxForce;
+
+
         /// <summary>
         /// Disables the players input.
         /// </summary>
@@ -91,7 +97,7 @@ namespace CT6RIGPR
         /// A function to change the max force of the ball.
         /// </summary>
         /// <param name="newMaxForce">The new value of the max force.</param>
-        public void ChangeMaxForce(int newMaxForce)
+        public void ChangeMaxForce(float newMaxForce)
         {
             if (newMaxForce != _maxForce)
             { 
