@@ -34,6 +34,11 @@ namespace CT6RIGPR
 		public const int BALL_DEFAULT_MAX_BUFFED_FORCE = 40;
 
 		/// <summary>
+		/// The default max sped up force for the monkey ball.
+		/// </summary>
+		public const int BALL_DEFAULT_MAX_SLOWED_FORCE = 10;
+
+		/// <summary>
 		/// The roll clamp for the cockpit.
 		/// </summary>
 		public const float ROLL_CLAMP = 16.8f;
@@ -184,7 +189,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A string to the collectable asset for loading it in in-editor.
         /// </summary>
-        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Pickup.prefab";
+        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Collectable.prefab";
 
         /// <summary>
         /// A string to the swinging obstacle asset for loading it in in-editor.
