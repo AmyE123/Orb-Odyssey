@@ -10151,7 +10151,7 @@ Transform:
   m_GameObject: {fileID: 503633123}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.43156704, z: -0, w: 0.9020809}
-  m_LocalPosition: {x: 26.917507, y: 2.2513, z: 28.854736}
+  m_LocalPosition: {x: 26.08, y: 2.2513, z: 33.54}
   m_LocalScale: {x: 0.412324, y: 0.412324, z: 0.412324}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36669,6 +36669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ballController: {fileID: 2016643683}
+  _checkpoints: []
   _cameraController: {fileID: 2009949709}
   _uiManager: {fileID: 1452167492}
 --- !u!114 &1744154183
