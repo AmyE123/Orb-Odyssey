@@ -59,7 +59,6 @@ namespace CT6RIGPR
                 //wait for the frame to end
                 yield return null;
             }
-
         }
 
         private GameObject FindCheckpoint()
@@ -92,7 +91,6 @@ namespace CT6RIGPR
 			_blackSquare.GetComponent<RawImage>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 			//Reenable movement.
 			_ballController.EnableInput();
-
         }
         private void OnTriggerExit(Collider collider)
         {
