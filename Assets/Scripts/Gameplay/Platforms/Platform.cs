@@ -6,7 +6,7 @@ namespace CT6RIGPR
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(Constants.PLAYER_TAG))
             {
                 other.transform.SetParent(transform);
             }
@@ -14,7 +14,7 @@ namespace CT6RIGPR
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(Constants.PLAYER_TAG))
             {
                 other.transform.SetParent(null);
             }

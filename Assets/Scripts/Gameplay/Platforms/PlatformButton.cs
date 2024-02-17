@@ -10,7 +10,7 @@ namespace CT6RIGPR
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(Constants.PLAYER_TAG))
             {
                 _buttonMR.material = _buttonPressedMat;
                 _platform.SetMovingPlatformActive();
