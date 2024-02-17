@@ -13,7 +13,7 @@ namespace CT6RIGPR
         {
             if (other.attachedRigidbody != null)
             {
-                other.attachedRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
+                other.attachedRigidbody.AddForce(transform.up * _jumpForce, ForceMode.VelocityChange);
             }
         }
     }

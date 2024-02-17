@@ -176,11 +176,16 @@ namespace CT6RIGPR
         /// </summary>
         public const string SLOW_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Slow.prefab";
 
-        /// <summary>
-        /// A string to the fast powerup asset for loading it in in-editor.
-        /// </summary>
-        public const string FAST_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Fast.prefab";
+		/// <summary>
+		/// A string to the fast powerup asset for loading it in in-editor.
+		/// </summary>
+		public const string FAST_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Fast.prefab";
 
+		/// <summary>
+		/// A string to the fast powerup asset for loading it in in-editor.
+		/// </summary>
+		public const string FREEZE_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Freeze.prefab";
+		
         #endregion // Editor Paths
-    }
+	}
 }

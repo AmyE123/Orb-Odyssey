@@ -86,6 +86,9 @@ namespace CT6RIGPR
                 case PowerupType.Slow:
                     _slowCharges++;
                     break;
+                case PowerupType.Freeze:
+                    _freezeCharges++;
+                    break;
             }
         }
 
