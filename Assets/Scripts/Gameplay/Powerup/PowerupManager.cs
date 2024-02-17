@@ -27,7 +27,8 @@ namespace CT6RIGPR
 		[SerializeField] private float _slowDuration = Constants.POWERUP_DEFAULT_DURATION;
 		[SerializeField] private float _freezeDuration = Constants.POWERUP_DEFAULT_DURATION;
 
-        [SerializeField] private float _buffedForce = BALL_DEFAULT_MAX_BUFFED_FORCE;
+		[SerializeField] private float _buffedForce = BALL_DEFAULT_MAX_BUFFED_FORCE;
+		[SerializeField] private float _slowedForce = BALL_DEFAULT_MAX_SLOWED_FORCE;
 		[SerializeField] private BallController _ballController;
 
         GameObject[] _bodiesOfWater;
@@ -127,7 +128,7 @@ namespace CT6RIGPR
                     _slowEnabled = true;
                     _slowCharges--;
                     // TODO: Note for Layla - Update with whatever force we are using for slowdown
-                    _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_FORCE / 2);
+                    _ballController.ChangeMaxForce(_slowedForce);
                     StartCoroutine(DisableSlowCoroutine(_slowDuration));
                     break;
                 case PowerupType.Freeze:
@@ -181,12 +182,12 @@ namespace CT6RIGPR
 
         private bool CanActivateFastPowerup()
         {
-            return !_fastEnabled && FastCharges > 0 && Input.GetKeyDown(KeyCode.Alpha2);
+            return !_fastEnabled && !_slowEnabled && FastCharges > 0 && Input.GetKeyDown(KeyCode.Alpha2);
         }
 
         private bool CanActivateSlowPowerup()
         {
-            return !_slowEnabled && SlowCharges > 0 && Input.GetKeyDown(KeyCode.Alpha3);
+            return !_slowEnabled && !_fastEnabled && SlowCharges > 0 && Input.GetKeyDown(KeyCode.Alpha3);
         }
 
         private bool CanActivateFreezePowerup()
@@ -244,7 +245,7 @@ namespace CT6RIGPR
         private IEnumerator DisableSlowCoroutine(float time)
         {
             yield return new WaitForSeconds(time);
-            _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_FORCE);
+            _ballController.ChangeMaxForce(_originalForce);
             _slowEnabled = false;
         }
 

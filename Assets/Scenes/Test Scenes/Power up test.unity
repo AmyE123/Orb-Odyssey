@@ -3649,6 +3649,11 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
+    - target: {fileID: 6174037603394175682, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: _buffedForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8249625513411246782, guid: 299f35acfd03d3247a294492bc8bfdd0,
         type: 3}
       propertyPath: m_LocalPosition.x
