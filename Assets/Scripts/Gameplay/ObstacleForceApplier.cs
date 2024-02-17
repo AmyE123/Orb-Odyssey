@@ -13,7 +13,6 @@ namespace CT6RIGPR
         {
             if (collision.gameObject.CompareTag(Constants.PLAYER_TAG))
             {
-                Debug.Log("HIT PLAYER");
                 Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
                 if (playerRb != null)
                 {
