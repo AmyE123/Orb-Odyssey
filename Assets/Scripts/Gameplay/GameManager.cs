@@ -5,11 +5,11 @@ namespace CT6RIGPR
 
     public class GameManager : MonoBehaviour
     {
-        private int _pickupTotal;
+        private int _collectableTotal;
         private bool _hasCompletedLevel = false;
 
         [SerializeField] private GlobalReferences _globalReferences;
-        [SerializeField] private int _pickupCount;
+        [SerializeField] private int _collectableCount;
 
         /// <summary>
         /// A getter for the global references.
@@ -19,16 +19,16 @@ namespace CT6RIGPR
         /// <summary>
         /// The total amount of pickups in the level.
         /// </summary>
-        public int PickupTotal => _pickupTotal;
+        public int CollectableTotal => _collectableTotal;
 
         /// <summary>
         /// The current amount of pickups which are picked up.
         /// </summary>
-        public int PickupCount => _pickupCount;
+        public int CollectableCount => _collectableCount;
 
-        public void IncrementPickupCount()
+        public void IncrementCollectableCount()
         {
-            _pickupCount++;
+            _collectableCount++;
         }
 
         private void InitializeLevel()
@@ -40,7 +40,7 @@ namespace CT6RIGPR
         {
             if (!_hasCompletedLevel)
             {
-                if (_pickupTotal == _pickupCount)
+                if (_collectableTotal == _collectableCount)
                 {
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
@@ -60,7 +60,7 @@ namespace CT6RIGPR
 
         private void SetPickupCount()
         {
-            _pickupTotal = FindObjectsOfType<Pickup>().Count();
+            _collectableTotal = FindObjectsOfType<Collectable>().Count();
             _globalReferences.UIManager.SetPickupTotal();
         }
     }

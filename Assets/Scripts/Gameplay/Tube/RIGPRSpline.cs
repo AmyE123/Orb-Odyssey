@@ -13,14 +13,6 @@ namespace CT6RIGPR
 
         [SerializeField] private SplineContainer _splineContainer;
 
-        void Start()
-        {
-            if (_splineContainer != null)
-            {
-                _spline = _splineContainer.Spline;
-            }
-        }
-
         /// <summary>
         /// Gets a point in the spline.
         /// </summary>
@@ -40,6 +32,37 @@ namespace CT6RIGPR
 
             float3 tangent = SplineUtility.EvaluateTangent(_spline, t);
             return new Vector3(tangent.x, tangent.y, tangent.z).normalized;
+        }
+
+        private void Start()
+        {
+            if (_splineContainer != null)
+            {
+                _spline = _splineContainer.Spline;
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (_splineContainer != null)
+            {
+                Gizmos.color = Color.red;
+
+                float step = 0.05f;
+
+                for (float i = 0; i < 1; i += step)
+                {
+                    Vector3 startPosition = _splineContainer.Spline.EvaluatePosition(i);
+                    Vector3 endPosition = _splineContainer.Spline.EvaluatePosition(i + step);
+
+                    if (i + step > 1)
+                    {
+                        endPosition = _splineContainer.Spline.EvaluatePosition(1);
+                    }
+
+                    Gizmos.DrawLine(startPosition, endPosition);
+                }
+            }
         }
     }
 }

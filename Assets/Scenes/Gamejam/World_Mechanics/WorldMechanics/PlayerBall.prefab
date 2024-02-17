@@ -201,9 +201,19 @@ PrefabInstance:
       propertyPath: _playerGameObject
       value: 
       objectReference: {fileID: 6980427547517017602}
+    - target: {fileID: 8812685784447399589, guid: cddbaa42ee78a3943a6084d847bffb46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8812685784447399589, guid: cddbaa42ee78a3943a6084d847bffb46, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5496856166657250952, guid: cddbaa42ee78a3943a6084d847bffb46,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6825710392311520261}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cddbaa42ee78a3943a6084d847bffb46, type: 3}
 --- !u!4 &8213002172847710801 stripped
@@ -211,6 +221,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5496856166657250952, guid: cddbaa42ee78a3943a6084d847bffb46,
     type: 3}
   m_PrefabInstance: {fileID: 4445809817635534041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4795421733559923407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8213002172847710801}
+    m_Modifications:
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221735692055576827, guid: 09d2aa7bf0c60214281076784e8c120c,
+        type: 3}
+      propertyPath: m_Name
+      value: Hamster_Ball_Cel_Shaded
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09d2aa7bf0c60214281076784e8c120c, type: 3}
+--- !u!4 &6825710392311520261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2032541633776283338, guid: 09d2aa7bf0c60214281076784e8c120c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4795421733559923407}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8594951188935207739
 PrefabInstance:
@@ -224,11 +308,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OuterBall
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446039965040703664, guid: c53256e1bd70dba42a42f864ee9c9125,
-        type: 3}
-      propertyPath: _groundCheckDistance
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5261480439909761204, guid: c53256e1bd70dba42a42f864ee9c9125,
         type: 3}
