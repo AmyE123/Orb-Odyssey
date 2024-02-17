@@ -15,6 +15,7 @@ namespace CT6RIGPR
         private bool _slowEnabled;
 
         private bool _isSticking;
+        private float _originalForce;
 
         [SerializeField] private int _stickyCharges;
         [SerializeField] private int _fastCharges;
@@ -26,6 +27,7 @@ namespace CT6RIGPR
 		[SerializeField] private float _slowDuration = Constants.POWERUP_DEFAULT_DURATION;
 		[SerializeField] private float _freezeDuration = Constants.POWERUP_DEFAULT_DURATION;
 
+        [SerializeField] private float _buffedForce = BALL_DEFAULT_MAX_BUFFED_FORCE;
 		[SerializeField] private BallController _ballController;
 
         GameObject[] _bodiesOfWater;
@@ -94,6 +96,7 @@ namespace CT6RIGPR
                 _ballController = gameObject.GetComponent<BallController>();
             }
 			_bodiesOfWater = GameObject.FindGameObjectsWithTag("Water");
+            _originalForce = _ballController.MaxForce;
 			InitializeDefaultCharges();
         }
 
@@ -117,8 +120,8 @@ namespace CT6RIGPR
                 case PowerupType.Fast:
                     _fastEnabled = true;
                     _fastCharges--;
-                    _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_BUFFED_FORCE);
-                    StartCoroutine(DisableSpeedCoroutine(_fastDuration));
+					_ballController.ChangeMaxForce(_buffedForce);
+					StartCoroutine(DisableSpeedCoroutine(_fastDuration));
                     break;
                 case PowerupType.Slow:
                     _slowEnabled = true;
@@ -234,8 +237,8 @@ namespace CT6RIGPR
         private IEnumerator DisableSpeedCoroutine(float time)
         {
             yield return new WaitForSeconds(time);
-            _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_FORCE);
-            _fastEnabled = false;
+			_ballController.ChangeMaxForce(_originalForce);
+			_fastEnabled = false;
         }
 
         private IEnumerator DisableSlowCoroutine(float time)
