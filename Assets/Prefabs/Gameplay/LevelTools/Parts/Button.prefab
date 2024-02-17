@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6aa5cd3e3909648b86c88fa0a06006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countdownDuration: 5
+  _countdownDuration: 10
   _timer: 0
   _isCountingDown: 0
   _greenMaterial: {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}

@@ -1,5 +1,6 @@
 namespace CT6RIGPR
 {
+    using System;
     using UnityEngine;
 
     /// <summary>
@@ -7,6 +8,9 @@ namespace CT6RIGPR
     /// </summary>
     public class TimerButton : MonoBehaviour
     {
+        public event Action OnTimerStarted;
+        public event Action OnTimerFinished;
+
         [Header("Timer Settings")]
         [SerializeField] private float _countdownDuration = 5.0f;
         [SerializeField] private float _timer;
@@ -19,7 +23,12 @@ namespace CT6RIGPR
         [Header("Renderer")]
         [SerializeField] private MeshRenderer _meshRenderer;
 
-        void Start()
+        /// <summary>
+        /// Checks whether the button is counting down.
+        /// </summary>
+        public bool IsCountingDown => _isCountingDown;
+
+        private void Start()
         {
             if (_greenMaterial == null || _redMaterial == null)
             {
@@ -35,7 +44,7 @@ namespace CT6RIGPR
             ResetButton();
         }
 
-        void Update()
+        private void Update()
         {
             if (_isCountingDown)
             {
@@ -47,8 +56,19 @@ namespace CT6RIGPR
             }
         }
 
+        private void NotifyTimerStarted()
+        {
+            OnTimerStarted?.Invoke();
+        }
+
+        private void NotifyTimerFinished()
+        {
+            OnTimerFinished?.Invoke();
+        }
+
         private void ResetButton()
         {
+            NotifyTimerFinished();
             _timer = _countdownDuration;
             _isCountingDown = false;
             _meshRenderer.material = _greenMaterial;
@@ -64,6 +84,7 @@ namespace CT6RIGPR
 
         private void StartCountdown()
         {
+            NotifyTimerStarted();
             _isCountingDown = true;
             _meshRenderer.material = _redMaterial;
         }
