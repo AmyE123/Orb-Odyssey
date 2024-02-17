@@ -21,7 +21,14 @@ namespace CT6RIGPR
         [SerializeField] private int _slowCharges;
         [SerializeField] private int _freezeCharges;
 
-        [SerializeField] private BallController _ballController;
+		[SerializeField] private float _stickyDuration = Constants.POWERUP_DEFAULT_DURATION;
+		[SerializeField] private float _fastDuration = Constants.POWERUP_DEFAULT_DURATION;
+		[SerializeField] private float _slowDuration = Constants.POWERUP_DEFAULT_DURATION;
+		[SerializeField] private float _freezeDuration = Constants.POWERUP_DEFAULT_DURATION;
+
+		[SerializeField] private BallController _ballController;
+
+        GameObject[] _bodiesOfWater;
 
         /// <summary>
         /// The amount of sticky powerup charges the player has.
@@ -86,9 +93,8 @@ namespace CT6RIGPR
                 Debug.LogWarning("[CT6RIGPR] BallController reference in OuterBall not set. Please set this in the inspector.");
                 _ballController = gameObject.GetComponent<BallController>();
             }
-
-            // TODO: Layla - I don't know if you need this but I made it into a function anyway.
-            InitializeDefaultCharges();
+			_bodiesOfWater = GameObject.FindGameObjectsWithTag("Water");
+			InitializeDefaultCharges();
         }
 
         private void InitializeDefaultCharges()
@@ -106,20 +112,32 @@ namespace CT6RIGPR
                 case PowerupType.Sticky:
                     _stickyEnabled = true;
                     _stickyCharges--;
-                    StartCoroutine(DisableStickyCoroutine(POWERUP_DEFAULT_DURATION));
+                    StartCoroutine(DisableStickyCoroutine(_stickyDuration));
                     break;
                 case PowerupType.Fast:
                     _fastEnabled = true;
                     _fastCharges--;
                     _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_BUFFED_FORCE);
-                    StartCoroutine(DisableSpeedCoroutine(POWERUP_DEFAULT_DURATION));
+                    StartCoroutine(DisableSpeedCoroutine(_fastDuration));
                     break;
                 case PowerupType.Slow:
                     _slowEnabled = true;
                     _slowCharges--;
                     // TODO: Note for Layla - Update with whatever force we are using for slowdown
                     _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_FORCE / 2);
-                    StartCoroutine(DisableSlowCoroutine(POWERUP_DEFAULT_DURATION));
+                    StartCoroutine(DisableSlowCoroutine(_slowDuration));
+                    break;
+                case PowerupType.Freeze:
+                    _freezeEnabled = true;
+                    _freezeCharges--;
+                    foreach (GameObject body in _bodiesOfWater)
+                    {
+                        if (body.GetComponent<Collider>() != null) {
+                            Collider collider = body.GetComponent<Collider>();
+                            collider.enabled = true;
+                        }
+                    }
+                    StartCoroutine(DisableFreezeCoroutine(_freezeDuration));
                     break;
             }
         }
@@ -146,6 +164,11 @@ namespace CT6RIGPR
             {
                 UsePowerup(PowerupType.Slow);
             }
+
+            if (CanActivateFreezePowerup())
+            {
+                UsePowerup(PowerupType.Freeze);
+            }
         }
 
         private bool CanActivateStickyPowerup()
@@ -163,7 +186,12 @@ namespace CT6RIGPR
             return !_slowEnabled && SlowCharges > 0 && Input.GetKeyDown(KeyCode.Alpha3);
         }
 
-        private void HandleStickingBehavior()
+        private bool CanActivateFreezePowerup()
+        {
+			return !_freezeEnabled && FreezeCharges > 0 && Input.GetKeyDown(KeyCode.Alpha4);
+		}
+
+		private void HandleStickingBehavior()
         {
             if (_isSticking && IsBallFalling())
             {
@@ -216,5 +244,20 @@ namespace CT6RIGPR
             _ballController.ChangeMaxForce(BALL_DEFAULT_MAX_FORCE);
             _slowEnabled = false;
         }
-    }
+
+        private IEnumerator DisableFreezeCoroutine(float time)
+        { 
+            yield return new WaitForSeconds(time);
+			foreach (GameObject body in _bodiesOfWater)
+			{
+				if (body.GetComponent<Collider>() != null)
+				{
+					Collider collider = body.GetComponent<Collider>();
+					collider.enabled = false;
+				}
+			}
+			_freezeEnabled = false;
+		}
+
+	}
 }
