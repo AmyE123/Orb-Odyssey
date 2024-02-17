@@ -197,6 +197,21 @@ namespace CT6RIGPR
         public const string SWEEPER_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Sweeper.prefab";
 
         /// <summary>
+        /// A string to the timer door asset for loading it in in-editor.
+        /// </summary>
+        public const string TIMER_DOOR_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerDoor.prefab";
+
+        /// <summary>
+        /// A string to the timer ramp asset for loading it in in-editor.
+        /// </summary>
+        public const string TIMER_RAMP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerRamp.prefab";
+
+        /// <summary>
+        /// A string to the timer platform asset for loading it in in-editor.
+        /// </summary>
+        public const string TIMER_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerPlatform.prefab";
+
+        /// <summary>
         /// A string to the sticky powerup asset for loading it in in-editor.
         /// </summary>
         public const string STICKY_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Sticky.prefab";
