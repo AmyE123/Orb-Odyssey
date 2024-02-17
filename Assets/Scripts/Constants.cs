@@ -162,6 +162,11 @@ namespace CT6RIGPR
         public const string SWINGING_OBSTACLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/SwingingObstacle.prefab";
 
         /// <summary>
+        /// A string to the sweeper asset for loading it in in-editor.
+        /// </summary>
+        public const string SWEEPER_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Sweeper.prefab";
+
+        /// <summary>
         /// A string to the sticky powerup asset for loading it in in-editor.
         /// </summary>
         public const string STICKY_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Sticky.prefab";
