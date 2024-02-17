@@ -13,7 +13,7 @@ namespace CT6RIGPR
         private bool _isFollowing = false;
 
         [SerializeField] private GameManager _gameManager;
-        [SerializeField] private Direction _activeMovingDirection = Direction.Forward;
+        [SerializeField] private TubeDirection _activeMovingDirection = TubeDirection.Forward;
 
         [Header("Spline Values")]
         [SerializeField] private Transform _spline;
@@ -23,7 +23,7 @@ namespace CT6RIGPR
         /// Activate the trigger for the tube teleportation
         /// </summary>
         /// <param name="triggerDirection">The direction to travel the tube in.</param>
-        public void ActivateTrigger(Direction triggerDirection)
+        public void ActivateTrigger(TubeDirection triggerDirection)
         {
             StartFollowing(triggerDirection);
         }
@@ -47,13 +47,13 @@ namespace CT6RIGPR
             }
         }
 
-        private void StartFollowing(Direction followDirection)
+        private void StartFollowing(TubeDirection followDirection)
         {
             _activeMovingDirection = followDirection;
             _isFollowing = true;
             _ballController.DisableInput();
 
-            _splineProgress = (_activeMovingDirection == Direction.Forward) ? 0f : 1f;
+            _splineProgress = (_activeMovingDirection == TubeDirection.Forward) ? 0f : 1f;
 
             UpdateMovement();
         }
@@ -62,7 +62,7 @@ namespace CT6RIGPR
         {
             RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
 
-            if (_activeMovingDirection == Direction.Forward)
+            if (_activeMovingDirection == TubeDirection.Forward)
             {
                 _splineProgress += _speed * Time.deltaTime;
                 if (_splineProgress >= 1.0f)
@@ -94,7 +94,7 @@ namespace CT6RIGPR
             _ballController.EnableInput();
 
             RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
-            if (_activeMovingDirection == Direction.Forward)
+            if (_activeMovingDirection == TubeDirection.Forward)
             {
                 _splineProgress = 1f;
             }
