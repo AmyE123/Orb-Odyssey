@@ -79,7 +79,12 @@ namespace CT6RIGPR
         /// <summary>
         /// The direction for tube reference.
         /// </summary>
-        public enum Direction { Forward, Backward }
+        public enum TubeDirection { Forward, Backward }
+
+        /// <summary>
+        /// The direction for the jump pad.
+        /// </summary>
+        public enum JumpPadDirection { Up, Down, Left, Right, Forward, Backward }
 
         /// <summary>
         /// This is the Y offset for the camera used for the camera controller.
@@ -237,5 +242,6 @@ namespace CT6RIGPR
       public const string FREEZE_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Freeze.prefab";
 
         #endregion // Editor Paths
+
 	}
 }
