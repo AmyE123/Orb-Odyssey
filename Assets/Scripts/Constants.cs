@@ -72,24 +72,49 @@ namespace CT6RIGPR
         /// </summary>
         public const string PLAYER_TAG = "Player";
 
-        /// <summary>
-        /// This is the tag for the cockpit object.
-        /// </summary>
-        public const string COCKPIT_TAG = "Cockpit";
+		/// <summary>
+		/// This is the tag for the cockpit object.
+		/// </summary>
+		public const string COCKPIT_TAG = "Cockpit";
 
-        /// <summary>
-        /// This is the time that the player takes to respawn when they exit the island boundary.
-        /// </summary>
-        public const float RESPAWN_TIME = 5;
+		/// <summary>
+		/// This is the tag for respawn checkpoints.
+		/// </summary>
+		public const string CHECKPOINT_TAG = "Checkpoint";
 
-        #endregion // Game Constants
+		/// <summary>
+		/// This is the tag for the island boundary.
+		/// </summary>
+		public const string ISLAND_BOUNDARY_TAG = "IslandBoundary";
 
-        #region Editor Paths
+		/// <summary>
+		/// This is the time that the player takes to respawn when they exit the island boundary.
+		/// </summary>
+		public const float RESPAWN_TIME = 5;
 
-        /// <summary>
-        /// A string to the tube asset for loading it in in-editor.
-        /// </summary>
-        public const string TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/Tube.prefab";
+		/// <summary>
+		/// This is the percentage of time that the player takes to fade to black when they exit the island boundary.
+		/// </summary>
+		public const float RESPAWN_FADE_OUT_TIME = 0.4f;
+
+		/// <summary>
+		/// This is the percentage of time that the player spends immobile after fading to black.
+		/// </summary>
+		public const float RESPAWN_FADE_WAIT_TIME = 0.2f;
+
+		/// <summary>
+		/// This is the percentage of time that the player takes to reappear after exiting the island boundary.
+		/// </summary>
+		public const float RESPAWN_FADE_IN_TIME = 0.4f;
+
+		#endregion // Game Constants
+
+		#region Editor Paths
+
+		/// <summary>
+		/// A string to the tube asset for loading it in in-editor.
+		/// </summary>
+		public const string TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/Tube.prefab";
 
         /// <summary>
         /// A string to the tube instructions text files for loading it in in-editor.
