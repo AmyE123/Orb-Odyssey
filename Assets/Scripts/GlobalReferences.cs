@@ -5,6 +5,7 @@ namespace CT6RIGPR
     public class GlobalReferences : MonoBehaviour
     {
         [SerializeField] private BallController _ballController;
+        [SerializeField] private GameObject[] _checkpoints;
 
         [SerializeField] private CameraController _cameraController;
 
@@ -14,6 +15,7 @@ namespace CT6RIGPR
         /// The ball controller. For all player inputs.
         /// </summary>
         public BallController BallController => _ballController;
+        public GameObject[] Checkpoints => _checkpoints;
 
         /// <summary>
         /// The main camera controller.
@@ -25,6 +27,7 @@ namespace CT6RIGPR
         private void Start()
         {
             CheckReferences();
+            PopulateArrays();
         }
 
         private void CheckReferences()
@@ -38,6 +41,11 @@ namespace CT6RIGPR
             {
                 LogNullRef(typeof(CameraController).Name, LogType.Error);
             }
+        }
+
+        private void PopulateArrays()
+        {
+            _checkpoints = GameObject.FindGameObjectsWithTag(Constants.CHECKPOINT_TAG);
         }
 
         private void LogNullRef(string refName, LogType logType)

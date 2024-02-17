@@ -8,6 +8,8 @@ TagManager:
   - Pickup
   - Wall
   - Water
+  - Checkpoint
+  - IslandBoundary
   layers:
   - Default
   - TransparentFX

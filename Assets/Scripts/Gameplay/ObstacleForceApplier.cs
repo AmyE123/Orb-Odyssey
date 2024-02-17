@@ -3,9 +3,9 @@ namespace CT6RIGPR
     using UnityEngine;
 
     /// <summary>
-    /// A class that deals with adding force to things hit with swinging objects
+    /// A class that deals with adding force to things hit with swinging/sweeping objects
     /// </summary>
-    public class SwingingForceApplier : MonoBehaviour
+    public class ObstacleForceApplier : MonoBehaviour
     {
         [SerializeField] private float _hitForce = 50f;
 
