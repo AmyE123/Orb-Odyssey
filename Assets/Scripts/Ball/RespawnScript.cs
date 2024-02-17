@@ -29,6 +29,7 @@ namespace CT6RIGPR
 			_ballController = _gameManager.GlobalReferences.BallController;
 			_checkpoints = _gameManager.GlobalReferences.Checkpoints;
 		}
+
         private IEnumerator FadeOut()
         {
             Color colour = Color.black;
