@@ -98,6 +98,36 @@ namespace CT6RIGPR
         public const string COCKPIT_TAG = "Cockpit";
 
         /// <summary>
+        /// This is the tag for respawn checkpoints.
+        /// </summary>
+        public const string CHECKPOINT_TAG = "Checkpoint";
+
+        /// <summary>
+        /// This is the tag for the island boundary.
+        /// </summary>
+        public const string ISLAND_BOUNDARY_TAG = "IslandBoundary";
+
+        /// <summary>
+        /// This is the time that the player takes to respawn when they exit the island boundary.
+        /// </summary>
+        public const float RESPAWN_TIME = 5;
+
+        /// <summary>
+        /// This is the percentage of time that the player takes to fade to black when they exit the island boundary.
+        /// </summary>
+        public const float RESPAWN_FADE_OUT_TIME = 0.4f;
+
+        /// <summary>
+        /// This is the percentage of time that the player spends immobile after fading to black.
+        /// </summary>
+        public const float RESPAWN_FADE_WAIT_TIME = 0.2f;
+
+        /// <summary>
+        /// This is the percentage of time that the player takes to reappear after exiting the island boundary.
+        /// </summary>
+        public const float RESPAWN_FADE_IN_TIME = 0.4f;
+
+        /// <summary>
         /// The default duration of a powerup.
         /// </summary>
         public const float POWERUP_DEFAULT_DURATION = 10f;
@@ -165,6 +195,26 @@ namespace CT6RIGPR
         /// A string to the swinging obstacle asset for loading it in in-editor.
         /// </summary>
         public const string SWINGING_OBSTACLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/SwingingObstacle.prefab";
+
+        /// <summary>
+        /// A string to the sweeper asset for loading it in in-editor.
+        /// </summary>
+        public const string SWEEPER_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Sweeper.prefab";
+
+        /// <summary>
+        /// A string to the timer door asset for loading it in in-editor.
+        /// </summary>
+        public const string TIMER_DOOR_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerDoor.prefab";
+
+        /// <summary>
+        /// A string to the timer ramp asset for loading it in in-editor.
+        /// </summary>
+        public const string TIMER_RAMP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerRamp.prefab";
+
+        /// <summary>
+        /// A string to the timer platform asset for loading it in in-editor.
+        /// </summary>
+        public const string TIMER_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerPlatform.prefab";
 
         /// <summary>
         /// A string to the sticky powerup asset for loading it in in-editor.
