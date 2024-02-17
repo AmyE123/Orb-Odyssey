@@ -7,6 +7,9 @@ TagManager:
   - Cockpit
   - Pickup
   - Wall
+  - Checkpoint
+  - IslandBoundry
+  - IslandBoundary
   layers:
   - Default
   - TransparentFX
