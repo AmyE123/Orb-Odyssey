@@ -15,4 +15,4 @@ MonoBehaviour:
   ShrinkDuration: 0.5
   DestroyDelay: 3
   ShrinkEase: 8
-  PickupClip: {fileID: 8300000, guid: 260b938a8c28d9840b9af01267195194, type: 3}
+  CollectableClip: {fileID: 8300000, guid: 1a3d04ec9e5ba9a4186cc48799d1adc1, type: 3}

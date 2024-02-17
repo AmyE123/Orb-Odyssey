@@ -180,10 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sticky: 1
-  _speed: 0
-  _freeze: 0
-  _slow: 0
+  _stickyCharges: 0
+  _fastCharges: 0
+  _slowCharges: 0
+  _freezeCharges: 0
+  _ballController: {fileID: 4446039965040703664}
 --- !u!114 &7049926200131099503
 MonoBehaviour:
   m_ObjectHideFlags: 0
