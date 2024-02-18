@@ -10,8 +10,9 @@ namespace CT6RIGPR
     public class RespawnScript : MonoBehaviour
     {
 		private BallController _ballController;
-        private GameObject[] _checkpoints;
+        private bool isRespawning = false;
 
+        [SerializeField] private GameObject[] _checkpoints;
 		[SerializeField] private GameManager _gameManager;
 		[SerializeField] private Image _fadeImage;
         [SerializeField] private float _fadeInTime = 0.4f; //Percentage of time spent fading in
@@ -89,6 +90,11 @@ namespace CT6RIGPR
 
         private IEnumerator Respawn()
         {
+            if (isRespawning)
+                yield break;
+
+            isRespawning = true;
+
             _gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
 
             // Disable movement
@@ -110,11 +116,21 @@ namespace CT6RIGPR
 
             // Re-enable movement
             _ballController.EnableInput();
+
+            isRespawning = false;
         }
 
         private void OnTriggerExit(Collider collider)
         {
             if (collider.tag == Constants.ISLAND_BOUNDARY_TAG)
+            {
+                StartCoroutine(Respawn());
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.tag == Constants.WATER_TAG)
             {
                 StartCoroutine(Respawn());
             }

@@ -4734,6 +4734,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1240893874344834615, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Id
+      value: c5667a53-f818-4dc2-b7cd-52d94d73e575
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Id
+      value: 20877c17-6af1-4438-98b9-7599a6e514c5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Name
+      value: Position Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
+        type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Name
+      value: Rotation Input
+      objectReference: {fileID: 0}
     - target: {fileID: 1186835171559774236, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: m_Name
@@ -4863,31 +4888,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1240893874344834615, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Id
-      value: c5667a53-f818-4dc2-b7cd-52d94d73e575
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Id
-      value: 20877c17-6af1-4438-98b9-7599a6e514c5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation Input
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5545,12 +5545,12 @@ SceneRoots:
   - {fileID: 4857510996022562864}
   - {fileID: 7371985212131615505}
   - {fileID: 7226502320511807858}
-  - {fileID: 317026719}
-  - {fileID: 8765283914204267629}
-  - {fileID: 244330997}
   - {fileID: 1132480952}
   - {fileID: 1795570414}
   - {fileID: 107862808}
+  - {fileID: 317026719}
+  - {fileID: 8765283914204267629}
+  - {fileID: 244330997}
   - {fileID: 1798606535}
   - {fileID: 115430220}
   - {fileID: 2008158092}
