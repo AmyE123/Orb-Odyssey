@@ -77,6 +77,10 @@ namespace CT6RIGPR
 		/// </summary>
 		public float MaxForce => _maxForce;
 
+        /// <summary>
+        /// Whether rotation of the ball is disabled or not.
+        /// </summary>
+        public bool DisableRotation => _disableRotation;
 
         /// <summary>
         /// Disables the players input.
@@ -84,7 +88,7 @@ namespace CT6RIGPR
         public void DisableInput(bool disableRotation = false)
         {
             _disableInput = true;
-            _disableRotation = disableRotation;
+            _disableRotation = true;
         }
 
         /// <summary>
@@ -150,7 +154,7 @@ namespace CT6RIGPR
 
                 AdjustRigidbodyDrag();
 
-                NormalizeRotation();
+                NormalizeRotation();                           
             }
 
             if (_debugInput)
@@ -199,7 +203,7 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            if (_debugInput && !_gameManager.GlobalReferences.CameraController.DebugMouseLook && !_disableRotation)
+            if (_debugInput && !_gameManager.GlobalReferences.CameraController.DebugMouseLook)
             {
                 if (Input.GetKey(KeyCode.RightControl))
                 {
@@ -210,6 +214,7 @@ namespace CT6RIGPR
                 {
                     _yRotation++;
                 }
+                
             }
             else
             {
@@ -224,7 +229,7 @@ namespace CT6RIGPR
                     {
                         _yRotation += thumbstick.x;
                     }
-                }
+                }           
             }
         }
 
@@ -276,10 +281,9 @@ namespace CT6RIGPR
                     moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
                     moveVertical = Input.GetAxis(Constants.HOTAS_Y);
                     //Write input to use the VR controller joystick for altitude changes.
-
                 }
 
-                if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook && !_disableRotation)
+                if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
                 {
                     Vector3 movement = new Vector3(moveHorizontal, moveAltitude, moveVertical);
                     movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;

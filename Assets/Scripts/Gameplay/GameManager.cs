@@ -16,6 +16,7 @@ namespace CT6RIGPR
         [SerializeField] private Camera _victoryCamera, _playerCamera;
         [SerializeField] private DoorScript _doorScript;
         [SerializeField] private GameObject _player;
+        [SerializeField] private Transform _playerCockpit;
         [SerializeField] private Vector3 _victoryCameraPosition;
 
         /// <summary>
@@ -54,10 +55,10 @@ namespace CT6RIGPR
             if (!_hasCompletedLevel)
             {
                 if (_collectableTotal == _collectableCount)
-                {
-                    VictoryScreen();
+                {                    
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
+                    VictoryScreen();
                 }
 
                 
@@ -88,11 +89,12 @@ namespace CT6RIGPR
 
         private void VictoryScreen()
         {
-            Transform playerTransform = _globalReferences.BallController.gameObject.transform;
+            Transform playerTransform = _globalReferences.BallController.gameObject.transform;           
+
             //Player
             _globalReferences.BallController.DisableInput(true);
             playerTransform.position = _victoryPosition;
-            playerTransform.rotation = Quaternion.Euler(_victoryRotation.x, _victoryRotation.y, _victoryRotation.z);
+            playerTransform.localRotation = Quaternion.Euler(_victoryRotation);
 
             //Camera
             _playerCamera.enabled = false;

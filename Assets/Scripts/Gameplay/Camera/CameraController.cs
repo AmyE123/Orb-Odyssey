@@ -10,6 +10,7 @@ namespace CT6RIGPR
         private Vector3 _offset;
         private float _xRotation;
 
+        [SerializeField] private GlobalReferences _references;
         [SerializeField] private float _mouseSensitivity;
         [SerializeField] private GameObject _cockpit;
         [SerializeField] private GameObject _outerBall;
@@ -37,9 +38,15 @@ namespace CT6RIGPR
 
         private void Update()
         {
-            if (_debugMouseLook)
+            if (_debugMouseLook && !_references.BallController.DisableRotation)
             {
                 MouseLookAround();
+            }
+
+            if (_references.BallController.DisableRotation)
+            {
+                _cockpit.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                _outerBall.transform.localRotation = Quaternion.Euler(Vector3.zero);
             }
         }
 
@@ -77,6 +84,7 @@ namespace CT6RIGPR
 
             // If you want the camera to rotate independently from the player body, adjust the camera's rotation directly
             transform.Rotate(Vector3.up * mouseX);
+            
         }
     }
 }
