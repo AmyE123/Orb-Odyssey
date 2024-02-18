@@ -37,12 +37,12 @@ public class DoorScript : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Space has been pressed");
-            ToggleDoor();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        Debug.Log("Space has been pressed");
+    //        ToggleDoor();
+    //    }
+    //}
 }

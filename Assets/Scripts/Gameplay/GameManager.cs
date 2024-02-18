@@ -1,7 +1,9 @@
 namespace CT6RIGPR
 {
+    using System.Collections;
     using System.Linq;
     using UnityEngine;
+    using DG.Tweening;
 
     public class GameManager : MonoBehaviour
     {
@@ -10,6 +12,11 @@ namespace CT6RIGPR
 
         [SerializeField] private GlobalReferences _globalReferences;
         [SerializeField] private int _collectableCount;
+        [SerializeField] private Vector3 _victoryPosition, _victoryRotation;
+        [SerializeField] private Camera _victoryCamera;
+        [SerializeField] private DoorScript _doorScript;
+        [SerializeField] private GameObject _player;
+        [SerializeField] private Vector3 _victoryCameraPosition;
 
         /// <summary>
         /// A getter for the global references.
@@ -42,6 +49,7 @@ namespace CT6RIGPR
             {
                 if (_collectableTotal == _collectableCount)
                 {
+                    VictoryScreen();
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
                 }
@@ -62,6 +70,28 @@ namespace CT6RIGPR
         {
             _collectableTotal = FindObjectsOfType<Collectable>().Count();
             _globalReferences.UIManager.SetPickupTotal();
+        }
+
+        private void VictoryScreen()
+        {
+            //Player
+            _player.transform.position = _victoryPosition;
+            _player.transform.localRotation = Quaternion.Euler(_victoryRotation.x, _victoryRotation.y, _victoryRotation.z);
+
+            //Camera
+            //_victoryCamera.transform.DOMove()
+
+            //Door
+            StartCoroutine("DoorOpen");
+
+            //UI
+
+        }
+
+        IEnumerator DoorOpen()
+        {
+            yield return new WaitForSeconds(3);
+            _doorScript.ToggleDoor();
         }
     }
 }
