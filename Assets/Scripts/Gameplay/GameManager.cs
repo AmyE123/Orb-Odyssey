@@ -5,24 +5,15 @@ namespace CT6RIGPR
     using UnityEngine;
     using DG.Tweening;
     using UnityEngine.UI;
-    using UnityEngine.SceneManagement;
 
     public class GameManager : MonoBehaviour
     {
         private int _collectableTotal;
         private bool _hasCompletedLevel = false;
 
+        [SerializeField] private VictoryManager _victoryManager;
         [SerializeField] private GlobalGameReferences _globalReferences;
         [SerializeField] private int _collectableCount;
-        [SerializeField] private Vector3 _victoryPosition, _victoryRotation;
-        [SerializeField] private Camera _victoryCamera, _playerCamera;
-        [SerializeField] private DoorScript _doorScript;
-        [SerializeField] private GameObject _player;
-        [SerializeField] private Transform _playerCockpit;
-        [SerializeField] private Vector3 _victoryCameraPosition;
-        [SerializeField] private Vector3 _victoryCameraRotation;
-        [SerializeField] private Transform _doorCenter;
-
         [SerializeField] private Image fadePanel;
 
         /// <summary>
@@ -80,7 +71,7 @@ namespace CT6RIGPR
                 {                    
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
-                    VictoryScreen();
+                    _victoryManager.VictoryScreen();
                 }
 
                 
@@ -89,7 +80,7 @@ namespace CT6RIGPR
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 _hasCompletedLevel = true;
-                VictoryScreen();
+                _victoryManager.VictoryScreen();
             }
         }
 
@@ -111,76 +102,5 @@ namespace CT6RIGPR
             _collectableTotal = FindObjectsOfType<Collectable>().Count();
             _globalReferences.UIManager.SetPickupTotal();
         }
-
-        private void BlendToVictoryCamera()
-        {
-            // Disable the player camera component and enable the victory camera component
-            _playerCamera.enabled = false;
-            _victoryCamera.enabled = true;
-
-            // Move and rotate the victory camera to the target position and rotation
-            _victoryCamera.transform.DOMove(_victoryCameraPosition, 1);
-            _victoryCamera.transform.DORotateQuaternion(Quaternion.Euler(_victoryCameraRotation), 1);
-        }
-
-        private void VictoryScreen()
-        {
-            _globalReferences.GameSFXManager.PlayVictorySounds();
-
-            Transform playerTransform = _globalReferences.BallController.gameObject.transform;           
-
-            //Player
-            _globalReferences.BallController.DisableInput(true);
-            playerTransform.position = _victoryPosition;
-            playerTransform.localRotation = Quaternion.Euler(_victoryRotation);
-
-            //Camera
-            BlendToVictoryCamera();
-
-            //Door
-            StartCoroutine(DoorOpen());
-        }
-
-        IEnumerator DoorOpen()
-        {
-            yield return new WaitForSeconds(2);
-            _doorScript.ToggleDoor();
-
-            // Wait for the door to fully open
-            yield return new WaitForSeconds(_doorScript.DoorOpenDuration);
-
-            // Move the player to the center of the door
-            MovePlayerToDoorCenter();
-        }
-
-        private void MovePlayerToDoorCenter()
-        {
-            _globalReferences.GameSFXManager.PlayPortalPullSound();
-            Transform playerTransform = _globalReferences.BallController.gameObject.transform;
-            float moveDuration = 0.5f;
-            float scaleDuration = 0.3f;
-            Vector3 disappearScale = Vector3.zero;
-
-            _player.transform.DOMove(_doorCenter.position, moveDuration).SetEase(Ease.InExpo)
-                .OnComplete(() =>
-                {
-                    _player.transform.DOScale(disappearScale, scaleDuration).OnComplete(() =>
-                    {
-                        _player.SetActive(false);
-                        FadeToBlackAndLoadNextLevel();
-                    });
-                });
-        }
-
-        private void FadeToBlackAndLoadNextLevel()
-        {
-            float fadeDuration = 1.0f;
-            fadePanel.DOFade(1, fadeDuration).OnComplete(() =>
-            {
-                Cursor.lockState = CursorLockMode.None;
-                SceneManager.LoadScene("Boot");
-            });
-        }
-
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8463236992629379258}
   - component: {fileID: 4583459338734510874}
   - component: {fileID: 1262049191259007687}
+  - component: {fileID: 1839039699704410525}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,18 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bad163924f62ae479b257be4c5765a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _victoryManager: {fileID: 0}
   _globalReferences: {fileID: 1262049191259007687}
   _collectableCount: 0
-  _victoryPosition: {x: 24.17, y: 4.95, z: 29.68}
-  _victoryRotation: {x: 0, y: 0, z: 0}
-  _victoryCamera: {fileID: 0}
-  _playerCamera: {fileID: 0}
-  _doorScript: {fileID: 0}
-  _player: {fileID: 0}
-  _playerCockpit: {fileID: 0}
-  _victoryCameraPosition: {x: 21.56, y: 4.5, z: 27.5}
-  _victoryCameraRotation: {x: 0, y: 51, z: 0}
-  _doorCenter: {fileID: 0}
   fadePanel: {fileID: 0}
 --- !u!114 &1262049191259007687
 MonoBehaviour:
@@ -75,3 +67,29 @@ MonoBehaviour:
   _cameraController: {fileID: 0}
   _gameSFXManager: {fileID: 0}
   _uiManager: {fileID: 0}
+--- !u!114 &1839039699704410525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544519225168856957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab755126eee8584282e9d45e88390c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _globalReferences: {fileID: 1262049191259007687}
+  _victoryCamera: {fileID: 0}
+  _playerCamera: {fileID: 0}
+  _victoryCameraPosition: {x: 0, y: 0, z: 0}
+  _victoryCameraRotation: {x: 0, y: 0, z: 0}
+  _doorScript: {fileID: 0}
+  _player: {fileID: 0}
+  _doorCenter: {fileID: 0}
+  _victoryPosition: {x: 0, y: 0, z: 0}
+  _victoryRotation: {x: 0, y: 0, z: 0}
+  fadePanel: {fileID: 0}
+  cameraXDistanceFromDoor: 8
+  cameraYDistanceFromDoor: 5
+  _playerDistanceFromDoor: 5

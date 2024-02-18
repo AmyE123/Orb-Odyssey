@@ -2922,6 +2922,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bad163924f62ae479b257be4c5765a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1744154185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+    type: 3}
+  m_PrefabInstance: {fileID: 4857510996022562864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab755126eee8584282e9d45e88390c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1750502439 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1079942830914634108, guid: 6308bd9b3824ac34b897918a512b63b0,
@@ -3346,7 +3358,7 @@ PrefabInstance:
     - target: {fileID: 4013190964280082701, guid: 9b2002e2b8e37c24d8e81ee4417cf2ab,
         type: 3}
       propertyPath: m_Name
-      value: Door 1
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 6932158312681329321, guid: 9b2002e2b8e37c24d8e81ee4417cf2ab,
         type: 3}
@@ -4765,6 +4777,46 @@ PrefabInstance:
       propertyPath: _cameraController
       value: 
       objectReference: {fileID: 2009949709}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1032842235}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: fadePanel
+      value: 
+      objectReference: {fileID: 1979581743}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: _doorCenter
+      value: 
+      objectReference: {fileID: 1418214813}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: _doorScript
+      value: 
+      objectReference: {fileID: 1917087924}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: _playerCamera
+      value: 
+      objectReference: {fileID: 1524393656}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: cameraYOffset
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: cameraZOffset
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: _victoryCamera
+      value: 
+      objectReference: {fileID: 462235750}
     - target: {fileID: 2544519225168856957, guid: 1f81716d197065c4a92e10f48ed1d084,
         type: 3}
       propertyPath: m_Name
@@ -4805,6 +4857,11 @@ PrefabInstance:
       propertyPath: _victoryCamera
       value: 
       objectReference: {fileID: 462235750}
+    - target: {fileID: 4583459338734510874, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: _victoryManager
+      value: 
+      objectReference: {fileID: 1744154185}
     - target: {fileID: 8463236992629379258, guid: 1f81716d197065c4a92e10f48ed1d084,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4881,7 +4938,7 @@ PrefabInstance:
     - target: {fileID: 7638108511112315968, guid: 4e516bba31a8de24cbe91fbfc07e1b90,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7638108511112315968, guid: 4e516bba31a8de24cbe91fbfc07e1b90,
         type: 3}
