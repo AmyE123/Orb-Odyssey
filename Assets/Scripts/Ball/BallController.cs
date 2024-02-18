@@ -37,6 +37,7 @@ namespace CT6RIGPR
         [Header("Debug and Input Settings")]
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
+        [SerializeField] private bool _disableRotation;
         [SerializeField] private GameManager _gameManager;
 
         [Header("Ground Check Settings")]
@@ -76,13 +77,18 @@ namespace CT6RIGPR
 		/// </summary>
 		public float MaxForce => _maxForce;
 
+        /// <summary>
+        /// Whether rotation of the ball is disabled or not.
+        /// </summary>
+        public bool DisableRotation => _disableRotation;
 
         /// <summary>
         /// Disables the players input.
         /// </summary>
-        public void DisableInput()
+        public void DisableInput(bool disableRotation = false)
         {
             _disableInput = true;
+            _disableRotation = true;
         }
 
         /// <summary>
@@ -91,6 +97,7 @@ namespace CT6RIGPR
         public void EnableInput()
         {
             _disableInput = false;
+            _disableRotation = false;
         }
 
         /// <summary>
@@ -147,7 +154,7 @@ namespace CT6RIGPR
 
                 AdjustRigidbodyDrag();
 
-                NormalizeRotation();
+                NormalizeRotation();                           
             }
 
             if (_debugInput)
@@ -207,6 +214,7 @@ namespace CT6RIGPR
                 {
                     _yRotation++;
                 }
+                
             }
             else
             {
@@ -221,7 +229,7 @@ namespace CT6RIGPR
                     {
                         _yRotation += thumbstick.x;
                     }
-                }
+                }           
             }
         }
 
@@ -273,7 +281,6 @@ namespace CT6RIGPR
                     moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
                     moveVertical = Input.GetAxis(Constants.HOTAS_Y);
                     //Write input to use the VR controller joystick for altitude changes.
-
                 }
 
                 if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
@@ -283,14 +290,21 @@ namespace CT6RIGPR
                     return movement;
                 }
             }
+            if (!_gameManager.HasCompletedLevel)
+            {
+                Transform cameraTransform = Camera.main.transform;
+                Vector3 forward = cameraTransform.forward;
+                forward.y = 0;
+                Vector3 right = cameraTransform.right;
+                Vector3 adjustedMovement = (forward * moveVertical + Vector3.up * moveAltitude + right * moveHorizontal).normalized;
 
-            Transform cameraTransform = Camera.main.transform;
-            Vector3 forward = cameraTransform.forward;
-            forward.y = 0;
-            Vector3 right = cameraTransform.right;
-            Vector3 adjustedMovement = (forward * moveVertical + Vector3.up * moveAltitude + right * moveHorizontal).normalized;
-
-            return adjustedMovement * _maxForce;
+                return adjustedMovement * _maxForce;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
+            
         }
 
         /// <summary>

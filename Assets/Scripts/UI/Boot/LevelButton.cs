@@ -2,14 +2,22 @@ namespace CT6RIGPR
 {
     using TMPro;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
 
     public class LevelButton : MonoBehaviour
     {
+        private BootManager _bootManager;
         private string _sceneName;
 
         [SerializeField] private TMP_Text _levelType;
-        [SerializeField] private TMP_Text _levelName;
+        [SerializeField] private TMP_Text _levelName;        
+
+        public void Start()
+        {
+            if (_bootManager == null)
+            {
+                _bootManager = FindObjectOfType<BootManager>();
+            }      
+        }
 
         public void SetLevelButtonValues(LevelData levelData)
         {
@@ -26,7 +34,7 @@ namespace CT6RIGPR
                 return;
             }
 
-            SceneManager.LoadScene(_sceneName);
+            StartCoroutine(_bootManager.LoadLevel(_sceneName));
         }
     }
 }
