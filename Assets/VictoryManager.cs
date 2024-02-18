@@ -2,7 +2,6 @@ namespace CT6RIGPR
 {
     using DG.Tweening;
     using System.Collections;
-    using UnityEditor.XR.LegacyInputHelpers;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;
@@ -103,7 +102,8 @@ namespace CT6RIGPR
                 .OnComplete(() =>
                 {
                     _player.SetActive(false);
-                    FadeToBlackAndLoadNextLevel();
+                    _globalReferences.LevelManager.FadeToBlackAndLoadNextLevel();
+                    //FadeToBlackAndLoadNextLevel();
                 });
         }
 

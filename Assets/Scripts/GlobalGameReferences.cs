@@ -5,6 +5,7 @@ namespace CT6RIGPR
     public class GlobalGameReferences : MonoBehaviour
     {
         [SerializeField] private BallController _ballController;
+        [SerializeField] private LevelManager _levelManager;
         [SerializeField] private GameObject[] _checkpoints;
 
         [SerializeField] private CameraController _cameraController;
@@ -31,6 +32,8 @@ namespace CT6RIGPR
         public GameSFXManager GameSFXManager => _gameSFXManager;
 
         public UIManager UIManager => _uiManager;
+
+        public LevelManager LevelManager => _levelManager;
 
         private void Start()
         {

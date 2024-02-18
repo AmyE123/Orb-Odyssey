@@ -28941,6 +28941,11 @@ PrefabInstance:
       propertyPath: _victoryManager
       value: 
       objectReference: {fileID: 1744154185}
+    - target: {fileID: 6309639825984368483, guid: 1f81716d197065c4a92e10f48ed1d084,
+        type: 3}
+      propertyPath: fadePanel
+      value: 
+      objectReference: {fileID: 1979581743}
     - target: {fileID: 8463236992629379258, guid: 1f81716d197065c4a92e10f48ed1d084,
         type: 3}
       propertyPath: m_LocalPosition.x
