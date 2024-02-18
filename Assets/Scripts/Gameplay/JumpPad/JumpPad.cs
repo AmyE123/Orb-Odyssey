@@ -62,7 +62,7 @@ namespace CT6RIGPR
             if (other.attachedRigidbody != null)
             {
                 _globalRef.GameSFXManager.PlayJumpPadSound();
-                other.attachedRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
+                other.attachedRigidbody.AddForce(GetLaunchDirection() * _jumpForce, ForceMode.VelocityChange);
             }
         }
     }
