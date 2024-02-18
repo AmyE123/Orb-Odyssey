@@ -132,6 +132,7 @@ namespace CT6RIGPR
         {
             if(other.tag == Constants.WATER_TAG)
             {
+                Debug.Log("WATER!");
                 StartCoroutine(Respawn());
             }
         }

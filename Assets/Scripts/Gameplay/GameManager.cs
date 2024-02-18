@@ -77,7 +77,7 @@ namespace CT6RIGPR
                 
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 _hasCompletedLevel = true;
                 _victoryManager.VictoryScreen();
