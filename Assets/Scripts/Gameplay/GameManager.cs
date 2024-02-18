@@ -18,6 +18,7 @@ namespace CT6RIGPR
         [SerializeField] private GameObject _player;
         [SerializeField] private Transform _playerCockpit;
         [SerializeField] private Vector3 _victoryCameraPosition;
+        [SerializeField] private Vector3 _victoryCameraRotation;
 
         /// <summary>
         /// A getter for the global references.
@@ -87,6 +88,17 @@ namespace CT6RIGPR
             _globalReferences.UIManager.SetPickupTotal();
         }
 
+        private void BlendToVictoryCamera()
+        {
+            // Disable the player camera component and enable the victory camera component
+            _playerCamera.enabled = false;
+            _victoryCamera.enabled = true;
+
+            // Move and rotate the victory camera to the target position and rotation
+            _victoryCamera.transform.DOMove(_victoryCameraPosition, 1);
+            _victoryCamera.transform.DORotateQuaternion(Quaternion.Euler(_victoryCameraRotation), 1);
+        }
+
         private void VictoryScreen()
         {
             Transform playerTransform = _globalReferences.BallController.gameObject.transform;           
@@ -97,9 +109,7 @@ namespace CT6RIGPR
             playerTransform.localRotation = Quaternion.Euler(_victoryRotation);
 
             //Camera
-            _playerCamera.enabled = false;
-            _victoryCamera.enabled = true;
-            _victoryCamera.transform.DOMove(_victoryCameraPosition, 1);
+            BlendToVictoryCamera();
 
             //Door
             StartCoroutine("DoorOpen");
