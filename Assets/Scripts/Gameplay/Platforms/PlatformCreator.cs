@@ -8,6 +8,7 @@ namespace CT6RIGPR
     /// </summary>
     public class PlatformCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Platforms/Create Moving Platform")]
         private static void CreateMovingPlatform()
         {
@@ -47,5 +48,6 @@ namespace CT6RIGPR
                 SceneView.lastActiveSceneView.FrameSelected();
             }
         }
+#endif
     }
 }

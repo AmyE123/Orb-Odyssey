@@ -8,6 +8,7 @@ namespace CT6RIGPR
     /// </summary>
     public class PowerupCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.POWERUP_TOOLS_MENU_ITEM_PATH + "Create Sticky Powerup")]
         private static void CreateStickyPowerup()
         {
@@ -87,5 +88,6 @@ namespace CT6RIGPR
 				SceneView.lastActiveSceneView.FrameSelected();
 			}
 		}
-	}
+#endif
+    }
 }

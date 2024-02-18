@@ -8,6 +8,7 @@ namespace CT6RIGPR
     /// </summary>
     public class SwingingObstacleCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Swinging Obstacle")]
         private static void CreateSwingingObstacle()
         {
@@ -27,6 +28,7 @@ namespace CT6RIGPR
                 SceneView.lastActiveSceneView.FrameSelected();
             }
         }
+#endif
     }
 }
 

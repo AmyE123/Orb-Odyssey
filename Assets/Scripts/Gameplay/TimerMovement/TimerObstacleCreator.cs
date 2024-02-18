@@ -5,6 +5,7 @@ namespace CT6RIGPR
 
     public class TimerObstacleCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Timer Obstacles/" + "Create Timer Door")]
         private static void CreateTimerDoor()
         {
@@ -64,6 +65,7 @@ namespace CT6RIGPR
                 SceneView.lastActiveSceneView.FrameSelected();
             }
         }
+#endif
     }
 }
 

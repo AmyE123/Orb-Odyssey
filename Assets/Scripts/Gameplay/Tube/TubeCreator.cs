@@ -9,6 +9,7 @@ namespace CT6RIGPR
     /// </summary>
     public class TubeCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Tube/One-Way Tube")]
         private static void CreateOneWayTube()
         {
@@ -58,5 +59,6 @@ namespace CT6RIGPR
                 SceneView.lastActiveSceneView.FrameSelected();
             }
         }
+#endif
     }
 }

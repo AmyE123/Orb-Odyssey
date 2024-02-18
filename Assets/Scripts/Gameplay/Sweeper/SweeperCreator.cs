@@ -8,6 +8,7 @@ namespace CT6RIGPR
     /// </summary>
     public class SweeperCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Sweeper Obstacle")]
         private static void CreateSweeper()
         {
@@ -27,5 +28,6 @@ namespace CT6RIGPR
                 SceneView.lastActiveSceneView.FrameSelected();
             }
         }
+#endif // UNITY_EDITOR
     }
 }
