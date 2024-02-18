@@ -12,7 +12,7 @@ namespace CT6RIGPR
         private int _collectableTotal;
         private bool _hasCompletedLevel = false;
 
-        [SerializeField] private GlobalReferences _globalReferences;
+        [SerializeField] private GlobalGameReferences _globalReferences;
         [SerializeField] private int _collectableCount;
         [SerializeField] private Vector3 _victoryPosition, _victoryRotation;
         [SerializeField] private Camera _victoryCamera, _playerCamera;
@@ -28,7 +28,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A getter for the global references.
         /// </summary>
-        public GlobalReferences GlobalReferences => _globalReferences;
+        public GlobalGameReferences GlobalReferences => _globalReferences;
 
         /// <summary>
         /// The total amount of pickups in the level.
@@ -125,6 +125,8 @@ namespace CT6RIGPR
 
         private void VictoryScreen()
         {
+            _globalReferences.GameSFXManager.PlayVictorySounds();
+
             Transform playerTransform = _globalReferences.BallController.gameObject.transform;           
 
             //Player
@@ -137,11 +139,6 @@ namespace CT6RIGPR
 
             //Door
             StartCoroutine(DoorOpen());
-
-            //Move player to door
-
-            //UI
-
         }
 
         IEnumerator DoorOpen()
@@ -158,6 +155,7 @@ namespace CT6RIGPR
 
         private void MovePlayerToDoorCenter()
         {
+            _globalReferences.GameSFXManager.PlayPortalPullSound();
             Transform playerTransform = _globalReferences.BallController.gameObject.transform;
             float moveDuration = 0.5f;
             float scaleDuration = 0.3f;

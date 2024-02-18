@@ -2,12 +2,13 @@ namespace CT6RIGPR
 {
     using UnityEngine;
 
-    public class GlobalReferences : MonoBehaviour
+    public class GlobalGameReferences : MonoBehaviour
     {
         [SerializeField] private BallController _ballController;
         [SerializeField] private GameObject[] _checkpoints;
 
         [SerializeField] private CameraController _cameraController;
+        [SerializeField] private GameSFXManager _gameSFXManager;
 
         [SerializeField] private UIManager _uiManager;
 
@@ -21,6 +22,8 @@ namespace CT6RIGPR
         /// The main camera controller.
         /// </summary>
         public CameraController CameraController => _cameraController;
+
+        public GameSFXManager GameSFXManager => _gameSFXManager;
 
         public UIManager UIManager => _uiManager;
 

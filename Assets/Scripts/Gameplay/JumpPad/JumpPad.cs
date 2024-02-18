@@ -8,8 +8,20 @@ namespace CT6RIGPR
     /// </summary>
     public class JumpPad : MonoBehaviour
     {
+        private GameManager _gameManager;
+        private GlobalGameReferences _globalRef;
+
         [SerializeField] private float _jumpForce = 10f;
         [SerializeField] private JumpPadDirection _launchDirection = JumpPadDirection.Up;
+
+        private void Start()
+        {
+            if (_gameManager == null)
+            {
+                _gameManager = FindObjectOfType<GameManager>();
+                _globalRef = _gameManager.GlobalReferences;
+            }
+        }
 
         /// <summary>
         /// Set the launch direction for the jump pad.
@@ -49,6 +61,7 @@ namespace CT6RIGPR
         {
             if (other.attachedRigidbody != null)
             {
+                _globalRef.GameSFXManager.PlayJumpPadSound();
                 other.attachedRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.VelocityChange);
             }
         }

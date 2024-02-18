@@ -10,7 +10,7 @@ namespace CT6RIGPR
         private Vector3 _offset;
         private float _xRotation;
 
-        [SerializeField] private GlobalReferences _references;
+        [SerializeField] private GlobalGameReferences _references;
         [SerializeField] private float _mouseSensitivity;
         [SerializeField] private GameObject _cockpit;
         [SerializeField] private GameObject _outerBall;
