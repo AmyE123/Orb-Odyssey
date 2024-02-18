@@ -2,6 +2,15 @@ namespace CT6RIGPR
 {
     public static class Constants
     {
+        #region Level Properties
+
+        /// <summary>
+        /// The different types of levels.
+        /// </summary>
+        public enum LevelType { Tutorial, Platformer, Puzzle }       
+
+        #endregion // Level Properties
+
         #region 4DoF Constants
 
         /// <summary>
@@ -145,6 +154,11 @@ namespace CT6RIGPR
         #endregion // Game Constants
 
         #region Editor Paths
+
+        /// <summary>
+        /// The boot scene.
+        /// </summary>
+        public const string BOOT_SCENE_PATH = "Assets/Scenes/Boot.unity";
 
         /// <summary>
         /// A string of the menu item path for level tools
