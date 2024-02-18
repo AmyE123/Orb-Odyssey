@@ -13,7 +13,7 @@ namespace CT6RIGPR
         private GameObject[] _checkpoints;
 
 		[SerializeField] private GameManager _gameManager;
-		[SerializeField] private GameObject _blackSquare;
+		[SerializeField] private Image _fadeImage;
         [SerializeField] private float _fadeInTime = 0.4f; //Percentage of time spent fading in
         [SerializeField] private float _fadeWaitTime = 0.2f; //Percentage of time waiting.
         [SerializeField] private float _fadeOutTime = 0.4f;  //Percentage of time fading out.
@@ -40,7 +40,7 @@ namespace CT6RIGPR
                 fadeAmount += Time.deltaTime / (_respawnTime * _fadeOutTime);
                 colour = new Color(colour.r, colour.g, colour.b, fadeAmount);
 				//set that colour
-				_blackSquare.GetComponent<RawImage>().color = colour;
+				_fadeImage.color = colour;
                 //wait for the frame to end
                 yield return null;
             }
@@ -56,7 +56,7 @@ namespace CT6RIGPR
                 fadeAmount -= Time.deltaTime / (_respawnTime * _fadeInTime);
                 colour = new Color(colour.r, colour.g, colour.b, fadeAmount);
 				//set that colour
-				_blackSquare.GetComponent<RawImage>().color = colour;
+				_fadeImage.color = colour;
                 //wait for the frame to end
                 yield return null;
             }
@@ -89,7 +89,7 @@ namespace CT6RIGPR
             yield return new WaitForSeconds(_respawnTime * (_fadeWaitTime / 2));
             StartCoroutine(FadeIn());
             yield return new WaitForSeconds(_respawnTime * _fadeInTime);
-			_blackSquare.GetComponent<RawImage>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+			_fadeImage.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 			//Reenable movement.
 			_ballController.EnableInput();
         }

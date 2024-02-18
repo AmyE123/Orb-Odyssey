@@ -11,7 +11,7 @@ namespace CT6RIGPR
 
         static BootSceneLoader()
         {
-            EditorApplication.playModeStateChanged += LoadBootScene;
+            //EditorApplication.playModeStateChanged += LoadBootScene;
         }
 
         private static void LoadBootScene(PlayModeStateChange state)
