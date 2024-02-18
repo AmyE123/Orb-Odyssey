@@ -24,12 +24,12 @@ namespace CT6RIGPR
         {
             if (_isRaised == false)
             {
-                transform.DOMove(new Vector3(transform.position.x, _yMax, transform.position.z), _speed);
+                transform.DOLocalMoveY(_yMax, _speed);
                 _isRaised = true;
             }
             else
             {
-                transform.DOMove(new Vector3(transform.position.x, _yMin, transform.position.z), _speed);
+                transform.DOLocalMoveY(_yMin, _speed);
                 _isRaised = false;
             }
         }

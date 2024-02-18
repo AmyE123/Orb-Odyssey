@@ -4965,7 +4965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platform: {fileID: 160324024}
   _yMin: 0
-  _yMax: 2.8
+  _yMax: 2
   _isRaised: 0
   _speed: 1
 --- !u!1001 &164763787
@@ -20496,7 +20496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platform: {fileID: 790248798}
   _yMin: 0
-  _yMax: 2.8
+  _yMax: 2
   _isRaised: 0
   _speed: 1
 --- !u!64 &790248801
@@ -29269,7 +29269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platform: {fileID: 1184558100}
   _yMin: 0
-  _yMax: 2.8
+  _yMax: 2
   _isRaised: 0
   _speed: 1
 --- !u!1001 &1191341768
@@ -48111,7 +48111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platform: {fileID: 2014903735}
   _yMin: 0
-  _yMax: 2.8
+  _yMax: 2
   _isRaised: 0
   _speed: 1
 --- !u!1 &2016643680 stripped
