@@ -12,10 +12,15 @@ namespace CT6RIGPR
 
         [SerializeField] private UIManager _uiManager;
 
+        [SerializeField] private Rigidbody _playerRigidbody;
+
         /// <summary>
         /// The ball controller. For all player inputs.
         /// </summary>
         public BallController BallController => _ballController;
+
+        public Rigidbody PlayerRigidbody => _playerRigidbody;
+
         public GameObject[] Checkpoints => _checkpoints;
 
         /// <summary>

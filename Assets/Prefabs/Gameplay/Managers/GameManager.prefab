@@ -67,6 +67,7 @@ MonoBehaviour:
   _cameraController: {fileID: 0}
   _gameSFXManager: {fileID: 0}
   _uiManager: {fileID: 0}
+  _playerRigidbody: {fileID: 0}
 --- !u!114 &1839039699704410525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,16 +81,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _globalReferences: {fileID: 1262049191259007687}
+  _doorScript: {fileID: 0}
+  fadePanel: {fileID: 0}
+  _player: {fileID: 0}
+  _playerDistanceFromDoor: 7
+  _doorCenter: {fileID: 0}
   _victoryCamera: {fileID: 0}
   _playerCamera: {fileID: 0}
-  _victoryCameraPosition: {x: 0, y: 0, z: 0}
-  _victoryCameraRotation: {x: 0, y: 0, z: 0}
-  _doorScript: {fileID: 0}
-  _player: {fileID: 0}
-  _doorCenter: {fileID: 0}
-  _victoryPosition: {x: 0, y: 0, z: 0}
-  _victoryRotation: {x: 0, y: 0, z: 0}
-  fadePanel: {fileID: 0}
-  cameraXDistanceFromDoor: 8
-  cameraYDistanceFromDoor: 5
-  _playerDistanceFromDoor: 5
+  _cameraXDistanceFromDoor: 10
+  _cameraYDistanceFromDoor: 7
+  _cameraDownwardOffset: 4

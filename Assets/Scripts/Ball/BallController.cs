@@ -85,7 +85,7 @@ namespace CT6RIGPR
         /// <summary>
         /// Disables the players input.
         /// </summary>
-        public void DisableInput(bool disableRotation = false)
+        public void DisableInput()
         {
             _disableInput = true;
             _disableRotation = true;
@@ -98,6 +98,14 @@ namespace CT6RIGPR
         {
             _disableInput = false;
             _disableRotation = false;
+        }
+        
+        /// <summary>
+        /// Freeze the players rigidbody.
+        /// </summary>
+        public void FreezePlayer()
+        {
+            _rigidBody.constraints = RigidbodyConstraints.FreezeAll;
         }
 
         /// <summary>

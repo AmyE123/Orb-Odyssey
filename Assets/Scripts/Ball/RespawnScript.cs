@@ -21,7 +21,7 @@ namespace CT6RIGPR
 
         private void Start()
         {
-			if (_gameManager == null)
+            if (_gameManager == null)
 			{
 				_gameManager = FindObjectOfType<GameManager>();
 				Debug.LogWarning("[CT6RIGPR] GameManager reference in respawn script not set. Please set this in the inspector.");
@@ -62,37 +62,56 @@ namespace CT6RIGPR
             }
         }
 
-        private GameObject FindCheckpoint()
+        private Vector3 FindCheckpoint()
         {
             GameObject closestCheckpoint = null;
             float distanceSqrToPoint = 100000.0f; //High value that will be beaten by the first checkpoint.
-            foreach (GameObject checkpoint in _checkpoints)
+
+            if (_checkpoints.Length > 0)
             {
-                float distanceSqr = Vector3.SqrMagnitude(checkpoint.transform.position - transform.position);
-                if (distanceSqr < distanceSqrToPoint)
+                foreach (GameObject checkpoint in _checkpoints)
                 {
-                    closestCheckpoint = checkpoint;
-                    distanceSqrToPoint = distanceSqr;
+                    float distanceSqr = Vector3.SqrMagnitude(checkpoint.transform.position - transform.position);
+                    if (distanceSqr < distanceSqrToPoint)
+                    {
+                        closestCheckpoint = checkpoint;
+                        distanceSqrToPoint = distanceSqr;
+                    }
                 }
+                return closestCheckpoint.transform.position;
             }
-            return closestCheckpoint;
+            else
+            {
+                return Vector3.zero;
+            }
+
         }
 
         private IEnumerator Respawn()
         {
-			//DisableMovement
-			_ballController.DisableInput();
+            _gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
+
+            // Disable movement
+            _ballController.DisableInput();
             StartCoroutine(FadeOut());
+
             yield return new WaitForSeconds(_respawnTime * (_fadeOutTime + _fadeWaitTime / 2));
-            transform.position = FindCheckpoint().transform.position;
+
+            // Reset position and apply the saved rotation
+            transform.position = FindCheckpoint();
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+
             yield return new WaitForSeconds(_respawnTime * (_fadeWaitTime / 2));
+
             StartCoroutine(FadeIn());
             yield return new WaitForSeconds(_respawnTime * _fadeInTime);
-			_fadeImage.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-			//Reenable movement.
-			_ballController.EnableInput();
+
+            _fadeImage.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
+            // Re-enable movement
+            _ballController.EnableInput();
         }
+
         private void OnTriggerExit(Collider collider)
         {
             if (collider.tag == Constants.ISLAND_BOUNDARY_TAG)

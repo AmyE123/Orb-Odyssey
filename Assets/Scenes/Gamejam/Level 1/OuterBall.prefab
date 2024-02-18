@@ -182,11 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
-  _blackSquare: {fileID: 0}
+  _fadeImage: {fileID: 0}
   _fadeInTime: 0.4
-  _fadeWaitTime: 0.2
+  _fadeWaitTime: 0.1
   _fadeOutTime: 0.4
-  _respawnTime: 5
+  _respawnTime: 3
 --- !u!114 &7049926200131099503
 MonoBehaviour:
   m_ObjectHideFlags: 0

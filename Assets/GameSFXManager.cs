@@ -9,6 +9,7 @@ namespace CT6RIGPR
         [SerializeField] private AudioClip _victoryCheerClip;
         [SerializeField] private AudioClip _jumpPadClip;
         [SerializeField] private AudioClip _portalPullClip;
+        [SerializeField] private AudioClip _outOfBoundsNegativeClip;
 
         /// <summary>
         /// Plays the victory cheer sounds.
@@ -32,6 +33,14 @@ namespace CT6RIGPR
         public void PlayPortalPullSound()
         {
             _audioManager.PlayDefaultSFX(_portalPullClip);
+        }
+
+        /// <summary>
+        /// Plays the out of bounds SFX.
+        /// </summary>
+        public void PlayOutOfBoundsNegativeSound()
+        {
+            _audioManager.PlayDefaultSFX(_outOfBoundsNegativeClip);
         }
     }
 }

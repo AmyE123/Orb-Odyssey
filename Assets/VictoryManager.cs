@@ -54,7 +54,8 @@ namespace CT6RIGPR
             playerTransform.position = victoryPosition;
             playerTransform.rotation = victoryRotation;
 
-            _globalReferences.BallController.DisableInput(true);
+            _globalReferences.BallController.DisableInput();
+            _globalReferences.BallController.FreezePlayer();
 
             BlendToVictoryCamera();
             StartCoroutine(DoorOpen());
@@ -90,18 +91,19 @@ namespace CT6RIGPR
         {
             _globalReferences.GameSFXManager.PlayPortalPullSound();
             Transform playerTransform = _globalReferences.BallController.gameObject.transform;
-            float moveDuration = 0.5f;
-            float scaleDuration = 0.3f;
+            float moveDuration = 1f;
+            Vector3 currentScale = _player.transform.localScale;
             Vector3 disappearScale = Vector3.zero;
 
-            _player.transform.DOMove(_doorCenter.position, moveDuration).SetEase(Ease.InExpo)
+            // Start shrinking the player at the same time as moving
+            _player.transform.DOScale(disappearScale, moveDuration).From(currentScale).SetEase(Ease.Linear);
+
+            // Move the player with a smoother and less dramatic easing
+            _player.transform.DOMove(_doorCenter.position, moveDuration).SetEase(Ease.InOutQuad)
                 .OnComplete(() =>
                 {
-                    _player.transform.DOScale(disappearScale, scaleDuration).OnComplete(() =>
-                    {
-                        _player.SetActive(false);
-                        FadeToBlackAndLoadNextLevel();
-                    });
+                    _player.SetActive(false);
+                    FadeToBlackAndLoadNextLevel();
                 });
         }
 
