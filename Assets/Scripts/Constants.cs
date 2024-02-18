@@ -2,6 +2,15 @@ namespace CT6RIGPR
 {
     public static class Constants
     {
+        #region Level Properties
+
+        /// <summary>
+        /// The different types of levels.
+        /// </summary>
+        public enum LevelType { Tutorial, Platformer, Puzzle }
+
+        #endregion // Level Properties
+
         #region 4DoF Constants
 
         /// <summary>
