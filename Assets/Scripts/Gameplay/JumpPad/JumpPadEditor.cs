@@ -3,6 +3,7 @@ namespace CT6RIGPR
     using UnityEditor;
     using UnityEngine;
 
+#if UNITY_EDITOR
     /// <summary>
     /// A GUI for the editor representing the jump pad direction.
     /// </summary>
@@ -20,4 +21,5 @@ namespace CT6RIGPR
             Handles.ConeHandleCap(0, direction, Quaternion.LookRotation(jumpPad.GetLaunchDirection()), 0.5f, EventType.Repaint);
         }
     }
+#endif
 }

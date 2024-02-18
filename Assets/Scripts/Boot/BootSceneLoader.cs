@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 namespace CT6RIGPR
 {
     using UnityEditor;
@@ -27,3 +28,4 @@ namespace CT6RIGPR
         }
     }
 }
+#endif
