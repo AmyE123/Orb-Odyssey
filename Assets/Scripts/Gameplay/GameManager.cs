@@ -54,9 +54,9 @@ namespace CT6RIGPR
         }
         IEnumerator FadeFromBlack()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
 
-            float fadeDuration = 3.0f;
+            float fadeDuration = 0.5f;
             fadePanel.color = Color.black;
 
             fadePanel.DOFade(0, fadeDuration);
@@ -179,6 +179,7 @@ namespace CT6RIGPR
             float fadeDuration = 1.0f;
             fadePanel.DOFade(1, fadeDuration).OnComplete(() =>
             {
+                Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("Boot");
             });
         }
