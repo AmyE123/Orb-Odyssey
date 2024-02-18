@@ -98,7 +98,7 @@ namespace CT6RIGPR
             _gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
 
             // Disable movement
-            _ballController.DisableInput();
+            _ballController.DisableInput(true);
             StartCoroutine(FadeOut());
 
             yield return new WaitForSeconds(_respawnTime * (_fadeOutTime + _fadeWaitTime / 2));

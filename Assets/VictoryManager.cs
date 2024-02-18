@@ -53,7 +53,7 @@ namespace CT6RIGPR
             playerTransform.position = victoryPosition;
             playerTransform.rotation = victoryRotation;
 
-            _globalReferences.BallController.DisableInput();
+            _globalReferences.BallController.DisableInput(true);
             _globalReferences.BallController.FreezePlayer();
 
             BlendToVictoryCamera();

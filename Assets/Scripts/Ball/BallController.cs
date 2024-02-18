@@ -85,10 +85,10 @@ namespace CT6RIGPR
         /// <summary>
         /// Disables the players input.
         /// </summary>
-        public void DisableInput()
+        public void DisableInput(bool disableRotation = false)
         {
             _disableInput = true;
-            _disableRotation = true;
+            _disableRotation = disableRotation;
         }
 
         /// <summary>
