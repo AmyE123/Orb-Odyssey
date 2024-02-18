@@ -4,6 +4,8 @@ namespace CT6RIGPR
     using System.Linq;
     using UnityEngine;
     using DG.Tweening;
+    using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
 
     public class GameManager : MonoBehaviour
     {
@@ -20,6 +22,8 @@ namespace CT6RIGPR
         [SerializeField] private Vector3 _victoryCameraPosition;
         [SerializeField] private Vector3 _victoryCameraRotation;
         [SerializeField] private Transform _doorCenter;
+
+        [SerializeField] private Image fadePanel;
 
         /// <summary>
         /// A getter for the global references.
@@ -41,6 +45,22 @@ namespace CT6RIGPR
         /// </summary>
         public bool HasCompletedLevel => _hasCompletedLevel;
 
+
+        private void SetPanelAlpha(float alpha)
+        {
+            Color currentColor = fadePanel.color;
+            currentColor.a = alpha;
+            fadePanel.color = currentColor;
+        }
+        IEnumerator FadeFromBlack()
+        {
+            yield return new WaitForSeconds(2);
+
+            float fadeDuration = 3.0f;
+            fadePanel.color = Color.black;
+
+            fadePanel.DOFade(0, fadeDuration);
+        }
 
         public void IncrementCollectableCount()
         {
@@ -75,6 +95,9 @@ namespace CT6RIGPR
 
         private void Start()
         {
+            SetPanelAlpha(1.0f);
+            StartCoroutine(FadeFromBlack());
+
             InitializeLevel();
 
             if (_globalReferences == null)
@@ -137,21 +160,28 @@ namespace CT6RIGPR
         {
             Transform playerTransform = _globalReferences.BallController.gameObject.transform;
             float moveDuration = 0.5f;
-            float scaleDuration = 0.3f; // Duration for scaling down, adjust as needed
-            Vector3 disappearScale = Vector3.zero; // Scale to zero for disappearing
+            float scaleDuration = 0.3f;
+            Vector3 disappearScale = Vector3.zero;
 
-            // Sequence for moving, then scaling, and finally making the player disappear
             _player.transform.DOMove(_doorCenter.position, moveDuration).SetEase(Ease.InExpo)
                 .OnComplete(() =>
                 {
-                    // After moving, start scaling down
                     _player.transform.DOScale(disappearScale, scaleDuration).OnComplete(() =>
                     {
-                        // After scaling down, make the player disappear or destroy
-                        _player.SetActive(false); // To make player disappear
-                        //Destroy(playerTransform.gameObject); // To destroy the player object
+                        _player.SetActive(false);
+                        FadeToBlackAndLoadNextLevel();
                     });
                 });
         }
+
+        private void FadeToBlackAndLoadNextLevel()
+        {
+            float fadeDuration = 1.0f;
+            fadePanel.DOFade(1, fadeDuration).OnComplete(() =>
+            {
+                SceneManager.LoadScene("Boot");
+            });
+        }
+
     }
 }
