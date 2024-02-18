@@ -7,7 +7,7 @@ public class DoorScript : MonoBehaviour
 {
     [SerializeField] private GameObject _doorHinge;
     [SerializeField] private float _doorRotation;
-    [SerializeField] private bool _doorClosed;
+    [SerializeField] private bool _doorClosed = true;
     [SerializeField] private float _doorOpenSpeed = 1f;
     private float _startDoorRotation;
 

@@ -37832,12 +37832,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _globalReferences: {fileID: 1744154182}
   _collectableCount: 0
-  _victoryPosition: {x: 24.17, y: 2.93, z: 29.68}
+  _victoryPosition: {x: 24.17, y: 4.95, z: 29.68}
   _victoryRotation: {x: 0, y: 51.091328, z: 0}
   _victoryCamera: {fileID: 462235750}
+  _playerCamera: {fileID: 1524393656}
   _doorScript: {fileID: 503633124}
   _player: {fileID: 1032842235}
-  _victoryCameraPosition: {x: 0, y: 0, z: 0}
+  _victoryCameraPosition: {x: 21.56, y: 4.5, z: 27.5}
 --- !u!4 &1744154184
 Transform:
   m_ObjectHideFlags: 0
@@ -51287,6 +51288,11 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
+    - target: {fileID: 6794755361699416778, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8249625513411246782, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,7 +13,7 @@ namespace CT6RIGPR
         [SerializeField] private GlobalReferences _globalReferences;
         [SerializeField] private int _collectableCount;
         [SerializeField] private Vector3 _victoryPosition, _victoryRotation;
-        [SerializeField] private Camera _victoryCamera;
+        [SerializeField] private Camera _victoryCamera, _playerCamera;
         [SerializeField] private DoorScript _doorScript;
         [SerializeField] private GameObject _player;
         [SerializeField] private Vector3 _victoryCameraPosition;
@@ -32,6 +32,12 @@ namespace CT6RIGPR
         /// The current amount of pickups which are picked up.
         /// </summary>
         public int CollectableCount => _collectableCount;
+
+        /// <summary>
+        /// A getter for the level complete status
+        /// </summary>
+        public bool HasCompletedLevel => _hasCompletedLevel;
+
 
         public void IncrementCollectableCount()
         {
@@ -53,17 +59,25 @@ namespace CT6RIGPR
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
                 }
+
+                
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _hasCompletedLevel = true;
+                VictoryScreen();
             }
         }
 
-        private void Start ()
+        private void Start()
         {
             InitializeLevel();
 
             if (_globalReferences == null)
             {
                 Debug.LogAssertion("[CT6RIGPR] Global References is NULL! Please set this in the inspector.");
-            }            
+            }
         }
 
         private void SetPickupCount()
@@ -74,12 +88,16 @@ namespace CT6RIGPR
 
         private void VictoryScreen()
         {
+            Transform playerTransform = _globalReferences.BallController.gameObject.transform;
             //Player
-            _player.transform.position = _victoryPosition;
-            _player.transform.localRotation = Quaternion.Euler(_victoryRotation.x, _victoryRotation.y, _victoryRotation.z);
+            _globalReferences.BallController.DisableInput(true);
+            playerTransform.position = _victoryPosition;
+            playerTransform.rotation = Quaternion.Euler(_victoryRotation.x, _victoryRotation.y, _victoryRotation.z);
 
             //Camera
-            //_victoryCamera.transform.DOMove()
+            _playerCamera.enabled = false;
+            _victoryCamera.enabled = true;
+            _victoryCamera.transform.DOMove(_victoryCameraPosition, 1);
 
             //Door
             StartCoroutine("DoorOpen");
@@ -90,7 +108,7 @@ namespace CT6RIGPR
 
         IEnumerator DoorOpen()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
             _doorScript.ToggleDoor();
         }
     }

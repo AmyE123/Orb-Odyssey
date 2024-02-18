@@ -37,6 +37,7 @@ namespace CT6RIGPR
         [Header("Debug and Input Settings")]
         [SerializeField] private bool _debugInput;
         [SerializeField] private bool _disableInput;
+        [SerializeField] private bool _disableRotation;
         [SerializeField] private GameManager _gameManager;
 
         [Header("Ground Check Settings")]
@@ -80,9 +81,10 @@ namespace CT6RIGPR
         /// <summary>
         /// Disables the players input.
         /// </summary>
-        public void DisableInput()
+        public void DisableInput(bool disableRotation = false)
         {
             _disableInput = true;
+            _disableRotation = disableRotation;
         }
 
         /// <summary>
@@ -91,6 +93,7 @@ namespace CT6RIGPR
         public void EnableInput()
         {
             _disableInput = false;
+            _disableRotation = false;
         }
 
         /// <summary>
@@ -196,7 +199,7 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            if (_debugInput && !_gameManager.GlobalReferences.CameraController.DebugMouseLook)
+            if (_debugInput && !_gameManager.GlobalReferences.CameraController.DebugMouseLook && !_disableRotation)
             {
                 if (Input.GetKey(KeyCode.RightControl))
                 {
@@ -276,21 +279,28 @@ namespace CT6RIGPR
 
                 }
 
-                if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
+                if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook && !_disableRotation)
                 {
                     Vector3 movement = new Vector3(moveHorizontal, moveAltitude, moveVertical);
                     movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;
                     return movement;
                 }
             }
+            if (!_gameManager.HasCompletedLevel)
+            {
+                Transform cameraTransform = Camera.main.transform;
+                Vector3 forward = cameraTransform.forward;
+                forward.y = 0;
+                Vector3 right = cameraTransform.right;
+                Vector3 adjustedMovement = (forward * moveVertical + Vector3.up * moveAltitude + right * moveHorizontal).normalized;
 
-            Transform cameraTransform = Camera.main.transform;
-            Vector3 forward = cameraTransform.forward;
-            forward.y = 0;
-            Vector3 right = cameraTransform.right;
-            Vector3 adjustedMovement = (forward * moveVertical + Vector3.up * moveAltitude + right * moveHorizontal).normalized;
-
-            return adjustedMovement * _maxForce;
+                return adjustedMovement * _maxForce;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
+            
         }
 
         /// <summary>
