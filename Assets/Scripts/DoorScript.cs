@@ -11,6 +11,8 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private float _doorOpenSpeed = 1f;
     private float _startDoorRotation;
 
+    public float DoorOpenDuration = 2f;
+
     private void Start()
     {
         InitialiseDoor();
@@ -18,31 +20,16 @@ public class DoorScript : MonoBehaviour
 
     private void InitialiseDoor()
     {
-        _startDoorRotation = _doorHinge.transform.localRotation.y;
+        _startDoorRotation = _doorHinge.transform.localEulerAngles.y;
     }
 
     public void ToggleDoor()
     {
-        if (_doorClosed == true)
+        if (_doorClosed)
         {
-            _doorHinge.transform.DOLocalRotate(new Vector3(_doorHinge.transform.rotation.x, _doorRotation, _doorHinge.transform.rotation.z), _doorOpenSpeed);
+            Vector3 openRotation = new Vector3(_doorHinge.transform.localEulerAngles.x, _doorRotation, _doorHinge.transform.localEulerAngles.z);
+            _doorHinge.transform.DOLocalRotate(openRotation, _doorOpenSpeed);
             _doorClosed = false;
         }
-
-        else
-        {
-            _doorHinge.transform.DOLocalRotate(new Vector3(_doorHinge.transform.rotation.x, _startDoorRotation, _doorHinge.transform.rotation.z), _doorOpenSpeed);
-            _doorClosed = true;
-        }
-
     }
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        Debug.Log("Space has been pressed");
-    //        ToggleDoor();
-    //    }
-    //}
 }

@@ -19,6 +19,7 @@ namespace CT6RIGPR
         [SerializeField] private Transform _playerCockpit;
         [SerializeField] private Vector3 _victoryCameraPosition;
         [SerializeField] private Vector3 _victoryCameraRotation;
+        [SerializeField] private Transform _doorCenter;
 
         /// <summary>
         /// A getter for the global references.
@@ -112,7 +113,9 @@ namespace CT6RIGPR
             BlendToVictoryCamera();
 
             //Door
-            StartCoroutine("DoorOpen");
+            StartCoroutine(DoorOpen());
+
+            //Move player to door
 
             //UI
 
@@ -120,8 +123,35 @@ namespace CT6RIGPR
 
         IEnumerator DoorOpen()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             _doorScript.ToggleDoor();
+
+            // Wait for the door to fully open
+            yield return new WaitForSeconds(_doorScript.DoorOpenDuration);
+
+            // Move the player to the center of the door
+            MovePlayerToDoorCenter();
+        }
+
+        private void MovePlayerToDoorCenter()
+        {
+            Transform playerTransform = _globalReferences.BallController.gameObject.transform;
+            float moveDuration = 0.5f;
+            float scaleDuration = 0.3f; // Duration for scaling down, adjust as needed
+            Vector3 disappearScale = Vector3.zero; // Scale to zero for disappearing
+
+            // Sequence for moving, then scaling, and finally making the player disappear
+            _player.transform.DOMove(_doorCenter.position, moveDuration).SetEase(Ease.InExpo)
+                .OnComplete(() =>
+                {
+                    // After moving, start scaling down
+                    _player.transform.DOScale(disappearScale, scaleDuration).OnComplete(() =>
+                    {
+                        // After scaling down, make the player disappear or destroy
+                        _player.SetActive(false); // To make player disappear
+                        //Destroy(playerTransform.gameObject); // To destroy the player object
+                    });
+                });
         }
     }
 }
