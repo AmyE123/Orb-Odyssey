@@ -261,7 +261,7 @@ MonoBehaviour:
   _audioManager: {fileID: 1830435972}
   _musicVolume: 1
   _sfxVolume: 1
-  _defaultButtonPressSFX: {fileID: 8300000, guid: b205c281ee1f95a4d9d955d07ff73102,
+  _defaultButtonPressSFX: {fileID: 8300000, guid: 4d405b1f33c02dc49a36f68df7966e01,
     type: 3}
   _defaultButtonBackSFX: {fileID: 8300000, guid: 371ff95235ac24f4dbd75ab09747c1de,
     type: 3}
