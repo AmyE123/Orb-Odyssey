@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365b629f85e81b249858d48585421128, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  SceneName: Lily Pads
-  LevelName: Lily Pads
+  SceneName: Leap Lagoon
+  LevelName: Leap Lagoon
   LevelType: 1
