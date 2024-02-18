@@ -22953,6 +22953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpPad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7885052305904706973, guid: 8440339b7f9407a44bbd1d6b9c91e32f,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24887,6 +24892,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JumpPad (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885052305904706973, guid: 8440339b7f9407a44bbd1d6b9c91e32f,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38069,6 +38079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpPad (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7885052305904706973, guid: 8440339b7f9407a44bbd1d6b9c91e32f,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49211,6 +49226,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JumpPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885052305904706973, guid: 8440339b7f9407a44bbd1d6b9c91e32f,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885052305904706973, guid: 8440339b7f9407a44bbd1d6b9c91e32f,
+        type: 3}
+      propertyPath: _launchDirection
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
