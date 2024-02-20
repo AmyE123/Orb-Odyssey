@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Gamejam/Template.unity.meta
+guid: 5fad1efcb81f03b4aac7e0527457f156
+========
 guid: 4d78bc2551127aa42aff0d4a32cd6009
 folderAsset: yes
+>>>>>>>> main:Assets/Materials/Hamster_Ball_Vehicle.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

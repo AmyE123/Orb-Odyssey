@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cockpit
+  - Pickup
+  - Wall
+  - Water
+  - Checkpoint
+  - IslandBoundary
   layers:
   - Default
   - TransparentFX

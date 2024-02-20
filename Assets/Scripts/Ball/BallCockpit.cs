@@ -11,6 +11,7 @@ namespace CT6RIGPR
         private float _pitch;
 
         [SerializeField] private GameObject _playerGameObject;
+        [SerializeField] private GameManager _gameManager;
 
         /// <summary>
         /// The roll value for the cockpit
@@ -47,8 +48,13 @@ namespace CT6RIGPR
             {
                 CalculateCockpitRotation();
             }
-            ClampRotation();
-            ApplyRotation();
+
+            if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
+            {
+                ClampRotation();
+                ApplyRotation();
+            }
+
             DrawDebugRay();
         }
 
@@ -68,13 +74,28 @@ namespace CT6RIGPR
             float moveHorizontal = Input.GetAxis("HotasX");
             float moveVertical = Input.GetAxis("HotasY");
 
-            //Use arrow keys for input if testing with the PC rather than joysticks.
+            //Use arrow keys or WASD for input if testing with the PC rather than joysticks.
             if (_playerGameObject.GetComponent<BallController>().DebugInput)
             {
-                if (Input.GetKey(KeyCode.LeftArrow)) { _roll--; }
-                if (Input.GetKey(KeyCode.RightArrow)) { _roll++; }
-                if (Input.GetKey(KeyCode.UpArrow)) { _pitch++; }
-                if (Input.GetKey(KeyCode.DownArrow)) { _pitch--; }
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) 
+                {
+                    _roll--; 
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) 
+                { 
+                    _roll++; 
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) 
+                { 
+                    _pitch++; 
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) 
+                { 
+                    _pitch--; 
+                }
             }
             else
             {

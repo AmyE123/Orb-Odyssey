@@ -7,14 +7,15 @@ namespace CT6RIGPR
     /// </summary>
     public class TubeTrigger : MonoBehaviour
     {
-        [SerializeField] private SplineFollower _splineFollower;
+        [SerializeField] private TubeFollower _splineFollower;
+        [SerializeField] private Constants.TubeDirection _triggerDirection;
 
         private void Start()
         {
             if (_splineFollower == null)
             {
                 Debug.LogWarning("[CT6RIGPR] SplineFollower not set for " + transform.parent.name + " Please set this in the inspector.");
-                _splineFollower = GetComponentInParent<SplineFollower>();
+                _splineFollower = GetComponentInParent<TubeFollower>();
             }
         }
 
@@ -22,7 +23,7 @@ namespace CT6RIGPR
         {
             if (other.CompareTag(Constants.PLAYER_TAG))
             {
-                _splineFollower.StartFollowing();
+                _splineFollower.ActivateTrigger(_triggerDirection);
             }
         }
     }

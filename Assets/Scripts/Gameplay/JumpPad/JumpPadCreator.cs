@@ -3,8 +3,12 @@ namespace CT6RIGPR
     using UnityEditor;
     using UnityEngine;
 
+    /// <summary>
+    /// A script to help designers create jump pads when doing level editing.
+    /// </summary>
     public class JumpPadCreator : MonoBehaviour
     {
+#if UNITY_EDITOR
         [MenuItem(Constants.LEVEL_TOOLS_MENU_ITEM_PATH + "Create Jump Pad")]
         private static void CreateJumpPad()
         {
@@ -24,5 +28,6 @@ namespace CT6RIGPR
                 SceneView.lastActiveSceneView.FrameSelected();
             }
         }
+#endif
     }
 }

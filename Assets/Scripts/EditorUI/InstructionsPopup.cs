@@ -3,6 +3,7 @@ namespace CT6RIGPR
     using UnityEditor;
     using UnityEngine;
 
+#if UNITY_EDITOR
     /// <summary>
     /// An instructions popup for any tools we may have.
     /// </summary>
@@ -53,4 +54,5 @@ namespace CT6RIGPR
             }
         }
     }
+#endif
 }

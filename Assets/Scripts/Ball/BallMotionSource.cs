@@ -8,7 +8,6 @@ namespace CT6RIGPR
     /// </summary>
     public class BallMotionSource : MonoBehaviour
     {
-        [SerializeField] private GameObject _ballGameObject;
         [SerializeField] private ActuateAgent _actuateAgent;
 
         void Start()

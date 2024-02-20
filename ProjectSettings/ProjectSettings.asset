@@ -136,7 +136,8 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -8155280414951245053, guid: 93c9278c47bb381459fca8c966e5f522, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -846,8 +847,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Orb Odyssey
-  metroPackageVersion: 
+  metroPackageName: OrbOdyssey
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -855,7 +856,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Orb Odyssey
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Orb Odyssey
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
