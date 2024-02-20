@@ -11,6 +11,9 @@ namespace CT6RIGPR
     {
         private Rigidbody _rigidBody;
         private bool _isInputActive = false;
+        private float moveHorizontal = 0.0f;
+        private float moveVertical = 0.0f;
+
 
         [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
@@ -81,6 +84,11 @@ namespace CT6RIGPR
         /// Whether rotation of the ball is disabled or not.
         /// </summary>
         public bool DisableRotation => _disableRotation;
+
+
+        public float MoveHorizontal => moveHorizontal;
+        public float MoveVertical => moveVertical;
+
 
         /// <summary>
         /// Disables the players input.
@@ -226,6 +234,7 @@ namespace CT6RIGPR
             }
             else
             {
+                /*
                 var leftHandedControllers = new List<InputDevice>();
                 var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
                 InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
@@ -237,7 +246,9 @@ namespace CT6RIGPR
                     {
                         _yRotation += thumbstick.x;
                     }
-                }           
+                } */
+                _yRotation += Input.GetAxis(Constants.HOTAS_X);
+
             }
         }
 
@@ -286,8 +297,25 @@ namespace CT6RIGPR
                 }
                 else
                 {
-                    moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
-                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+                    //moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
+                    //moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+//                    moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
+//                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+
+                    var leftHandedControllers = new List<InputDevice>();
+                    var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+                    foreach (var device in leftHandedControllers)
+                    {
+                        Vector2 thumbstick;
+                        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
+                        {
+                            moveHorizontal = thumbstick.x;
+                            moveVertical = thumbstick.y;
+                        }
+                    }
+
                     //Write input to use the VR controller joystick for altitude changes.
                 }
 
@@ -298,7 +326,6 @@ namespace CT6RIGPR
                     return movement;
                 }
             }
-            Debug.Log("X: " + moveHorizontal + " Y: " + moveVertical);
 
             if (!_gameManager.HasCompletedLevel)
             {

@@ -38,7 +38,7 @@ namespace CT6RIGPR
             }
 
             _ballController = _gameManager.GlobalReferences.BallController;
-            _profileManager = _gameManager.GlobalReferences.ProfileManager;
+//            _profileManager = _gameManager.GlobalReferences.ProfileManager;
         }
 
         private void Update()
@@ -51,7 +51,7 @@ namespace CT6RIGPR
 
         private void StartFollowing(TubeDirection followDirection)
         {
-            _profileManager.setProfile(Constants.DOF_ORB_SPLINE_PROFILE);
+//            _profileManager.setProfile(Constants.DOF_ORB_SPLINE_PROFILE);
             _activeMovingDirection = followDirection;
             _isFollowing = true;
             _ballController.DisableInput();
@@ -95,7 +95,7 @@ namespace CT6RIGPR
         {
             _isFollowing = false;
             _ballController.EnableInput();
-            _profileManager.setProfile(Constants.DOF_ORB_PROFILE);
+//            _profileManager.setProfile(Constants.DOF_ORB_PROFILE);
 
             RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
             if (_activeMovingDirection == TubeDirection.Forward)

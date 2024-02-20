@@ -12,6 +12,7 @@ namespace CT6RIGPR
 
         [SerializeField] private GameObject _playerGameObject;
         [SerializeField] private GameManager _gameManager;
+        [SerializeField] private BallController _ballController;
 
         /// <summary>
         /// The roll value for the cockpit
@@ -71,8 +72,9 @@ namespace CT6RIGPR
         /// </summary>
         private void CalculateCockpitRotation()
         {
-            float moveHorizontal = Input.GetAxis("HotasX");
-            float moveVertical = Input.GetAxis("HotasY");
+            float moveHorizontal = _ballController.MoveHorizontal;
+            float moveVertical = _ballController.MoveVertical;
+            
 
             //Use arrow keys or WASD for input if testing with the PC rather than joysticks.
             if (_playerGameObject.GetComponent<BallController>().DebugInput)

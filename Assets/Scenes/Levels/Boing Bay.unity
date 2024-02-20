@@ -25472,7 +25472,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913839305}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6009dc52c4d923546b823664d89e2ea5, type: 3}
   m_Name: 
@@ -28913,16 +28913,41 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
+    - target: {fileID: 4882340172827147047, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: _ballController
+      value: 
+      objectReference: {fileID: 2016643683}
+    - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: _maxForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _debugInput
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
+    - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: _accelerationFactor
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: _additionalAirborneGravity
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738987482314166013, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8208291869122111554, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _fadeImage
