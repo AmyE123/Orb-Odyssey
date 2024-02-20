@@ -32014,12 +32014,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 293f6807a154268458ec1e623418028d, type: 3}
---- !u!1 &1283367334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1301885328173516550, guid: 039dad13975718d43a5392b35e44dc37,
-    type: 3}
-  m_PrefabInstance: {fileID: 3847228530500373751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1283788667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37008,18 +37002,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520378474}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1524393650 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6794755361699416778, guid: 039dad13975718d43a5392b35e44dc37,
-    type: 3}
-  m_PrefabInstance: {fileID: 3847228530500373751}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &1524393656 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5192728946574426519, guid: 039dad13975718d43a5392b35e44dc37,
-    type: 3}
-  m_PrefabInstance: {fileID: 3847228530500373751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1531931769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47728,7 +47710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 1524393656}
+  m_Camera: {fileID: 3847228530500373753}
   m_OriginBaseGameObject: {fileID: 2009949703}
   m_CameraFloorOffsetObject: {fileID: 2085265306}
   m_RequestedTrackingOriginMode: 0
@@ -47763,9 +47745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _references: {fileID: 1744154182}
   _mouseSensitivity: 500
-  _cockpit: {fileID: 1283367334}
+  _cockpit: {fileID: 3847228530500373754}
   _outerBall: {fileID: 2016643680}
-  _cameraObj: {fileID: 1524393650}
+  _cameraObj: {fileID: 3847228530500373752}
   _debugMouseLook: 1
 --- !u!114 &2009949710
 MonoBehaviour:
@@ -51248,6 +51230,16 @@ PrefabInstance:
       propertyPath: _actuateAgent
       value: 
       objectReference: {fileID: 201493271}
+    - target: {fileID: 4174405753713811654, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: _actuateAgent
+      value: 
+      objectReference: {fileID: 201493271}
+    - target: {fileID: 4882340172827147047, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 1744154183}
     - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _gameManager
@@ -51323,9 +51315,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039dad13975718d43a5392b35e44dc37, type: 3}
---- !u!4 &3847228530500373752 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8213002172847710801, guid: 039dad13975718d43a5392b35e44dc37,
+--- !u!1 &3847228530500373752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5251318744555769877, guid: 039dad13975718d43a5392b35e44dc37,
+    type: 3}
+  m_PrefabInstance: {fileID: 3847228530500373751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &3847228530500373753 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6826326625289476936, guid: 039dad13975718d43a5392b35e44dc37,
+    type: 3}
+  m_PrefabInstance: {fileID: 3847228530500373751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3847228530500373754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 340731360229318105, guid: 039dad13975718d43a5392b35e44dc37,
     type: 3}
   m_PrefabInstance: {fileID: 3847228530500373751}
   m_PrefabAsset: {fileID: 0}
@@ -51386,7 +51390,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerCamera
       value: 
-      objectReference: {fileID: 1524393656}
+      objectReference: {fileID: 3847228530500373753}
     - target: {fileID: 1839039699704410525, guid: 1f81716d197065c4a92e10f48ed1d084,
         type: 3}
       propertyPath: cameraYOffset
@@ -51431,12 +51435,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerCamera
       value: 
-      objectReference: {fileID: 1524393656}
+      objectReference: {fileID: 0}
     - target: {fileID: 4583459338734510874, guid: 1f81716d197065c4a92e10f48ed1d084,
         type: 3}
       propertyPath: _playerCockpit
       value: 
-      objectReference: {fileID: 3847228530500373752}
+      objectReference: {fileID: 0}
     - target: {fileID: 4583459338734510874, guid: 1f81716d197065c4a92e10f48ed1d084,
         type: 3}
       propertyPath: _victoryCamera
