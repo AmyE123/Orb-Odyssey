@@ -28,6 +28,15 @@ namespace CT6RIGPR
         /// </summary>
         public const string DOF_HARD_PROFILE = "rigpr2023hard";
 
+        /// <summary>
+        /// The default ball profile for the 4DOF hardware.
+        /// </summary>
+        public const string DOF_ORB_PROFILE = "rigpr2023monkeyball";
+        /// <summary>
+        /// The spline ball for the 4DOF hardware.
+        /// </summary>
+        public const string DOF_ORB_SPLINE_PROFILE = "rigpr2023monkeyballspline";
+
         #endregion // 4DoF Constants
 
         #region Ball Constants

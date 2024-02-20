@@ -298,6 +298,8 @@ namespace CT6RIGPR
                     return movement;
                 }
             }
+            Debug.Log("X: " + moveHorizontal + " Y: " + moveVertical);
+
             if (!_gameManager.HasCompletedLevel)
             {
                 Transform cameraTransform = Camera.main.transform;

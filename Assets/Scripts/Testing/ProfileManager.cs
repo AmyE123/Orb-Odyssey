@@ -6,7 +6,7 @@ namespace CT6RIGPR
     /// <summary>
     /// A test script for switching profiles on the 4DoF through Unity
     /// </summary>
-    public class ProfileTest : MonoBehaviour
+    public class ProfileManager : MonoBehaviour
     {
         [DllImport("libadminclient", EntryPoint = "SendLoadProfile")]
         public static extern void SendLoadProfile(string profile);
@@ -21,7 +21,6 @@ namespace CT6RIGPR
         void Update()
         {
             InitializeProfile();
-            HandleSettingProfile();
         }
 
         /// <summary>
@@ -33,8 +32,13 @@ namespace CT6RIGPR
             {
                 _initialisedProfile = true;
 
-                SendLoadProfile(Constants.DOF_DEFAULT_PROFILE);
+                SendLoadProfile(Constants.DOF_ORB_PROFILE);
             }
+        }
+
+        public void setProfile(string profile)
+        {
+            SendLoadProfile(profile);
         }
 
         /// <summary>

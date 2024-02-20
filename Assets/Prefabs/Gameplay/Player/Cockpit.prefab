@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6422092250827766896
 Transform:
   m_ObjectHideFlags: 0
@@ -207,10 +207,10 @@ MonoBehaviour:
   m_PositionInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Position Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: eff7f2cd-4083-4cfa-b726-f1467e219d96
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -219,10 +219,10 @@ MonoBehaviour:
   m_RotationInput:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Rotation Input
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: e7f01864-faec-427c-929a-ab954b123776
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
