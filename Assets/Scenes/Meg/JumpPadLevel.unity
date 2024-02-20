@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6889449, g: 0.29220134, b: 0.17016158, a: 1}
+  m_IndirectSpecularColor: {r: 0.6889449, g: 0.29220134, b: 0.17016156, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -35603,34 +35603,9 @@ PrefabInstance:
       objectReference: {fileID: 201493271}
     - target: {fileID: 5401196234293449611, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
         type: 3}
-      propertyPath: _maxForce
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
-        type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
-    - target: {fileID: 5401196234293449611, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
-        type: 3}
-      propertyPath: _airborneDrag
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
-        type: 3}
-      propertyPath: _gravityModifier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
-        type: 3}
-      propertyPath: _accelerationFactor
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
-        type: 3}
-      propertyPath: _groundCheckDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6154786919409885688, guid: 9521ecf4a3edc3643aaa8c071bf5e822,
         type: 3}
       propertyPath: _gameManager
