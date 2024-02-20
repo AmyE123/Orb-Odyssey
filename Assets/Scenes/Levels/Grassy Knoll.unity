@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1150992887}
-  m_IndirectSpecularColor: {r: 0.6889449, g: 0.29220134, b: 0.17016158, a: 1}
+  m_IndirectSpecularColor: {r: 0.6889449, g: 0.29220134, b: 0.17016156, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -51238,101 +51238,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1240893874344834615, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Id
-      value: c5667a53-f818-4dc2-b7cd-52d94d73e575
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Id
-      value: 20877c17-6af1-4438-98b9-7599a6e514c5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925680925087417016, guid: 299f35acfd03d3247a294492bc8bfdd0,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation Input
-      objectReference: {fileID: 0}
     - target: {fileID: 1186835171559774236, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: m_Name
       value: PlayerBall
-      objectReference: {fileID: 0}
-    - target: {fileID: 1186835171559774236, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3406352415944604185, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _actuateAgent
       value: 
       objectReference: {fileID: 201493271}
-    - target: {fileID: 3789678305882912728, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Id
-      value: bf91fd94-62b0-474c-a795-b6431e8abbdc
-      objectReference: {fileID: 0}
-    - target: {fileID: 3789678305882912728, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Id
-      value: 4a3368e9-eb13-4edd-a87b-043369d97b37
-      objectReference: {fileID: 0}
-    - target: {fileID: 3789678305882912728, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 3789678305882912728, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: _dragMax
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: _maxForce
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
-    - target: {fileID: 5401196234293449611, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: _accelerationFactor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5738987482314166013, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6154786919409885688, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
-    - target: {fileID: 6794755361699416778, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8208291869122111554, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: _fadeImage
@@ -51343,16 +51268,6 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1744154183}
-    - target: {fileID: 8208291869122111554, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: _checkpoints.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8208291869122111554, guid: 039dad13975718d43a5392b35e44dc37,
-        type: 3}
-      propertyPath: _checkpoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 635802206}
     - target: {fileID: 8249625513411246782, guid: 039dad13975718d43a5392b35e44dc37,
         type: 3}
       propertyPath: m_LocalPosition.x
