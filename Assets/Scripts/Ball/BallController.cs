@@ -259,8 +259,8 @@ namespace CT6RIGPR
         private Vector3 CalculateMovement()
         {
             // Calculate and return the movement vector
-            float moveHorizontal = 0.0f;
-            float moveVertical = 0.0f;
+            moveHorizontal = 0.0f;
+            moveVertical = 0.0f;
             float moveAltitude = 0.0f;
 
             if (!_disableInput)
@@ -299,9 +299,9 @@ namespace CT6RIGPR
                 {
                     //moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
                     //moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-//                    moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
-//                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-
+                    //                    moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
+                    //                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+                    /*
                     var leftHandedControllers = new List<InputDevice>();
                     var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
                     InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
@@ -315,6 +315,10 @@ namespace CT6RIGPR
                             moveVertical = thumbstick.y;
                         }
                     }
+                    */
+
+                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+//                    MoveVertical = Mathf.Clamp(Input.GetAxis(Constants.HOTAS_X), 0, 0);
 
                     //Write input to use the VR controller joystick for altitude changes.
                 }

@@ -15,13 +15,13 @@ namespace CT6RIGPR
 
         void Start()
         {
-            StartCoroutine(InitialiseProfile(0.5f));
+            StartCoroutine(InitialiseProfile(0.5f, Constants.DOF_ORB_PROFILE));
         }
 
         /// <summary>
         /// Load the monkey ball profile.
         /// </summary>
-        private IEnumerator InitialiseProfile(float time)
+        public IEnumerator InitialiseProfile(float time, string profile)
         {
             yield return new WaitForSeconds(time);
             SendLoadProfile(Constants.DOF_ORB_PROFILE);

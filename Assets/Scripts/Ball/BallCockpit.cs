@@ -108,6 +108,9 @@ namespace CT6RIGPR
             //Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.
             _roll = Mathf.Lerp(_roll, 0, Time.deltaTime);
             _pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
+
+            _roll = _playerGameObject.GetComponent<Rigidbody>().velocity.x;
+            UnityEngine.Debug.Log(_roll);
             
         }
 
@@ -130,7 +133,7 @@ namespace CT6RIGPR
             Quaternion rollRotation = Quaternion.AngleAxis(-_roll, Vector3.forward);
             Quaternion pitchRotation = Quaternion.AngleAxis(-_pitch, Vector3.left);
 
-            transform.rotation = yawRotation * pitchRotation * rollRotation;          
+            transform.rotation = yawRotation * pitchRotation * rollRotation;
         }
 
         private void DrawDebugRay()
