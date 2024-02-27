@@ -1,5 +1,6 @@
 namespace CT6RIGPR
 {
+    using System.Collections;
     using System.Runtime.InteropServices;
     using UnityEngine;
 
@@ -11,29 +12,19 @@ namespace CT6RIGPR
         [DllImport("libadminclient", EntryPoint = "SendLoadProfile")]
         public static extern void SendLoadProfile(string profile);
 
-        [SerializeField] private bool _initialisedProfile;
 
         void Start()
         {
-            _initialisedProfile = false;
-        }
-
-        void Update()
-        {
-            InitializeProfile();
+            StartCoroutine(InitialiseProfile(0.5f));
         }
 
         /// <summary>
-        /// Check if the profile has been initialized, and if not, load the right profile.
+        /// Load the monkey ball profile.
         /// </summary>
-        private void InitializeProfile()
+        private IEnumerator InitialiseProfile(float time)
         {
-            if (!_initialisedProfile)
-            {
-                _initialisedProfile = true;
-
-                SendLoadProfile(Constants.DOF_ORB_PROFILE);
-            }
+            yield return new WaitForSeconds(time);
+            SendLoadProfile(Constants.DOF_ORB_PROFILE);
         }
 
         public void setProfile(string profile)
