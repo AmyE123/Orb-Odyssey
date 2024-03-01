@@ -28,7 +28,7 @@ namespace CT6RIGPR
 				Debug.LogWarning("[CT6RIGPR] GameManager reference in respawn script not set. Please set this in the inspector.");
 			}
 			_ballController = _gameManager.GlobalReferences.BallController;
-			_checkpoints = _gameManager.GlobalReferences.Checkpoints;
+
 		}
 
         private IEnumerator FadeOut()
@@ -67,6 +67,7 @@ namespace CT6RIGPR
         {
             GameObject closestCheckpoint = null;
             float distanceSqrToPoint = 100000.0f; //High value that will be beaten by the first checkpoint.
+            _checkpoints = _gameManager.GlobalReferences.Checkpoints;
 
             if (_checkpoints.Length > 0)
             {
