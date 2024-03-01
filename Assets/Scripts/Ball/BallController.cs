@@ -247,7 +247,14 @@ namespace CT6RIGPR
                         _yRotation += thumbstick.x;
                     }
                 } */
-                _yRotation += Input.GetAxis(Constants.HOTAS_X);
+                //                float _hotasX = Mathf.Abs(Input.GetAxis(Constants.HOTAS_X));
+                //                float _hotasY = Mathf.Abs(Input.GetAxis(Constants.HOTAS_Y));
+                //                if (_hotasY < _hotasX)
+                //                {
+
+                Debug.Log(Input.GetKey("joystick button 0"));
+
+                _yRotation += Input.GetAxis(Constants.HOTAS_X) * 1.5f;
 
             }
         }
@@ -317,8 +324,18 @@ namespace CT6RIGPR
                     }
                     */
 
-                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-//                    MoveVertical = Mathf.Clamp(Input.GetAxis(Constants.HOTAS_X), 0, 0);
+
+                    if (Input.GetKey("joystick button 0"))
+                    {
+//                        moveHorizontal = Input.GetAxis(Constants.HOTAS_X) * 0.25f;
+                        moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+                    }
+                    else
+                    {
+                        moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
+                        moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+                    }
+
 
                     //Write input to use the VR controller joystick for altitude changes.
                 }

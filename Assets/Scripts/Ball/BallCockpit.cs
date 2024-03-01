@@ -13,6 +13,7 @@ namespace CT6RIGPR
         [SerializeField] private GameObject _playerGameObject;
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private BallController _ballController;
+        
 
         /// <summary>
         /// The roll value for the cockpit
@@ -44,7 +45,6 @@ namespace CT6RIGPR
 
         void FixedUpdate()
         {
-            UpdatePosition();
             if (!_playerGameObject.GetComponent<BallController>().HasDisabledInput)
             {
                 CalculateCockpitRotation();
@@ -55,7 +55,7 @@ namespace CT6RIGPR
                 ClampRotation();
                 ApplyRotation();
             }
-
+            UpdatePosition();
             DrawDebugRay();
         }
 
@@ -72,46 +72,9 @@ namespace CT6RIGPR
         /// </summary>
         private void CalculateCockpitRotation()
         {
-            float moveHorizontal = _ballController.MoveHorizontal;
-            float moveVertical = _ballController.MoveVertical;
-            
-
-            //Use arrow keys or WASD for input if testing with the PC rather than joysticks.
-            if (_playerGameObject.GetComponent<BallController>().DebugInput)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) 
-                {
-                    _roll--; 
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) 
-                { 
-                    _roll++; 
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) 
-                { 
-                    _pitch++; 
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) 
-                { 
-                    _pitch--; 
-                }
-            }
-            else
-            {
-                _roll += moveHorizontal / 2.0f;
-                _pitch += moveVertical / 2.0f;               
-            }
-
-            //Lerp to 0,Y,0. Doing this before clamping will result in it not being noticeable when actively pushing the joystick.
-            _roll = Mathf.Lerp(_roll, 0, Time.deltaTime);
-            _pitch = Mathf.Lerp(_pitch, 0, Time.deltaTime);
-
-            _roll = _playerGameObject.GetComponent<Rigidbody>().velocity.x;
-            UnityEngine.Debug.Log(_roll);
-            
+            Vector3 relativeVelocity = Quaternion.Inverse(transform.rotation) * _playerGameObject.GetComponent<Rigidbody>().velocity;
+            _pitch = relativeVelocity.z * 2;
+            _roll = relativeVelocity.x * 2;
         }
 
         /// <summary>
@@ -134,6 +97,7 @@ namespace CT6RIGPR
             Quaternion pitchRotation = Quaternion.AngleAxis(-_pitch, Vector3.left);
 
             transform.rotation = yawRotation * pitchRotation * rollRotation;
+
         }
 
         private void DrawDebugRay()
