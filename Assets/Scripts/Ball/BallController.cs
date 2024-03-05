@@ -234,26 +234,6 @@ namespace CT6RIGPR
             }
             else
             {
-                /*
-                var leftHandedControllers = new List<InputDevice>();
-                var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-                InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
-
-                foreach (var device in leftHandedControllers)
-                {
-                    Vector2 thumbstick;
-                    if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
-                    {
-                        _yRotation += thumbstick.x;
-                    }
-                } */
-                //                float _hotasX = Mathf.Abs(Input.GetAxis(Constants.HOTAS_X));
-                //                float _hotasY = Mathf.Abs(Input.GetAxis(Constants.HOTAS_Y));
-                //                if (_hotasY < _hotasX)
-                //                {
-
-                Debug.Log(Input.GetKey("joystick button 0"));
-
                 _yRotation += Input.GetAxis(Constants.HOTAS_X) * 1.5f;
 
             }
@@ -304,40 +284,7 @@ namespace CT6RIGPR
                 }
                 else
                 {
-                    //moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
-                    //moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-                    //                    moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
-                    //                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-                    /*
-                    var leftHandedControllers = new List<InputDevice>();
-                    var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
-
-                    foreach (var device in leftHandedControllers)
-                    {
-                        Vector2 thumbstick;
-                        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstick))
-                        {
-                            moveHorizontal = thumbstick.x;
-                            moveVertical = thumbstick.y;
-                        }
-                    }
-                    */
-
-
-                    if (Input.GetKey("joystick button 0"))
-                    {
-//                        moveHorizontal = Input.GetAxis(Constants.HOTAS_X) * 0.25f;
-                        moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-                    }
-                    else
-                    {
-                        moveHorizontal = Input.GetAxis(Constants.HOTAS_X);
-                        moveVertical = Input.GetAxis(Constants.HOTAS_Y);
-                    }
-
-
-                    //Write input to use the VR controller joystick for altitude changes.
+                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
                 }
 
                 if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
@@ -393,12 +340,12 @@ namespace CT6RIGPR
         }
 
         /// <summary>
-        /// Normalize _yRotation to be within -180 to 180 degrees
+        /// Prevent _yRotation from exceeding the limits of the 4-DoF.
         /// </summary>
         private void NormalizeRotation()
         {
-            if (_yRotation < -180) { _yRotation += 360; }
-            if (_yRotation > 180) { _yRotation -= 360; }
+            if (_yRotation < -720) { _yRotation = -720; }
+            if (_yRotation > 720) { _yRotation = 720; }
         }
     }
 }
