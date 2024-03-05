@@ -105,7 +105,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: d4f04d7844e1a6149a847d038a90e25b, type: 3}
 --- !u!114 &6135979806239761566
@@ -146,7 +146,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 78
+  m_Constraints: 94
   m_CollisionDetection: 0
 --- !u!1 &7149407363442756961
 GameObject:
@@ -252,7 +252,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: ed5283ebddb1d33448c0d72f19980c1c, type: 3}
 --- !u!1 &8748474142877491340
@@ -300,5 +300,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678f6895156fe574d92b735c8cb16a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 6613959236363483253}
   _rotationSpeed: 100
