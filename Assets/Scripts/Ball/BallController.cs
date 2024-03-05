@@ -234,7 +234,7 @@ namespace CT6RIGPR
             }
             else
             {
-                _yRotation += Input.GetAxis(Constants.HOTAS_X) * 1.5f;
+                _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
 
             }
         }

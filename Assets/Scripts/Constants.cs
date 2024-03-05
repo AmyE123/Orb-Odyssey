@@ -37,6 +37,11 @@ namespace CT6RIGPR
         /// </summary>
         public const string DOF_ORB_SPLINE_PROFILE = "rigpr2023monkeyballspline";
 
+        /// <summary>
+        /// The spline ball for the 4DOF hardware.
+        /// </summary>
+        public const float DOF_PROFILE_INTERVAL = 0.1f;
+
         #endregion // 4DoF Constants
 
         #region Ball Constants
@@ -84,6 +89,11 @@ namespace CT6RIGPR
         /// This is the string for the HOTAS WARTHOG Joysticks Y-axis reference.
         /// </summary>
         public const string HOTAS_Y = "HotasY";
+
+        /// <summary>
+        /// This is the string for the HOTAS WARTHOG Joysticks Y-axis reference.
+        /// </summary>
+        public const float ROTATION_MULTIPLIER = 1.5f;
 
         #endregion // Input Constants
 

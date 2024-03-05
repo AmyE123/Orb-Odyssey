@@ -12,10 +12,9 @@ namespace CT6RIGPR
         [DllImport("libadminclient", EntryPoint = "SendLoadProfile")]
         public static extern void SendLoadProfile(string profile);
 
-
         void Start()
         {
-            StartCoroutine(InitialiseProfile(0.5f, Constants.DOF_ORB_PROFILE));
+            StartCoroutine(InitialiseProfile(Constants.DOF_PROFILE_INTERVAL * 5, Constants.DOF_ORB_PROFILE));
         }
 
         /// <summary>

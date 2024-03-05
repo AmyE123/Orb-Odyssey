@@ -52,7 +52,7 @@ namespace CT6RIGPR
         private void StartFollowing(TubeDirection followDirection)
         {
 //            _profileManager.setProfile(Constants.DOF_ORB_SPLINE_PROFILE);
-            StartCoroutine(_profileManager.InitialiseProfile(0.1f, Constants.DOF_ORB_SPLINE_PROFILE));
+            StartCoroutine(_profileManager.InitialiseProfile(Constants.DOF_PROFILE_INTERVAL, Constants.DOF_ORB_SPLINE_PROFILE));
 
             _activeMovingDirection = followDirection;
             _isFollowing = true;
@@ -98,7 +98,7 @@ namespace CT6RIGPR
             _isFollowing = false;
             _ballController.EnableInput();
 //            _profileManager.setProfile(Constants.DOF_ORB_PROFILE);
-            StartCoroutine(_profileManager.InitialiseProfile(0.1f, Constants.DOF_ORB_PROFILE));
+            StartCoroutine(_profileManager.InitialiseProfile(Constants.DOF_PROFILE_INTERVAL, Constants.DOF_ORB_PROFILE));
 
             RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
             if (_activeMovingDirection == TubeDirection.Forward)
