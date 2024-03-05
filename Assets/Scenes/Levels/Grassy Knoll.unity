@@ -25488,9 +25488,9 @@ Transform:
   m_GameObject: {fileID: 992424566}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -0.04, z: 0.07}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 750341515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
@@ -48470,6 +48470,29 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 3847228530500373751}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2016643696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016643680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stickyCharges: 0
+  _fastCharges: 0
+  _slowCharges: 0
+  _freezeCharges: 0
+  _stickyDuration: 10
+  _fastDuration: 10
+  _slowDuration: 10
+  _freezeDuration: 10
+  _buffedForce: 40
+  _slowedForce: 10
+  _ballController: {fileID: 2016643683}
 --- !u!1001 &2022569262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51540,7 +51563,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6980427547517017602, guid: 039dad13975718d43a5392b35e44dc37,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2016643696}
   m_SourcePrefab: {fileID: 100100000, guid: 039dad13975718d43a5392b35e44dc37, type: 3}
 --- !u!1 &3847228530500373754 stripped
 GameObject:
