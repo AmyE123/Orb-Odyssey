@@ -1,7 +1,9 @@
 namespace CT6RIGPR
 {
     using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.XR;
     using static CT6RIGPR.Constants;
 
     /// <summary>
@@ -13,9 +15,13 @@ namespace CT6RIGPR
         private bool _fastEnabled;
         private bool _freezeEnabled;
         private bool _slowEnabled;
+        private bool _primaryButtonEnabled = true;
+        private bool _secondaryButtonEnabled = true;
 
         private bool _isSticking;
         private float _originalForce;
+
+        [SerializeField] private PowerupType _activePowerup;
 
         [SerializeField] private int _stickyCharges;
         [SerializeField] private int _fastCharges;
@@ -30,6 +36,8 @@ namespace CT6RIGPR
 		[SerializeField] private float _buffedForce = BALL_DEFAULT_MAX_BUFFED_FORCE;
 		[SerializeField] private float _slowedForce = BALL_DEFAULT_MAX_SLOWED_FORCE;
 		[SerializeField] private BallController _ballController;
+
+        [SerializeField] private float _buttonCoolDown;
 
         GameObject[] _bodiesOfWater;
 
@@ -102,6 +110,8 @@ namespace CT6RIGPR
 			_bodiesOfWater = GameObject.FindGameObjectsWithTag("Water");
             _originalForce = _ballController.MaxForce;
 			InitializeDefaultCharges();
+            _primaryButtonEnabled = true;
+            _secondaryButtonEnabled = true;
         }
 
         private void InitializeDefaultCharges()
@@ -151,8 +161,51 @@ namespace CT6RIGPR
 
         private void Update()
         {
+            CheckForPowerUpCycle();
             CheckForPowerupActivation();
             HandleStickingBehavior();
+        }
+
+        private void CyclePowerUp()
+        {
+            if (_activePowerup == PowerupType.Freeze)
+            {
+                _activePowerup = 0;
+            }
+            else
+            {
+                _activePowerup++;
+            }
+        }
+
+        private void CheckForPowerUpCycle()
+        {
+            bool buttonA = false;
+            var leftHandedControllers = new List<InputDevice>();
+            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+            InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+            foreach (var device in leftHandedControllers)
+            {
+                device.TryGetFeatureValue(CommonUsages.primaryButton, out buttonA);
+            }
+
+            if (buttonA && _primaryButtonEnabled)
+            {
+                CyclePowerUp();
+                _primaryButtonEnabled = false;
+                Debug.Log("Test 1");
+                Debug.Log(_buttonCoolDown);
+                StartCoroutine(ButtonCooldown(_buttonCoolDown));
+                _primaryButtonEnabled = true;
+            }
+        }
+
+        public IEnumerator ButtonCooldown(float time)
+        {
+            Debug.Log(time);
+            Debug.Log("Test 2");
+            yield return new WaitForSeconds(time);
         }
 
         private void CheckForPowerupActivation()
