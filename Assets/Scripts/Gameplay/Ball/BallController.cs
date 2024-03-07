@@ -1,6 +1,8 @@
 namespace CT6RIGPR
 {
+    using System;
     using System.Collections.Generic;
+    using UnityEditor;
     using UnityEngine;
     using UnityEngine.XR;
 
@@ -89,6 +91,14 @@ namespace CT6RIGPR
         public float MoveHorizontal => moveHorizontal;
         public float MoveVertical => moveVertical;
 
+
+        /// <summary>
+        /// This toggles the debug input.
+        /// </summary>
+        public void ToggleDebugInput()
+        {
+            _debugInput = !_debugInput;
+        }
 
         /// <summary>
         /// Disables the players input.
