@@ -14,8 +14,6 @@ namespace CT6RIGPR
         [SerializeField] private UIManager _uiManager;
 
         [SerializeField] private Rigidbody _playerRigidbody;
-        
-        [SerializeField] private ProfileManager _profileManager;
 
         /// <summary>
         /// The ball controller. For all player inputs.
@@ -25,8 +23,6 @@ namespace CT6RIGPR
         public Rigidbody PlayerRigidbody => _playerRigidbody;
 
         public GameObject[] Checkpoints => _checkpoints;
-
-        public ProfileManager ProfileManager => _profileManager;
 
         /// <summary>
         /// The main camera controller.

@@ -9,7 +9,6 @@ namespace CT6RIGPR
     public class TubeFollower : MonoBehaviour
     {
         private BallController _ballController;
-        private ProfileManager _profileManager;
         private float _splineProgress = 0f;
         private bool _isFollowing = false;
 
@@ -38,7 +37,6 @@ namespace CT6RIGPR
             }
 
             _ballController = _gameManager.GlobalReferences.BallController;
-            _profileManager = _gameManager.GlobalReferences.ProfileManager;
         }
 
         private void Update()
@@ -51,9 +49,6 @@ namespace CT6RIGPR
 
         private void StartFollowing(TubeDirection followDirection)
         {
-//            _profileManager.setProfile(Constants.DOF_ORB_SPLINE_PROFILE);
-            StartCoroutine(_profileManager.InitialiseProfile(Constants.DOF_PROFILE_INTERVAL, Constants.DOF_ORB_SPLINE_PROFILE));
-
             _activeMovingDirection = followDirection;
             _isFollowing = true;
             _ballController.DisableInput();
@@ -97,8 +92,6 @@ namespace CT6RIGPR
         {
             _isFollowing = false;
             _ballController.EnableInput();
-//            _profileManager.setProfile(Constants.DOF_ORB_PROFILE);
-            StartCoroutine(_profileManager.InitialiseProfile(Constants.DOF_PROFILE_INTERVAL, Constants.DOF_ORB_PROFILE));
 
             RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
             if (_activeMovingDirection == TubeDirection.Forward)
