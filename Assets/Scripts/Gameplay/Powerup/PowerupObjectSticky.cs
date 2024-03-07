@@ -16,7 +16,6 @@ namespace CT6RIGPR
             {
                 powerUpManager.AddCharge(Constants.PowerupType.Sticky);
             }
-
             base.PickUpPowerup(player);
         }
     }
