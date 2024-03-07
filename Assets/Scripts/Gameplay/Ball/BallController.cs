@@ -1,6 +1,8 @@
 namespace CT6RIGPR
 {
+    using System;
     using System.Collections.Generic;
+    using UnityEditor;
     using UnityEngine;
     using UnityEngine.XR;
 
@@ -81,6 +83,14 @@ namespace CT6RIGPR
         /// Whether rotation of the ball is disabled or not.
         /// </summary>
         public bool DisableRotation => _disableRotation;
+
+        /// <summary>
+        /// This toggles the debug input.
+        /// </summary>
+        public void ToggleDebugInput()
+        {
+            _debugInput = !_debugInput;
+        }
 
         /// <summary>
         /// Disables the players input.

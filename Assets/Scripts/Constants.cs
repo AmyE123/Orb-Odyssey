@@ -166,24 +166,39 @@ namespace CT6RIGPR
         public const string BOOT_SCENE_PATH = "Assets/Scenes/Boot.unity";
 
         /// <summary>
+        /// The string value of the load boot scene pref in player prefs.
+        /// </summary>
+        public const string LOAD_BOOT_SCENE_PREF = "LoadBootSceneOnPlay";
+
+        /// <summary>
+        /// A string of the menu item path for RIGPR tools.
+        /// </summary>
+        public const string RIGPR_MENU_ITEM_PATH = "Tools/CT6RIGPR/";
+
+        /// <summary>
         /// A string of the menu item path for level tools
         /// </summary>
-        public const string LEVEL_TOOLS_MENU_ITEM_PATH = "Tools/CT6RIGPR/Level Tools/";
+        public const string LEVEL_TOOLS_MENU_ITEM_PATH = RIGPR_MENU_ITEM_PATH + "Level Tools/";
 
         /// <summary>
         /// A string of the menu item path for powerups
         /// </summary>
-        public const string POWERUP_TOOLS_MENU_ITEM_PATH = "Tools/CT6RIGPR/Powerups/";
+        public const string POWERUP_TOOLS_MENU_ITEM_PATH = RIGPR_MENU_ITEM_PATH + "Powerups/";
 
         /// <summary>
-        /// A string to the tube asset for loading it in in-editor.
+        /// A string of the prefabs path.
         /// </summary>
-        public const string TWO_WAY_TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TwoWayTube.prefab";
+        public const string PREFABS_PATH = "Assets/Prefabs/";
 
         /// <summary>
-        /// A string to the tube asset for loading it in in-editor.
+        /// A string of the level tools path.
         /// </summary>
-        public const string ONE_WAY_TUBE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/OneWayTube.prefab";
+        public const string LEVEL_TOOLS_PATH = PREFABS_PATH + "Gameplay/LevelTools/";
+
+        /// <summary>
+        /// A string of the powerups path.
+        /// </summary>
+        public const string POWERUPS_PATH = PREFABS_PATH + "Gameplay/Powerups/";
 
         /// <summary>
         /// A string to the tube instructions text files for loading it in in-editor.
@@ -191,74 +206,84 @@ namespace CT6RIGPR
         public const string TUBE_INSTRUCTIONS_PATH = "Assets/Data/Instructions/Tubes.txt";
 
         /// <summary>
+        /// A string to the tube asset for loading it in in-editor.
+        /// </summary>
+        public const string TWO_WAY_TUBE_PREFAB_PATH = LEVEL_TOOLS_PATH + "TwoWayTube.prefab";
+
+        /// <summary>
+        /// A string to the tube asset for loading it in in-editor.
+        /// </summary>
+        public const string ONE_WAY_TUBE_PREFAB_PATH = LEVEL_TOOLS_PATH + "OneWayTube.prefab";
+
+        /// <summary>
         /// A string to the jump pad asset for loading it in in-editor.
         /// </summary>
-        public const string JUMPPAD_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/JumpPad.prefab";
+        public const string JUMPPAD_PREFAB_PATH = LEVEL_TOOLS_PATH + "JumpPad.prefab";
 
         /// <summary>
         /// A string to the impact wall asset for loading it in in-editor.
         /// </summary>
-        public const string IMPACT_WALL_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/ImpactWall.prefab";
+        public const string IMPACT_WALL_PREFAB_PATH = LEVEL_TOOLS_PATH + "ImpactWall.prefab";
 
         /// <summary>
         /// A string to the moving platform asset for loading it in in-editor.
         /// </summary>
-        public const string MOVING_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/MovingPlatform.prefab";
+        public const string MOVING_PLATFORM_PREFAB_PATH = LEVEL_TOOLS_PATH + "MovingPlatform.prefab";
 
         /// <summary>
         /// A string to the button moving platform asset for loading it in in-editor.
         /// </summary>
-        public const string BUTTON_MOVING_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/ButtonMovingPlatform.prefab";
+        public const string BUTTON_MOVING_PLATFORM_PREFAB_PATH = LEVEL_TOOLS_PATH + "ButtonMovingPlatform.prefab";
 
         /// <summary>
         /// A string to the collectable asset for loading it in in-editor.
         /// </summary>
-        public const string COLLECTABLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Collectable.prefab";
+        public const string COLLECTABLE_PREFAB_PATH = LEVEL_TOOLS_PATH + "Collectable.prefab";
 
         /// <summary>
         /// A string to the swinging obstacle asset for loading it in in-editor.
         /// </summary>
-        public const string SWINGING_OBSTACLE_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/SwingingObstacle.prefab";
+        public const string SWINGING_OBSTACLE_PREFAB_PATH = LEVEL_TOOLS_PATH + "SwingingObstacle.prefab";
 
         /// <summary>
         /// A string to the sweeper asset for loading it in in-editor.
         /// </summary>
-        public const string SWEEPER_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/Sweeper.prefab";
+        public const string SWEEPER_PREFAB_PATH = LEVEL_TOOLS_PATH + "Sweeper.prefab";
 
         /// <summary>
         /// A string to the timer door asset for loading it in in-editor.
         /// </summary>
-        public const string TIMER_DOOR_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerDoor.prefab";
+        public const string TIMER_DOOR_PREFAB_PATH = LEVEL_TOOLS_PATH + "TimerDoor.prefab";
 
         /// <summary>
         /// A string to the timer ramp asset for loading it in in-editor.
         /// </summary>
-        public const string TIMER_RAMP_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerRamp.prefab";
+        public const string TIMER_RAMP_PREFAB_PATH = LEVEL_TOOLS_PATH + "TimerRamp.prefab";
 
         /// <summary>
         /// A string to the timer platform asset for loading it in in-editor.
         /// </summary>
-        public const string TIMER_PLATFORM_PREFAB_PATH = "Assets/Prefabs/Gameplay/LevelTools/TimerPlatform.prefab";
+        public const string TIMER_PLATFORM_PREFAB_PATH = LEVEL_TOOLS_PATH + "TimerPlatform.prefab";
 
         /// <summary>
         /// A string to the sticky powerup asset for loading it in in-editor.
         /// </summary>
-        public const string STICKY_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Sticky.prefab";
+        public const string STICKY_POWERUP_PREFAB_PATH = POWERUPS_PATH + "Sticky.prefab";
 
         /// <summary>
         /// A string to the slow powerup asset for loading it in in-editor.
         /// </summary>
-        public const string SLOW_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Slow.prefab";
+        public const string SLOW_POWERUP_PREFAB_PATH = POWERUPS_PATH + "Slow.prefab";
 
         /// <summary>
         /// A string to the fast powerup asset for loading it in in-editor.
         /// </summary>
-        public const string FAST_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Fast.prefab";
+        public const string FAST_POWERUP_PREFAB_PATH = POWERUPS_PATH + "Fast.prefab";
 
       /// <summary>
       /// A string to the freeze powerup asset for loading it in in-editor.
       /// </summary>
-      public const string FREEZE_POWERUP_PREFAB_PATH = "Assets/Prefabs/Gameplay/Powerups/Freeze.prefab";
+      public const string FREEZE_POWERUP_PREFAB_PATH = POWERUPS_PATH + "Freeze.prefab";
 
         #endregion // Editor Paths
 
