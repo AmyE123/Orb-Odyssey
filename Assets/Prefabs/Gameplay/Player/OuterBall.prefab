@@ -150,21 +150,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc41ac08dbf548e4eaaea146b7f01ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxForce: 30
+  _maxForce: 25
   _yRotation: 0
   _stopDampingDuration: 5
   _threshold: 2
   _accelerationFactor: 1
-  _dragMin: 0.5
+  _dragMin: 1.5
   _dragMax: 5
   _gravityModifier: 3
   _ballGravity: {x: 0, y: -9, z: 0}
   _additionalAirborneGravity: 2
-  _airborneDrag: 10
+  _airborneDrag: 8
   _minimalVelocity: 0
   _stopVelocity: {x: 0, y: 0, z: 0}
-  _debugInput: 1
+  _debugInput: 0
   _disableInput: 0
+  _disableRotation: 0
   _gameManager: {fileID: 0}
   _grounded: 0
   _groundCheckDistance: 1
@@ -228,8 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4967147791bf0499fe4b8738581fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _checkpoints: []
   _gameManager: {fileID: 0}
-  _blackSquare: {fileID: 0}
+  _fadeImage: {fileID: 0}
   _fadeInTime: 0.4
   _fadeWaitTime: 0.2
   _fadeOutTime: 0.4
