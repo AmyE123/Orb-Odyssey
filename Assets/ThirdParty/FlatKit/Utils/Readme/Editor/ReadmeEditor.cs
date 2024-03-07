@@ -25,10 +25,10 @@ public class ReadmeEditor : Editor {
 
     private void OnEnable() {
         _readme = serializedObject.targetObject as FlatKitReadme;
-        if (_readme == null) {
-            Debug.LogError($"[{AssetName}] Readme error.");
-            return;
-        }
+        //if (_readme == null) {
+        //    Debug.LogError($"[{AssetName}] Readme error.");
+        //    return;
+        //}
 
         _readme.Refresh();
         _showingVersionMessage = false;
