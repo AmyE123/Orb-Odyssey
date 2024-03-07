@@ -1,40 +1,34 @@
 namespace CT6RIGPR
 {
+    using System.Collections;
     using System.Runtime.InteropServices;
     using UnityEngine;
 
     /// <summary>
     /// A test script for switching profiles on the 4DoF through Unity
     /// </summary>
-    public class ProfileTest : MonoBehaviour
+    public class ProfileManager : MonoBehaviour
     {
         [DllImport("libadminclient", EntryPoint = "SendLoadProfile")]
         public static extern void SendLoadProfile(string profile);
 
-        [SerializeField] private bool _initialisedProfile;
-
         void Start()
         {
-            _initialisedProfile = false;
-        }
-
-        void Update()
-        {
-            InitializeProfile();
-            HandleSettingProfile();
+            StartCoroutine(InitialiseProfile(Constants.DOF_PROFILE_INTERVAL * 5, Constants.DOF_ORB_PROFILE));
         }
 
         /// <summary>
-        /// Check if the profile has been initialized, and if not, load the right profile.
+        /// Load the monkey ball profile.
         /// </summary>
-        private void InitializeProfile()
+        public IEnumerator InitialiseProfile(float time, string profile)
         {
-            if (!_initialisedProfile)
-            {
-                _initialisedProfile = true;
+            yield return new WaitForSeconds(time);
+            SendLoadProfile(Constants.DOF_ORB_PROFILE);
+        }
 
-                SendLoadProfile(Constants.DOF_DEFAULT_PROFILE);
-            }
+        public void setProfile(string profile)
+        {
+            SendLoadProfile(profile);
         }
 
         /// <summary>
