@@ -1,5 +1,6 @@
 namespace CT6RIGPR
 {
+    using DG.Tweening;
     using System;
     using System.Collections.Generic;
     using UnityEditor;
@@ -10,12 +11,10 @@ namespace CT6RIGPR
     /// The main controller for the ball
     /// </summary>
     public class BallController : MonoBehaviour
-    {
-        private Rigidbody _rigidBody;
+    {        
         private bool _isInputActive = false;
         private float moveHorizontal = 0.0f;
         private float moveVertical = 0.0f;
-
 
         [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
@@ -23,6 +22,7 @@ namespace CT6RIGPR
         [SerializeField] private float _stopDampingDuration = 1.0f;
         [SerializeField] private float _threshold = 3f;
         [SerializeField, Range(0.1f, 2f)] private float _accelerationFactor = 1f;
+        [SerializeField] private Rigidbody _rigidBody;
 
         [Header("Drag Settings")]
         [SerializeField] private float _dragMin = 0.5f;
@@ -37,7 +37,6 @@ namespace CT6RIGPR
         [Header("Velocity Settings")]
         [SerializeField] private float _minimalVelocity = 0f;
         [SerializeField] private Vector3 _stopVelocity = Vector3.zero;
-
 
         [Header("Debug and Input Settings")]
         [SerializeField] private bool _debugInput;
@@ -125,7 +124,22 @@ namespace CT6RIGPR
         /// </summary>
         public void FreezePlayer()
         {
-            _rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            if (_rigidBody != null)
+            {
+                _rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            }           
+        }
+
+        /// <summary>
+        /// Unfreezes the players rigidbody.
+        /// </summary>
+        public void UnfreezePlayer()
+        {
+            if (_rigidBody != null)
+            {
+                _rigidBody.constraints = RigidbodyConstraints.None;
+                _rigidBody.constraints = RigidbodyConstraints.FreezeRotationZ;
+            }
         }
 
         /// <summary>
@@ -142,8 +156,31 @@ namespace CT6RIGPR
 
         private void Start()
         {
+            ApplyInitialPlayerFade();
             _rigidBody = GetComponent<Rigidbody>();
             _yRotation = 0;
+        }
+
+        private void ApplyInitialPlayerFade()
+        {
+            Material ballMat = _gameManager.GlobalReferences.BallMaterial;
+
+            if (ballMat != null)
+            {
+                ballMat.color = Color.black;
+                FreezePlayer();
+
+                ballMat.DOColor(Color.clear, 1).SetDelay(1)
+                    .OnComplete(() =>
+                    {
+                        Cursor.lockState = CursorLockMode.None;
+                        UnfreezePlayer();
+                    });
+            }
+            else
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to fade is not assigned.");
+            }
         }
 
         private bool IsGrounded()
