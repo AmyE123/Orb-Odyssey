@@ -44,6 +44,7 @@ namespace CT6RIGPR
         [SerializeField] private bool _disableInput;
         [SerializeField] private bool _disableRotation;
         [SerializeField] private GameManager _gameManager;
+        [SerializeField] private GameObject _noseObj;
 
         [Header("Ground Check Settings")]
         [SerializeField] private bool _grounded;
@@ -98,6 +99,7 @@ namespace CT6RIGPR
         public void ToggleDebugInput()
         {
             _debugInput = !_debugInput;
+            _noseObj.SetActive(!_debugInput);
         }
 
         /// <summary>
