@@ -10,34 +10,41 @@ namespace CT6RIGPR
         private GlobalManager _globalManager;
 
         [SerializeField] private Image fadePanel;
+        [SerializeField] private bool _isBeginningLevel = false;
+        [SerializeField] private GameObject _warningGO;
+        [SerializeField] private CanvasGroup _warningCanvasGroup;
+        [SerializeField] private bool _hasReadWarning = false;
+
+        /// <summary>
+        /// Whether the player has read the warning for the game.
+        /// </summary>
+        public bool HasReadWarning => _hasReadWarning;
 
         private void Start()
         {
             _globalManager = GlobalManager.Instance;
-        }
 
-        public void FadeToBlackAndLoadNextLevel()
-        {
-            string currentLevelName = SceneManager.GetActiveScene().name;
-            LevelData nextLevel = GetNextLevel(currentLevelName);
-
-            if (nextLevel != null)
+            if (_isBeginningLevel)
             {
-                float fadeDuration = 1.0f;
-                fadePanel.DOFade(1, fadeDuration).OnComplete(() =>
-                {
-                    Cursor.lockState = CursorLockMode.None;
-                    SceneManager.LoadScene(nextLevel.SceneName);
-                });
+                ShowWarning();
             }
             else
             {
-                Cursor.lockState = CursorLockMode.None;
-                SceneManager.LoadScene(Constants.BOOT_SCENE_PATH);
+                _hasReadWarning = true;
+                HideWarning();
             }
         }
 
-        private LevelData GetNextLevel(string currentLevelName)
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                _hasReadWarning = true;
+                HideWarning();
+            }
+        }
+
+        public LevelData GetNextLevel(string currentLevelName)
         {
             LevelData[] allLevels = _globalManager.GetAllLevels();
 
@@ -55,6 +62,23 @@ namespace CT6RIGPR
             }
 
             return null;
+        }
+
+        private void ShowWarning()
+        {
+            _warningGO.SetActive(true);
+
+            _warningCanvasGroup.alpha = 0;
+            _warningCanvasGroup.DOFade(1, 1);
+        }
+
+        private void HideWarning() 
+        {
+            _warningCanvasGroup.DOFade(0, 1)
+            .OnComplete(() =>
+            {
+                _warningGO.SetActive(false);
+            });
         }
     }
 }

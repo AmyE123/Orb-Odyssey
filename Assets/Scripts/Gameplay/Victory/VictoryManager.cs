@@ -12,6 +12,9 @@ namespace CT6RIGPR
         {
             Material ballMat = _globalReferences.BallMaterial;
 
+            string currentLevelName = SceneManager.GetActiveScene().name;
+            LevelData nextLevel = _globalReferences.LevelManager.GetNextLevel(currentLevelName);
+
             if (ballMat != null)
             {
                 ballMat.color = Color.clear;
@@ -22,14 +25,13 @@ namespace CT6RIGPR
                     {
                         Cursor.lockState = CursorLockMode.None;
 
-                        if (nextLevelName == "null" || !SceneManager.GetSceneByName(nextLevelName).IsValid())
+                        if (nextLevel != null)
                         {
-                            Debug.LogWarning("[CT6RIGPR]: Inputted scene name is invalid or null. Reloading current scene.");
-                            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                            SceneManager.LoadScene(nextLevel.SceneName);
                         }
                         else
                         {
-                            SceneManager.LoadScene(nextLevelName);
+                            SceneManager.LoadScene(Constants.BOOT_SCENE_PATH);
                         }
                     });
             }
