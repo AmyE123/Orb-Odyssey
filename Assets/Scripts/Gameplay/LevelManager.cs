@@ -20,6 +20,41 @@ namespace CT6RIGPR
         /// </summary>
         public bool HasReadWarning => _hasReadWarning;
 
+        /// <summary>
+        /// Get the next level from the global manager
+        /// </summary>
+        /// <param name="currentLevelName">The name of the current level.</param>
+        /// <returns>Level data for the next level.</returns>
+        public LevelData GetNextLevel(string currentLevelName)
+        {
+            LevelData[] allLevels = _globalManager.GetAllLevels();
+
+            for (int i = 0; i < allLevels.Length; i++)
+            {
+                if (allLevels[i].SceneName == currentLevelName)
+                {
+                    int nextIndex = i + 1;
+                    if (nextIndex < allLevels.Length)
+                    {
+                        return allLevels[nextIndex];
+                    }
+                    break;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the first level from the global manager.
+        /// </summary>
+        /// <returns>Level data for the first level.</returns>
+        public LevelData GetFirstLevel()
+        {
+            LevelData[] allLevels = _globalManager.GetAllLevels();
+            return allLevels[0];
+        }
+
         private void Start()
         {
             _globalManager = GlobalManager.Instance;
@@ -42,26 +77,6 @@ namespace CT6RIGPR
                 _hasReadWarning = true;
                 HideWarning();
             }
-        }
-
-        public LevelData GetNextLevel(string currentLevelName)
-        {
-            LevelData[] allLevels = _globalManager.GetAllLevels();
-
-            for (int i = 0; i < allLevels.Length; i++)
-            {
-                if (allLevels[i].SceneName == currentLevelName)
-                {
-                    int nextIndex = i + 1;
-                    if (nextIndex < allLevels.Length)
-                    {
-                        return allLevels[nextIndex];
-                    }
-                    break;
-                }
-            }
-
-            return null;
         }
 
         private void ShowWarning()

@@ -8,12 +8,17 @@ namespace CT6RIGPR
     {
         [SerializeField] private GlobalGameReferences _globalReferences;
 
-        public void CompleteLevel(string nextLevelName = "null")
+        /// <summary>
+        /// Complete the level and load the next level in the global manager.
+        /// </summary>
+        /// <param name="nextLevelName"></param>
+        public void CompleteLevel()
         {
             Material ballMat = _globalReferences.BallMaterial;
 
             string currentLevelName = SceneManager.GetActiveScene().name;
             LevelData nextLevel = _globalReferences.LevelManager.GetNextLevel(currentLevelName);
+            LevelData firstLevel = _globalReferences.LevelManager.GetFirstLevel();
 
             if (ballMat != null)
             {
@@ -31,7 +36,7 @@ namespace CT6RIGPR
                         }
                         else
                         {
-                            SceneManager.LoadScene(Constants.BOOT_SCENE_PATH);
+                            SceneManager.LoadScene(firstLevel.SceneName);
                         }
                     });
             }
