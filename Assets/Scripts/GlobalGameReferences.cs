@@ -14,25 +14,52 @@ namespace CT6RIGPR
         [SerializeField] private UIManager _uiManager;
 
         [SerializeField] private Rigidbody _playerRigidbody;
+        
+        [SerializeField] private ProfileManager _profileManager;
+
+        /// <summary>
+        /// The material around the ball. Used for fading between levels.
+        /// </summary>
+        public Material BallMaterial;
 
         /// <summary>
         /// The ball controller. For all player inputs.
         /// </summary>
         public BallController BallController => _ballController;
 
+        /// <summary>
+        /// The rigidbody for the player.
+        /// </summary>
         public Rigidbody PlayerRigidbody => _playerRigidbody;
 
+        /// <summary>
+        /// The checkpoints in a level.
+        /// </summary>
         public GameObject[] Checkpoints => _checkpoints;
+
+        /// <summary>
+        /// The global profile manager for the 4DoF.
+        /// </summary>
+        public ProfileManager ProfileManager => _profileManager;
 
         /// <summary>
         /// The main camera controller.
         /// </summary>
         public CameraController CameraController => _cameraController;
 
+        /// <summary>
+        /// The SFX manager for the game.
+        /// </summary>
         public GameSFXManager GameSFXManager => _gameSFXManager;
 
+        /// <summary>
+        /// The UI manager for the game.
+        /// </summary>
         public UIManager UIManager => _uiManager;
 
+        /// <summary>
+        /// The level manager for the game.
+        /// </summary>
         public LevelManager LevelManager => _levelManager;
 
         private void Start()
