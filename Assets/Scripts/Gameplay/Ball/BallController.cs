@@ -11,7 +11,7 @@ namespace CT6RIGPR
     /// The main controller for the ball
     /// </summary>
     public class BallController : MonoBehaviour
-    {        
+    {
         private bool _isInputActive = false;
         private float moveHorizontal = 0.0f;
         private float moveVertical = 0.0f;
@@ -77,10 +77,10 @@ namespace CT6RIGPR
         /// </summary>
         public bool Grounded => _grounded;
 
-		/// <summary>
-		/// The max force of the ball.
-		/// </summary>
-		public float MaxForce => _maxForce;
+        /// <summary>
+        /// The max force of the ball.
+        /// </summary>
+        public float MaxForce => _maxForce;
 
         /// <summary>
         /// Whether rotation of the ball is disabled or not.
@@ -118,7 +118,7 @@ namespace CT6RIGPR
             _disableInput = false;
             _disableRotation = false;
         }
-        
+
         /// <summary>
         /// Freeze the players rigidbody.
         /// </summary>
@@ -127,7 +127,7 @@ namespace CT6RIGPR
             if (_rigidBody != null)
             {
                 _rigidBody.constraints = RigidbodyConstraints.FreezeAll;
-            }           
+            }
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace CT6RIGPR
         public void ChangeMaxForce(float newMaxForce)
         {
             if (newMaxForce != _maxForce)
-            { 
+            {
                 _maxForce = newMaxForce;
             }
         }
@@ -219,7 +219,7 @@ namespace CT6RIGPR
 
                 AdjustRigidbodyDrag();
 
-                NormalizeRotation();                           
+                NormalizeRotation();
             }
 
             if (_debugInput)
@@ -279,7 +279,7 @@ namespace CT6RIGPR
                 {
                     _yRotation++;
                 }
-                
+
             }
             else
             {
@@ -322,11 +322,11 @@ namespace CT6RIGPR
                     {
                         moveVertical--;
                     }
-					if (Input.GetKey(KeyCode.LeftShift))
-					{
-						moveAltitude++;
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        moveAltitude++;
                     }
-					if (Input.GetKey(KeyCode.LeftControl))
+                    if (Input.GetKey(KeyCode.LeftControl))
                     {
                         moveAltitude--;
                     }
@@ -358,7 +358,7 @@ namespace CT6RIGPR
             {
                 return Vector3.zero;
             }
-            
+
         }
 
         /// <summary>
