@@ -10,34 +10,22 @@ namespace CT6RIGPR
         private GlobalManager _globalManager;
 
         [SerializeField] private Image fadePanel;
+        [SerializeField] private bool _isBeginningLevel = false;
+        [SerializeField] private GameObject _warningGO;
+        [SerializeField] private CanvasGroup _warningCanvasGroup;
+        [SerializeField] private bool _hasReadWarning = false;
 
-        private void Start()
-        {
-            _globalManager = GlobalManager.Instance;
-        }
+        /// <summary>
+        /// Whether the player has read the warning for the game.
+        /// </summary>
+        public bool HasReadWarning => _hasReadWarning;
 
-        public void FadeToBlackAndLoadNextLevel()
-        {
-            string currentLevelName = SceneManager.GetActiveScene().name;
-            LevelData nextLevel = GetNextLevel(currentLevelName);
-
-            if (nextLevel != null)
-            {
-                float fadeDuration = 1.0f;
-                fadePanel.DOFade(1, fadeDuration).OnComplete(() =>
-                {
-                    Cursor.lockState = CursorLockMode.None;
-                    SceneManager.LoadScene(nextLevel.SceneName);
-                });
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                SceneManager.LoadScene(Constants.BOOT_SCENE_PATH);
-            }
-        }
-
-        private LevelData GetNextLevel(string currentLevelName)
+        /// <summary>
+        /// Get the next level from the global manager
+        /// </summary>
+        /// <param name="currentLevelName">The name of the current level.</param>
+        /// <returns>Level data for the next level.</returns>
+        public LevelData GetNextLevel(string currentLevelName)
         {
             LevelData[] allLevels = _globalManager.GetAllLevels();
 
@@ -55,6 +43,57 @@ namespace CT6RIGPR
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Gets the first level from the global manager.
+        /// </summary>
+        /// <returns>Level data for the first level.</returns>
+        public LevelData GetFirstLevel()
+        {
+            LevelData[] allLevels = _globalManager.GetAllLevels();
+            return allLevels[0];
+        }
+
+        private void Start()
+        {
+            _globalManager = GlobalManager.Instance;
+
+            if (_isBeginningLevel)
+            {
+                ShowWarning();
+            }
+            else
+            {
+                _hasReadWarning = true;
+                HideWarning();
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                _hasReadWarning = true;
+                HideWarning();
+            }
+        }
+
+        private void ShowWarning()
+        {
+            _warningGO.SetActive(true);
+
+            _warningCanvasGroup.alpha = 0;
+            _warningCanvasGroup.DOFade(1, 1);
+        }
+
+        private void HideWarning() 
+        {
+            _warningCanvasGroup.DOFade(0, 1)
+            .OnComplete(() =>
+            {
+                _warningGO.SetActive(false);
+            });
         }
     }
 }

@@ -1,3 +1,5 @@
+using CT6RIGPR;
+
 namespace CT6RIGPR
 {
     using DG.Tweening;
@@ -51,6 +53,7 @@ namespace CT6RIGPR
 
         [Header("Runtime Values")]
         [SerializeField] private float _currentSpeed;
+        [SerializeField] private bool _canStartPlaying = false;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -156,26 +159,41 @@ namespace CT6RIGPR
 
         private void Start()
         {
-            ApplyInitialPlayerFade();
+            ApplyInitialPlayerFreeze();
             _rigidBody = GetComponent<Rigidbody>();
             _yRotation = 0;
         }
 
-        private void ApplyInitialPlayerFade()
+        private void ApplyInitialPlayerFreeze()
         {
             Material ballMat = _gameManager.GlobalReferences.BallMaterial;
+            _canStartPlaying = false;
 
             if (ballMat != null)
             {
                 ballMat.color = Color.black;
-                FreezePlayer();
+                FreezePlayer();            
+            }
+            else
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to fade is not assigned.");
+            }
+        }
 
+        private void FadeIntoGame()
+        {
+            Material ballMat = _gameManager.GlobalReferences.BallMaterial;
+            _canStartPlaying = true;
+
+            if (ballMat != null)
+            {
                 ballMat.DOColor(Color.clear, 1).SetDelay(1)
-                    .OnComplete(() =>
-                    {
-                        Cursor.lockState = CursorLockMode.None;
-                        UnfreezePlayer();
-                    });
+                .OnComplete(() =>
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    UnfreezePlayer();
+                });
+
             }
             else
             {
@@ -187,6 +205,14 @@ namespace CT6RIGPR
         {
             Debug.DrawLine(transform.position, -Vector3.up * _groundCheckDistance, Color.red);
             return Physics.Raycast(transform.position, -Vector3.up, _groundCheckDistance);
+        }
+
+        private void Update()
+        {
+            if (_gameManager.GlobalReferences.LevelManager.HasReadWarning && !_canStartPlaying)
+            {
+                FadeIntoGame();
+            }
         }
 
         private void FixedUpdate()
