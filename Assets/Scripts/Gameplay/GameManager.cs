@@ -71,7 +71,7 @@ namespace CT6RIGPR
                 {                    
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
-                    _victoryManager.VictoryScreen();
+                    _victoryManager.CompleteLevel();
                 }
 
                 
@@ -80,7 +80,7 @@ namespace CT6RIGPR
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 _hasCompletedLevel = true;
-                _victoryManager.VictoryScreen();
+                _victoryManager.CompleteLevel();
             }
         }
 
