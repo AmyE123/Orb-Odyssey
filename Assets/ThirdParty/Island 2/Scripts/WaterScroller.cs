@@ -16,6 +16,6 @@ public class WaterScroller : MonoBehaviour {
 
 		//Share texture scrolling among objects with the same material | Best if your scene contains a single water plane, or multiple water of the same speed
 		Vector2 k = new Vector2(offset / 10.0f, offset);
-		GetComponent<Renderer>().sharedMaterial.SetTextureOffset ("_MainTex", k);
+		GetComponent<Renderer>().sharedMaterial.SetTextureOffset ("_BaseMap", k);
 	}
 }
