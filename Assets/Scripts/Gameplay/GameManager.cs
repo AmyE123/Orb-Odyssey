@@ -36,26 +36,21 @@ namespace CT6RIGPR
         /// </summary>
         public bool HasCompletedLevel => _hasCompletedLevel;
 
-
-        private void SetPanelAlpha(float alpha)
-        {
-            Color currentColor = fadePanel.color;
-            currentColor.a = alpha;
-            fadePanel.color = currentColor;
-        }
-        IEnumerator FadeFromBlack()
-        {
-            yield return new WaitForSeconds(1);
-
-            float fadeDuration = 0.5f;
-            fadePanel.color = Color.black;
-
-            fadePanel.DOFade(0, fadeDuration);
-        }
-
+        /// <summary>
+        /// Increments the collectable count.
+        /// </summary>
         public void IncrementCollectableCount()
         {
             _collectableCount++;
+        }
+
+        /// <summary>
+        /// A function to force-complete a level. Used when timer for level has ran out.
+        /// </summary>
+        public void ForceLevelCompletion()
+        {
+            _hasCompletedLevel = true;
+            _victoryManager.CompleteLevel();
         }
 
         private void InitializeLevel()
@@ -72,9 +67,7 @@ namespace CT6RIGPR
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
                     _victoryManager.CompleteLevel();
-                }
-
-                
+                }              
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha9))
@@ -86,9 +79,6 @@ namespace CT6RIGPR
 
         private void Start()
         {
-            SetPanelAlpha(1.0f);
-            StartCoroutine(FadeFromBlack());
-
             InitializeLevel();
 
             if (_globalReferences == null)
