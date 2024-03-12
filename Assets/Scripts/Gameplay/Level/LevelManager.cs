@@ -98,7 +98,7 @@ namespace CT6RIGPR
             _warningCanvasGroup.DOFade(1, 1);
         }
 
-        private void HideWarning() 
+        private void HideWarning()
         {
             _warningCanvasGroup.DOFade(0, 1)
             .OnComplete(() =>

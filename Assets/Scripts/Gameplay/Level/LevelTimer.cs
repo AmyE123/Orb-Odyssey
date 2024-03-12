@@ -9,6 +9,7 @@ namespace CT6RIGPR
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private TMP_Text _timerText;
+        [SerializeField] private float _flashingDelay = 0.5f;
 
         private float _startTime;
         private bool _isFlashing;
@@ -46,6 +47,7 @@ namespace CT6RIGPR
             }
             else
             {
+                Debug.LogWarning("[CT6RIGPR]: Please set the level manager within the level timer component. Level properties are invalid.");
                 _lvlTimeLimit = 999;
                 _warningTimeLimit = 998;
             }
@@ -53,9 +55,9 @@ namespace CT6RIGPR
 
         private void Update()
         {
-            if (!_timerActive) 
-            { 
-                return; 
+            if (!_timerActive)
+            {
+                return;
             }
 
             if (_levelManager.HasReadWarning && !_hasTimerStartedAfterWarning)
@@ -75,33 +77,33 @@ namespace CT6RIGPR
 
                 if (minutes >= _warningTimeLimit && !_isFlashing)
                 {
-                    StartCoroutine(FlashTimerRed());
+                    StartCoroutine(FlashTimer());
                     _isFlashing = true;
                 }
 
                 if (minutes >= _lvlTimeLimit)
                 {
                     _timerActive = false;
-                    StopCoroutine(FlashTimerRed());
+                    StopCoroutine(FlashTimer());
                     _timerText.color = _uiTextDefaultColor;
                     FinishLevelFromTimeout();
                 }
-            }         
+            }
         }
 
         private void FinishLevelFromTimeout()
         {
-            _gameManager.ForceLevelCompletion();          
+            _gameManager.ForceLevelCompletion();
         }
 
-        private IEnumerator FlashTimerRed()
+        private IEnumerator FlashTimer()
         {
             while (true)
             {
                 _timerText.color = Color.red;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(_flashingDelay);
                 _timerText.color = _uiTextDefaultColor;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(_flashingDelay);
             }
         }
     }
