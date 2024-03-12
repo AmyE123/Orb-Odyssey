@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8463236992629379258}
   - component: {fileID: 4583459338734510874}
-  - component: {fileID: 6309639825984368483}
   - component: {fileID: 1262049191259007687}
   - component: {fileID: 1839039699704410525}
+  - component: {fileID: 2084542088233728905}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,22 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bad163924f62ae479b257be4c5765a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _victoryManager: {fileID: 0}
+  _victoryManager: {fileID: 1839039699704410525}
   _globalReferences: {fileID: 1262049191259007687}
   _collectableCount: 0
-  fadePanel: {fileID: 0}
---- !u!114 &6309639825984368483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2544519225168856957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00feb8606e73944294b202e86e47a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   fadePanel: {fileID: 0}
 --- !u!114 &1262049191259007687
 MonoBehaviour:
@@ -77,12 +64,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ballController: {fileID: 0}
-  _levelManager: {fileID: 6309639825984368483}
+  _levelManager: {fileID: 0}
   _checkpoints: []
   _cameraController: {fileID: 0}
   _gameSFXManager: {fileID: 0}
   _uiManager: {fileID: 0}
   _playerRigidbody: {fileID: 0}
+  _profileManager: {fileID: 2084542088233728905}
+  BallMaterial: {fileID: 2100000, guid: 22a48e165146c4c4ab8f7e034051e426, type: 2}
 --- !u!114 &1839039699704410525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,13 +85,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _globalReferences: {fileID: 1262049191259007687}
-  _doorScript: {fileID: 0}
-  fadePanel: {fileID: 0}
-  _player: {fileID: 0}
-  _playerDistanceFromDoor: 7
-  _doorCenter: {fileID: 0}
-  _victoryCamera: {fileID: 0}
-  _playerCamera: {fileID: 0}
-  _cameraXDistanceFromDoor: 10
-  _cameraYDistanceFromDoor: 7
-  _cameraDownwardOffset: 4
+--- !u!114 &2084542088233728905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544519225168856957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6009dc52c4d923546b823664d89e2ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
