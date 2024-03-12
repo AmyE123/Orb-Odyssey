@@ -679,14 +679,14 @@ MonoBehaviour:
     useClippedPercent: 0
     keys: []
   _clipFromSample:
-    position: {x: 0, y: 1.25, z: -3.8299932}
+    position: {x: -23.75, y: -2.5, z: -23.079994}
     up: {x: 0.47229058, y: -0.81623906, z: -0.33270884}
     forward: {x: 0.09780897, y: 0.11745841, z: -0.9882495}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _clipToSample:
-    position: {x: -0.34347177, y: 5.407431, z: -15.275531}
+    position: {x: -24.093472, y: 1.6574311, z: -34.52553}
     up: {x: 0.47229058, y: -0.81623906, z: -0.33270884}
     forward: {x: -0.50429034, y: 0.059361923, z: -0.86149144}
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -1418,7 +1418,7 @@ MonoBehaviour:
     _overrideNormal: 0
     _customNormal: {x: 0, y: 1, z: 0}
     _type: 0
-    _count: 14
+    _count: 13
     _autoCount: 1
     _spacing: 0
     _randomRotation: 0
@@ -3546,5 +3546,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
   _activeMovingDirection: 0
-  _spline: {fileID: 0}
+  _spline: {fileID: 2384487466427518510}
   _speed: 0.1
