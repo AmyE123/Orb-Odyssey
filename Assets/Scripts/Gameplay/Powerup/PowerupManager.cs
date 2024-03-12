@@ -5,6 +5,8 @@ namespace CT6RIGPR
     using UnityEngine;
     using UnityEngine.XR;
     using static CT6RIGPR.Constants;
+    using UnityEngine.XR.Interaction.Toolkit;
+    
 
     /// <summary>
     /// A script to manage powerups for the player.
@@ -164,6 +166,7 @@ namespace CT6RIGPR
             CheckForPowerUpCycle();
             CheckForPowerupActivation();
             HandleStickingBehavior();
+
         }
 
         private void CyclePowerUp()
@@ -181,31 +184,46 @@ namespace CT6RIGPR
         private void CheckForPowerUpCycle()
         {
             bool buttonA = false;
+            bool buttonB = false;
             var leftHandedControllers = new List<InputDevice>();
-            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
             InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
 
             foreach (var device in leftHandedControllers)
             {
                 device.TryGetFeatureValue(CommonUsages.primaryButton, out buttonA);
+                device.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonB);
             }
 
             if (buttonA && _primaryButtonEnabled)
             {
                 CyclePowerUp();
                 _primaryButtonEnabled = false;
-                Debug.Log("Test 1");
-                Debug.Log(_buttonCoolDown);
-                StartCoroutine(ButtonCooldown(_buttonCoolDown));
-                _primaryButtonEnabled = true;
+                StartCoroutine(PrimaryButtonCooldown(_buttonCoolDown));
+                Debug.Log(_activePowerup);
             }
+
+            if (buttonB && _secondaryButtonEnabled)
+            {
+                UsePowerup(_activePowerup);
+                _secondaryButtonEnabled = false;
+                StartCoroutine(SecondaryButtonCooldown(_buttonCoolDown));
+                Debug.Log(_activePowerup);
+
+            }
+
         }
 
-        public IEnumerator ButtonCooldown(float time)
+        public IEnumerator PrimaryButtonCooldown(float time)
         {
-            Debug.Log(time);
-            Debug.Log("Test 2");
             yield return new WaitForSeconds(time);
+            _primaryButtonEnabled = true;
+        }
+
+        public IEnumerator SecondaryButtonCooldown(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _secondaryButtonEnabled = true;
         }
 
         private void CheckForPowerupActivation()
