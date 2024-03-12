@@ -159,8 +159,8 @@ MonoBehaviour:
   _dragMax: 5
   _gravityModifier: 1
   _ballGravity: {x: 0, y: -9, z: 0}
-  _additionalAirborneGravity: 2
-  _airborneDrag: 8
+  _additionalAirborneGravity: 7
+  _airborneDrag: 5
   _minimalVelocity: 0
   _stopVelocity: {x: 0, y: 0, z: 0}
   _debugInput: 1
