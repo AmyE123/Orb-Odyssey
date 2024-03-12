@@ -1,3 +1,6 @@
+using System.Numerics;
+using UnityEngine;
+
 namespace CT6RIGPR
 {
     public static class Constants

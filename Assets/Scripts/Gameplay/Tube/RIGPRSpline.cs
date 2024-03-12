@@ -1,50 +1,44 @@
 namespace CT6RIGPR
 {
-    using Unity.Mathematics;
+    using Dreamteck.Splines;
     using UnityEngine;
-    using UnityEngine.Splines;
 
     /// <summary>
     /// Additional functionalities for splines to help with Tube functionality.
     /// </summary>
     public class RIGPRSpline : MonoBehaviour
     {
-        private Spline _spline;
-
-        [SerializeField] private SplineContainer _splineContainer;
+        [SerializeField] private SplineComputer _splineComputer;
 
         /// <summary>
         /// Gets a point in the spline.
         /// </summary>
         public Vector3 GetPointAt(float t)
         {
-            if (_spline == null) return Vector3.zero;
-
-            return _spline.EvaluatePosition(t);
+            return _splineComputer.EvaluatePosition(t);
         }
 
         /// <summary>
         /// Gets a direction in the spline.
         /// </summary>
-        public Vector3 GetDirectionAt(float t)
+        public Vector3 GetDirectionAt(float t, float lookAhead = 0.01f)
         {
-            if (_spline == null) return Vector3.forward;
-
-            float3 tangent = SplineUtility.EvaluateTangent(_spline, t);
-            return new Vector3(tangent.x, tangent.y, tangent.z).normalized;
+            Vector3 pointAtT = _splineComputer.EvaluatePosition(t);
+            Vector3 pointAhead = _splineComputer.EvaluatePosition(Mathf.Clamp01(t + lookAhead));
+            return (pointAhead - pointAtT).normalized;
         }
 
         private void Start()
         {
-            if (_splineContainer != null)
+            if (_splineComputer == null)
             {
-                _spline = _splineContainer.Spline;
+                Debug.LogWarning("[CT6RIGPR]: SplineComputer reference not set for a spline in the scene.");
             }
         }
 
         private void OnDrawGizmos()
         {
-            if (_splineContainer != null)
+            if (_splineComputer != null)
             {
                 Gizmos.color = Color.red;
 
@@ -52,12 +46,12 @@ namespace CT6RIGPR
 
                 for (float i = 0; i < 1; i += step)
                 {
-                    Vector3 startPosition = _splineContainer.Spline.EvaluatePosition(i);
-                    Vector3 endPosition = _splineContainer.Spline.EvaluatePosition(i + step);
+                    Vector3 startPosition = _splineComputer.EvaluatePosition(i);
+                    Vector3 endPosition = _splineComputer.EvaluatePosition(i + step);
 
                     if (i + step > 1)
                     {
-                        endPosition = _splineContainer.Spline.EvaluatePosition(1);
+                        endPosition = _splineComputer.EvaluatePosition(1);
                     }
 
                     Gizmos.DrawLine(startPosition, endPosition);
