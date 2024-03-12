@@ -1,24 +1,35 @@
 namespace CT6RIGPR
 {
     using UnityEngine;
-    using UnityEngine.SceneManagement;
-    using UnityEngine.UI;
     using DG.Tweening;
 
     public class LevelManager : MonoBehaviour
     {
         private GlobalManager _globalManager;
 
-        [SerializeField] private Image fadePanel;
         [SerializeField] private bool _isBeginningLevel = false;
         [SerializeField] private GameObject _warningGO;
         [SerializeField] private CanvasGroup _warningCanvasGroup;
         [SerializeField] private bool _hasReadWarning = false;
 
+        [Header("Level Properties")]
+        [SerializeField] private int _levelTimeLimitMinutes;
+        [SerializeField] private int _warningTimeLimitMinutes;
+
         /// <summary>
         /// Whether the player has read the warning for the game.
         /// </summary>
         public bool HasReadWarning => _hasReadWarning;
+
+        /// <summary>
+        /// A getter for how many minutes the level is.
+        /// </summary>
+        public int LevelTimeLimitMinutes => _levelTimeLimitMinutes;
+
+        /// <summary>
+        /// A getter for the warning time limit in minutes.
+        /// </summary>
+        public int WarningTimeLimitMinutes => _warningTimeLimitMinutes;
 
         /// <summary>
         /// Get the next level from the global manager
@@ -87,7 +98,7 @@ namespace CT6RIGPR
             _warningCanvasGroup.DOFade(1, 1);
         }
 
-        private void HideWarning() 
+        private void HideWarning()
         {
             _warningCanvasGroup.DOFade(0, 1)
             .OnComplete(() =>

@@ -11,7 +11,6 @@ namespace CT6RIGPR
         /// <summary>
         /// Complete the level and load the next level in the global manager.
         /// </summary>
-        /// <param name="nextLevelName"></param>
         public void CompleteLevel()
         {
             Material ballMat = _globalReferences.BallMaterial;
