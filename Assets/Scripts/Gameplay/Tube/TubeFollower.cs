@@ -84,10 +84,11 @@ namespace CT6RIGPR
                 }
             }
 
-            _splineProgress = Mathf.Clamp(_splineProgress, 0f, 1f);
+            _splineProgress = Mathf.Clamp01(_splineProgress);
 
             Vector3 newPosition = spline.GetPointAt(_splineProgress);
             Quaternion newRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
+
             Transform playerTransform = _ballController.gameObject.transform;
             playerTransform.position = newPosition;
             playerTransform.rotation = newRotation;
@@ -97,8 +98,8 @@ namespace CT6RIGPR
         {
             _isFollowing = false;
             _ballController.EnableInput();
-//            _profileManager.setProfile(Constants.DOF_ORB_PROFILE);
-            StartCoroutine(_profileManager.InitialiseProfile(Constants.DOF_PROFILE_INTERVAL, Constants.DOF_ORB_PROFILE));
+
+            StartCoroutine(_profileManager.InitialiseProfile(DOF_PROFILE_INTERVAL, DOF_ORB_PROFILE));
 
             RIGPRSpline spline = _spline.GetComponent<RIGPRSpline>();
             if (_activeMovingDirection == TubeDirection.Forward)

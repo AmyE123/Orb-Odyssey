@@ -98,6 +98,11 @@ namespace Dreamteck.Splines
             int index;
             double lerp;
             GetSamplingValues(percent, out index, out lerp);
+
+            // CT6RIGPR EDIT
+            index = Mathf.Clamp(index, 0, samples.Length - 2);
+            // CT6RIGPR EDIT
+
             if (lerp > 0.0)
             {
                 return Vector3.Lerp(samples[index].position, samples[index + 1].position, (float)lerp);
