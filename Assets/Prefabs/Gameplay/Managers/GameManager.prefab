@@ -67,6 +67,7 @@ MonoBehaviour:
   fadePanel: {fileID: 0}
   _isBeginningLevel: 1
   _warningGO: {fileID: 0}
+  _warningCanvasGroup: {fileID: 0}
   _hasReadWarning: 0
 --- !u!114 &1262049191259007687
 MonoBehaviour:
