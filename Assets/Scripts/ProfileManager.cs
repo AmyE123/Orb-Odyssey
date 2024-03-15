@@ -17,7 +17,7 @@ namespace CT6RIGPR
         void Start()
         {
             _ballController = FindAnyObjectByType<BallController>();
-
+            Debug.Log("Test 1");
             StartCoroutine(InitialiseProfile(Constants.DOF_PROFILE_INTERVAL * 5, Constants.DOF_ORB_PROFILE));
         }
 
@@ -26,7 +26,9 @@ namespace CT6RIGPR
         /// </summary>
         public IEnumerator InitialiseProfile(float time, string profile)
         {
+            Debug.Log("Test 2");
             yield return new WaitForSeconds(time);
+            Debug.Log(profile);
 
             SetProfile(profile);          
         }
