@@ -208,16 +208,15 @@ namespace CT6RIGPR
                 _secondaryButtonEnabled = false;
                 StartCoroutine(SecondaryButtonCooldown(_buttonCoolDown));
             }
-
         }
 
-        public IEnumerator PrimaryButtonCooldown(float time)
+	private IEnumerator PrimaryButtonCooldown(float time)
         {
             yield return new WaitForSeconds(time);
             _primaryButtonEnabled = true;
         }
 
-        public IEnumerator SecondaryButtonCooldown(float time)
+        private IEnumerator SecondaryButtonCooldown(float time)
         {
             yield return new WaitForSeconds(time);
             _secondaryButtonEnabled = true;
