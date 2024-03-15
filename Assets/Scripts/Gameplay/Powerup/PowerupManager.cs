@@ -39,7 +39,7 @@ namespace CT6RIGPR
 		[SerializeField] private float _slowedForce = BALL_DEFAULT_MAX_SLOWED_FORCE;
 		[SerializeField] private BallController _ballController;
 
-        [SerializeField] private float _buttonCoolDown;
+        [SerializeField] private float _buttonCoolDown = DEFAULT_POWERUP_INPUT_COOLDOWN;
 
         GameObject[] _bodiesOfWater;
 
@@ -186,7 +186,7 @@ namespace CT6RIGPR
             bool buttonA = false;
             bool buttonB = false;
             var leftHandedControllers = new List<InputDevice>();
-            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+            var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
             InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
 
             foreach (var device in leftHandedControllers)
