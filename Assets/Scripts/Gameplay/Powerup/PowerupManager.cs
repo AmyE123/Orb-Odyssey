@@ -6,7 +6,8 @@ namespace CT6RIGPR
     using UnityEngine.XR;
     using static CT6RIGPR.Constants;
     using UnityEngine.XR.Interaction.Toolkit;
-    
+    using UnityEngine.UI;
+
 
     /// <summary>
     /// A script to manage powerups for the player.
@@ -22,6 +23,8 @@ namespace CT6RIGPR
 
         private bool _isSticking;
         private float _originalForce;
+
+        private float activationTime;
 
         [SerializeField] private PowerupType _activePowerup;
 
@@ -40,6 +43,16 @@ namespace CT6RIGPR
 		[SerializeField] private BallController _ballController;
 
         [SerializeField] private float _buttonCoolDown = DEFAULT_POWERUP_INPUT_COOLDOWN;
+
+        [SerializeField] private Sprite _imageStickyPowerUp;
+        [SerializeField] private Sprite _imageFastPowerUp;
+        [SerializeField] private Sprite _imageSlowPowerUp;
+        [SerializeField] private Sprite _imageFreezePowerUp;
+
+        [SerializeField] private Image _powerUpImagePanel;
+        [SerializeField] private Slider _slider;
+
+
 
         GameObject[] _bodiesOfWater;
 
@@ -83,6 +96,11 @@ namespace CT6RIGPR
         /// </summary>
         public bool IsFreezeEnabled => _freezeEnabled;
 
+        private bool AnyPowerUp()
+        {
+            return IsFastEnabled || IsFreezeEnabled || IsSlowEnabled || IsStickyEnabled;
+        }
+
         public void AddCharge(PowerupType powerupType)
         {
             switch (powerupType)
@@ -102,6 +120,25 @@ namespace CT6RIGPR
             }
         }
 
+        private void UpdateSprite()
+        {
+            switch (_activePowerup)
+            {
+                case PowerupType.Sticky:
+                    _powerUpImagePanel.sprite = _imageStickyPowerUp;
+                    break;
+                case PowerupType.Fast:
+                    _powerUpImagePanel.sprite = _imageFastPowerUp;
+                    break;
+                case PowerupType.Slow:
+                    _powerUpImagePanel.sprite = _imageSlowPowerUp;
+                    break;
+                case PowerupType.Freeze:
+                    _powerUpImagePanel.sprite = _imageFreezePowerUp;
+                    break;
+            }
+        }
+
         private void Start()
         {
             if (_ballController == null)
@@ -114,6 +151,7 @@ namespace CT6RIGPR
 			InitializeDefaultCharges();
             _primaryButtonEnabled = true;
             _secondaryButtonEnabled = true;
+            UpdateSprite();
         }
 
         private void InitializeDefaultCharges()
@@ -126,6 +164,7 @@ namespace CT6RIGPR
 
         private void UsePowerup(PowerupType powerupType)
         {
+            activationTime = Time.time;
             switch (powerupType)
             {
                 case PowerupType.Sticky:
@@ -161,16 +200,51 @@ namespace CT6RIGPR
             }
         }
 
+        private void updateSlider()
+        {
+            float timeSinceActivation = Time.time - activationTime;
+            float timeRemaining = _fastDuration - timeSinceActivation;
+            _slider.value = timeRemaining / _fastDuration;
+            switch (_activePowerup)
+            {
+                case PowerupType.Sticky:
+                    _slider.value = (_stickyDuration - (Time.time - activationTime)) / _stickyDuration;
+                    break;
+                case PowerupType.Fast:
+                    _slider.value = (_fastDuration - (Time.time - activationTime)) / _fastDuration;
+                    break;
+                case PowerupType.Slow:
+                    _slider.value = (_slowDuration - (Time.time - activationTime)) / _slowDuration;
+                    break;
+                case PowerupType.Freeze:
+                    _slider.value = (_freezeDuration - (Time.time - activationTime)) / _freezeDuration;
+                    break;
+            }
+
+        }
+
+        private void resetSlider()
+        {
+            _slider.value = 1.0f;
+        }
+
         private void Update()
         {
             CheckForPowerUpCycle();
+            if (AnyPowerUp())
+            {
+                updateSlider();
+            }
             CheckForPowerupActivation();
             HandleStickingBehavior();
-
         }
 
         private void CyclePowerUp()
         {
+            if (AnyPowerUp())
+            {
+                return; //Don't cycle when using a powerup.
+            }
             if (_activePowerup == PowerupType.Freeze)
             {
                 _activePowerup = 0;
@@ -179,7 +253,9 @@ namespace CT6RIGPR
             {
                 _activePowerup++;
             }
+            UpdateSprite();
         }
+
 
         private void CheckForPowerUpCycle()
         {
@@ -204,7 +280,10 @@ namespace CT6RIGPR
 
             if (buttonB && _secondaryButtonEnabled)
             {
-                UsePowerup(_activePowerup);
+                if (CanActivatePowerUp())
+                {
+                    UsePowerup(_activePowerup);
+                }
                 _secondaryButtonEnabled = false;
                 StartCoroutine(SecondaryButtonCooldown(_buttonCoolDown));
             }
@@ -245,24 +324,60 @@ namespace CT6RIGPR
             }
         }
 
+        private bool CanActivatePowerUp()
+        {
+            if (AnyPowerUp())
+            {
+                return false;
+            }
+            switch (_activePowerup)
+            {
+                case PowerupType.Sticky:
+                    if (StickyCharges > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                case PowerupType.Fast:
+                    if (FastCharges > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                case PowerupType.Slow:
+                    if (SlowCharges > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                case PowerupType.Freeze:
+                    if (FreezeCharges > 0)
+                    {
+                        return true;
+                    }
+                    break;
+            }
+            return false;
+        }
+
         private bool CanActivateStickyPowerup()
         {
-            return !_stickyEnabled && StickyCharges > 0 && Input.GetKeyDown(KeyCode.Alpha1);
+            return !AnyPowerUp() && StickyCharges > 0 && Input.GetKeyDown(KeyCode.Alpha1);
         }
 
         private bool CanActivateFastPowerup()
         {
-            return !_fastEnabled && !_slowEnabled && FastCharges > 0 && Input.GetKeyDown(KeyCode.Alpha2);
+            return !AnyPowerUp() && FastCharges > 0 && Input.GetKeyDown(KeyCode.Alpha2);
         }
 
         private bool CanActivateSlowPowerup()
         {
-            return !_slowEnabled && !_fastEnabled && SlowCharges > 0 && Input.GetKeyDown(KeyCode.Alpha3);
+            return !AnyPowerUp() && SlowCharges > 0 && Input.GetKeyDown(KeyCode.Alpha3);
         }
 
         private bool CanActivateFreezePowerup()
         {
-			return !_freezeEnabled && FreezeCharges > 0 && Input.GetKeyDown(KeyCode.Alpha4);
+			return !AnyPowerUp() && FreezeCharges > 0 && Input.GetKeyDown(KeyCode.Alpha4);
 		}
 
 		private void HandleStickingBehavior()
@@ -303,6 +418,7 @@ namespace CT6RIGPR
             GetComponent<Rigidbody>().useGravity = true;
             _stickyEnabled = false;
             _isSticking = false;
+            resetSlider();
         }
 
         private IEnumerator DisableSpeedCoroutine(float time)
@@ -310,6 +426,7 @@ namespace CT6RIGPR
             yield return new WaitForSeconds(time);
 			_ballController.ChangeMaxForce(_originalForce);
 			_fastEnabled = false;
+            resetSlider();
         }
 
         private IEnumerator DisableSlowCoroutine(float time)
@@ -317,6 +434,7 @@ namespace CT6RIGPR
             yield return new WaitForSeconds(time);
             _ballController.ChangeMaxForce(_originalForce);
             _slowEnabled = false;
+            resetSlider();
         }
 
         private IEnumerator DisableFreezeCoroutine(float time)
@@ -331,7 +449,8 @@ namespace CT6RIGPR
 				}
 			}
 			_freezeEnabled = false;
-		}
+            resetSlider();
+        }
 
-	}
+    }
 }
