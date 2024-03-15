@@ -311,6 +311,18 @@ namespace CT6RIGPR
             {
                 _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
 
+                Vector2 joystick = Vector2.zero;
+                var leftHandedControllers = new List<InputDevice>();
+                var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+                InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+                foreach (var device in leftHandedControllers)
+                {
+                    device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                }
+
+                _yRotation += joystick.x;
+
             }
         }
 
