@@ -200,7 +200,6 @@ namespace CT6RIGPR
                 CyclePowerUp();
                 _primaryButtonEnabled = false;
                 StartCoroutine(PrimaryButtonCooldown(_buttonCoolDown));
-                Debug.Log(_activePowerup);
             }
 
             if (buttonB && _secondaryButtonEnabled)
@@ -208,8 +207,6 @@ namespace CT6RIGPR
                 UsePowerup(_activePowerup);
                 _secondaryButtonEnabled = false;
                 StartCoroutine(SecondaryButtonCooldown(_buttonCoolDown));
-                Debug.Log(_activePowerup);
-
             }
 
         }
