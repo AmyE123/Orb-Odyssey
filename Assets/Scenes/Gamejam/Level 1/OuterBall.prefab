@@ -154,6 +154,7 @@ MonoBehaviour:
   _stopDampingDuration: 5
   _threshold: 2
   _accelerationFactor: 2
+  _rigidBody: {fileID: 0}
   _dragMin: 0.5
   _dragMax: 5
   _gravityModifier: 1
@@ -166,9 +167,12 @@ MonoBehaviour:
   _disableInput: 0
   _disableRotation: 0
   _gameManager: {fileID: 0}
+  _noseObj: {fileID: 0}
   _grounded: 0
   _groundCheckDistance: 1
   _currentSpeed: 0
+  _canStartPlaying: 0
+  _ballOuterMat: {fileID: 2100000, guid: 22a48e165146c4c4ab8f7e034051e426, type: 2}
 --- !u!114 &481554646583591801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _checkpoints: []
   _gameManager: {fileID: 0}
-  _fadeImage: {fileID: 0}
   _fadeInTime: 0.4
   _fadeWaitTime: 0.1
   _fadeOutTime: 0.4
