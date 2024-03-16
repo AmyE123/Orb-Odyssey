@@ -42,6 +42,7 @@ namespace CT6RIGPR
         public void IncrementCollectableCount()
         {
             _collectableCount++;
+            _globalReferences.LevelManager.IncrementLevelScore();
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace CT6RIGPR
         public void ForceLevelCompletion()
         {
             _hasCompletedLevel = true;
-            _victoryManager.CompleteLevel();
+            StartCoroutine(_victoryManager.CompleteLevel());
         }
 
         private void InitializeLevel()
@@ -66,14 +67,14 @@ namespace CT6RIGPR
                 {                    
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
-                    _victoryManager.CompleteLevel();
+                    StartCoroutine(_victoryManager.CompleteLevel());
                 }              
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 _hasCompletedLevel = true;
-                _victoryManager.CompleteLevel();
+                StartCoroutine(_victoryManager.CompleteLevel());
             }
         }
 

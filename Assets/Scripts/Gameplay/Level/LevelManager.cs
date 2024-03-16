@@ -16,6 +16,9 @@ namespace CT6RIGPR
         [SerializeField] private int _levelTimeLimitMinutes;
         [SerializeField] private int _warningTimeLimitMinutes;
 
+        [Header("Score Properties")]
+        [SerializeField] private int _levelScore;
+
         /// <summary>
         /// Whether the player has read the warning for the game.
         /// </summary>
@@ -47,6 +50,7 @@ namespace CT6RIGPR
                     int nextIndex = i + 1;
                     if (nextIndex < allLevels.Length)
                     {
+                        GlobalManager.Instance.SetCurrentLevel(nextIndex);
                         return allLevels[nextIndex];
                     }
                     break;
@@ -64,6 +68,15 @@ namespace CT6RIGPR
         {
             LevelData[] allLevels = _globalManager.GetAllLevels();
             return allLevels[0];
+        }
+
+        /// <summary>
+        /// Increment the level score.
+        /// </summary>
+        public void IncrementLevelScore()
+        {
+            _levelScore += Constants.COLLECTABLE_SCORE_AMOUNT;
+            _globalManager.SetCurrentLevelScore(_levelScore);
         }
 
         private void Start()
@@ -87,6 +100,12 @@ namespace CT6RIGPR
             {
                 _hasReadWarning = true;
                 HideWarning();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Equals))
+            {
+                Debug.Log("Adding 100 to score");
+                IncrementLevelScore();
             }
         }
 

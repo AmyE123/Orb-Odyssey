@@ -13,6 +13,7 @@ namespace CT6RIGPR
         [SerializeField] private GameObject _playerGameObject;
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private BallController _ballController;
+        [SerializeField] private ParticleSystem _victoryParticles;
         
 
         /// <summary>
@@ -43,7 +44,15 @@ namespace CT6RIGPR
             _pitch = value;
         }
 
-        void FixedUpdate()
+        /// <summary>
+        /// Plays the victory particles.
+        /// </summary>
+        public void PlayVictoryParticles()
+        {
+            _victoryParticles.Play();
+        }
+
+        private void FixedUpdate()
         {
             if (!_playerGameObject.GetComponent<BallController>().HasDisabledInput)
             {

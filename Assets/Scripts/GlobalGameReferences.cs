@@ -5,6 +5,7 @@ namespace CT6RIGPR
     public class GlobalGameReferences : MonoBehaviour
     {
         [SerializeField] private BallController _ballController;
+        [SerializeField] private BallCockpit _ballCockpit;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private GameObject[] _checkpoints;
 
@@ -26,6 +27,11 @@ namespace CT6RIGPR
         /// The ball controller. For all player inputs.
         /// </summary>
         public BallController BallController => _ballController;
+
+        /// <summary>
+        /// The ball cockpit.
+        /// </summary>
+        public BallCockpit BallCockpit => _ballCockpit;
 
         /// <summary>
         /// The rigidbody for the player.
@@ -78,7 +84,7 @@ namespace CT6RIGPR
             if (_cameraController == null)
             {
                 LogNullRef(typeof(CameraController).Name, LogType.Error);
-            }
+            }            
         }
 
         private void PopulateArrays()

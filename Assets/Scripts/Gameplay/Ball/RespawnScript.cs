@@ -95,7 +95,7 @@ namespace CT6RIGPR
 
             isRespawning = true;
 
-            _gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
+            //_gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
 
             // Disable movement
             _ballController.DisableInput();

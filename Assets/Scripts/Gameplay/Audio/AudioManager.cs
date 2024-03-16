@@ -20,10 +20,13 @@ namespace CT6RIGPR
 
         [Header("Audio Manager Settings")]
         [SerializeField] private float _minimumTimeBetweenSounds = 0.1f;
-     
+
+        public AudioSource DefaultSFXSource => _defaultSFXSource;
+
         private void Start()
         {
             _globalManager = GlobalManager.Instance;
+            DontDestroyOnLoad(gameObject);
         }
 
         /// <summary>
