@@ -49,6 +49,9 @@ MonoBehaviour:
   _warningGO: {fileID: 0}
   _warningCanvasGroup: {fileID: 0}
   _hasReadWarning: 0
+  _levelTimeLimitMinutes: 2
+  _warningTimeLimitMinutes: 1
+  _levelScore: 0
 --- !u!114 &4350077598115215116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,3 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84095a29ace09b24d8ec99f9bb2390cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
+  _levelManager: {fileID: 27726413933961474}
+  _timerText: {fileID: 0}
+  _flashingDelay: 0.5

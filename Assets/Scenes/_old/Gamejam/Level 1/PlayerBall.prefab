@@ -1286,6 +1286,11 @@ PrefabInstance:
       propertyPath: _rigidBody
       value: 
       objectReference: {fileID: 5738987482314166013}
+    - target: {fileID: 4446039965040703664, guid: 2f387041d673bb241a52d0203f85dfb9,
+        type: 3}
+      propertyPath: _debugInput
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5261480439909761204, guid: 2f387041d673bb241a52d0203f85dfb9,
         type: 3}
       propertyPath: m_LocalPosition.x

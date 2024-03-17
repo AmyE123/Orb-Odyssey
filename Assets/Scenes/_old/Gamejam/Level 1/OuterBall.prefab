@@ -163,7 +163,7 @@ MonoBehaviour:
   _airborneDrag: 5
   _minimalVelocity: 0
   _stopVelocity: {x: 0, y: 0, z: 0}
-  _debugInput: 1
+  _debugInput: 0
   _disableInput: 0
   _disableRotation: 0
   _gameManager: {fileID: 0}
@@ -186,11 +186,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _checkpoints: []
   _gameManager: {fileID: 0}
-  _fadeImage: {fileID: 0}
   _fadeInTime: 0.4
   _fadeWaitTime: 0.1
   _fadeOutTime: 0.4
   _respawnTime: 3
+  _globalReferences: {fileID: 0}
 --- !u!114 &7049926200131099503
 MonoBehaviour:
   m_ObjectHideFlags: 0
