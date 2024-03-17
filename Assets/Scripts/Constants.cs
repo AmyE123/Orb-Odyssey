@@ -178,6 +178,11 @@ namespace CT6RIGPR
         /// </summary>
         public const int DEFAULT_POWERUP_CHARGES = 10;
 
+        /// <summary>
+        /// The default cooldown for button input for powerups.
+        /// </summary>
+        public const float DEFAULT_POWERUP_INPUT_COOLDOWN = 0.5f;
+
         #endregion // Game Constants
 
         #region Editor Paths
