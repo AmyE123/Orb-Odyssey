@@ -6,20 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Boot.unity
-    guid: ee9a9c9f732f14548871a514be6573b2
-  - enabled: 1
-    path: Assets/Scenes/Levels/Grassy Knoll.unity
-    guid: a4d9813d366f9354a8cbd83c09efb9e9
-  - enabled: 1
-    path: Assets/Scenes/Levels/Boing Bay.unity
-    guid: f2e54892432b7114d8113de9c03fba01
+    path: Assets/Scenes/Levels/Rolling Isles.unity
+    guid: 3108a9bca1c188e4e8b8038401e18620
   - enabled: 1
     path: Assets/Scenes/Levels/Leap Lagoon.unity
     guid: 9bdf8b7d9d88788449ee3818cdf1e1e7
   - enabled: 1
-    path: Assets/Scenes/MegLevels/Boing Bay 2.0.unity
-    guid: 3741b7ae59cf8884887090bb20b9cc08
+    path: Assets/Scenes/Levels/Boing Bay.unity
+    guid: f2e54892432b7114d8113de9c03fba01
+  - enabled: 1
+    path: Assets/Scenes/Levels/Grassy Knoll.unity
+    guid: a4d9813d366f9354a8cbd83c09efb9e9
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 51888be6cbfc3034796bf144db7eb672,
       type: 2}
