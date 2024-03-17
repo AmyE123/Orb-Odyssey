@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/DebugLevels/Dbg2.unity.meta
 guid: 3ae86f5b435eb754b94e0e98bc10cd8d
+========
+guid: c9e416d7f8fb12849a47a0a27a729717
+>>>>>>>> main:Assets/Scenes/Tests/VR_UI.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

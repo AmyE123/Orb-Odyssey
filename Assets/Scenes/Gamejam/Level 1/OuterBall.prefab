@@ -149,26 +149,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc41ac08dbf548e4eaaea146b7f01ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxForce: 40
+  _maxForce: 25
   _yRotation: 0
   _stopDampingDuration: 5
   _threshold: 2
   _accelerationFactor: 2
-  _dragMin: 0.5
+  _rigidBody: {fileID: 0}
+  _dragMin: 1.5
   _dragMax: 5
   _gravityModifier: 1
   _ballGravity: {x: 0, y: -9, z: 0}
-  _additionalAirborneGravity: 2
-  _airborneDrag: 8
+  _additionalAirborneGravity: 7
+  _airborneDrag: 5
   _minimalVelocity: 0
   _stopVelocity: {x: 0, y: 0, z: 0}
   _debugInput: 1
   _disableInput: 0
   _disableRotation: 0
   _gameManager: {fileID: 0}
+  _noseObj: {fileID: 0}
   _grounded: 0
   _groundCheckDistance: 1
   _currentSpeed: 0
+  _canStartPlaying: 0
 --- !u!114 &481554646583591801
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ namespace CT6RIGPR
     {
         [SerializeField] private GameObject _platform;
         [SerializeField] private float _yMin, _yMax;
-        [SerializeField] private bool _isRaised = false;
+        [SerializeField] public bool _isRaised = false;
         [SerializeField] private float _speed = 10f;
 
         private void Start()
