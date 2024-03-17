@@ -74,6 +74,14 @@ namespace CT6RIGPR
             PopulateArrays();
         }
 
+        private void Update()
+        {
+            if (_gameSFXManager == null)
+            {
+                _gameSFXManager = FindObjectOfType<GameSFXManager>();
+            }
+        }
+
         private void CheckReferences()
         {
             if (_ballController == null)

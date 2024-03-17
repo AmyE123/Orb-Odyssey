@@ -27,6 +27,8 @@ namespace CT6RIGPR
         public int Level2Score { get; set; }
         public int Level3Score { get; set; }
 
+        public int Level4Score { get; set; }
+
         /// <summary>
         /// The current volume set for music.
         /// </summary>
@@ -61,6 +63,10 @@ namespace CT6RIGPR
                     {
                         Level3Score = newScore;
                     }
+                    if (i == 3)
+                    {
+                        Level4Score = newScore;
+                    }
                 }
             }
         }
@@ -73,6 +79,7 @@ namespace CT6RIGPR
             Level1Score = 0;
             Level2Score = 0;
             Level3Score = 0;
+            Level4Score = 0;
 
             _currentLevel = _allLevels[0];
 

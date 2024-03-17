@@ -10,6 +10,7 @@ namespace CT6RIGPR
         [SerializeField] private TMP_Text Level1ScoreText;
         [SerializeField] private TMP_Text Level2ScoreText;
         [SerializeField] private TMP_Text Level3ScoreText;
+        [SerializeField] private TMP_Text Level4ScoreText;
         [SerializeField] private TMP_Text TotalScoreText;
 
         private void OnEnable()
@@ -24,7 +25,8 @@ namespace CT6RIGPR
             Level1ScoreText.text = GlobalManager.Instance.Level1Score.ToString();
             Level2ScoreText.text = GlobalManager.Instance.Level2Score.ToString();
             Level3ScoreText.text = GlobalManager.Instance.Level3Score.ToString();
-            int totalScore = GlobalManager.Instance.Level1Score + GlobalManager.Instance.Level2Score + GlobalManager.Instance.Level3Score;
+            Level4ScoreText.text = GlobalManager.Instance.Level4Score.ToString();
+            int totalScore = GlobalManager.Instance.Level1Score + GlobalManager.Instance.Level2Score + GlobalManager.Instance.Level3Score + GlobalManager.Instance.Level4Score;
             TotalScoreText.text = totalScore.ToString();
         }
 
