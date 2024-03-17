@@ -75,6 +75,8 @@ namespace CT6RIGPR
             Level3Score = 0;
 
             _currentLevel = _allLevels[0];
+
+            PlayerPrefs.DeleteAll();
         }
 
         private void Awake()

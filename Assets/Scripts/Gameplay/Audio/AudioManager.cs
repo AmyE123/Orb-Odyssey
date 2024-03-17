@@ -7,6 +7,8 @@ namespace CT6RIGPR
     /// </summary>
     public class AudioManager : MonoBehaviour
     {
+        public static AudioManager Instance { get; private set; }
+
         private GlobalManager _globalManager;
         private float _lastSoundTime;
 
@@ -22,6 +24,19 @@ namespace CT6RIGPR
         [SerializeField] private float _minimumTimeBetweenSounds = 0.1f;
 
         public AudioSource DefaultSFXSource => _defaultSFXSource;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {

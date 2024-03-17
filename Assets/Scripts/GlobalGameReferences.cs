@@ -84,7 +84,12 @@ namespace CT6RIGPR
             if (_cameraController == null)
             {
                 LogNullRef(typeof(CameraController).Name, LogType.Error);
-            }            
+            }
+
+            if (_gameSFXManager == null)
+            {
+                _gameSFXManager = FindObjectOfType<GameSFXManager>();
+            }
         }
 
         private void PopulateArrays()
