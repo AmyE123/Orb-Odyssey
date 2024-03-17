@@ -33,7 +33,6 @@ namespace CT6RIGPR
                 yield return new WaitForSeconds(5);
             }           
 
-            // Wait a few seconds
             LoadNextScene();
         }
 
