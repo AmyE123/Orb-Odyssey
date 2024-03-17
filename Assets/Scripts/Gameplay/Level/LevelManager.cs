@@ -96,12 +96,14 @@ namespace CT6RIGPR
 
         private void Update()
         {
+            // TODO: Layla - Update this with the VR controller button.
             if (Input.GetKeyDown(KeyCode.L))
             {
                 _hasReadWarning = true;
                 HideWarning();
             }
 
+            // TODO: Debug here for showcase purposes. Delete at some point before building final build.
             if(Input.GetKeyDown(KeyCode.Equals))
             {
                 Debug.Log("Adding 100 to score");

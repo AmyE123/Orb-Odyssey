@@ -23,6 +23,9 @@ namespace CT6RIGPR
         [Header("Audio Manager Settings")]
         [SerializeField] private float _minimumTimeBetweenSounds = 0.1f;
 
+        /// <summary>
+        /// The default SFX source for all sound effects.
+        /// </summary>
         public AudioSource DefaultSFXSource => _defaultSFXSource;
 
         private void Awake()

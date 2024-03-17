@@ -53,8 +53,6 @@ namespace CT6RIGPR
                     .OnComplete(() =>
                     {
                         Cursor.lockState = CursorLockMode.None;
-
-                        // Show next level UI
                     });
             }
             else
