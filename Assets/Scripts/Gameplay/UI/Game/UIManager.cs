@@ -7,26 +7,26 @@ namespace CT6RIGPR
     {
         [SerializeField] private GameManager _gameManager;
 
-        [Header("Pickup UI Components")]
-        [SerializeField] private TMP_Text _pickupCount;
-        [SerializeField] private TMP_Text _pickupTotal;
+        [Header("Score UI Components")]
+        [SerializeField] private TMP_Text _scoreValue;
 
         [Header("Debug UI Components")]
         [SerializeField] private TMP_Text _speedValue;
         [SerializeField] private TMP_Text _groundedValue;
 
         /// <summary>
-        /// Sets the total pickups once it has been set in Game Manager
+        /// Sets the total score once it has been set in Game Manager
         /// </summary>
-        public void SetPickupTotal()
+        public void SetScoreUIValue()
         {
-            _pickupTotal.text = _gameManager.CollectableTotal.ToString();
+            _scoreValue.text = GlobalManager.Instance.Level1Score.ToString();
         }
 
         // Update is called once per frame
         private void Update()
         {
-            _pickupCount.text = _gameManager.CollectableCount.ToString();
+            SetScoreUIValue();
+
             _speedValue.text = _gameManager.GlobalReferences.BallController.CurrentSpeed.ToString("F1");
             _groundedValue.text = _gameManager.GlobalReferences.BallController.Grounded.ToString();
         }

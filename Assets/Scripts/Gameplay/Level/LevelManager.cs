@@ -2,6 +2,7 @@ namespace CT6RIGPR
 {
     using UnityEngine;
     using DG.Tweening;
+    using TMPro;
 
     public class LevelManager : MonoBehaviour
     {

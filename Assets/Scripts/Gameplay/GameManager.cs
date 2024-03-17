@@ -91,7 +91,6 @@ namespace CT6RIGPR
         private void SetPickupCount()
         {
             _collectableTotal = FindObjectsOfType<Collectable>().Count();
-            _globalReferences.UIManager.SetPickupTotal();
         }
     }
 }
