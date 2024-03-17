@@ -20,6 +20,9 @@ namespace CT6RIGPR
         [Header("Score Properties")]
         [SerializeField] private int _levelScore;
 
+        [Header("Score UI Components")]
+        [SerializeField] private TMP_Text _scoreValueText;
+
         /// <summary>
         /// Whether the player has read the warning for the game.
         /// </summary>
@@ -110,6 +113,8 @@ namespace CT6RIGPR
                 Debug.Log("Adding 100 to score");
                 IncrementLevelScore();
             }
+
+            _scoreValueText.text = _levelScore.ToString();
         }
 
         private void ShowWarning()

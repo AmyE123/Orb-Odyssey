@@ -72,6 +72,40 @@ namespace CT6RIGPR
         }
 
         /// <summary>
+        /// Gets the score of the current level.
+        /// </summary>
+        /// <returns>The score of the current level.</returns>
+        public int GetCurrentLevelScore()
+        {
+            for (int i = 0; i < _allLevels.Length; i++)
+            {
+                if (_allLevels[i] == _currentLevel)
+                {
+                    if (i == 0)
+                    {
+                        return Level1Score;
+                    }
+                    if (i == 1)
+                    {
+                        return Level2Score;
+                    }
+                    if (i == 2)
+                    {
+                        return Level3Score;
+                    }
+                    if (i == 3)
+                    {
+                        return Level4Score;
+                    }
+                }
+
+                return 0;
+            }
+
+            return 0;
+        }
+
+        /// <summary>
         /// Resets all game values. Scores and current level.
         /// </summary>
         public void ResetAllGameValues()
