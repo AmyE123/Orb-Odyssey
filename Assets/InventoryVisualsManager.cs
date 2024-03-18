@@ -13,18 +13,6 @@ namespace CT6RIGPR
         [SerializeField] private GameObject[] _inventorySlots;
         [SerializeField] private Transform _tubeArea;
 
-        private void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
         /// <summary>
         /// Add the powerup to the slot.
         /// </summary>
@@ -37,6 +25,7 @@ namespace CT6RIGPR
                 {
                     GameObject powerupVisual = Instantiate(powerup.GetComponent<PowerupObjectBase>().PowerupVisualPrefab, slot.transform.position, Quaternion.identity, slot.transform);
                     powerupVisual.transform.localScale = Vector3.one;
+                    AddIdleAnimationToPowerup(powerupVisual.transform);
                     break;
                 }
             }
@@ -66,6 +55,29 @@ namespace CT6RIGPR
                     Destroy(powerupVisual.gameObject);
                 });
             }
+        }
+
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private void AddIdleAnimationToPowerup(Transform powerupVisual)
+        {
+            float startY = powerupVisual.localPosition.y;
+            float moveAmount = 0.2f;
+
+            powerupVisual.DOLocalMoveY(startY + moveAmount, 1f)
+                         .SetLoops(-1, LoopType.Yoyo)
+                         .SetEase(Ease.InOutSine);
         }
     }
 }
