@@ -9,14 +9,16 @@ namespace CT6RIGPR
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private TMP_Text _timerText;
+
+        [Header("Timer Visual Values")]
+        [SerializeField] private float _warningTimeSeconds = 10f;
         [SerializeField] private float _flashingDelay = 0.5f;
 
-        private float _startTime;
         private bool _isFlashing;
         private bool _timerActive = true;
+        private float _timeRemaining;
         private bool _hasTimerStartedAfterWarning = false;
-        private float _lvlTimeLimit;
-        private float _warningTimeLimit;
+        
         private Color32 _uiTextDefaultColor = new Color32(255, 149, 0, 255);
 
         private void Start()
@@ -38,18 +40,14 @@ namespace CT6RIGPR
 
         private void InitializeValues()
         {
-            _startTime = Time.time;
-
             if (_levelManager != null)
             {
-                _lvlTimeLimit = _levelManager.LevelTimeLimitMinutes;
-                _warningTimeLimit = _levelManager.WarningTimeLimitMinutes;
+                _timeRemaining = _levelManager.LevelTimeLimitMinutes * 60;
             }
             else
             {
                 Debug.LogWarning("[CT6RIGPR]: Please set the level manager within the level timer component. Level properties are invalid.");
-                _lvlTimeLimit = 999;
-                _warningTimeLimit = 998;
+                _timeRemaining = 999 * 60;
             }
         }
 
@@ -62,47 +60,50 @@ namespace CT6RIGPR
 
             if (_levelManager.HasReadWarning && !_hasTimerStartedAfterWarning)
             {
-                _startTime = Time.time;
                 _hasTimerStartedAfterWarning = true;
-                _isFlashing = false;
+                _timeRemaining = _levelManager.LevelTimeLimitMinutes * 60;
             }
 
             if (_hasTimerStartedAfterWarning)
             {
-                float timeSinceStarted = Time.time - _startTime;
-                int minutes = (int)(timeSinceStarted / 60);
-                int seconds = (int)(timeSinceStarted % 60);
+                _timeRemaining -= Time.deltaTime;
 
-                _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-                if (minutes >= _warningTimeLimit && !_isFlashing)
+                if (_timeRemaining <= 0)
                 {
-                    StartCoroutine(FlashTimer());
-                    _isFlashing = true;
+                    FinishLevelFromTimeout();
+                    return;
                 }
 
-                if (minutes >= _lvlTimeLimit)
+                UpdateTimerText();
+
+                if (_timeRemaining <= _warningTimeSeconds && !_isFlashing)
                 {
-                    _timerActive = false;
-                    StopCoroutine(FlashTimer());
-                    _timerText.color = _uiTextDefaultColor;
-                    FinishLevelFromTimeout();
+                    _isFlashing = true;
+                    StartCoroutine(FlashTimer());                    
                 }
             }
         }
 
+        private void UpdateTimerText()
+        {
+            int minutes = (int)(_timeRemaining / 60);
+            int seconds = (int)(_timeRemaining % 60);
+            _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+
         private void FinishLevelFromTimeout()
         {
+            _timerActive = false;
             _gameManager.ForceLevelCompletion();
+            StopCoroutine(FlashTimer());
+            _timerText.color = _uiTextDefaultColor;
         }
 
         private IEnumerator FlashTimer()
         {
-            while (true)
+            while (_timerActive && _isFlashing)
             {
-                _timerText.color = Color.red;
-                yield return new WaitForSeconds(_flashingDelay);
-                _timerText.color = _uiTextDefaultColor;
+                _timerText.color = _timerText.color == Color.red ? _uiTextDefaultColor : Color.red;
                 yield return new WaitForSeconds(_flashingDelay);
             }
         }

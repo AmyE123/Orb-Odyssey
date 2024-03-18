@@ -15,7 +15,6 @@ namespace CT6RIGPR
 
         [Header("Level Properties")]
         [SerializeField] private int _levelTimeLimitMinutes;
-        [SerializeField] private int _warningTimeLimitMinutes;
 
         [Header("Score Properties")]
         [SerializeField] private int _levelScore;
@@ -32,11 +31,6 @@ namespace CT6RIGPR
         /// A getter for how many minutes the level is.
         /// </summary>
         public int LevelTimeLimitMinutes => _levelTimeLimitMinutes;
-
-        /// <summary>
-        /// A getter for the warning time limit in minutes.
-        /// </summary>
-        public int WarningTimeLimitMinutes => _warningTimeLimitMinutes;
 
         /// <summary>
         /// Get the next level from the global manager
