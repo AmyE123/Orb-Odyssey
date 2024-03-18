@@ -10,7 +10,7 @@ namespace CT6RIGPR
     /// </summary>
     public class RespawnScript : MonoBehaviour
     {
-		private BallController _ballController;
+        private BallController _ballController;
         private bool isRespawning = false;
 
         [SerializeField] private GameObject[] _checkpoints;
@@ -19,6 +19,7 @@ namespace CT6RIGPR
         [SerializeField] private float _fadeWaitTime = 0.2f; //Percentage of time waiting.
         [SerializeField] private float _fadeOutTime = 0.4f;  //Percentage of time fading out.
         [SerializeField] private float _respawnTime = Constants.RESPAWN_TIME;
+        [SerializeField] private GlobalGameReferences _globalReferences;
 
         private void Start()
         {
@@ -61,6 +62,15 @@ namespace CT6RIGPR
             if (isRespawning)
                 yield break;
 
+            Material ballMat = _globalReferences.BallMaterial;
+
+            if (ballMat == null)
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to fade is not assigned.");
+                yield break;
+            }
+            ballMat.color = Color.clear;
+
             isRespawning = true;
             _gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
 
@@ -98,7 +108,7 @@ namespace CT6RIGPR
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.tag == Constants.WATER_TAG)
+            if (other.tag == Constants.WATER_TAG)
             {
                 Debug.Log("WATER!");
                 StartCoroutine(Respawn());
