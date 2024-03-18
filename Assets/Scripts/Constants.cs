@@ -193,14 +193,14 @@ namespace CT6RIGPR
         #region Editor Paths
 
         /// <summary>
-        /// The boot scene.
+        /// The initial level 0 scene.
         /// </summary>
-        public const string BOOT_SCENE_PATH = "Assets/Scenes/Boot.unity";
+        public const string INITIAL_SCENE_PATH = "Assets/Scenes/Levels/Rolling Isles.unity";
 
         /// <summary>
-        /// The string value of the load boot scene pref in player prefs.
+        /// The string value of the load intial scene pref in player prefs.
         /// </summary>
-        public const string LOAD_BOOT_SCENE_PREF = "LoadBootSceneOnPlay";
+        public const string LOAD_INITIAL_SCENE_PREF = "LoadInitialSceneOnPlay";
 
         /// <summary>
         /// A string of the menu item path for RIGPR tools.
