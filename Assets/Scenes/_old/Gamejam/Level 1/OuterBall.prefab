@@ -172,6 +172,7 @@ MonoBehaviour:
   _groundCheckDistance: 1
   _currentSpeed: 0
   _canStartPlaying: 0
+  _ballOuterMat: {fileID: 2100000, guid: 22a48e165146c4c4ab8f7e034051e426, type: 2}
 --- !u!114 &481554646583591801
 MonoBehaviour:
   m_ObjectHideFlags: 0
