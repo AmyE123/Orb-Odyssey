@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
-  _pickupCount: {fileID: 0}
-  _pickupTotal: {fileID: 0}
+  _scoreValue: {fileID: 0}
   _speedValue: {fileID: 0}
   _groundedValue: {fileID: 0}
