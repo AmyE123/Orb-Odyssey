@@ -103,6 +103,7 @@ namespace CT6RIGPR
         {
             while (_timerActive && _isFlashing)
             {
+                _gameManager.GlobalGameReferences.GameSFXManager.PlayTimerBeepSound();
                 _timerText.color = _timerText.color == Color.red ? _uiTextDefaultColor : Color.red;
                 yield return new WaitForSeconds(_flashingDelay);
             }

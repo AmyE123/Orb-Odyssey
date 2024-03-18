@@ -19,7 +19,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A getter for the global references.
         /// </summary>
-        public GlobalGameReferences GlobalReferences => _globalReferences;
+        public GlobalGameReferences GlobalGameReferences => _globalReferences;
 
         /// <summary>
         /// The total amount of pickups in the level.

@@ -28,8 +28,8 @@ namespace CT6RIGPR
 				_gameManager = FindObjectOfType<GameManager>();
 				Debug.LogWarning("[CT6RIGPR] GameManager reference in respawn script not set. Please set this in the inspector.");
 			}
-			_ballController = _gameManager.GlobalReferences.BallController;
-			_checkpoints = _gameManager.GlobalReferences.Checkpoints;
+			_ballController = _gameManager.GlobalGameReferences.BallController;
+			_checkpoints = _gameManager.GlobalGameReferences.Checkpoints;
 		}
 
         private Vector3 FindCheckpoint()
@@ -72,7 +72,7 @@ namespace CT6RIGPR
             ballMat.color = Color.clear;
 
             isRespawning = true;
-            _gameManager.GlobalReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
+            _gameManager.GlobalGameReferences.GameSFXManager.PlayOutOfBoundsNegativeSound();
 
             _ballController.DisableInput();
             _ballController.FreezePlayer();
