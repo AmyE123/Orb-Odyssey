@@ -10,7 +10,12 @@ namespace CT6RIGPR
         /// <summary>
         /// The different types of levels.
         /// </summary>
-        public enum LevelType { Tutorial, Platformer, Puzzle }       
+        public enum LevelType { Tutorial, Platformer, Puzzle }
+
+        /// <summary>
+        /// The score amount to add when collecting a collectable.
+        /// </summary>
+        public const int COLLECTABLE_SCORE_AMOUNT = 100;
 
         #endregion // Level Properties
 

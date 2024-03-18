@@ -45,13 +45,13 @@ namespace CT6RIGPR
                 case JumpPadDirection.Down:
                     return Vector3.down;
                 case JumpPadDirection.Left:
-                    return Vector3.left;
+                    return Vector3.left + (Vector3.up * 0.5f);
                 case JumpPadDirection.Right:
-                    return Vector3.right;
+                    return Vector3.right + (Vector3.up * 0.5f);
                 case JumpPadDirection.Forward:
-                    return transform.forward;
+                    return transform.forward + (Vector3.up * 0.5f);
                 case JumpPadDirection.Backward:
-                    return -transform.forward;
+                    return -transform.forward + (Vector3.up * 0.5f);
                 default:
                     return Vector3.up;
             }

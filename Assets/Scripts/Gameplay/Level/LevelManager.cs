@@ -2,6 +2,7 @@ namespace CT6RIGPR
 {
     using UnityEngine;
     using DG.Tweening;
+    using TMPro;
 
     public class LevelManager : MonoBehaviour
     {
@@ -15,6 +16,12 @@ namespace CT6RIGPR
         [Header("Level Properties")]
         [SerializeField] private int _levelTimeLimitMinutes;
         [SerializeField] private int _warningTimeLimitMinutes;
+
+        [Header("Score Properties")]
+        [SerializeField] private int _levelScore;
+
+        [Header("Score UI Components")]
+        [SerializeField] private TMP_Text _scoreValueText;
 
         /// <summary>
         /// Whether the player has read the warning for the game.
@@ -47,6 +54,7 @@ namespace CT6RIGPR
                     int nextIndex = i + 1;
                     if (nextIndex < allLevels.Length)
                     {
+                        GlobalManager.Instance.SetCurrentLevel(nextIndex);
                         return allLevels[nextIndex];
                     }
                     break;
@@ -66,6 +74,15 @@ namespace CT6RIGPR
             return allLevels[0];
         }
 
+        /// <summary>
+        /// Increment the level score.
+        /// </summary>
+        public void IncrementLevelScore()
+        {
+            _levelScore += Constants.COLLECTABLE_SCORE_AMOUNT;
+            _globalManager.SetCurrentLevelScore(_levelScore);
+        }
+
         private void Start()
         {
             _globalManager = GlobalManager.Instance;
@@ -83,11 +100,21 @@ namespace CT6RIGPR
 
         private void Update()
         {
+            // TODO: Layla - Update this with the VR controller button.
             if (Input.GetKeyDown(KeyCode.L))
             {
                 _hasReadWarning = true;
                 HideWarning();
             }
+
+            // TODO: Debug here for showcase purposes. Delete at some point before building final build.
+            if(Input.GetKeyDown(KeyCode.Equals))
+            {
+                Debug.Log("Adding 100 to score");
+                IncrementLevelScore();
+            }
+
+            _scoreValueText.text = _levelScore.ToString();
         }
 
         private void ShowWarning()
