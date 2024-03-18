@@ -6,6 +6,13 @@ namespace CT6RIGPR
 
     public class LevelTimer : MonoBehaviour
     {
+        private bool _isFlashing;
+        private bool _timerActive = true;
+        private float _timeRemaining;
+        private bool _hasTimerStartedAfterWarning = false;
+
+        private Color32 _uiTextDefaultColor = new Color32(255, 149, 0, 255);
+
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private TMP_Text _timerText;
@@ -14,12 +21,26 @@ namespace CT6RIGPR
         [SerializeField] private float _warningTimeSeconds = 10f;
         [SerializeField] private float _flashingDelay = 0.5f;
 
-        private bool _isFlashing;
-        private bool _timerActive = true;
-        private float _timeRemaining;
-        private bool _hasTimerStartedAfterWarning = false;
-        
-        private Color32 _uiTextDefaultColor = new Color32(255, 149, 0, 255);
+        /// <summary>
+        /// Get time remaining in seconds
+        /// </summary>
+        public int TimeRemainingInSeconds
+        {
+            get { return Mathf.CeilToInt(_timeRemaining); } // Round up to ensure we get a whole second
+        }
+
+        /// <summary>
+        /// Stops the timer when a player has collected all collectables so the timer can be added to the final score.
+        /// </summary>
+        public void StopTimer()
+        {
+            _timerActive = false;
+            if (_isFlashing)
+            {
+                StopCoroutine(FlashTimer());
+                _timerText.color = _uiTextDefaultColor;
+            }
+        }
 
         private void Start()
         {

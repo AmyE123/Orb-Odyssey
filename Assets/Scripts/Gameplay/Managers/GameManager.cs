@@ -67,13 +67,16 @@ namespace CT6RIGPR
                 {                    
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
+                    _globalReferences.LevelManager.AddRemainingTimerPoints();
                     StartCoroutine(_victoryManager.CompleteLevel());
                 }              
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
+                Debug.Log("[CT6RIGPR]: You debug-won; but hey, you got all pickups! Win!");
                 _hasCompletedLevel = true;
+                _globalReferences.LevelManager.AddRemainingTimerPoints();
                 StartCoroutine(_victoryManager.CompleteLevel());
             }
         }
