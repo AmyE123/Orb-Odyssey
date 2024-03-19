@@ -5,7 +5,6 @@ namespace CT6RIGPR
     using DG.Tweening;
     using System;
     using System.Collections.Generic;
-    using UnityEditor;
     using UnityEngine;
     using UnityEngine.XR;
 
@@ -54,6 +53,9 @@ namespace CT6RIGPR
         [Header("Runtime Values")]
         [SerializeField] private float _currentSpeed;
         [SerializeField] private bool _canStartPlaying = false;
+
+        [Header("Visual Values")]
+        [SerializeField] private Material _ballOuterMat;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -142,6 +144,40 @@ namespace CT6RIGPR
             {
                 _rigidBody.constraints = RigidbodyConstraints.None;
                 _rigidBody.constraints = RigidbodyConstraints.FreezeRotationZ;
+            }
+        }
+
+        /// <summary>
+        /// Fades the outer material of the ball from clear to black.
+        /// </summary>
+        public Tween FadeOutBall()
+        {
+            if (_ballOuterMat != null)
+            {
+                FreezePlayer();
+                return _ballOuterMat.DOColor(Color.black, 1).SetDelay(1); // Directly return the Tween
+            }
+            else
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to fade is not assigned.");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Fades the outer material of the ball from black to clear.
+        /// </summary>
+        public Tween FadeInBall()
+        {
+            if (_ballOuterMat != null)
+            {
+                FreezePlayer();
+                return _ballOuterMat.DOColor(Color.clear, 1).SetDelay(1); // Directly return the Tween
+            }
+            else
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to fade is not assigned.");
+                return null;
             }
         }
 
@@ -310,7 +346,6 @@ namespace CT6RIGPR
             else
             {
                 _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
-
             }
         }
 
@@ -360,6 +395,20 @@ namespace CT6RIGPR
                 else
                 {
                     moveVertical = Input.GetAxis(Constants.HOTAS_Y);
+
+                    Vector2 joystick = Vector2.zero;
+                    var leftHandedControllers = new List<InputDevice>();
+                    var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+                    foreach (var device in leftHandedControllers)
+                    {
+                        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                    }
+
+                    moveVertical += joystick.y;
+                    moveHorizontal += joystick.x;
+
                 }
 
                 if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)

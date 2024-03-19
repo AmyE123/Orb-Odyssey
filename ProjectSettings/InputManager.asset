@@ -500,7 +500,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: HotasY
     descriptiveName: 
@@ -516,5 +516,5 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 0
+    joyNum: 2
   m_UsePhysicalKeys: 1
