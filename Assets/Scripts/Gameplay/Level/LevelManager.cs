@@ -119,7 +119,6 @@ namespace CT6RIGPR
                 {
                     _hasReadWarning = true;
                     HideWarning();
-
                 }
             }
 
