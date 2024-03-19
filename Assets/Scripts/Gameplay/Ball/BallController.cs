@@ -355,8 +355,10 @@ namespace CT6RIGPR
                 {
                     device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
                 }
-                
-                _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
+                if (Mathf.Abs(joystick.x) > 0.4f)
+                {
+                    _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
+                }
             }
         }
 
@@ -428,8 +430,10 @@ namespace CT6RIGPR
                     {
                         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
                     }
-                    moveVertical += joystick.y;
-
+                    if (Mathf.Abs(joystick.y) > 0.4f)
+                    {
+                        moveVertical += joystick.y;
+                    }
                 }
 
                 if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
