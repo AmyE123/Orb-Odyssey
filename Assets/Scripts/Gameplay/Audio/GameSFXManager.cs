@@ -10,6 +10,15 @@ namespace CT6RIGPR
         [SerializeField] private AudioClip _jumpPadClip;
         [SerializeField] private AudioClip _portalPullClip;
         [SerializeField] private AudioClip _outOfBoundsNegativeClip;
+        [SerializeField] private AudioClip _timerBeepClip;
+
+        /// <summary>
+        /// Plays the timer beep sound.
+        /// </summary>
+        public void PlayTimerBeepSound()
+        {
+            _audioManager.PlayDefaultDelaySFX(_timerBeepClip);
+        }
 
         /// <summary>
         /// Plays the victory cheer sounds.
