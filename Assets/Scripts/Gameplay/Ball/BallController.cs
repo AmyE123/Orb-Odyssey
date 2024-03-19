@@ -6,6 +6,7 @@ namespace CT6RIGPR
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+//    using UnityEngine.InputSystem;
     using UnityEngine.XR;
 
     /// <summary>
@@ -345,7 +346,17 @@ namespace CT6RIGPR
             }
             else
             {
-                _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
+                Vector2 joystick = Vector2.zero;
+                var rightHandedControllers = new List<InputDevice>();
+                var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+                InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+
+                foreach (var device in rightHandedControllers)
+                {
+                    device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                }
+                
+                _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
             }
         }
 
@@ -394,7 +405,6 @@ namespace CT6RIGPR
                 }
                 else
                 {
-                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
 
                     Vector2 joystick = Vector2.zero;
                     var leftHandedControllers = new List<InputDevice>();
@@ -408,6 +418,17 @@ namespace CT6RIGPR
 
                     moveVertical += joystick.y;
                     moveHorizontal += joystick.x;
+
+                    joystick = Vector2.zero;
+                    var rightHandedControllers = new List<InputDevice>();
+                    desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+
+                    foreach (var device in rightHandedControllers)
+                    {
+                        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                    }
+                    moveVertical += joystick.y;
 
                 }
 
