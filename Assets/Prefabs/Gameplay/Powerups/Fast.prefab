@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collectableData: {fileID: 11400000, guid: 2199cb9728c3b464c9a8f2f12fd3a459, type: 2}
+  _powerupVisualPrefab: {fileID: 3418113904911073497, guid: 7b3a9d8e72a5bb041be3c5877d51c56c,
+    type: 3}
 --- !u!82 &5792585693431096350
 AudioSource:
   m_ObjectHideFlags: 0

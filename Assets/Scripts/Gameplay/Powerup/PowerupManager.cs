@@ -237,6 +237,20 @@ namespace CT6RIGPR
             }
             CheckForPowerupActivation();
             HandleStickingBehavior();
+            // TODO: Layla - Can you implement this into your cycling powerup implementation?
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                InventoryVisualsManager.instance.UsePowerup(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                InventoryVisualsManager.instance.UsePowerup(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                InventoryVisualsManager.instance.UsePowerup(2);
+            }
+
         }
 
         private void CyclePowerUp()
