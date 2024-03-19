@@ -24,7 +24,7 @@ namespace CT6RIGPR
         private bool _isSticking;
         private float _originalForce;
 
-        private float activationTime;
+        private float _activationTime;
 
         [SerializeField] private PowerupType _activePowerup;
 
@@ -164,7 +164,7 @@ namespace CT6RIGPR
 
         private void UsePowerup(PowerupType powerupType)
         {
-            activationTime = Time.time;
+            _activationTime = Time.time;
             switch (powerupType)
             {
                 case PowerupType.Sticky:
@@ -200,30 +200,30 @@ namespace CT6RIGPR
             }
         }
 
-        private void updateSlider()
+        private void UpdateSlider()
         {
-            float timeSinceActivation = Time.time - activationTime;
+            float timeSinceActivation = Time.time - _activationTime;
             float timeRemaining = _fastDuration - timeSinceActivation;
             _slider.value = timeRemaining / _fastDuration;
             switch (_activePowerup)
             {
                 case PowerupType.Sticky:
-                    _slider.value = (_stickyDuration - (Time.time - activationTime)) / _stickyDuration;
+                    _slider.value = (_stickyDuration - (Time.time - _activationTime)) / _stickyDuration;
                     break;
                 case PowerupType.Fast:
-                    _slider.value = (_fastDuration - (Time.time - activationTime)) / _fastDuration;
+                    _slider.value = (_fastDuration - (Time.time - _activationTime)) / _fastDuration;
                     break;
                 case PowerupType.Slow:
-                    _slider.value = (_slowDuration - (Time.time - activationTime)) / _slowDuration;
+                    _slider.value = (_slowDuration - (Time.time - _activationTime)) / _slowDuration;
                     break;
                 case PowerupType.Freeze:
-                    _slider.value = (_freezeDuration - (Time.time - activationTime)) / _freezeDuration;
+                    _slider.value = (_freezeDuration - (Time.time - _activationTime)) / _freezeDuration;
                     break;
             }
 
         }
 
-        private void resetSlider()
+        private void ResetSlider()
         {
             _slider.value = 1.0f;
         }
@@ -233,7 +233,7 @@ namespace CT6RIGPR
             CheckForPowerUpCycle();
             if (AnyPowerUp())
             {
-                updateSlider();
+                UpdateSlider();
             }
             CheckForPowerupActivation();
             HandleStickingBehavior();
@@ -418,7 +418,7 @@ namespace CT6RIGPR
             GetComponent<Rigidbody>().useGravity = true;
             _stickyEnabled = false;
             _isSticking = false;
-            resetSlider();
+            ResetSlider();
         }
 
         private IEnumerator DisableSpeedCoroutine(float time)
@@ -426,7 +426,7 @@ namespace CT6RIGPR
             yield return new WaitForSeconds(time);
 			_ballController.ChangeMaxForce(_originalForce);
 			_fastEnabled = false;
-            resetSlider();
+            ResetSlider();
         }
 
         private IEnumerator DisableSlowCoroutine(float time)
@@ -434,7 +434,7 @@ namespace CT6RIGPR
             yield return new WaitForSeconds(time);
             _ballController.ChangeMaxForce(_originalForce);
             _slowEnabled = false;
-            resetSlider();
+            ResetSlider();
         }
 
         private IEnumerator DisableFreezeCoroutine(float time)
@@ -449,7 +449,7 @@ namespace CT6RIGPR
 				}
 			}
 			_freezeEnabled = false;
-            resetSlider();
+            ResetSlider();
         }
 
     }
