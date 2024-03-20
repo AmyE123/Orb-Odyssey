@@ -19,7 +19,7 @@ namespace CT6RIGPR
             if (_gameManager == null)
             {
                 _gameManager = FindObjectOfType<GameManager>();
-                _globalRef = _gameManager.GlobalGameReferences;
+                _globalRef = _gameManager.GlobalReferences;
             }
         }
 

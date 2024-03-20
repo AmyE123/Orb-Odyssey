@@ -59,7 +59,7 @@ namespace CT6RIGPR
                 CalculateCockpitRotation();
             }
 
-            if (!_gameManager.GlobalGameReferences.CameraController.DebugMouseLook)
+            if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
             {
                 ClampRotation();
                 ApplyRotation();

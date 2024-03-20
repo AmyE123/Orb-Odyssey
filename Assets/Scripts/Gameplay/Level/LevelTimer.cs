@@ -6,41 +6,18 @@ namespace CT6RIGPR
 
     public class LevelTimer : MonoBehaviour
     {
-        private bool _isFlashing;
-        private bool _timerActive = true;
-        private float _timeRemaining;
-        private bool _hasTimerStartedAfterWarning = false;
-
-        private Color32 _uiTextDefaultColor = new Color32(255, 149, 0, 255);
-
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private TMP_Text _timerText;
-
-        [Header("Timer Visual Values")]
-        [SerializeField] private float _warningTimeSeconds = 10f;
         [SerializeField] private float _flashingDelay = 0.5f;
 
-        /// <summary>
-        /// Get time remaining in seconds
-        /// </summary>
-        public int TimeRemainingInSeconds
-        {
-            get { return Mathf.CeilToInt(_timeRemaining); } // Round up to ensure we get a whole second
-        }
-
-        /// <summary>
-        /// Stops the timer when a player has collected all collectables so the timer can be added to the final score.
-        /// </summary>
-        public void StopTimer()
-        {
-            _timerActive = false;
-            if (_isFlashing)
-            {
-                StopCoroutine(FlashTimer());
-                _timerText.color = _uiTextDefaultColor;
-            }
-        }
+        private float _startTime;
+        private bool _isFlashing;
+        private bool _timerActive = true;
+        private bool _hasTimerStartedAfterWarning = false;
+        private float _lvlTimeLimit;
+        private float _warningTimeLimit;
+        private Color32 _uiTextDefaultColor = new Color32(255, 149, 0, 255);
 
         private void Start()
         {
@@ -61,14 +38,18 @@ namespace CT6RIGPR
 
         private void InitializeValues()
         {
+            _startTime = Time.time;
+
             if (_levelManager != null)
             {
-                _timeRemaining = _levelManager.LevelTimeLimitMinutes * 60;
+                _lvlTimeLimit = _levelManager.LevelTimeLimitMinutes;
+                _warningTimeLimit = _levelManager.WarningTimeLimitMinutes;
             }
             else
             {
                 Debug.LogWarning("[CT6RIGPR]: Please set the level manager within the level timer component. Level properties are invalid.");
-                _timeRemaining = 999 * 60;
+                _lvlTimeLimit = 999;
+                _warningTimeLimit = 998;
             }
         }
 
@@ -81,51 +62,47 @@ namespace CT6RIGPR
 
             if (_levelManager.HasReadWarning && !_hasTimerStartedAfterWarning)
             {
+                _startTime = Time.time;
                 _hasTimerStartedAfterWarning = true;
-                _timeRemaining = _levelManager.LevelTimeLimitMinutes * 60;
+                _isFlashing = false;
             }
 
             if (_hasTimerStartedAfterWarning)
             {
-                _timeRemaining -= Time.deltaTime;
+                float timeSinceStarted = Time.time - _startTime;
+                int minutes = (int)(timeSinceStarted / 60);
+                int seconds = (int)(timeSinceStarted % 60);
 
-                if (_timeRemaining <= 0)
+                _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+                if (minutes >= _warningTimeLimit && !_isFlashing)
                 {
-                    FinishLevelFromTimeout();
-                    return;
+                    StartCoroutine(FlashTimer());
+                    _isFlashing = true;
                 }
 
-                UpdateTimerText();
-
-                if (_timeRemaining <= _warningTimeSeconds && !_isFlashing)
+                if (minutes >= _lvlTimeLimit)
                 {
-                    _isFlashing = true;
-                    StartCoroutine(FlashTimer());                    
+                    _timerActive = false;
+                    StopCoroutine(FlashTimer());
+                    _timerText.color = _uiTextDefaultColor;
+                    FinishLevelFromTimeout();
                 }
             }
         }
 
-        private void UpdateTimerText()
-        {
-            int minutes = (int)(_timeRemaining / 60);
-            int seconds = (int)(_timeRemaining % 60);
-            _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        }
-
         private void FinishLevelFromTimeout()
         {
-            _timerActive = false;
             _gameManager.ForceLevelCompletion();
-            StopCoroutine(FlashTimer());
-            _timerText.color = _uiTextDefaultColor;
         }
 
         private IEnumerator FlashTimer()
         {
-            while (_timerActive && _isFlashing)
+            while (true)
             {
-                _gameManager.GlobalGameReferences.GameSFXManager.PlayTimerBeepSound();
-                _timerText.color = _timerText.color == Color.red ? _uiTextDefaultColor : Color.red;
+                _timerText.color = Color.red;
+                yield return new WaitForSeconds(_flashingDelay);
+                _timerText.color = _uiTextDefaultColor;
                 yield return new WaitForSeconds(_flashingDelay);
             }
         }

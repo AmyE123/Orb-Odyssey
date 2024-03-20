@@ -14,8 +14,8 @@ namespace CT6RIGPR
         // Update is called once per frame
         private void Update()
         {
-            _speedValue.text = _gameManager.GlobalGameReferences.BallController.CurrentSpeed.ToString("F1");
-            _groundedValue.text = _gameManager.GlobalGameReferences.BallController.Grounded.ToString();
+            _speedValue.text = _gameManager.GlobalReferences.BallController.CurrentSpeed.ToString("F1");
+            _groundedValue.text = _gameManager.GlobalReferences.BallController.Grounded.ToString();
         }
     }
 }

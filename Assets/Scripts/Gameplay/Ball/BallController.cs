@@ -202,7 +202,7 @@ namespace CT6RIGPR
 
         private void ApplyInitialPlayerFreeze()
         {
-            Material ballMat = _gameManager.GlobalGameReferences.BallMaterial;
+            Material ballMat = _gameManager.GlobalReferences.BallMaterial;
             _canStartPlaying = false;
 
             if (ballMat != null)
@@ -218,7 +218,7 @@ namespace CT6RIGPR
 
         private void FadeIntoGame()
         {
-            Material ballMat = _gameManager.GlobalGameReferences.BallMaterial;
+            Material ballMat = _gameManager.GlobalReferences.BallMaterial;
             _canStartPlaying = true;
 
             if (ballMat != null)
@@ -245,7 +245,7 @@ namespace CT6RIGPR
 
         private void Update()
         {
-            if (_gameManager.GlobalGameReferences.LevelManager.HasReadWarning && !_canStartPlaying)
+            if (_gameManager.GlobalReferences.LevelManager.HasReadWarning && !_canStartPlaying)
             {
                 FadeIntoGame();
             }
@@ -330,7 +330,7 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            if (_debugInput && !_gameManager.GlobalGameReferences.CameraController.DebugMouseLook)
+            if (_debugInput && !_gameManager.GlobalReferences.CameraController.DebugMouseLook)
             {
                 if (Input.GetKey(KeyCode.RightControl))
                 {
@@ -411,7 +411,7 @@ namespace CT6RIGPR
 
                 }
 
-                if (!_gameManager.GlobalGameReferences.CameraController.DebugMouseLook)
+                if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
                 {
                     Vector3 movement = new Vector3(moveHorizontal, moveAltitude, moveVertical);
                     movement = Quaternion.AngleAxis(_yRotation, Vector3.up) * movement;

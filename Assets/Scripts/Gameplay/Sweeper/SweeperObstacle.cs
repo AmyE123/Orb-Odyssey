@@ -10,15 +10,9 @@ namespace CT6RIGPR
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _rotationSpeed = 100f;
 
-        private void Start()
-        {
-            _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-            _rigidbody.isKinematic = true;
-        }
-
         private void FixedUpdate()
         {
-            _rigidbody.transform.Rotate(Vector3.up, _rotationSpeed * Time.fixedDeltaTime);
+            _rigidbody.angularVelocity = Vector3.up * _rotationSpeed * Time.fixedDeltaTime;
         }
     }
 }
