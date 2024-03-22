@@ -7,6 +7,7 @@ namespace CT6RIGPR
         [SerializeField] private BallController _ballController;
         [SerializeField] private BallCockpit _ballCockpit;
         [SerializeField] private LevelManager _levelManager;
+        [SerializeField] private PowerupManager _powerupManager;
         [SerializeField] private GameObject[] _checkpoints;
 
         [SerializeField] private CameraController _cameraController;
@@ -37,6 +38,11 @@ namespace CT6RIGPR
         /// The rigidbody for the player.
         /// </summary>
         public Rigidbody PlayerRigidbody => _playerRigidbody;
+
+        /// <summary>
+        /// The powerup manager.
+        /// </summary>
+        public PowerupManager PowerupManager=> _powerupManager;
 
         /// <summary>
         /// The checkpoints in a level.

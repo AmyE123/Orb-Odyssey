@@ -332,6 +332,11 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
+            if (_gameManager.GlobalGameReferences.PowerupManager.IsSticking)
+            {
+                return;
+            }
+
             if (_debugInput && !_gameManager.GlobalGameReferences.CameraController.DebugMouseLook)
             {
                 if (Input.GetKey(KeyCode.RightControl))
@@ -416,7 +421,7 @@ namespace CT6RIGPR
                 }
                 else
                 {
-
+                    //Left hand input
                     Vector2 joystick = Vector2.zero;
                     var leftHandedControllers = new List<InputDevice>();
                     var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
@@ -427,10 +432,17 @@ namespace CT6RIGPR
                         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
                     }
 
-                    moveVertical += joystick.y;
-                    moveHorizontal += joystick.x;
+                    if(_gameManager.GlobalGameReferences.PowerupManager.IsSticking)
+                    {
+                        moveAltitude += joystick.y;
+                    }
+                    else
+                    {
+                        moveVertical += joystick.y;
+                        moveHorizontal += joystick.x;
+                    }
 
-
+                    //Right hand input
                     if (_joystickWorking)
                     {
                         moveVertical += Input.GetAxis(Constants.HOTAS_Y);

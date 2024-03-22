@@ -18,7 +18,12 @@ namespace CT6RIGPR
 
         [Header("Spline Values")]
         [SerializeField] private Transform _spline;
-        [SerializeField] private float _speed = 0.1f;       
+        [SerializeField] private float _speed = 0.1f;
+
+        /// <summary>
+        /// Whether the player is currently following a spline.
+        /// </summary>
+        public bool IsFollowing => _isFollowing;
 
         /// <summary>
         /// Activate the trigger for the tube teleportation

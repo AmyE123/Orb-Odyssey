@@ -52,6 +52,8 @@ namespace CT6RIGPR
         [SerializeField] private Image _powerUpImagePanel;
         [SerializeField] private Slider _slider;
 
+        [SerializeField] private GameManager _gameManager;
+
 
 
         GameObject[] _bodiesOfWater;
@@ -95,6 +97,12 @@ namespace CT6RIGPR
         /// Whether a freeze powerup is enabled.
         /// </summary>
         public bool IsFreezeEnabled => _freezeEnabled;
+
+        /// <summary>
+        /// Whether the player is sticking to a wall.
+        /// </summary>
+        public bool IsSticking => _isSticking;
+
 
         private bool AnyPowerUp()
         {
@@ -399,6 +407,7 @@ namespace CT6RIGPR
             if (_isSticking && IsBallFalling())
             {
                 ActivateGravity();
+                _isSticking = false;
             }
         }
 
