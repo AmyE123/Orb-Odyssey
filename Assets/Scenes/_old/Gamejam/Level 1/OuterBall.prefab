@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 481554646583591801}
   - component: {fileID: 7049926200131099503}
   - component: {fileID: 4797717909770284703}
+  - component: {fileID: 2026152859194335402}
   m_Layer: 0
   m_Name: OuterBall
   m_TagString: Player
@@ -164,6 +165,7 @@ MonoBehaviour:
   _minimalVelocity: 0
   _stopVelocity: {x: 0, y: 0, z: 0}
   _debugInput: 0
+  _joystickWorking: 1
   _disableInput: 0
   _disableRotation: 0
   _gameManager: {fileID: 0}
@@ -216,3 +218,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfba1dc18a60a8a4f931127223a1a2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2026152859194335402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700130092045808953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activePowerup: 0
+  _stickyCharges: 0
+  _fastCharges: 0
+  _slowCharges: 0
+  _freezeCharges: 0
+  _stickyDuration: 10
+  _fastDuration: 10
+  _slowDuration: 10
+  _freezeDuration: 10
+  _buffedForce: 40
+  _slowedForce: 10
+  _ballController: {fileID: 0}
+  _buttonCoolDown: 0.5
+  _imageStickyPowerUp: {fileID: 2047992146, guid: 080cb6d98b00c2645b2c41df5f69bc78,
+    type: 3}
+  _imageFastPowerUp: {fileID: 485823971, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
+  _imageSlowPowerUp: {fileID: 1019859777, guid: 080cb6d98b00c2645b2c41df5f69bc78,
+    type: 3}
+  _imageFreezePowerUp: {fileID: 1401011104, guid: 080cb6d98b00c2645b2c41df5f69bc78,
+    type: 3}
+  _powerUpImagePanel: {fileID: 0}
+  _slider: {fileID: 0}

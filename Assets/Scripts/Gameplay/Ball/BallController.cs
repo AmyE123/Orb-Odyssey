@@ -6,6 +6,7 @@ namespace CT6RIGPR
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+//    using UnityEngine.InputSystem;
     using UnityEngine.XR;
 
     /// <summary>
@@ -41,6 +42,7 @@ namespace CT6RIGPR
 
         [Header("Debug and Input Settings")]
         [SerializeField] private bool _debugInput;
+        [SerializeField] private bool _joystickWorking;
         [SerializeField] private bool _disableInput;
         [SerializeField] private bool _disableRotation;
         [SerializeField] private GameManager _gameManager;
@@ -345,7 +347,27 @@ namespace CT6RIGPR
             }
             else
             {
-                _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
+                if (_joystickWorking)
+                {
+                    _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
+                }
+                else
+                {
+
+                    Vector2 joystick = Vector2.zero;
+                    var rightHandedControllers = new List<InputDevice>();
+                    var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+
+                    foreach (var device in rightHandedControllers)
+                    {
+                        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                    }
+                    if (Mathf.Abs(joystick.x) > 0.4f)
+                    {
+                        _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
+                    }
+                }
             }
         }
 
@@ -394,7 +416,6 @@ namespace CT6RIGPR
                 }
                 else
                 {
-                    moveVertical = Input.GetAxis(Constants.HOTAS_Y);
 
                     Vector2 joystick = Vector2.zero;
                     var leftHandedControllers = new List<InputDevice>();
@@ -409,6 +430,27 @@ namespace CT6RIGPR
                     moveVertical += joystick.y;
                     moveHorizontal += joystick.x;
 
+
+                    if (_joystickWorking)
+                    {
+                        moveVertical += Input.GetAxis(Constants.HOTAS_Y);
+                    }
+                    else
+                    {
+                        joystick = Vector2.zero;
+                        var rightHandedControllers = new List<InputDevice>();
+                        desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+                        InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+
+                        foreach (var device in rightHandedControllers)
+                        {
+                            device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                        }
+                        if (Mathf.Abs(joystick.y) > 0.4f)
+                        {
+                            moveVertical += joystick.y;
+                        }
+                    }
                 }
 
                 if (!_gameManager.GlobalReferences.CameraController.DebugMouseLook)
