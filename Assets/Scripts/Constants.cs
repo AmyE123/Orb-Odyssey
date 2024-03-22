@@ -110,7 +110,7 @@ namespace CT6RIGPR
         /// <summary>
         /// The different powerups which we have.
         /// </summary>
-        public enum PowerupType { Sticky, Fast, Slow, Freeze }
+        public enum PowerupType { Sticky, Fast, Freeze }
 
         /// <summary>
         /// The direction for tube reference.

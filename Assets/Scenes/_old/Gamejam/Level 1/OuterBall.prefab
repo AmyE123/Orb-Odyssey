@@ -237,19 +237,21 @@ MonoBehaviour:
   _freezeCharges: 0
   _stickyDuration: 10
   _fastDuration: 10
-  _slowDuration: 10
   _freezeDuration: 10
   _buffedForce: 40
-  _slowedForce: 10
   _ballController: {fileID: 0}
   _buttonCoolDown: 0.5
   _imageStickyPowerUp: {fileID: 2047992146, guid: 080cb6d98b00c2645b2c41df5f69bc78,
     type: 3}
   _imageFastPowerUp: {fileID: 485823971, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
-  _imageSlowPowerUp: {fileID: 1019859777, guid: 080cb6d98b00c2645b2c41df5f69bc78,
-    type: 3}
   _imageFreezePowerUp: {fileID: 1401011104, guid: 080cb6d98b00c2645b2c41df5f69bc78,
     type: 3}
   _powerUpImagePanel: {fileID: 0}
   _slider: {fileID: 0}
   _gameManager: {fileID: 0}
+  _freezePrefab: {fileID: 3418113904911073497, guid: 32839ece1f96b7f409225ba8dffe8a22,
+    type: 3}
+  _stickyPrefab: {fileID: 3418113904911073497, guid: 449eb85606227cc47ac5b82d6103e2fc,
+    type: 3}
+  _fastPrefab: {fileID: 3418113904911073497, guid: e1b5c877e9f15a74b9d12ffc1c9688d7,
+    type: 3}

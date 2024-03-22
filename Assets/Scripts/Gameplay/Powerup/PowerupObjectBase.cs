@@ -24,7 +24,7 @@ namespace CT6RIGPR
         {
             _audioSource.PlayOneShot(_collectableData.CollectableClip);
 
-            InventoryVisualsManager.instance.AddPowerupToSlot(this.gameObject);
+//            InventoryVisualsManager.instance.AddPowerupToSlot(this.gameObject);
 
             transform.DOScale(Vector3.zero, _collectableData.ShrinkDuration)
             .OnComplete(() => {
