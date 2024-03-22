@@ -163,7 +163,7 @@ namespace CT6RIGPR
                 Debug.LogWarning("[CT6RIGPR] BallController reference in OuterBall not set. Please set this in the inspector.");
                 _ballController = gameObject.GetComponent<BallController>();
             }
-			_bodiesOfWater = GameObject.FindGameObjectsWithTag("Water");
+			_bodiesOfWater = GameObject.FindGameObjectsWithTag(Constants.FREEZABLE_WATER_TAG);
             _originalForce = _ballController.MaxForce;
 			InitializeDefaultCharges();
             _primaryButtonEnabled = true;

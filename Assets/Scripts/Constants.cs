@@ -154,6 +154,11 @@ namespace CT6RIGPR
         public const string WATER_TAG = "Water";
 
         /// <summary>
+        /// This is the tag for the water.
+        /// </summary>
+        public const string FREEZABLE_WATER_TAG = "FreezableWater";
+
+        /// <summary>
         /// This is the time that the player takes to respawn when they exit the island boundary.
         /// </summary>
         public const float RESPAWN_TIME = 5;
