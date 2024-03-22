@@ -3,6 +3,8 @@ namespace CT6RIGPR
     using UnityEngine;
     using DG.Tweening;
     using TMPro;
+    using System.Collections.Generic;
+    using UnityEngine.XR;
 
     public class LevelManager : MonoBehaviour
     {
@@ -106,11 +108,24 @@ namespace CT6RIGPR
 
         private void Update()
         {
-            // TODO: Layla - Update this with the VR controller button.
-            if (Input.GetKeyDown(KeyCode.L))
+
+            if (!_hasReadWarning)
             {
-                _hasReadWarning = true;
-                HideWarning();
+                bool buttonB = false;
+                var leftHandedControllers = new List<InputDevice>();
+                var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+                InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+                foreach (var device in leftHandedControllers)
+                {
+                    device.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonB);
+                }
+
+                if (buttonB)
+                {
+                    _hasReadWarning = true;
+                    HideWarning();
+                }
             }
 
             // TODO: Debug here for showcase purposes. Delete at some point before building final build.
