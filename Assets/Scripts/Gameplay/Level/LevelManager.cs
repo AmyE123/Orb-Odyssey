@@ -115,7 +115,7 @@ namespace CT6RIGPR
                     device.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonB);
                 }
 
-                if (buttonB)
+                if (buttonB || Input.GetKeyDown(KeyCode.L))
                 {
                     _hasReadWarning = true;
                     HideWarning();

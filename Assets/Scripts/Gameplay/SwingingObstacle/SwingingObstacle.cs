@@ -8,7 +8,7 @@ namespace CT6RIGPR
     public class SwingingObstacle : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _swingForce = 10f;
+        [SerializeField] private float _swingForce = 100f;
         [SerializeField] private Vector3 _swingAxis = Vector3.forward;
         private Vector3 _initialDirection = Vector3.right;
 
