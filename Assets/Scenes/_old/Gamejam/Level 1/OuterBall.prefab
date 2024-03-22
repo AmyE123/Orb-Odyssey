@@ -155,7 +155,7 @@ MonoBehaviour:
   _stopDampingDuration: 5
   _threshold: 2
   _accelerationFactor: 2
-  _rigidBody: {fileID: 0}
+  _rigidBody: {fileID: 4099291764604675526}
   _dragMin: 1.5
   _dragMax: 5
   _gravityModifier: 1
@@ -252,3 +252,4 @@ MonoBehaviour:
     type: 3}
   _powerUpImagePanel: {fileID: 0}
   _slider: {fileID: 0}
+  _gameManager: {fileID: 0}

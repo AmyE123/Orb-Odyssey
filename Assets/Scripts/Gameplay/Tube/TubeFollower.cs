@@ -21,11 +21,6 @@ namespace CT6RIGPR
         [SerializeField] private float _speed = 0.1f;
 
         /// <summary>
-        /// Whether the player is currently following a spline.
-        /// </summary>
-        public bool IsFollowing => _isFollowing;
-
-        /// <summary>
         /// Activate the trigger for the tube teleportation
         /// </summary>
         /// <param name="triggerDirection">The direction to travel the tube in.</param>
@@ -61,6 +56,7 @@ namespace CT6RIGPR
 
             _activeMovingDirection = followDirection;
             _isFollowing = true;
+            _gameManager.GlobalGameReferences.SetIsFollowingSpline(true);
             _ballController.DisableInput();
 
             _splineProgress = (_activeMovingDirection == TubeDirection.Forward) ? 0f : 1f;
@@ -102,6 +98,7 @@ namespace CT6RIGPR
         private void StopFollowing()
         {
             _isFollowing = false;
+            _gameManager.GlobalGameReferences.SetIsFollowingSpline(false);
             _ballController.EnableInput();
 
             StartCoroutine(_profileManager.InitialiseProfile(DOF_PROFILE_INTERVAL, DOF_ORB_PROFILE));

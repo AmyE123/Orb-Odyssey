@@ -4,6 +4,8 @@ namespace CT6RIGPR
 
     public class GlobalGameReferences : MonoBehaviour
     {
+        private bool _isFollowingSpline = false;
+
         [SerializeField] private BallController _ballController;
         [SerializeField] private BallCockpit _ballCockpit;
         [SerializeField] private LevelManager _levelManager;
@@ -74,6 +76,8 @@ namespace CT6RIGPR
         /// </summary>
         public LevelManager LevelManager => _levelManager;
 
+        public bool IsFollowingSpline => _isFollowingSpline;
+
         private void Start()
         {
             CheckReferences();
@@ -109,6 +113,11 @@ namespace CT6RIGPR
         private void PopulateArrays()
         {
             _checkpoints = GameObject.FindGameObjectsWithTag(Constants.CHECKPOINT_TAG);
+        }
+
+        public void SetIsFollowingSpline(bool setting)
+        {
+            _isFollowingSpline = setting;
         }
 
         private void LogNullRef(string refName, LogType logType)

@@ -348,7 +348,7 @@ namespace CT6RIGPR
 
         private bool CanActivatePowerUp()
         {
-            if (AnyPowerUp() || !_gameManager.GlobalGameReferences.LevelManager.HasReadWarning)
+            if (AnyPowerUp() || !_gameManager.GlobalGameReferences.LevelManager.HasReadWarning || _gameManager.GlobalGameReferences.IsFollowingSpline)
             {
                 return false;
             }
