@@ -3,10 +3,13 @@ namespace CT6RIGPR
     using UnityEngine;
     using DG.Tweening;
     using TMPro;
+    using System.Collections.Generic;
+    using UnityEngine.XR;
 
     public class LevelManager : MonoBehaviour
     {
         private GlobalManager _globalManager;
+        private LevelTimer _lvlTimer;
 
         [SerializeField] private bool _isBeginningLevel = false;
         [SerializeField] private GameObject _warningGO;
@@ -15,7 +18,6 @@ namespace CT6RIGPR
 
         [Header("Level Properties")]
         [SerializeField] private int _levelTimeLimitMinutes;
-        [SerializeField] private int _warningTimeLimitMinutes;
 
         [Header("Score Properties")]
         [SerializeField] private int _levelScore;
@@ -32,11 +34,6 @@ namespace CT6RIGPR
         /// A getter for how many minutes the level is.
         /// </summary>
         public int LevelTimeLimitMinutes => _levelTimeLimitMinutes;
-
-        /// <summary>
-        /// A getter for the warning time limit in minutes.
-        /// </summary>
-        public int WarningTimeLimitMinutes => _warningTimeLimitMinutes;
 
         /// <summary>
         /// Get the next level from the global manager
@@ -83,9 +80,20 @@ namespace CT6RIGPR
             _globalManager.SetCurrentLevelScore(_levelScore);
         }
 
+        /// <summary>
+        /// Adds the remaining timer points.
+        /// </summary>
+        public void AddRemainingTimerPoints()
+        {
+            _lvlTimer.StopTimer();
+            _levelScore += _lvlTimer.TimeRemainingInSeconds;
+            _globalManager.SetCurrentLevelScore(_levelScore);
+        }
+
         private void Start()
         {
             _globalManager = GlobalManager.Instance;
+            _lvlTimer = GetComponent<LevelTimer>();
 
             if (_isBeginningLevel)
             {
@@ -100,11 +108,24 @@ namespace CT6RIGPR
 
         private void Update()
         {
-            // TODO: Layla - Update this with the VR controller button.
-            if (Input.GetKeyDown(KeyCode.L))
+
+            if (!_hasReadWarning)
             {
-                _hasReadWarning = true;
-                HideWarning();
+                bool buttonB = false;
+                var leftHandedControllers = new List<InputDevice>();
+                var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+                InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, leftHandedControllers);
+
+                foreach (var device in leftHandedControllers)
+                {
+                    device.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonB);
+                }
+
+                if (buttonB)
+                {
+                    _hasReadWarning = true;
+                    HideWarning();
+                }
             }
 
             // TODO: Debug here for showcase purposes. Delete at some point before building final build.

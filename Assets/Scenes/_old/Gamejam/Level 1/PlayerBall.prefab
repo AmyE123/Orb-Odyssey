@@ -1295,6 +1295,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ffad2c5681ac543bc99463ab916648, type: 3}
+--- !u!114 &5871645035209875593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819537800125501071, guid: 48ffad2c5681ac543bc99463ab916648,
+    type: 3}
+  m_PrefabInstance: {fileID: 3105527618842308102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7088947818138430444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5293995179725374954, guid: 48ffad2c5681ac543bc99463ab916648,
+    type: 3}
+  m_PrefabInstance: {fileID: 3105527618842308102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7444957493673326734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5496856166657250952, guid: 48ffad2c5681ac543bc99463ab916648,
@@ -1314,26 +1338,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: OuterBall
       objectReference: {fileID: 0}
-    - target: {fileID: 4446039965040703664, guid: 2f387041d673bb241a52d0203f85dfb9,
+    - target: {fileID: 2026152859194335402, guid: 2f387041d673bb241a52d0203f85dfb9,
         type: 3}
-      propertyPath: _dragMin
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446039965040703664, guid: 2f387041d673bb241a52d0203f85dfb9,
-        type: 3}
-      propertyPath: _maxForce
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446039965040703664, guid: 2f387041d673bb241a52d0203f85dfb9,
-        type: 3}
-      propertyPath: _rigidBody
+      propertyPath: _slider
       value: 
-      objectReference: {fileID: 5738987482314166013}
-    - target: {fileID: 4446039965040703664, guid: 2f387041d673bb241a52d0203f85dfb9,
+      objectReference: {fileID: 7088947818138430444}
+    - target: {fileID: 2026152859194335402, guid: 2f387041d673bb241a52d0203f85dfb9,
         type: 3}
-      propertyPath: _debugInput
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _powerUpImagePanel
+      value: 
+      objectReference: {fileID: 5871645035209875593}
     - target: {fileID: 5261480439909761204, guid: 2f387041d673bb241a52d0203f85dfb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1387,11 +1401,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1700130092045808953, guid: 2f387041d673bb241a52d0203f85dfb9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4382786777312442383}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f387041d673bb241a52d0203f85dfb9, type: 3}
 --- !u!4 &4486691355194633103 stripped
 Transform:
@@ -1411,40 +1421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc41ac08dbf548e4eaaea146b7f01ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &5738987482314166013 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 4099291764604675526, guid: 2f387041d673bb241a52d0203f85dfb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 8594951188935207739}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6980427547517017602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1700130092045808953, guid: 2f387041d673bb241a52d0203f85dfb9,
     type: 3}
   m_PrefabInstance: {fileID: 8594951188935207739}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4382786777312442383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6980427547517017602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6695db06dd5e1184e9c63fdcf07b80bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activePowerup: 0
-  _stickyCharges: 0
-  _fastCharges: 0
-  _slowCharges: 0
-  _freezeCharges: 0
-  _stickyDuration: 10
-  _fastDuration: 10
-  _slowDuration: 10
-  _freezeDuration: 10
-  _buffedForce: 40
-  _slowedForce: 10
-  _ballController: {fileID: 5401196234293449611}
-  _buttonCoolDown: 0.5
