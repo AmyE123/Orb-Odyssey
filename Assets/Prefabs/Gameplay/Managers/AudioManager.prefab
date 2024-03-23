@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 5524409699157549596}
-  _victoryCheerClip: {fileID: 8300000, guid: d1a53a50d9e5e0343894a2c661876435, type: 3}
+  _victoryCheerClip: {fileID: 8300000, guid: d9bf986a607cd8f46ac46ca46791a5c4, type: 3}
   _jumpPadClip: {fileID: 8300000, guid: a464aba3d5466674b988e5e8d119249e, type: 3}
   _portalPullClip: {fileID: 8300000, guid: e2b29afa77eb72547baf6559a8796248, type: 3}
   _outOfBoundsNegativeClip: {fileID: 8300000, guid: 900c0d5783da39d48a398a7aea254c69,
