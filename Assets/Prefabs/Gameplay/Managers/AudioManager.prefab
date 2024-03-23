@@ -72,6 +72,7 @@ MonoBehaviour:
   _portalPullClip: {fileID: 8300000, guid: e2b29afa77eb72547baf6559a8796248, type: 3}
   _outOfBoundsNegativeClip: {fileID: 8300000, guid: 900c0d5783da39d48a398a7aea254c69,
     type: 3}
+  _timerBeepClip: {fileID: 8300000, guid: 36386ff978c9de145b91f250c6efd882, type: 3}
 --- !u!1001 &5149701196279466684
 PrefabInstance:
   m_ObjectHideFlags: 0
