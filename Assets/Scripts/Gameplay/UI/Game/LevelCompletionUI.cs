@@ -3,7 +3,6 @@ namespace CT6RIGPR
     using DG.Tweening;
     using TMPro;
     using UnityEngine;
-    using UnityEngine.UI;
 
     public class LevelCompletionUI : MonoBehaviour
     {
@@ -33,8 +32,18 @@ namespace CT6RIGPR
         private void FadeIn()
         {
             CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+            RectTransform rectTransform = GetComponent<RectTransform>();
+
+            // Set initial conditions
             canvasGroup.alpha = 0;
-            canvasGroup.DOFade(1, 0.5f); // Adjust time as needed
+            rectTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // Start smaller
+
+            // Fade in
+            canvasGroup.DOFade(1, 0.5f); // Adjust time as needed for the fade
+
+            // Bounce in by scaling up. You might need to adjust the values to suit your needs
+            rectTransform.DOScale(new Vector3(1, 1, 1), 0.5f)
+                .SetEase(Ease.OutBounce); // Use OutBounce for a bounce effect
         }
 
         private void FadeOut()
