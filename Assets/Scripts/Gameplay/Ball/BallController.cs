@@ -59,6 +59,10 @@ namespace CT6RIGPR
         [Header("Visual Values")]
         [SerializeField] private Material _ballOuterMat;
 
+        [Header("Rotation Warning UI")]
+        [SerializeField] private GameObject _rotationWarningGO;
+        [SerializeField] private CanvasGroup _rotationWarningCG;
+
         /// <summary>
         /// The Y rotation of the ball.
         /// </summary>
@@ -284,6 +288,7 @@ namespace CT6RIGPR
                 AdjustRigidbodyDrag();
 
                 NormalizeRotation();
+                CheckRotationLimits();
             }
 
             if (_debugInput)
@@ -512,6 +517,35 @@ namespace CT6RIGPR
         {
             if (_yRotation < -720) { _yRotation = -720; }
             if (_yRotation > 720) { _yRotation = 720; }
+        }
+
+        private void CheckRotationLimits()
+        {
+            if (_yRotation < -700 || _yRotation > 700)
+            {
+                ShowWarning();
+            }
+            else
+            {
+                HideWarning();
+            }
+        }
+
+        private void ShowWarning()
+        {
+            _rotationWarningGO.SetActive(true);
+
+            _rotationWarningCG.alpha = 0;
+            _rotationWarningCG.DOFade(1, 1);
+        }
+
+        private void HideWarning()
+        {
+            _rotationWarningCG.DOFade(0, 1)
+            .OnComplete(() =>
+            {
+                _rotationWarningGO.SetActive(false);
+            });
         }
     }
 }
