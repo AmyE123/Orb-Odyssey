@@ -51,7 +51,7 @@ namespace CT6RIGPR
 
         private void StartFollowing(TubeDirection followDirection)
         {
-//            _profileManager.setProfile(Constants.DOF_ORB_SPLINE_PROFILE);
+            // TODO: @LAYLA - Do we need to do `_profileManager.setProfile(Constants.DOF_ORB_SPLINE_PROFILE);` here?
             StartCoroutine(_profileManager.InitialiseProfile(Constants.DOF_PROFILE_INTERVAL, Constants.DOF_ORB_SPLINE_PROFILE));
 
             _activeMovingDirection = followDirection;
@@ -89,9 +89,10 @@ namespace CT6RIGPR
             Vector3 newPosition = spline.GetPointAt(_splineProgress);
             Quaternion newRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
 
-            Transform playerTransform = _ballController.gameObject.transform;
-            playerTransform.position = newPosition;
-            playerTransform.rotation = newRotation;
+            Transform cockpitTransform = _gameManager.GlobalGameReferences.BallCockpit.gameObject.transform;
+
+            cockpitTransform.position = newPosition;
+            cockpitTransform.rotation = newRotation;
         }
 
         private void StopFollowing()
