@@ -18,7 +18,8 @@ namespace CT6RIGPR
 
         [Header("Spline Values")]
         [SerializeField] private Transform _spline;
-        [SerializeField] private float _speed = 0.1f;       
+        [SerializeField] private float _speed = 0.1f;
+        [SerializeField] private float _exitEjectionAmount = 3f;
 
         /// <summary>
         /// Activate the trigger for the tube teleportation
@@ -115,7 +116,10 @@ namespace CT6RIGPR
             Vector3 finalPosition = spline.GetPointAt(_splineProgress);
             Quaternion finalRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
             Transform playerTransform = _ballController.gameObject.transform;
-            playerTransform.position = finalPosition;
+            Vector3 forwardDirection = finalRotation * Vector3.forward;
+            Vector3 newPosition = finalPosition + forwardDirection * _exitEjectionAmount;
+
+            playerTransform.position = newPosition;
             playerTransform.rotation = finalRotation;
 
             Rigidbody rb = _ballController.GetComponent<Rigidbody>();
