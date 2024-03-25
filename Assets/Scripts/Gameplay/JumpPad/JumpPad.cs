@@ -12,6 +12,7 @@ namespace CT6RIGPR
         private GlobalGameReferences _globalRef;
 
         [SerializeField] private float _jumpForce = 10f;
+        [SerializeField] private float _secondaryJumpForce = 0f; //Secondary force is applied up if sideways movement is used.
         [SerializeField] private JumpPadDirection _launchDirection = JumpPadDirection.Up;
 
         private void Start()
@@ -45,16 +46,21 @@ namespace CT6RIGPR
                 case JumpPadDirection.Down:
                     return Vector3.down;
                 case JumpPadDirection.Left:
-                    return Vector3.left + (Vector3.up * 0.5f);
+                    return Vector3.left;
                 case JumpPadDirection.Right:
-                    return Vector3.right + (Vector3.up * 0.5f);
+                    return Vector3.right;
                 case JumpPadDirection.Forward:
-                    return transform.forward + (Vector3.up * 0.5f);
+                    return transform.forward;
                 case JumpPadDirection.Backward:
-                    return -transform.forward + (Vector3.up * 0.5f);
+                    return -transform.forward;
                 default:
                     return Vector3.up;
             }
+        }
+
+        private bool SideWaysJumpPad()
+        {
+            return _launchDirection == JumpPadDirection.Left || _launchDirection == JumpPadDirection.Right || _launchDirection == JumpPadDirection.Forward || _launchDirection == JumpPadDirection.Backward;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -63,6 +69,10 @@ namespace CT6RIGPR
             {
                 _globalRef.GameSFXManager.PlayJumpPadSound();
                 other.attachedRigidbody.AddForce(GetLaunchDirection() * _jumpForce, ForceMode.VelocityChange);
+                if (SideWaysJumpPad())
+                {
+                    other.attachedRigidbody.AddForce(Vector3.up * _secondaryJumpForce, ForceMode.VelocityChange);
+                }
             }
         }
     }
