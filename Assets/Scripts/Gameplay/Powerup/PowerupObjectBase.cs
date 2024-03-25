@@ -23,9 +23,6 @@ namespace CT6RIGPR
         protected virtual void PickUpPowerup(Collider player)
         {
             _audioSource.PlayOneShot(_collectableData.CollectableClip);
-
-            InventoryVisualsManager.instance.AddPowerupToSlot(this.gameObject);
-
             transform.DOScale(Vector3.zero, _collectableData.ShrinkDuration)
             .OnComplete(() => {
                 Destroy(gameObject, _collectableData.DestroyDelay);
