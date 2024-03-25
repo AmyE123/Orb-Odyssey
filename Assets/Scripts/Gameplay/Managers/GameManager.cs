@@ -19,7 +19,7 @@ namespace CT6RIGPR
         /// <summary>
         /// A getter for the global references.
         /// </summary>
-        public GlobalGameReferences GlobalReferences => _globalReferences;
+        public GlobalGameReferences GlobalGameReferences => _globalReferences;
 
         /// <summary>
         /// The total amount of pickups in the level.
@@ -67,13 +67,16 @@ namespace CT6RIGPR
                 {                    
                     Debug.Log("[CT6RIGPR]: You got all pickups! Win!");
                     _hasCompletedLevel = true;
+                    _globalReferences.LevelManager.AddRemainingTimerPoints();
                     StartCoroutine(_victoryManager.CompleteLevel());
                 }              
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
+                Debug.Log("[CT6RIGPR]: You debug-won; but hey, you got all pickups! Win!");
                 _hasCompletedLevel = true;
+                _globalReferences.LevelManager.AddRemainingTimerPoints();
                 StartCoroutine(_victoryManager.CompleteLevel());
             }
         }

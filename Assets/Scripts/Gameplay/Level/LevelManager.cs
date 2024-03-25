@@ -9,6 +9,7 @@ namespace CT6RIGPR
     public class LevelManager : MonoBehaviour
     {
         private GlobalManager _globalManager;
+        private LevelTimer _lvlTimer;
 
         [SerializeField] private bool _isBeginningLevel = false;
         [SerializeField] private GameObject _warningGO;
@@ -17,7 +18,6 @@ namespace CT6RIGPR
 
         [Header("Level Properties")]
         [SerializeField] private int _levelTimeLimitMinutes;
-        [SerializeField] private int _warningTimeLimitMinutes;
 
         [Header("Score Properties")]
         [SerializeField] private int _levelScore;
@@ -34,11 +34,6 @@ namespace CT6RIGPR
         /// A getter for how many minutes the level is.
         /// </summary>
         public int LevelTimeLimitMinutes => _levelTimeLimitMinutes;
-
-        /// <summary>
-        /// A getter for the warning time limit in minutes.
-        /// </summary>
-        public int WarningTimeLimitMinutes => _warningTimeLimitMinutes;
 
         /// <summary>
         /// Get the next level from the global manager
@@ -85,9 +80,20 @@ namespace CT6RIGPR
             _globalManager.SetCurrentLevelScore(_levelScore);
         }
 
+        /// <summary>
+        /// Adds the remaining timer points.
+        /// </summary>
+        public void AddRemainingTimerPoints()
+        {
+            _lvlTimer.StopTimer();
+            _levelScore += _lvlTimer.TimeRemainingInSeconds;
+            _globalManager.SetCurrentLevelScore(_levelScore);
+        }
+
         private void Start()
         {
             _globalManager = GlobalManager.Instance;
+            _lvlTimer = GetComponent<LevelTimer>();
 
             if (_isBeginningLevel)
             {

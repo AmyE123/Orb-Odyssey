@@ -37,8 +37,8 @@ namespace CT6RIGPR
                 Debug.LogWarning("[CT6RIGPR] GameManager reference in Tube not set. Please set this in the inspector.");
             }
 
-            _ballController = _gameManager.GlobalReferences.BallController;
-            _profileManager = _gameManager.GlobalReferences.ProfileManager;
+            _ballController = _gameManager.GlobalGameReferences.BallController;
+            _profileManager = _gameManager.GlobalGameReferences.ProfileManager;
         }
 
         private void Update()
