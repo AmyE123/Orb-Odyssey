@@ -14,6 +14,7 @@ namespace CT6RIGPR
             PowerupManager powerUpManager = player.GetComponent<PowerupManager>();
             if (powerUpManager != null)
             {
+                powerUpManager.AddCharge(Constants.PowerupType.Slow);
             }
 
             base.PickUpPowerup(player);

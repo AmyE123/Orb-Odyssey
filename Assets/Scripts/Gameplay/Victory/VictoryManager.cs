@@ -20,7 +20,6 @@ namespace CT6RIGPR
             _globalReferences.BallCockpit.PlayVictoryParticles();
 
             FadeOut();
-            yield return new WaitForSeconds(2);
             _levelCompletionUIGO.SetActive(true);
 
             if (IsLastScene())
@@ -50,7 +49,7 @@ namespace CT6RIGPR
                 ballMat.color = Color.clear;
                 _globalReferences.BallController.FreezePlayer();
 
-                ballMat.DOColor(Color.black, 1)
+                ballMat.DOColor(Color.black, 1).SetDelay(1)
                     .OnComplete(() =>
                     {
                         Cursor.lockState = CursorLockMode.None;
