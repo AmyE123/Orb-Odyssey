@@ -30,7 +30,7 @@ namespace CT6RIGPR
         {
             _hasBeenPickedUp = false;
             _powerupMeshRenderer.enabled = true;
-            transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
+            transform.localScale = Vector3.one;
         }
 
         protected virtual void PickUpPowerup(Collider player)
