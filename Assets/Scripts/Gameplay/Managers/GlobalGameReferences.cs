@@ -159,9 +159,9 @@ namespace CT6RIGPR
             _checkpoints = GameObject.FindGameObjectsWithTag(Constants.CHECKPOINT_TAG);
         }
 
-        public void SetIsFollowingSpline(bool setting)
+        public void SetIsFollowingSpline(bool value)
         {
-            _isFollowingSpline = setting;
+            _isFollowingSpline = value;
         }
 
         private void LogNullRef(string refName, LogType logType)

@@ -2,7 +2,6 @@ namespace CT6RIGPR
 {
     using DG.Tweening;
     using UnityEngine;
-    using static CT6RIGPR.Constants;
 
     /// <summary>
     /// This manages the visuals for the inventory.
