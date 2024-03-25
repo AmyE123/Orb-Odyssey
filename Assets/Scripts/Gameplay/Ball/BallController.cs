@@ -332,55 +332,42 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            var globalGameRefs = _gameManager.GlobalGameReferences;
-            if (globalGameRefs != null)
+            if (_debugInput && !_gameManager.GlobalGameReferences.CameraController.DebugMouseLook)
             {
-                if (globalGameRefs.PowerupManager.IsSticking)
+                if (Input.GetKey(KeyCode.RightControl))
                 {
-                    return;
+                    _yRotation--;
                 }
 
-                if (_debugInput && !globalGameRefs.CameraController.DebugMouseLook)
+                if (Input.GetKey(KeyCode.RightShift))
                 {
-                    if (Input.GetKey(KeyCode.RightControl))
-                    {
-                        _yRotation--;
-                    }
-
-                    if (Input.GetKey(KeyCode.RightShift))
-                    {
-                        _yRotation++;
-                    }
-
+                    _yRotation++;
                 }
-                else
-                {
-                    if (_joystickWorking)
-                    {
-                        _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
-                    }
-                    else
-                    {
 
-                        Vector2 joystick = Vector2.zero;
-                        var rightHandedControllers = new List<InputDevice>();
-                        var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-                        InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
-
-                        foreach (var device in rightHandedControllers)
-                        {
-                            device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
-                        }
-                        if (Mathf.Abs(joystick.x) > 0.4f)
-                        {
-                            _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
-                        }
-                    }
-                }
             }
             else
             {
-                Debug.LogError("[CT6RIGPR]: GLOBAL GAME REFS Are Null on Ball Contoller");
+                if (_joystickWorking)
+                {
+                    _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
+                }
+                else
+                {
+
+                    Vector2 joystick = Vector2.zero;
+                    var rightHandedControllers = new List<InputDevice>();
+                    var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+
+                    foreach (var device in rightHandedControllers)
+                    {
+                        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                    }
+                    if (Mathf.Abs(joystick.x) > 0.4f)
+                    {
+                        _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
+                    }
+                }
             }
         }
 
@@ -429,7 +416,7 @@ namespace CT6RIGPR
                 }
                 else
                 {
-                    //Left hand input
+
                     Vector2 joystick = Vector2.zero;
                     var leftHandedControllers = new List<InputDevice>();
                     var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
@@ -440,17 +427,10 @@ namespace CT6RIGPR
                         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
                     }
 
-                    if(_gameManager.GlobalGameReferences.PowerupManager.IsSticking)
-                    {
-                        moveAltitude += joystick.y;
-                    }
-                    else
-                    {
-                        moveVertical += joystick.y;
-                        moveHorizontal += joystick.x;
-                    }
+                    moveVertical += joystick.y;
+                    moveHorizontal += joystick.x;
 
-                    //Right hand input
+
                     if (_joystickWorking)
                     {
                         moveVertical += Input.GetAxis(Constants.HOTAS_Y);

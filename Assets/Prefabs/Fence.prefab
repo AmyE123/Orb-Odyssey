@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6279251606268867347
+--- !u!1001 &1837106840446593240
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,33 +10,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.4648
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4.4648
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.4648
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
-        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.96
+      value: -23.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.25
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.7182255
+      value: -29.314737
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 478f9ed67462fd94593a826ab8745617,
         type: 3}
@@ -73,15 +58,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 478f9ed67462fd94593a826ab8745617,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9a0a2f3a89be6d64296c187ce42f555d, type: 2}
     - target: {fileID: 919132149155446097, guid: 478f9ed67462fd94593a826ab8745617,
         type: 3}
       propertyPath: m_Name
-      value: fence
+      value: Fence
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
