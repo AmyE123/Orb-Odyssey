@@ -8,6 +8,12 @@ namespace CT6RIGPR
         bool _hasBeenPickedUp = false;
         private AudioSource _audioSource;
         [SerializeField] private CollectableData _collectableData;
+        [SerializeField] private GameObject _powerupVisualPrefab;
+
+        /// <summary>
+        /// The visual prefab of the powerup. For use with inventory.
+        /// </summary>
+        public GameObject PowerupVisualPrefab => _powerupVisualPrefab;
 
         private void Start()
         {
@@ -17,7 +23,6 @@ namespace CT6RIGPR
         protected virtual void PickUpPowerup(Collider player)
         {
             _audioSource.PlayOneShot(_collectableData.CollectableClip);
-
             transform.DOScale(Vector3.zero, _collectableData.ShrinkDuration)
             .OnComplete(() => {
                 Destroy(gameObject, _collectableData.DestroyDelay);
