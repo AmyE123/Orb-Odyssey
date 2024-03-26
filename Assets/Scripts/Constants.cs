@@ -65,6 +65,11 @@ namespace CT6RIGPR
 		public const int BALL_DEFAULT_MAX_BUFFED_FORCE = 40;
 
 		/// <summary>
+		/// The default max sped up force for the monkey ball.
+		/// </summary>
+		public const int BALL_DEFAULT_MAX_SLOWED_FORCE = 10;
+
+		/// <summary>
 		/// The roll clamp for the cockpit.
 		/// </summary>
 		public const float ROLL_CLAMP = 16.8f;
@@ -105,7 +110,7 @@ namespace CT6RIGPR
         /// <summary>
         /// The different powerups which we have.
         /// </summary>
-        public enum PowerupType { Sticky, Fast, Freeze }
+        public enum PowerupType { Sticky, Fast, Slow, Freeze }
 
         /// <summary>
         /// The direction for tube reference.
@@ -154,7 +159,7 @@ namespace CT6RIGPR
         public const string WATER_TAG = "Water";
 
         /// <summary>
-        /// This is the tag for the water.
+        /// This is the tag for the water
         /// </summary>
         public const string FREEZABLE_WATER_TAG = "FreezableWater";
 

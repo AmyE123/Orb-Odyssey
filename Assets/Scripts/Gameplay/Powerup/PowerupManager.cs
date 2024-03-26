@@ -167,6 +167,7 @@ namespace CT6RIGPR
         private void UsePowerup(PowerupType powerupType)
         {
             _activationTime = Time.time;
+            _ballController.ApplyPowerUpVisual(powerupType);
             switch (powerupType)
             {
                 case PowerupType.Sticky:
@@ -221,47 +222,6 @@ namespace CT6RIGPR
         private void ResetSlider()
         {
             _slider.value = 1.0f;
-        }
-
-        private void RefillPowerUp(PowerupType powerupType)
-        {
-            foreach (GameObject powerupObject in _gameManager.GlobalGameReferences.Powerups)
-            {
-                PowerupObjectBase baseScript = powerupObject.GetComponent<PowerupObjectBase>();
-                switch (powerupType)
-                {
-                    case PowerupType.Sticky:
-                        if (powerupObject.GetComponent<PowerupObjectSticky>() != null)
-                        {
-                            if (baseScript.HasBeenPickedUp)
-                            {
-                                baseScript.ResetPowerUp();
-                                return;
-                            }
-                        }
-                        break;
-                    case PowerupType.Fast:
-                        if (powerupObject.GetComponent<PowerupObjectFast>() != null)
-                        {
-                            if (baseScript.HasBeenPickedUp)
-                            {
-                                baseScript.ResetPowerUp();
-                                return;
-                            }
-                        }
-                        break;
-                    default: //Freeze
-                        if (powerupObject.GetComponent<PowerupObjectFreeze>() != null)
-                        {
-                            if (baseScript.HasBeenPickedUp)
-                            {
-                                baseScript.ResetPowerUp();
-                                return;
-                            }
-                        }
-                        break;
-                }
-            }
         }
 
         private void UpdateInventoryUI()
@@ -380,7 +340,8 @@ namespace CT6RIGPR
         {
             if (AnyPowerUpActive() ||
                 !_gameManager.GlobalGameReferences.LevelManager.HasReadWarning ||
-                _gameManager.GlobalGameReferences.IsFollowingSpline
+                _gameManager.GlobalGameReferences.IsFollowingSpline ||
+                _gameManager.GlobalGameReferences.RespawnScript.IsRespawning
                 )
             {
                 return false;
@@ -464,7 +425,7 @@ namespace CT6RIGPR
             _stickyEnabled = false;
             _isSticking = false;
             ResetSlider();
-            RefillPowerUp(PowerupType.Sticky);
+            _ballController.RemovePowerUpVisual();
         }
 
         private IEnumerator DisableSpeedCoroutine(float time)
@@ -473,7 +434,7 @@ namespace CT6RIGPR
 			_ballController.ChangeMaxForce(_originalForce);
 			_fastEnabled = false;
             ResetSlider();
-            RefillPowerUp(PowerupType.Fast);
+            _ballController.RemovePowerUpVisual();
         }
 
         private IEnumerator DisableFreezeCoroutine(float time)
@@ -489,8 +450,7 @@ namespace CT6RIGPR
 			}
 			_freezeEnabled = false;
             ResetSlider();
-            RefillPowerUp(PowerupType.Freeze);
+            _ballController.RemovePowerUpVisual();
         }
-
     }
 }

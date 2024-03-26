@@ -17,6 +17,9 @@ namespace CT6RIGPR
         private bool _isInputActive = false;
         private float moveHorizontal = 0.0f;
         private float moveVertical = 0.0f;
+        private Color blueTint = new Color(0f, 0f, 1f, 0.3f);
+        private Color greenTint = new Color(0f, 1f, 0f, 0.3f);
+        private Color yellowTint = new Color(1f, 1f, 0f, 0.3f);
 
         [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
@@ -58,6 +61,10 @@ namespace CT6RIGPR
 
         [Header("Visual Values")]
         [SerializeField] private Material _ballOuterMat;
+
+        [Header("Rotation Warning UI")]
+        [SerializeField] private GameObject _rotationWarningGO;
+        [SerializeField] private CanvasGroup _rotationWarningCG;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -184,6 +191,35 @@ namespace CT6RIGPR
         }
 
         /// <summary>
+        /// Powerup Visual Effect
+        /// </summary>
+        public Tween ApplyPowerUpVisual(Constants.PowerupType powerUp)
+        {
+            if (_ballOuterMat == null)
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to tint is not assigned.");
+                return null;
+            }
+            switch (powerUp)
+            {
+                case Constants.PowerupType.Fast:
+                    return _ballOuterMat.DOColor(yellowTint, 1).SetDelay(1);
+                case Constants.PowerupType.Sticky:
+                    return _ballOuterMat.DOColor(greenTint, 1).SetDelay(1);
+                default: //Freeze
+                    return _ballOuterMat.DOColor(blueTint, 1).SetDelay(1);
+            }
+        }
+
+        /// <summary>
+        /// Powerup Visual Effect
+        /// </summary>
+        public Tween RemovePowerUpVisual()
+        {
+            return _ballOuterMat.DOColor(Color.clear, 1).SetDelay(1);
+        }
+
+        /// <summary>
         /// A function to change the max force of the ball.
         /// </summary>
         /// <param name="newMaxForce">The new value of the max force.</param>
@@ -284,6 +320,7 @@ namespace CT6RIGPR
                 AdjustRigidbodyDrag();
 
                 NormalizeRotation();
+                CheckRotationLimits();
             }
 
             if (_debugInput)
@@ -332,55 +369,42 @@ namespace CT6RIGPR
         /// </summary>
         private void UpdateControllerInput()
         {
-            var globalGameRefs = _gameManager.GlobalGameReferences;
-            if (globalGameRefs != null)
+            if (_debugInput && !_gameManager.GlobalGameReferences.CameraController.DebugMouseLook)
             {
-                if (globalGameRefs.PowerupManager.IsSticking)
+                if (Input.GetKey(KeyCode.RightControl))
                 {
-                    return;
+                    _yRotation--;
                 }
 
-                if (_debugInput && !globalGameRefs.CameraController.DebugMouseLook)
+                if (Input.GetKey(KeyCode.RightShift))
                 {
-                    if (Input.GetKey(KeyCode.RightControl))
-                    {
-                        _yRotation--;
-                    }
-
-                    if (Input.GetKey(KeyCode.RightShift))
-                    {
-                        _yRotation++;
-                    }
-
+                    _yRotation++;
                 }
-                else
-                {
-                    if (_joystickWorking)
-                    {
-                        _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
-                    }
-                    else
-                    {
 
-                        Vector2 joystick = Vector2.zero;
-                        var rightHandedControllers = new List<InputDevice>();
-                        var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-                        InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
-
-                        foreach (var device in rightHandedControllers)
-                        {
-                            device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
-                        }
-                        if (Mathf.Abs(joystick.x) > 0.4f)
-                        {
-                            _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
-                        }
-                    }
-                }
             }
             else
             {
-                Debug.LogError("[CT6RIGPR]: GLOBAL GAME REFS Are Null on Ball Contoller");
+                if (_joystickWorking)
+                {
+                    _yRotation += Input.GetAxis(Constants.HOTAS_X) * Constants.ROTATION_MULTIPLIER;
+                }
+                else
+                {
+
+                    Vector2 joystick = Vector2.zero;
+                    var rightHandedControllers = new List<InputDevice>();
+                    var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+                    InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
+
+                    foreach (var device in rightHandedControllers)
+                    {
+                        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
+                    }
+                    if (Mathf.Abs(joystick.x) > 0.4f)
+                    {
+                        _yRotation += joystick.x * Constants.ROTATION_MULTIPLIER;
+                    }
+                }
             }
         }
 
@@ -429,7 +453,7 @@ namespace CT6RIGPR
                 }
                 else
                 {
-                    //Left hand input
+
                     Vector2 joystick = Vector2.zero;
                     var leftHandedControllers = new List<InputDevice>();
                     var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand | InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
@@ -440,17 +464,10 @@ namespace CT6RIGPR
                         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystick);
                     }
 
-                    if(_gameManager.GlobalGameReferences.PowerupManager.IsSticking)
-                    {
-                        moveAltitude += joystick.y;
-                    }
-                    else
-                    {
-                        moveVertical += joystick.y;
-                        moveHorizontal += joystick.x;
-                    }
+                    moveVertical += joystick.y;
+                    moveHorizontal += joystick.x;
 
-                    //Right hand input
+
                     if (_joystickWorking)
                     {
                         moveVertical += Input.GetAxis(Constants.HOTAS_Y);
@@ -532,6 +549,35 @@ namespace CT6RIGPR
         {
             if (_yRotation < -720) { _yRotation = -720; }
             if (_yRotation > 720) { _yRotation = 720; }
+        }
+
+        private void CheckRotationLimits()
+        {
+            if (_yRotation < -700 || _yRotation > 700)
+            {
+                ShowWarning();
+            }
+            else
+            {
+                HideWarning();
+            }
+        }
+
+        private void ShowWarning()
+        {
+            _rotationWarningGO.SetActive(true);
+
+            _rotationWarningCG.alpha = 0;
+            _rotationWarningCG.DOFade(1, 1);
+        }
+
+        private void HideWarning()
+        {
+            _rotationWarningCG.DOFade(0, 1)
+            .OnComplete(() =>
+            {
+                _rotationWarningGO.SetActive(false);
+            });
         }
     }
 }
