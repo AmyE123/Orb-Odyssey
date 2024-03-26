@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5792585693431096350}
   m_Layer: 0
   m_Name: Freeze
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   _collectableData: {fileID: 11400000, guid: 2199cb9728c3b464c9a8f2f12fd3a459, type: 2}
   _powerupVisualPrefab: {fileID: 3418113904911073497, guid: 42e7b97898a9a6a46befdf3ae8d0f1a3,
     type: 3}
+  _powerupMeshRenderer: {fileID: 167456624182835047}
 --- !u!82 &5792585693431096350
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,6 +228,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8151426447300189259}
     m_Modifications:
+    - target: {fileID: 2529120837981904023, guid: 005e1d0329086f647b52b6353000f7af,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698038981098530808, guid: 005e1d0329086f647b52b6353000f7af,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -302,6 +308,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 005e1d0329086f647b52b6353000f7af, type: 3}
+--- !u!23 &167456624182835047 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2529120837981904023, guid: 005e1d0329086f647b52b6353000f7af,
+    type: 3}
+  m_PrefabInstance: {fileID: 2399243124712352752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1304284901967383560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3698038981098530808, guid: 005e1d0329086f647b52b6353000f7af,
