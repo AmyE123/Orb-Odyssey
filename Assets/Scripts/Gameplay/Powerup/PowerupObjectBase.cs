@@ -26,6 +26,9 @@ namespace CT6RIGPR
             _audioSource = GetComponent<AudioSource>();
         }
 
+        /// <summary>
+        /// Allows the powerup to be picked up again, as well as resetting it visually.
+        /// </summary>
         public void ResetPowerUp()
         {
             _hasBeenPickedUp = false;
