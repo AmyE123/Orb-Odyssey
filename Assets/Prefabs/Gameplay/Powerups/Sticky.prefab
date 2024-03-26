@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4447997999084527826}
   m_Layer: 0
   m_Name: Sticky
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   _collectableData: {fileID: 11400000, guid: 2199cb9728c3b464c9a8f2f12fd3a459, type: 2}
   _powerupVisualPrefab: {fileID: 3418113904911073497, guid: ca3929636f56ef642971984298370264,
     type: 3}
+  _powerupMeshRenderer: {fileID: 6045618812872086608}
 --- !u!82 &4447997999084527826
 AudioSource:
   m_ObjectHideFlags: 0
@@ -305,6 +306,12 @@ PrefabInstance:
 --- !u!4 &4876684383105789759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5097018223928845236, guid: 4c504948edc929f4e9b85c03a10f875b,
+    type: 3}
+  m_PrefabInstance: {fileID: 365153902289456267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6045618812872086608 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6266499179424995547, guid: 4c504948edc929f4e9b85c03a10f875b,
     type: 3}
   m_PrefabInstance: {fileID: 365153902289456267}
   m_PrefabAsset: {fileID: 0}
