@@ -84,6 +84,8 @@ namespace CT6RIGPR
             // Wait for respawn time
             yield return new WaitForSeconds(_respawnTime);
 
+            _checkpoints = _gameManager.GlobalGameReferences.Checkpoints;
+
             // Reset position and apply the saved rotation
             transform.position = FindCheckpoint();
             GetComponent<Rigidbody>().velocity = Vector3.zero;

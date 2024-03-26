@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8603056219646346458}
   m_Layer: 0
   m_Name: Checkpoint (4)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 3246865033592055428}
   m_Layer: 0
   m_Name: Checkpoint (5)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 8207133468029231386}
   m_Layer: 0
   m_Name: Checkpoint (3)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 8617795338214043733}
   m_Layer: 0
   m_Name: Checkpoint (7)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 6225683381023278214}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 2311311142932190154}
   m_Layer: 0
   m_Name: Checkpoint (6)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 2688333206728768854}
   m_Layer: 0
   m_Name: Checkpoint (2)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 5520954932444088522}
   m_Layer: 0
   m_Name: Checkpoint (1)
-  m_TagString: Respawn
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

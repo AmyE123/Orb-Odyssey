@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc41ac08dbf548e4eaaea146b7f01ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxForce: 25
+  _maxForce: 40
   _yRotation: 0
   _stopDampingDuration: 5
   _threshold: 2
@@ -233,7 +233,6 @@ MonoBehaviour:
   _activePowerup: 0
   _stickyCharges: 0
   _fastCharges: 0
-  _slowCharges: 0
   _freezeCharges: 0
   _stickyDuration: 10
   _fastDuration: 10
@@ -255,3 +254,6 @@ MonoBehaviour:
     type: 3}
   _fastPrefab: {fileID: 3418113904911073497, guid: e1b5c877e9f15a74b9d12ffc1c9688d7,
     type: 3}
+  _freezeCount: {fileID: 0}
+  _fastCount: {fileID: 0}
+  _stickyCount: {fileID: 0}
