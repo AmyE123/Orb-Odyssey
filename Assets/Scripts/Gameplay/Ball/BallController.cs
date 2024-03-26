@@ -17,6 +17,9 @@ namespace CT6RIGPR
         private bool _isInputActive = false;
         private float moveHorizontal = 0.0f;
         private float moveVertical = 0.0f;
+        private Color blueTint = new Color(0f, 0f, 1f, 0.3f);
+        private Color greenTint = new Color(0f, 1f, 0f, 0.3f);
+        private Color yellowTint = new Color(1f, 1f, 0f, 0.3f);
 
         [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
@@ -185,6 +188,35 @@ namespace CT6RIGPR
                 Debug.LogWarning("[CT6RIGPR]: Material to fade is not assigned.");
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Powerup Visual Effect
+        /// </summary>
+        public Tween ApplyPowerUpVisual(Constants.PowerupType powerUp)
+        {
+            if (_ballOuterMat == null)
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to tint is not assigned.");
+                return null;
+            }
+            switch (powerUp)
+            {
+                case Constants.PowerupType.Fast:
+                    return _ballOuterMat.DOColor(yellowTint, 1).SetDelay(1);
+                case Constants.PowerupType.Sticky:
+                    return _ballOuterMat.DOColor(greenTint, 1).SetDelay(1);
+                default: //Freeze
+                    return _ballOuterMat.DOColor(blueTint, 1).SetDelay(1);
+            }
+        }
+
+        /// <summary>
+        /// Powerup Visual Effect
+        /// </summary>
+        public Tween RemovePowerUpVisual()
+        {
+            return _ballOuterMat.DOColor(Color.clear, 1).SetDelay(1);
         }
 
         /// <summary>
