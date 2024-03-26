@@ -212,7 +212,7 @@ namespace CT6RIGPR
         /// </summary>
         public Tween RemovePowerUpVisual()
         {
-
+            return _ballOuterMat.DOColor(Color.clear, 1).SetDelay(1);
         }
 
         /// <summary>

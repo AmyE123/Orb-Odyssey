@@ -424,6 +424,7 @@ namespace CT6RIGPR
             _stickyEnabled = false;
             _isSticking = false;
             ResetSlider();
+            _ballController.RemovePowerUpVisual();
         }
 
         private IEnumerator DisableSpeedCoroutine(float time)
@@ -432,6 +433,7 @@ namespace CT6RIGPR
 			_ballController.ChangeMaxForce(_originalForce);
 			_fastEnabled = false;
             ResetSlider();
+            _ballController.RemovePowerUpVisual();
         }
 
         private IEnumerator DisableFreezeCoroutine(float time)
@@ -447,7 +449,7 @@ namespace CT6RIGPR
 			}
 			_freezeEnabled = false;
             ResetSlider();
+            _ballController.RemovePowerUpVisual();
         }
-
     }
 }
