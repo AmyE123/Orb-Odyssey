@@ -35,7 +35,7 @@ namespace CT6RIGPR
         /// Animate using the powerup pickup.
         /// </summary>
         /// <param name="slotIdx">The slot to get the powerup from.</param>
-        public void UsePowerup(int slotIdx, GameObject powerupPrefab)
+        public void UsePowerup(int slotIdx)
         {
             if (_inventorySlots[slotIdx].transform.childCount > 0)
             {
@@ -53,7 +53,6 @@ namespace CT6RIGPR
                 {
                     powerupVisual.parent = null;
                     Destroy(powerupVisual.gameObject);
-                    AddPowerupToSlot(powerupPrefab);
                 });
             }
         }

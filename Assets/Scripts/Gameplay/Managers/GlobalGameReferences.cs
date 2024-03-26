@@ -4,12 +4,9 @@ namespace CT6RIGPR
 
     public class GlobalGameReferences : MonoBehaviour
     {
-        private bool _isFollowingSpline = false;
-
         [SerializeField] private BallController _ballController;
         [SerializeField] private BallCockpit _ballCockpit;
         [SerializeField] private LevelManager _levelManager;
-        [SerializeField] private PowerupManager _powerupManager;
         [SerializeField] private GameObject[] _checkpoints;
         [SerializeField] private GameObject[] _powerups;
 
@@ -41,11 +38,6 @@ namespace CT6RIGPR
         /// The rigidbody for the player.
         /// </summary>
         public Rigidbody PlayerRigidbody => _playerRigidbody;
-
-        /// <summary>
-        /// The powerup manager.
-        /// </summary>
-        public PowerupManager PowerupManager => _powerupManager;
 
         /// <summary>
         /// The checkpoints in a level.
@@ -82,11 +74,9 @@ namespace CT6RIGPR
         /// </summary>
         public LevelManager LevelManager => _levelManager;
 
-        public bool IsFollowingSpline => _isFollowingSpline;
-
         private void Start()
         {
-            CheckAndSetReferences();
+            CheckReferences();
             PopulateArrays();
         }
 
@@ -98,77 +88,28 @@ namespace CT6RIGPR
             }
         }
 
-        private void CheckAndSetReferences()
+        private void CheckReferences()
         {
             if (_ballController == null)
             {
                 LogNullRef(typeof(BallController).Name, LogType.Error);
-                _ballController = FindObjectOfType<BallController>();
-            }
-
-            if (_ballCockpit == null)
-            {
-                LogNullRef(typeof(BallCockpit).Name, LogType.Error);
-                _ballCockpit = FindObjectOfType<BallCockpit>();
-            }
-
-            if (_checkpoints == null)
-            {
-                LogNullRef("Checkpoints", LogType.Error);
-            }
-
-            if (_profileManager == null)
-            {
-                LogNullRef(typeof(ProfileManager).Name, LogType.Error);
-                _profileManager = FindObjectOfType<ProfileManager>();
-            }
-
-            if (_uiManager == null)
-            {
-                LogNullRef(typeof(UIManager).Name, LogType.Error);
-                _uiManager = FindObjectOfType<UIManager>();
-            }
-
-            if (_playerRigidbody == null)
-            {
-                LogNullRef("Player Rigidbody", LogType.Error);
             }
 
             if (_cameraController == null)
             {
                 LogNullRef(typeof(CameraController).Name, LogType.Error);
-                _cameraController = FindObjectOfType<CameraController>();
-            }
-
-            if (_powerupManager == null)
-            {
-                LogNullRef(typeof(PowerupManager).Name, LogType.Error);
-                _powerupManager = FindObjectOfType<PowerupManager>();
             }
 
             if (_gameSFXManager == null)
             {
-                LogNullRef(typeof(GameSFXManager).Name, LogType.Warning);
                 _gameSFXManager = FindObjectOfType<GameSFXManager>();
             }
-
-            if (_levelManager == null)
-            {
-                LogNullRef(typeof(LevelManager).Name, LogType.Error);
-                _levelManager = FindObjectOfType<LevelManager>();
-            }
-
         }
 
         private void PopulateArrays()
         {
             _checkpoints = GameObject.FindGameObjectsWithTag(Constants.CHECKPOINT_TAG);
             _powerups = GameObject.FindGameObjectsWithTag(Constants.POWERUP_TAG);
-        }
-
-        public void SetIsFollowingSpline(bool value)
-        {
-            _isFollowingSpline = value;
         }
 
         private void LogNullRef(string refName, LogType logType)
