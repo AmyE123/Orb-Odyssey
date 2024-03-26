@@ -15,9 +15,6 @@ namespace CT6RIGPR
 
         [SerializeField] private GameObject[] _checkpoints;
 		[SerializeField] private GameManager _gameManager;
-        [SerializeField] private float _fadeInTime = 0.4f; //Percentage of time spent fading in
-        [SerializeField] private float _fadeWaitTime = 0.2f; //Percentage of time waiting.
-        [SerializeField] private float _fadeOutTime = 0.4f;  //Percentage of time fading out.
         [SerializeField] private float _respawnTime = Constants.RESPAWN_TIME;
         [SerializeField] private GlobalGameReferences _globalReferences;
 
