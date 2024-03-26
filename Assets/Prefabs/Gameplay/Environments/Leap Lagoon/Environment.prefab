@@ -672,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 515.39
+      value: 517.26
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -727,7 +727,7 @@ PrefabInstance:
     - target: {fileID: 2174838419677825863, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: _jumpForce
-      value: 150
+      value: 175
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1656,7 +1656,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 495.42
+      value: 496.7
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -1707,6 +1707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Omni_Jump_Pad_LP 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174838419677825863, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 115
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5128,7 +5133,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 532.72
+      value: 534.94
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -5138,7 +5143,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 491.22
+      value: 491.92
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -7094,7 +7099,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 551.14
+      value: 551.31
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -7104,7 +7109,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 509.58
+      value: 508.45
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -7149,7 +7154,7 @@ PrefabInstance:
     - target: {fileID: 2174838419677825863, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: _jumpForce
-      value: 110
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10147,7 +10152,7 @@ PrefabInstance:
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 556.11
+      value: 557.13
       objectReference: {fileID: 0}
     - target: {fileID: 1590324231114378894, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
@@ -10202,7 +10207,7 @@ PrefabInstance:
     - target: {fileID: 2174838419677825863, guid: f7ea7735f62bdbb4e9daa7864a13ca5c,
         type: 3}
       propertyPath: _jumpForce
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
