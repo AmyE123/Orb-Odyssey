@@ -10,6 +10,8 @@ TagManager:
   - Water
   - Checkpoint
   - IslandBoundary
+  - Powerup
+  - FreezableWater
   layers:
   - Default
   - TransparentFX
