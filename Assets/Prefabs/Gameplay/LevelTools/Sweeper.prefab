@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4674285492514775245}
   - component: {fileID: 9086520214213872666}
   - component: {fileID: 4601905964248908457}
-  - component: {fileID: 6913359613868937388}
   - component: {fileID: 6135979806239761566}
   - component: {fileID: 6613959236363483253}
+  - component: {fileID: 2786193276134392657}
   m_Layer: 0
   m_Name: Sweeper_Core
   m_TagString: Untagged
@@ -86,28 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6913359613868937388
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5078946727980302925}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: d4f04d7844e1a6149a847d038a90e25b, type: 3}
 --- !u!114 &6135979806239761566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +126,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!65 &2786193276134392657
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078946727980302925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.94888383, y: 0.924553, z: 8.429225}
+  m_Center: {x: 0.018695569, y: 1.9827359, z: 2.9060626}
 --- !u!1 &7149407363442756961
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +159,7 @@ GameObject:
   - component: {fileID: 3927758950516034048}
   - component: {fileID: 6000223622001148213}
   - component: {fileID: 6173282270924269993}
+  - component: {fileID: 245028954791383931}
   m_Layer: 0
   m_Name: Sweeper_Base
   m_TagString: Untagged
@@ -255,6 +255,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: ed5283ebddb1d33448c0d72f19980c1c, type: 3}
+--- !u!65 &245028954791383931
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149407363442756961}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6432837, y: 5.526677, z: 1.6381643}
+  m_Center: {x: -0.03501446, y: 2.7633405, z: -0.024902936}
 --- !u!1 &8748474142877491340
 GameObject:
   m_ObjectHideFlags: 0

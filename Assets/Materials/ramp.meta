@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Gameplay/Environments/Boing Bay/3.0.meta
+guid: 00d4488cfb7af0448917041315ac9b6a
+========
 guid: 2132176e748206c4b91795f2c2cd572e
+>>>>>>>> main:Assets/Materials/ramp.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

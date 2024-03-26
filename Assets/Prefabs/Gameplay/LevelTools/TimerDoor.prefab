@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353917a67490d864191898f89552fd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _splineContainer: {fileID: 4193615302285615207}
+  _splineComputer: {fileID: 0}
 --- !u!1 &7463375094952614746
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +418,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 2093640715324443083, guid: f03c10998d17fb3409cfc3510cf95314,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 73b8d7cb9c5f77947b7fb27ea4d13478,
+        type: 3}
+    - target: {fileID: 2811929558942707184, guid: f03c10998d17fb3409cfc3510cf95314,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ad045faf6c078f45a85c78a761b643e, type: 2}
     - target: {fileID: 2926371756364316900, guid: f03c10998d17fb3409cfc3510cf95314,
         type: 3}
       propertyPath: m_LocalPosition.x

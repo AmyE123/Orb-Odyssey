@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Island.meta
+guid: 1e8b51411f8d25b47b70505b0532c081
+========
 guid: 18229cf3aa3fc684ea370712b3d733d3
+>>>>>>>> main:Assets/Materials/fence/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
