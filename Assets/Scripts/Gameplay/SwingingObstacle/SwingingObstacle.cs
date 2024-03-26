@@ -7,26 +7,14 @@ namespace CT6RIGPR
     /// </summary>
     public class SwingingObstacle : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _swingForce = 10f;
-        [SerializeField] private Vector3 _swingAxis = Vector3.forward;
-        private Vector3 _initialDirection = Vector3.right;
+        [SerializeField] private float _swingingSpeed = 1f;
+        [SerializeField] private float _swingingAngularLimit = 70f;
 
-        private void Start()
-        {
-            _rigidbody.AddForce(_initialDirection * _swingForce, ForceMode.Impulse);
-        }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            ApplyContinuousForce();
-        }
-
-        private void ApplyContinuousForce()
-        {
-            Vector3 projectedVelocity = Vector3.ProjectOnPlane(_rigidbody.velocity, _swingAxis);
-            Vector3 swingDirection = Vector3.Cross(_swingAxis, projectedVelocity).normalized;
-            _rigidbody.AddForce(swingDirection * _swingForce * Time.fixedDeltaTime, ForceMode.Force);
+            float angle = _swingingAngularLimit * Mathf.Sin(Time.time * _swingingSpeed);
+            transform.localRotation = Quaternion.Euler(0, 0, angle);
         }
     }
 }
