@@ -167,6 +167,7 @@ namespace CT6RIGPR
         private void UsePowerup(PowerupType powerupType)
         {
             _activationTime = Time.time;
+            _ballController.ApplyPowerUpVisual(powerupType);
             switch (powerupType)
             {
                 case PowerupType.Sticky:
