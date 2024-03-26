@@ -144,6 +144,11 @@ namespace CT6RIGPR
         public const string CHECKPOINT_TAG = "Checkpoint";
 
         /// <summary>
+        /// This is the tag for powerups (not the child object).
+        /// </summary>
+        public const string POWERUP_TAG = "Powerup";
+
+        /// <summary>
         /// This is the tag for the island boundary.
         /// </summary>
         public const string ISLAND_BOUNDARY_TAG = "IslandBoundary";

@@ -8,6 +8,7 @@ namespace CT6RIGPR
         [SerializeField] private BallCockpit _ballCockpit;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private GameObject[] _checkpoints;
+        [SerializeField] private GameObject[] _powerups;
 
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private GameSFXManager _gameSFXManager;
@@ -42,6 +43,11 @@ namespace CT6RIGPR
         /// The checkpoints in a level.
         /// </summary>
         public GameObject[] Checkpoints => _checkpoints;
+
+        /// <summary>
+        /// The powerups in a level.
+        /// </summary>
+        public GameObject[] Powerups => _powerups;
 
         /// <summary>
         /// The global profile manager for the 4DoF.
@@ -103,6 +109,7 @@ namespace CT6RIGPR
         private void PopulateArrays()
         {
             _checkpoints = GameObject.FindGameObjectsWithTag(Constants.CHECKPOINT_TAG);
+            _powerups = GameObject.FindGameObjectsWithTag(Constants.POWERUP_TAG);
         }
 
         private void LogNullRef(string refName, LogType logType)
