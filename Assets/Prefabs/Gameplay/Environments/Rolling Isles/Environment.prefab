@@ -1309,13 +1309,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728089608442898190}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7262012, z: -0, w: 0.6874823}
-  m_LocalPosition: {x: 173.46, y: 11.31, z: 235.37}
+  m_LocalRotation: {x: -0, y: -0.7728042, z: -0, w: 0.6346445}
+  m_LocalPosition: {x: 165.5, y: 11.31, z: 224.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6044904697627700583}
-  m_LocalEulerAnglesHint: {x: 0, y: -93.138, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -101.213, z: 0}
 --- !u!1 &2052704503212512671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,6 +2599,37 @@ Transform:
   - {fileID: 1841881725005253118}
   m_Father: {fileID: 8451225425990255876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3052829704643713364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641271404798880828}
+  m_Layer: 0
+  m_Name: RespawnPoint (4)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &641271404798880828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052829704643713364}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.59064615, z: -0, w: -0.80693066}
+  m_LocalPosition: {x: 102.99, y: 11.31, z: 276.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -287.594, z: 0}
 --- !u!1 &3089028760655215261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,6 +2736,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &3106801933313538539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7817485918795554169}
+  m_Layer: 0
+  m_Name: RespawnPoint (5)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7817485918795554169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3106801933313538539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.6791122, z: -0, w: -0.7340344}
+  m_LocalPosition: {x: 208.8, y: 37.67, z: 281.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -274.451, z: 0}
 --- !u!1 &3127665542732320818
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,6 +3820,13 @@ Transform:
   - {fileID: 5704176389233739376}
   - {fileID: 5118193526659895062}
   - {fileID: 5965794057349879572}
+  - {fileID: 641271404798880828}
+  - {fileID: 7817485918795554169}
+  - {fileID: 2166055970526552128}
+  - {fileID: 3170641931313007785}
+  - {fileID: 5998201508759982388}
+  - {fileID: 4123263398310502484}
+  - {fileID: 6892012040465001359}
   m_Father: {fileID: 6166392476714900007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4598634087376943170
@@ -6953,6 +7022,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &8069593413635988719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4123263398310502484}
+  m_Layer: 0
+  m_Name: RespawnPoint (9)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4123263398310502484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069593413635988719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.64405096, z: -0, w: -0.76498264}
+  m_LocalPosition: {x: 65.94, y: 35.62, z: 408.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -440.189, z: 0}
+--- !u!1 &8094369043150630737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3170641931313007785}
+  m_Layer: 0
+  m_Name: RespawnPoint (7)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3170641931313007785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094369043150630737}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.12720393, z: -0, w: -0.9918766}
+  m_LocalPosition: {x: 136.51, y: 13.72, z: 342.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -345.384, z: 0}
 --- !u!1 &8144148826547894311
 GameObject:
   m_ObjectHideFlags: 0
@@ -7217,6 +7348,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &8322075972125008677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6892012040465001359}
+  m_Layer: 0
+  m_Name: RespawnPoint (10)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6892012040465001359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322075972125008677}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.8985338, z: -0, w: -0.43890432}
+  m_LocalPosition: {x: 61.88, y: 10.37, z: 354.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -487.932, z: 0}
 --- !u!1 &8372550047563948345
 GameObject:
   m_ObjectHideFlags: 0
@@ -7952,6 +8114,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &9054596360298570773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2166055970526552128}
+  m_Layer: 0
+  m_Name: RespawnPoint (6)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2166055970526552128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054596360298570773}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.6461861, z: -0, w: -0.7631799}
+  m_LocalPosition: {x: 215.82, y: 37.67, z: 340.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -440.509, z: 0}
+--- !u!1 &9084792589118521805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5998201508759982388}
+  m_Layer: 0
+  m_Name: RespawnPoint (8)
+  m_TagString: Checkpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5998201508759982388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084792589118521805}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.64405096, z: -0, w: -0.76498264}
+  m_LocalPosition: {x: 108.38, y: 35.62, z: 392.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6044904697627700583}
+  m_LocalEulerAnglesHint: {x: 0, y: -440.189, z: 0}
 --- !u!1 &9095077852293679310
 GameObject:
   m_ObjectHideFlags: 0
