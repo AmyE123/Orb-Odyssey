@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc41ac08dbf548e4eaaea146b7f01ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxForce: 25
+  _maxForce: 40
   _yRotation: 0
   _stopDampingDuration: 5
   _threshold: 2
@@ -175,6 +175,8 @@ MonoBehaviour:
   _currentSpeed: 0
   _canStartPlaying: 0
   _ballOuterMat: {fileID: 2100000, guid: 22a48e165146c4c4ab8f7e034051e426, type: 2}
+  _rotationWarningGO: {fileID: 0}
+  _rotationWarningCG: {fileID: 0}
 --- !u!114 &481554646583591801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,9 +191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _checkpoints: []
   _gameManager: {fileID: 0}
-  _fadeInTime: 0.4
-  _fadeWaitTime: 0.1
-  _fadeOutTime: 0.4
   _respawnTime: 3
   _globalReferences: {fileID: 0}
 --- !u!114 &7049926200131099503
@@ -233,22 +232,24 @@ MonoBehaviour:
   _activePowerup: 0
   _stickyCharges: 0
   _fastCharges: 0
-  _slowCharges: 0
   _freezeCharges: 0
   _stickyDuration: 10
   _fastDuration: 10
-  _slowDuration: 10
   _freezeDuration: 10
   _buffedForce: 40
-  _slowedForce: 10
   _ballController: {fileID: 0}
   _buttonCoolDown: 0.5
   _imageStickyPowerUp: {fileID: 2047992146, guid: 080cb6d98b00c2645b2c41df5f69bc78,
     type: 3}
   _imageFastPowerUp: {fileID: 485823971, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
-  _imageSlowPowerUp: {fileID: 1019859777, guid: 080cb6d98b00c2645b2c41df5f69bc78,
-    type: 3}
   _imageFreezePowerUp: {fileID: 1401011104, guid: 080cb6d98b00c2645b2c41df5f69bc78,
     type: 3}
   _powerUpImagePanel: {fileID: 0}
   _slider: {fileID: 0}
+  _gameManager: {fileID: 0}
+  _freezePrefab: {fileID: 0}
+  _stickyPrefab: {fileID: 0}
+  _fastPrefab: {fileID: 0}
+  _freezeCount: {fileID: 0}
+  _fastCount: {fileID: 0}
+  _stickyCount: {fileID: 0}
