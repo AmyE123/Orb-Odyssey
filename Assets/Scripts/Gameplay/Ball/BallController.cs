@@ -17,6 +17,9 @@ namespace CT6RIGPR
         private bool _isInputActive = false;
         private float moveHorizontal = 0.0f;
         private float moveVertical = 0.0f;
+        private Color blueTint = new Color(0f, 0f, 1f, 0.3f);
+        private Color greenTint = new Color(0f, 1f, 0f, 0.3f);
+        private Color yellowTint = new Color(1f, 1f, 0f, 0.3f);
 
         [Header("Movement Settings")]
         [SerializeField] private float _maxForce = Constants.BALL_DEFAULT_MAX_FORCE;
@@ -58,6 +61,10 @@ namespace CT6RIGPR
 
         [Header("Visual Values")]
         [SerializeField] private Material _ballOuterMat;
+
+        [Header("Rotation Warning UI")]
+        [SerializeField] private GameObject _rotationWarningGO;
+        [SerializeField] private CanvasGroup _rotationWarningCG;
 
         /// <summary>
         /// The Y rotation of the ball.
@@ -184,6 +191,35 @@ namespace CT6RIGPR
         }
 
         /// <summary>
+        /// Powerup Visual Effect
+        /// </summary>
+        public Tween ApplyPowerUpVisual(Constants.PowerupType powerUp)
+        {
+            if (_ballOuterMat == null)
+            {
+                Debug.LogWarning("[CT6RIGPR]: Material to tint is not assigned.");
+                return null;
+            }
+            switch (powerUp)
+            {
+                case Constants.PowerupType.Fast:
+                    return _ballOuterMat.DOColor(yellowTint, 1).SetDelay(1);
+                case Constants.PowerupType.Sticky:
+                    return _ballOuterMat.DOColor(greenTint, 1).SetDelay(1);
+                default: //Freeze
+                    return _ballOuterMat.DOColor(blueTint, 1).SetDelay(1);
+            }
+        }
+
+        /// <summary>
+        /// Powerup Visual Effect
+        /// </summary>
+        public Tween RemovePowerUpVisual()
+        {
+            return _ballOuterMat.DOColor(Color.clear, 1).SetDelay(1);
+        }
+
+        /// <summary>
         /// A function to change the max force of the ball.
         /// </summary>
         /// <param name="newMaxForce">The new value of the max force.</param>
@@ -284,6 +320,7 @@ namespace CT6RIGPR
                 AdjustRigidbodyDrag();
 
                 NormalizeRotation();
+                CheckRotationLimits();
             }
 
             if (_debugInput)
@@ -512,6 +549,35 @@ namespace CT6RIGPR
         {
             if (_yRotation < -720) { _yRotation = -720; }
             if (_yRotation > 720) { _yRotation = 720; }
+        }
+
+        private void CheckRotationLimits()
+        {
+            if (_yRotation < -700 || _yRotation > 700)
+            {
+                ShowWarning();
+            }
+            else
+            {
+                HideWarning();
+            }
+        }
+
+        private void ShowWarning()
+        {
+            _rotationWarningGO.SetActive(true);
+
+            _rotationWarningCG.alpha = 0;
+            _rotationWarningCG.DOFade(1, 1);
+        }
+
+        private void HideWarning()
+        {
+            _rotationWarningCG.DOFade(0, 1)
+            .OnComplete(() =>
+            {
+                _rotationWarningGO.SetActive(false);
+            });
         }
     }
 }
