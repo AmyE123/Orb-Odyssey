@@ -108,7 +108,7 @@
                 },
                 "useBrushSpacing": false,
                 "minBrushSpacing": 1.0,
-                "maxBrushSpacing": 50.0,
+                "maxBrushSpacing": 30.000001907348634,
                 "useRandomRotation": false,
                 "minRandomRotation": -180.0,
                 "maxRandomRotation": 180.0,
