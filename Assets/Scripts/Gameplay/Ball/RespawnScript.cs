@@ -18,6 +18,12 @@ namespace CT6RIGPR
         [SerializeField] private float _respawnTime = Constants.RESPAWN_TIME;
         [SerializeField] private GlobalGameReferences _globalReferences;
 
+
+        /// <summary>
+        /// Bool to check if the player is currently respawning
+        /// </summary>
+        public bool IsRespawning => isRespawning;
+
         private void Start()
         {
             if (_gameManager == null)

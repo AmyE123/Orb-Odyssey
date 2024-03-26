@@ -340,7 +340,8 @@ namespace CT6RIGPR
         {
             if (AnyPowerUpActive() ||
                 !_gameManager.GlobalGameReferences.LevelManager.HasReadWarning ||
-                _gameManager.GlobalGameReferences.IsFollowingSpline
+                _gameManager.GlobalGameReferences.IsFollowingSpline ||
+                _gameManager.GlobalGameReferences.RespawnScript.IsRespawning
                 )
             {
                 return false;

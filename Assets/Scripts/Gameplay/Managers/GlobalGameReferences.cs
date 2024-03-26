@@ -10,6 +10,7 @@ namespace CT6RIGPR
         [SerializeField] private BallCockpit _ballCockpit;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private PowerupManager _powerupManager;
+        [SerializeField] private RespawnScript _respawnScript;
         [SerializeField] private GameObject[] _checkpoints;
 
         [SerializeField] private CameraController _cameraController;
@@ -35,6 +36,11 @@ namespace CT6RIGPR
         /// The ball cockpit.
         /// </summary>
         public BallCockpit BallCockpit => _ballCockpit;
+
+        /// <summary>
+        /// The respawn script, used for checkin if the player is respawning.
+        /// </summary>
+        public RespawnScript RespawnScript => _respawnScript;
 
         /// <summary>
         /// The rigidbody for the player.
