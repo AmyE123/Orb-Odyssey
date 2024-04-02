@@ -191,7 +191,7 @@ namespace CT6RIGPR
         /// <summary>
         /// The default amount of charges a powerup has.
         /// </summary>
-        public const int DEFAULT_POWERUP_CHARGES = 10;
+        public const int DEFAULT_POWERUP_CHARGES = 0;
 
         /// <summary>
         /// The default cooldown for button input for powerups.

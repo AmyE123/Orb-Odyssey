@@ -339,16 +339,9 @@ MonoBehaviour:
   - {fileID: 0}
   _buttonNumber: 0
   _buttonSound: {fileID: 0}
-  _light0:
-  - {fileID: 0}
-  _light1:
-  - {fileID: 0}
-  _light2:
-  - {fileID: 0}
-  _light3:
-  - {fileID: 0}
   _offMaterial: {fileID: 2100000, guid: 42a35c6a66f372846a5acbc7eb4de3d0, type: 2}
   _onMaterial: {fileID: 2100000, guid: df2ec30663571ff4c93927e1d8af7c0b, type: 2}
+  _managerScript: {fileID: 0}
 --- !u!1 &6690195694274734426
 GameObject:
   m_ObjectHideFlags: 0
