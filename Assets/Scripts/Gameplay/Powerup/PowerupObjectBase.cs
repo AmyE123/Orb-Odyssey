@@ -42,6 +42,7 @@ namespace CT6RIGPR
 
             InventoryVisualsManager.instance.AddPowerupToSlot(this.gameObject);
 
+
             transform.DOScale(Vector3.zero, _collectableData.ShrinkDuration)
             .OnComplete(() => {
                 _powerupMeshRenderer.enabled = false;

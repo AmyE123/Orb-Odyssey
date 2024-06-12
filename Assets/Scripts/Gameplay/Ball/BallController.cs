@@ -547,13 +547,16 @@ namespace CT6RIGPR
         /// </summary>
         private void NormalizeRotation()
         {
-            if (_yRotation < -720) { _yRotation = -720; }
-            if (_yRotation > 720) { _yRotation = 720; }
+//            if (_yRotation < -720) { _yRotation = -720; }
+//            if (_yRotation > 720) { _yRotation = 720; }
+            if (_yRotation < -179) { _yRotation = -179; }
+            if (_yRotation > 179) { _yRotation = 179; }
         }
 
         private void CheckRotationLimits()
         {
-            if (_yRotation < -700 || _yRotation > 700)
+            //if (_yRotation < -700 || _yRotation > 700)
+            if (_yRotation < -175 || _yRotation > 175)
             {
                 ShowWarning();
             }

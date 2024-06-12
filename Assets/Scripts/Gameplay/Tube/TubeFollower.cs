@@ -87,11 +87,11 @@ namespace CT6RIGPR
             _splineProgress = Mathf.Clamp01(_splineProgress);
 
             Vector3 newPosition = spline.GetPointAt(_splineProgress);
-            Quaternion newRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
+            //Quaternion newRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
 
             Transform playerTransform = _ballController.gameObject.transform;
             playerTransform.position = newPosition;
-            playerTransform.rotation = newRotation;
+            //playerTransform.rotation = newRotation;
         }
 
         private void StopFollowing()
