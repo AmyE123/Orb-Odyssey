@@ -3079,9 +3079,27 @@ PrefabInstance:
       objectReference: {fileID: 5401196234293449611}
     - target: {fileID: 2026152859194335402, guid: 2f387041d673bb241a52d0203f85dfb9,
         type: 3}
+      propertyPath: _imageFastPowerUp
+      value: 
+      objectReference: {fileID: 21300000, guid: 5dff7075f54e4714eaabadfa6791c061,
+        type: 3}
+    - target: {fileID: 2026152859194335402, guid: 2f387041d673bb241a52d0203f85dfb9,
+        type: 3}
       propertyPath: _powerUpImagePanel
       value: 
       objectReference: {fileID: 5871645035209875593}
+    - target: {fileID: 2026152859194335402, guid: 2f387041d673bb241a52d0203f85dfb9,
+        type: 3}
+      propertyPath: _imageFreezePowerUp
+      value: 
+      objectReference: {fileID: 21300000, guid: a7c3cfbe6a0a17643b9d97caa612a5d4,
+        type: 3}
+    - target: {fileID: 2026152859194335402, guid: 2f387041d673bb241a52d0203f85dfb9,
+        type: 3}
+      propertyPath: _imageStickyPowerUp
+      value: 
+      objectReference: {fileID: 21300000, guid: 79ee2905acd303c42ac844b961ed94cc,
+        type: 3}
     - target: {fileID: 5261480439909761204, guid: 2f387041d673bb241a52d0203f85dfb9,
         type: 3}
       propertyPath: m_LocalPosition.x

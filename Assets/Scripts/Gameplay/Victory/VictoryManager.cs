@@ -23,18 +23,16 @@ namespace CT6RIGPR
             yield return new WaitForSeconds(2);
             _levelCompletionUIGO.SetActive(true);
 
-            if (IsLastScene())
-            {
-                yield return new WaitForSeconds(5);
-                _finalCanvasGO.SetActive(true);
-                yield return new WaitForSeconds(3);
-            }
-            else
-            {
-                yield return new WaitForSeconds(5);
-            }           
+            yield return new WaitForSeconds(5);
+            _finalCanvasGO.SetActive(true);
+            yield return new WaitForSeconds(10);
+//            else
+//            {
+//                yield return new WaitForSeconds(5);
+//            }           
 
-            LoadNextScene();
+//            LoadNextScene();
+            Application.Quit();
         }
 
         private void FadeOut()

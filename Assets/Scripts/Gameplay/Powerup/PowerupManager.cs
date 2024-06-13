@@ -329,14 +329,15 @@ namespace CT6RIGPR
                 device.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonB);
             }
 
-            if (buttonA && _primaryButtonEnabled)
+//            if ((Input.GetButton("PowerUpCycle") || Input.GetButton("PowerUpCycleAlt") || buttonA) && _primaryButtonEnabled)
+            if ((Input.GetButton("Fire2")|| buttonA) && _primaryButtonEnabled)
             {
                 CyclePowerUp();
                 _primaryButtonEnabled = false;
                 StartCoroutine(PrimaryButtonCooldown(_buttonCoolDown));
             }
 
-            if (buttonB && _secondaryButtonEnabled)
+            if ((buttonB || Input.GetButton("Fire1")) && _secondaryButtonEnabled)
             {
                 if (CanActivatePowerUp())
                 {

@@ -16,6 +16,7 @@ namespace CT6RIGPR
         [SerializeField] private GameObject _outerBall;
         [SerializeField] private GameObject _cameraObj;
         [SerializeField] private bool _debugMouseLook = true;
+        [SerializeField] private bool _levelSelector;
 
         public bool DebugMouseLook => _debugMouseLook;
 
@@ -43,7 +44,7 @@ namespace CT6RIGPR
                 MouseLookAround();
             }
 
-            if (_references.BallController.DisableRotation)
+            if (!_levelSelector && _references.BallController.DisableRotation)
             {
                 _cockpit.transform.localRotation = Quaternion.Euler(Vector3.zero);
                 _outerBall.transform.localRotation = Quaternion.Euler(Vector3.zero);
