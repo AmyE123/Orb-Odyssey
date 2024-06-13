@@ -167,6 +167,7 @@ namespace CT6RIGPR
         private void UsePowerup(PowerupType powerupType)
         {
             _activationTime = Time.time;
+            _ballController.ApplyPowerUpVisual(powerupType);
             switch (powerupType)
             {
                 case PowerupType.Sticky:
@@ -380,6 +381,7 @@ namespace CT6RIGPR
         {
             if (AnyPowerUpActive() ||
                 !_gameManager.GlobalGameReferences.LevelManager.HasReadWarning ||
+                _gameManager.GlobalGameReferences.RespawnScript.IsRespawning ||
                 _gameManager.GlobalGameReferences.IsFollowingSpline
                 )
             {
@@ -465,6 +467,7 @@ namespace CT6RIGPR
             _isSticking = false;
             ResetSlider();
             RefillPowerUp(PowerupType.Sticky);
+            _ballController.RemovePowerUpVisual();
         }
 
         private IEnumerator DisableSpeedCoroutine(float time)
@@ -474,6 +477,7 @@ namespace CT6RIGPR
 			_fastEnabled = false;
             ResetSlider();
             RefillPowerUp(PowerupType.Fast);
+            _ballController.RemovePowerUpVisual();
         }
 
         private IEnumerator DisableFreezeCoroutine(float time)
@@ -490,6 +494,8 @@ namespace CT6RIGPR
 			_freezeEnabled = false;
             ResetSlider();
             RefillPowerUp(PowerupType.Freeze);
+            _ballController.RemovePowerUpVisual();
+
         }
 
     }

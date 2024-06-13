@@ -236,7 +236,7 @@ MonoBehaviour:
   _stickyDuration: 10
   _fastDuration: 10
   _freezeDuration: 10
-  _buffedForce: 40
+  _buffedForce: 100
   _ballController: {fileID: 0}
   _buttonCoolDown: 0.5
   _imageStickyPowerUp: {fileID: 2047992146, guid: 080cb6d98b00c2645b2c41df5f69bc78,

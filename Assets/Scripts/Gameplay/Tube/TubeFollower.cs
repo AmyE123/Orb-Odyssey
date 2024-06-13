@@ -112,10 +112,10 @@ namespace CT6RIGPR
             }
 
             Vector3 finalPosition = spline.GetPointAt(_splineProgress);
-            Quaternion finalRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
+//            Quaternion finalRotation = Quaternion.LookRotation(spline.GetDirectionAt(_splineProgress));
             Transform playerTransform = _ballController.gameObject.transform;
             playerTransform.position = finalPosition;
-            playerTransform.rotation = finalRotation;
+//            playerTransform.rotation = finalRotation;
 
             Rigidbody rb = _ballController.GetComponent<Rigidbody>();
             if (rb != null)
